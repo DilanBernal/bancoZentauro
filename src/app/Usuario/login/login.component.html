@@ -1,0 +1,47 @@
+<div class="login-container">
+  <button (click)="Home()" class="btn btn-success">Volver</button>
+    <h2>Iniciar Sesión</h2>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="username">Usuario</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          [(ngModel)]="username"
+          #usernameInput="ngModel"
+          required
+          class="form-control"
+        />
+        <div *ngIf="usernameInput.invalid && usernameInput.touched" class="error">
+          El nombre de usuario es obligatorio.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          #passwordInput="ngModel"
+          required
+          class="form-control"
+        />
+        <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
+          La contraseña es obligatoria.
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">
+        Iniciar sesión
+      </button>
+    </form>
+  
+    <div class="footer">
+      <a (click)="Backup()">¿Olvidaste tu contraseña?</a>
+      <a (click)="Signin()">Crear cuenta</a>
+    </div>
+  </div>
+  

@@ -1,0 +1,58 @@
+.home{
+    text-align:center;
+    background-color: #F6FCDF;
+
+}
+.home h1{
+    padding: 4%;
+    font-size: 4.5em;
+}
+.homeBanner{
+    padding: 3%;
+    display: flex;
+    text-align:left;
+    align-items: center;
+    justify-content: center;
+    background-color: #859F3D;
+    margin: 30px;
+    border-radius: 25px;
+}
+
+.homeBannerTexto{
+    padding-right: 4%;
+}
+
+.homeBannerTexto h2{
+    font-size: 2.4em;
+}
+.homeBannerTexto strong{
+    margin: 1%;
+    font-size: 1.4em;
+}
+.imgBanner{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.imgBanner img{
+    width: 100%;
+    border-radius: 25px;
+}
+
+/*Mision y vision*/
+
+.valores{
+    display: flex;
+    margin: 3px;
+    justify-content: center;
+}
+
+.mision, .vision{
+    background-color: #859F3D;
+    border-radius: 25px;
+    width: 45%;
+    margin: 5px;
+    padding: 3%;
+
+}
