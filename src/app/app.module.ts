@@ -12,6 +12,7 @@ import { ServicesComponent } from './Content/services/services.component';
 import { FormsModule } from '@angular/forms';
 import { BackupComponent } from './Usuario/backup/backup.component';
 import { HeaderComponent } from './Content/header/header.component';
+import { UserComponent } from './Content/header/user/user.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HeaderComponent } from './Content/header/header.component';
     ServicesComponent,
     BackupComponent,
     HeaderComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,7 @@
 .home{
     text-align:center;
     background-color: #F6FCDF;
-
+    overflow: hidden;
 }
 .home h1{
     padding: 4%;

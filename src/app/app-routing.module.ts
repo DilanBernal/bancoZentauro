@@ -9,6 +9,7 @@ import { ServicesComponent } from './Content/services/services.component';
 import { BackupComponent } from './Usuario/backup/backup.component';
 
 const routes: Routes = [
+  {path: '', component:HomeComponent},
   {path: 'home', component:HomeComponent},
   {path: 'product-info', component:ProductInfoComponent},
   {path: 'products', component:ProductsComponent},
