@@ -2,4 +2,3 @@
 dist/
 out-tsc/
 .tmp/
-git commit -m "Actualizando .gitignore"
