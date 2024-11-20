@@ -7,8 +7,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username: string = '';
+  email: string = '';
   password: string = '';
+  terminos:boolean = false;
+  captcha:boolean = false;
+
+
+  placeholderEmail = 'Escribe tu email aqui';
+
+  placeholderPassword = "Escribe tu contraseña aqui"
 
   constructor(private router:Router){}
 
@@ -24,9 +31,10 @@ export class LoginComponent {
     this.router.navigate(["signin"]);
   }
 
+  
   onSubmit(): void {
     console.log('Formulario enviado');
-    console.log('Usuario:', this.username);
+    console.log('Email:', this.email);
     console.log('Contraseña:', this.password);
   }
 }

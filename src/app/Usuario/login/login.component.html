@@ -1,19 +1,24 @@
+<button (click)="Home()" class="btnVerde btn">Volver</button>
+<div class="logo">
+  <img src="logo.png" alt="logo de banco centauro">
+</div>
 <div class="login-container">
-  <button (click)="Home()" class="btn btn-success">Volver</button>
     <h2>Iniciar Sesión</h2>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
       <div class="form-group">
-        <label for="username">Usuario</label>
+        <label for="email">Email</label>
         <input
           type="text"
-          id="username"
-          name="username"
-          [(ngModel)]="username"
-          #usernameInput="ngModel"
+          id="email"
+          name="email"
+          [(ngModel)]="email"
+          #emailInput="ngModel"
+          autocomplete="email"
           required
           class="form-control"
+          [placeholder]="placeholderEmail"
         />
-        <div *ngIf="usernameInput.invalid && usernameInput.touched" class="error">
+        <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
           El nombre de usuario es obligatorio.
         </div>
       </div>
@@ -28,20 +33,53 @@
           #passwordInput="ngModel"
           required
           class="form-control"
+          [placeholder]="placeholderPassword"
         />
         <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
           La contraseña es obligatoria.
         </div>
+        <br>
       </div>
-  
+      
+
+    <div class="parametros form-check">
+      <input
+        class="checkbox"
+        type="checkbox"
+        name="Recordarme"
+        id="Recordarme"
+        ><label for="Recordarme">Recordarme</label
+      >
+      <br />
+      <input
+        class="checkbox"
+        type="checkbox"
+        [(ngModel)]="captcha"
+        #captchaInput="ngModel"
+        name="No soy un robot"
+        id="Capcha"
+        required
+      /><label for="Capcha">No soy un robot</label>
+      <br />
+      <input
+        class="checkbox"
+        type="checkbox"
+        [(ngModel)]="terminos"
+        #terminosInput="ngModel"
+        name="Terminos y condiciones"
+        id="Terminos"
+        required
+      /><label for="Terminos">Terminos y condiciones</label>
+      <br />
+      <a (click)="Backup()">¿Olvidaste tu contraseña?</a> <br />
+      <a (click)="Signin()">Crear cuenta</a>
+    </div>
+      <div *ngIf="captchaInput" class="error">
+        Porfavor acepte los terminos y condiciones y
+      </div>
       <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">
         Iniciar sesión
       </button>
     </form>
-  
-    <div class="footer">
-      <a (click)="Backup()">¿Olvidaste tu contraseña?</a>
-      <a (click)="Signin()">Crear cuenta</a>
-    </div>
   </div>
   
