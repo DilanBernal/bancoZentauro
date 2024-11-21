@@ -1,0 +1,74 @@
+<div class="form-container">
+    <h2>Formulario de Solicitud</h2>
+    <form (ngSubmit)="onSubmit()" #formulario="ngForm">
+      
+      <div class="section">
+        <h3>Datos Personales</h3>
+        <div class="input-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" ngModel required>
+        </div>
+        <div class="input-group">
+          <label for="primerApellido">Primer Apellido</label>
+          <input type="text" id="primerApellido" name="primerApellido" ngModel required>
+        </div>
+        <div class="input-group">
+          <label for="segundoApellido">Segundo Apellido</label>
+          <input type="text" id="segundoApellido" name="segundoApellido" ngModel>
+        </div>
+        <div class="input-group">
+          <label for="cedula">Cédula de Ciudadanía</label>
+          <input type="number" id="cedula" name="cedula" ngModel required>
+        </div>
+        <div class="input-group">
+          <label for="fechaNacimiento">Fecha de Nacimiento</label>
+          <input type="date" id="fechaNacimiento" name="fechaNacimiento" ngModel required>
+        </div>
+        <div class="input-group">
+          <label for="fechaExpedicion">Fecha de Expedición</label>
+          <input type="date" id="fechaExpedicion" name="fechaExpedicion" ngModel required>
+        </div>
+      </div>
+  
+      <div class="section">
+        <h3>Datos de Contacto</h3>
+        <div class="input-group">
+          <label for="telefono">Número de Teléfono</label>
+          <input type="number" id="telefono" name="telefono" ngModel required>
+        </div>
+        <div class="input-group">
+          <label for="correo">Correo Electrónico</label>
+          <input type="email" id="correo" name="correo" ngModel required>
+        </div>
+        <div class="input-group">
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion" name="direccion" ngModel required>
+        </div>
+      </div>
+  
+      <div class="section">
+        <h3>Documentos de Respaldo</h3>
+        <div class="input-group">
+          <label for="comprobanteIngreso">Comprobante de Ingresos</label>
+          <input type="file" id="comprobanteIngreso" name="comprobanteIngreso" ngModel required>
+        </div>
+        <div class="input-group">
+          <label for="declaracionImpuestos">Declaración de Impuestos</label>
+          <input type="file" id="declaracionImpuestos" name="declaracionImpuestos" ngModel required>
+        </div>
+      </div>
+  
+      <div class="section">
+        <div class="checkbox-group">
+          <input type="checkbox" id="terminos" name="terminos" ngModel required>
+          <label for="terminos">Acepto los términos y condiciones.</label>
+        </div>
+      </div>
+  
+
+      <div class="submit-btn">
+        <button type="submit" [disabled]="!formulario.valid">Solicitar</button>
+      </div>
+  
+    </form>
+  </div>

@@ -1,0 +1,48 @@
+.plus{
+    text-align:center;
+    background-color: #F6FCDF;
+    overflow: hidden;
+}
+.plus h1{
+    padding: 4%;
+    font-size: 4.5em;
+}
+.plusBanner{
+    padding: 3%;
+    display: flex;
+    text-align:left;
+    align-items: center;
+    justify-content: center;
+    background-color: #31511E;
+    margin: 30px;
+    border-radius: 25px;
+    color: #f6fcdf;
+}
+
+.plusBannerTexto{
+    padding-right: 4%;
+}
+
+.plusBannerTexto h2{
+    font-size: 2.4em;
+}
+.plusBannerTexto strong{
+    margin: 1%;
+    font-size: 1.4em;
+}
+.plusImgBanner{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.plusImgBanner img{
+    width: 100%;
+    border-radius: 25px;
+}
+
+.btnTarjetaPlus{
+    border-radius: 10px;
+    background-color: #859F3D;
+    font-size: 20px;
+}

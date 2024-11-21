@@ -36,5 +36,11 @@ export class LoginComponent {
     console.log('Formulario enviado');
     console.log('Email:', this.email);
     console.log('Contraseña:', this.password);
+    this.VerificarUsuario("hola","comoestas");
+  }
+
+  async VerificarUsuario(email:string,  password:string){
+    const json = await fetch('../');
+    console.log(json.text)
   }
 }

@@ -13,6 +13,13 @@ import { FormsModule } from '@angular/forms';
 import { BackupComponent } from './Usuario/backup/backup.component';
 import { HeaderComponent } from './Content/header/header.component';
 import { UserComponent } from './Content/header/user/user.component';
+import { EstudiantesComponent } from './Content/product-info/estudiantes/estudiantes.component';
+import { PlusComponent } from './Content/product-info/plus/plus.component';
+import { PremiumComponent } from './Content/product-info/premium/premium.component';
+import { FormSolicitudComponent } from './Content/form-solicitud/form-solicitud.component';
+import { CreacionProductosComponent } from './Admin/productos/creacion-productos/creacion-productos.component';
+import { RevisarProductosComponent } from './Admin/productos/revisar-productos/revisar-productos.component';
+import { HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +33,12 @@ import { UserComponent } from './Content/header/user/user.component';
     BackupComponent,
     HeaderComponent,
     UserComponent,
+    EstudiantesComponent,
+    PlusComponent,
+    PremiumComponent,
+    FormSolicitudComponent,
+    CreacionProductosComponent,
+    RevisarProductosComponent,
   ],
   imports: [
     BrowserModule,

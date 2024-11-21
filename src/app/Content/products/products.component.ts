@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -6,5 +7,19 @@ import { Component } from '@angular/core';
   styleUrl: './products.component.css'
 })
 export class ProductsComponent {
+
+  constructor(private router:Router){}
+
+  tarjetaEstudiantes(){
+    this.router.navigate(["estudiantes"]);
+  }
+
+  tarjetaPlus(){
+    this.router.navigate(["plus"]);
+  }
+
+  tarjetaPremium(){
+    this.router.navigate(["premium"]);
+  }
 
 }

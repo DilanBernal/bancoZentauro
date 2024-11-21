@@ -27,7 +27,7 @@
 .form-group input{
     width: 45vw;
     background-color: #31511E;
-    color: #F6FCDF;
+    color: #f6fcdf;
 }
 .form-group input::placeholder{
     color:#f6fcdfb3;

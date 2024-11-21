@@ -7,6 +7,10 @@ import { LoginComponent } from './Usuario/login/login.component';
 import { SigninComponent } from './Usuario/signin/signin.component';
 import { ServicesComponent } from './Content/services/services.component';
 import { BackupComponent } from './Usuario/backup/backup.component';
+import { EstudiantesComponent } from './Content/product-info/estudiantes/estudiantes.component';
+import { PlusComponent } from './Content/product-info/plus/plus.component';
+import { PremiumComponent } from './Content/product-info/premium/premium.component';
+import { FormSolicitudComponent } from './Content/form-solicitud/form-solicitud.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -16,7 +20,11 @@ const routes: Routes = [
   {path: 'login', component:LoginComponent},
   {path: 'signin', component:SigninComponent},
   {path: 'backup', component:BackupComponent},
-  {path: 'services', component:ServicesComponent}
+  {path: 'services', component:ServicesComponent},
+  {path: 'estudiantes', component:EstudiantesComponent},
+  {path: 'plus', component:PlusComponent},
+  {path: 'premium', component:PremiumComponent},
+  {path: 'form-solicitud', component:FormSolicitudComponent}
 ];
 
 @NgModule({
