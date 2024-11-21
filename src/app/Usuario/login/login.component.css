@@ -40,6 +40,19 @@
 
 }
 
+.btnSubmit{
+    margin: 50px;
+    background-color: #31511E;
+    color: #F6FCDF;
+    transition: 0,2s;
+}
+
+.btnSubmit:hover{
+    transform: scale(101%);
+    background-color: #4b9c0d;
+    transition: 0.2s;
+}
+
 .checkbox[type="checkbox"]{
     display: inline-flex !important;
     align-items: center !important;

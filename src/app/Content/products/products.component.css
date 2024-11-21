@@ -1,0 +1,34 @@
+.products{
+    text-align: center;
+}
+h1{
+    font-size: 3em;
+}
+
+.productsBannerTexto{
+    display: flex;
+
+}
+.imgBanner{
+    width: 20vw;
+    height: 28vh;
+    display: flex;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+}
+.imgBanner img{
+    width: 100%;
+    height: 100%;
+}
+
+.btnVerde{
+    display: block;
+    margin: auto;
+    font-size: 1.3em;
+    padding-left: 3%;
+    padding-right: 3%;
+    font-weight: bolder;
+    transform: scale(95%);
+    background-color: #859F3D;
+}

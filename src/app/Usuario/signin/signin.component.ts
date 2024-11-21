@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signin',
@@ -7,12 +8,12 @@ import { Component } from '@angular/core';
 })
 export class SigninComponent {
 
+  constructor(private router:Router){}
+
+  Home(){
+    this.router.navigate(["home"]);
+  }
+
   onSubmitAccount() {
-    if (form.value.password !== form.value.confirmPassword) {
-      alert('Las contraseñas no coinciden');
-      return;
-    }
-  
-    console.log('Formulario válido y enviado:', form.value);
   }
 }
