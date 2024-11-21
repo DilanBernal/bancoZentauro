@@ -8,9 +8,6 @@ import { Component } from '@angular/core';
 export class BackupComponent {
 
   onSubmitCon() {
-    const email = form.value.email;
-
-    console.log('Correo de recuperación enviado a:', email);
-    alert('Hemos enviado un enlace de recuperación a tu correo electrónico.');
+    console.log("funciono backup")
   }
 }

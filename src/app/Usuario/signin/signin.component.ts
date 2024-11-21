@@ -8,11 +8,6 @@ import { Component } from '@angular/core';
 export class SigninComponent {
 
   onSubmitAccount() {
-    if (form.value.password !== form.value.confirmPassword) {
-      alert('Las contraseñas no coinciden');
-      return;
-    }
-  
-    console.log('Formulario válido y enviado:', form.value);
+    console.log("funciono signin")
   }
 }
