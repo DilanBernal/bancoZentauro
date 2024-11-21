@@ -1,2 +1,5 @@
 .vscode/
+
+nomde_modules/
 .tmp/
+node_modules
