@@ -9,17 +9,18 @@ import { AppComponent } from '../../app.component';
 })
 export class HeaderComponent {
   
+  selectedItem:string = '';
   
-  showHeader: boolean = true;
-
   constructor(private router:Router){}
 
   Home(){
     this.router.navigate(["home"]);
+    this.selectedItem = ''
   }
 
   Products(){
     this.router.navigate(["products"]);
+    this.selectedItem = "products";
   }
 
   ProductInfo(){
@@ -28,11 +29,11 @@ export class HeaderComponent {
 
   Services(){
     this.router.navigate(["creacion-productos"]);
+    this.selectedItem = "services";
   }
 
   Login(){
     this.router.navigate(["login"]);
-    this.showHeader = false;
   }
 
   Signin(){

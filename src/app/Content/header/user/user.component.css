@@ -8,5 +8,10 @@ li{
     padding: 5px;
     font-weight: 600;
     font-size: 1.2em;
+    transition: 0.5s;
     list-style: none;
+}
+li:hover{
+    transform:scale(105%);
+    transition: 0.5s;
 }

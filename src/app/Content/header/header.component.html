@@ -3,8 +3,8 @@
     <div class="headerLogo"><img src="logo.png"></div>
     <nav>
       <ul>
-        <li (click)="Services()">Servicios</li>
-        <li (click)="Products()">Productos</li>
+        <li [ngClass]="{ 'selected': selectedItem === 'services'}" (click)="Services()">Servicios</li>
+        <li [ngClass]="{ 'selected': selectedItem === 'products'}" (click)="Products()">Productos</li>
         <app-user></app-user>
       </ul>
     </nav>
