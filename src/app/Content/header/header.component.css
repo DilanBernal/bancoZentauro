@@ -75,11 +75,11 @@ ul li:hover{
 .selected::after{
     content: '';
     position: absolute;
-    width: 100%;
+    width: 50%;
     height: 3%;
     border-radius: 15px;
     top: 80%;
-    left: 0;
+    left: 25%;
     animation: aparecer 0.2s;
     background-color: #1A1A19;
 }

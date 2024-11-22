@@ -26,14 +26,16 @@ a{
     background-color: #F6FCDF;
     text-align: right;
     justify-content: space-between;
-    padding: 2%;
+    padding: 1%;
 }
 .pie span{
-    height: auto;
     vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .logo{
-    width: 5vw;
+    width: 4vw;
 }
 .logo img{
     width: 100%;
