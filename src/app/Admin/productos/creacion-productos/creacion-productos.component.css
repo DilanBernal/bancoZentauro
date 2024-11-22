@@ -1,4 +1,10 @@
- h2{
+:host{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+h2{
     text-align: center;
 }
 
@@ -52,4 +58,18 @@
     background-color: #31511E;
     color: #F6FCDF;
     transition: 0,2s;
+}
+
+
+.form-control{
+    border-radius: 50px !important;
+}
+.input-description{
+    height: 30vh;
+}
+
+.btnVolver{
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
 }
