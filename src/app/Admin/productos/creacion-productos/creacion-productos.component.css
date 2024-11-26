@@ -1,0 +1,75 @@
+:host{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+h2{
+    text-align: center;
+}
+
+.btnVerde{
+    display: block;
+    margin-top: 3%;
+    margin-left: 3.5%;
+    font-size: 1.3em;
+    padding-left: 3%;
+    padding-right: 3%;
+    font-weight: bolder;
+    transform: scale(100%);
+    background-color: #859F3D;
+    margin: auto;
+}
+.form-container{
+    margin: auto;
+    display: block;
+    text-align: center;
+    justify-content: center;
+    padding-top: 5%;
+    align-items: center;
+}
+
+.input-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input-group input{
+    width: 45vw;
+    background-color: #31511E;
+    color: #f6fcdf;
+}
+.input-group input::placeholder{
+    color:#f6fcdfb3;
+}
+
+.parametros{
+    text-align: justify;
+    width: 40vw;
+    margin: auto;
+
+}
+
+.btnSubmit{
+    align-items: center;
+    margin: 50px;
+    background-color: #31511E;
+    color: #F6FCDF;
+    transition: 0,2s;
+}
+
+
+.form-control{
+    border-radius: 20px !important;
+}
+.input-description{
+    height: 30vh;
+}
+
+.btnVolver{
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+}

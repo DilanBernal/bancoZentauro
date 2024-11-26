@@ -1,5 +1,7 @@
 .vscode/
 .tmp/
-cache/
-node-module/
+
 node_modules/
+@angular-devkit/
+
+cache/

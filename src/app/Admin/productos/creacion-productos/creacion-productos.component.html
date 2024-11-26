@@ -1,1 +1,21 @@
-<p>creacion-productos works!</p>
+<form #formulario="ngForm">
+    <h2>Crea un nuevo producto!</h2>
+    <div class="input-group">
+        <label for="nombre">Ingrese el nombre del producto</label>
+        <input class="form-control" type="text" id="nombre"  placeholder="Nombre del producto" ngModel required>
+    </div>
+    <div class="input-group input-description">
+        <label for="nombre">Ingese la descripción del producto</label>
+        <input class="form-control" type="text" id="descripcion"  placeholder="Descripcion del producto" ngModel required>
+    </div>
+
+    <div class="input-group">
+        <label for="imagen">Ingrese imagen del producto</label>
+        <input class="form-control" type="file" id="imagen" name=" ngModel required">
+      </div> <br>
+
+      <div class="submit-btn">
+        <button class="btn btnVerde" type="submit" [disabled]="!formulario.valid">Crear Producto</button>
+      </div>
+</form>
+<button class="btn btnVerde btnVolver">Volver</button>

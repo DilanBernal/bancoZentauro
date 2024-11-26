@@ -4,6 +4,7 @@
       
       <div class="section">
         <h3>Datos Personales</h3>
+        <div class="productsBannerTexto">
         <div class="input-group">
           <label for="nombre">Nombre</label>
           <input type="text" id="nombre" name="nombre" ngModel required>
@@ -57,17 +58,18 @@
           <input type="file" id="declaracionImpuestos" name="declaracionImpuestos" ngModel required>
         </div>
       </div>
+    </div>
   
       <div class="section">
         <div class="checkbox-group">
           <input type="checkbox" id="terminos" name="terminos" ngModel required>
           <label for="terminos">Acepto los términos y condiciones.</label>
         </div>
-      </div>
+      </div><br>
   
 
       <div class="submit-btn">
-        <button type="submit" [disabled]="!formulario.valid">Solicitar</button>
+        <button class="btn btnVerde" type="submit" [disabled]="!formulario.valid">Solicitar</button>
       </div>
   
     </form>

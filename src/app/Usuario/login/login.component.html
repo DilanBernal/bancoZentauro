@@ -75,9 +75,8 @@
       <a (click)="Signin()">Crear cuenta</a>
     </div>
       <div *ngIf="captchaInput" class="error">
-        Porfavor acepte los terminos y condiciones y
       </div>
-      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btnSubmit">
         Iniciar sesión
       </button>
     </form>

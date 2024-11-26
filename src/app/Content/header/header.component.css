@@ -19,10 +19,10 @@ app-user{
   
 .headerCasa, .headerLogo{
     width: 55px;
-    margin: 0 auto;
     display: flex;
-    justify-content: center;
+    margin: 0 auto;
     align-items: center;
+    justify-content: center;
 }
 
 .headerCasa{
@@ -30,6 +30,7 @@ app-user{
 }
 .headerCasa img, .headerLogo img{
     width: 100%;
+    position: sticky;
 }
 
 ul{
@@ -43,11 +44,14 @@ ul li{
     list-style: none;
     cursor: pointer;
     font-size: 1.2em;
+    transition: 0.5s;
     font-weight: 600;
     color: #1A1A19;
+
 }
 ul li:hover{
-    transform: scale(103%);
+    transform: scale(105%);
+    transition: 0.5s ease;
 
 }
 
@@ -61,4 +65,31 @@ ul li:hover{
     font-size: 3em;
     background-color: #859F3D;
     border-radius: 25px;
+}
+
+.selected{
+    transform: scale(105%);
+    transition: 0.2s ease;
+    position: relative;
+}
+.selected::after{
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3%;
+    border-radius: 15px;
+    top: 80%;
+    left: 25%;
+    animation: aparecer 0.2s;
+    background-color: #1A1A19;
+}
+
+
+@keyframes aparecer {
+    0%{
+        transform: scale(0);
+    }
+    100%{
+        transform:scale(1);
+    }
 }
