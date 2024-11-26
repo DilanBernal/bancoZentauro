@@ -43,16 +43,20 @@
 /*Mision y vision*/
 
 .valores{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     margin: 3px;
     justify-content: center;
+}
+.valores h2{
+    grid-column: 1 / -1;
 }
 
 .mision, .vision{
     background-color: #859F3D;
     border-radius: 25px;
-    width: 45%;
-    margin: 5px;
+    width: 85%;
+    margin: 5px auto;
     padding: 3%;
 
 }

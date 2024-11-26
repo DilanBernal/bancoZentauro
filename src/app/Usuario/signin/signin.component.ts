@@ -12,7 +12,6 @@ export class SigninComponent {
   apellido:string= '';
   email:string= '';
   password = '';
-
   constructor(private router:Router){}
 
   Home(){

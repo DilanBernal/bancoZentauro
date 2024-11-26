@@ -1,6 +1,5 @@
 .vscode/
-
 node_modules/
-.tmp/
+@angular-devkit/
 .DS_Store
 cache/

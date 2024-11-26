@@ -18,10 +18,12 @@ export class HeaderComponent {
 
   Home(){
     this.router.navigate(["home"]);
+    this.item.setSelectedItem('');
   }
 
   Products(){
     this.router.navigate(["products"]);
+    this.item.setSelectedItem("products");
   }
 
   ProductInfo(){

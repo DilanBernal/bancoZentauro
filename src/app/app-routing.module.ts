@@ -11,6 +11,7 @@ import { EstudiantesComponent } from './Content/product-info/estudiantes/estudia
 import { PlusComponent } from './Content/product-info/plus/plus.component';
 import { PremiumComponent } from './Content/product-info/premium/premium.component';
 import { FormSolicitudComponent } from './Content/form-solicitud/form-solicitud.component';
+import { CreacionProductosComponent } from './Admin/productos/creacion-productos/creacion-productos.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'estudiantes', component:EstudiantesComponent},
   {path: 'plus', component:PlusComponent},
   {path: 'premium', component:PremiumComponent},
+  {path: 'creacion-productos', component:CreacionProductosComponent},
   {path: 'form-solicitud', component:FormSolicitudComponent}
 ];
 

@@ -20,6 +20,7 @@ import { FormSolicitudComponent } from './Content/form-solicitud/form-solicitud.
 import { CreacionProductosComponent } from './Admin/productos/creacion-productos/creacion-productos.component';
 import { RevisarProductosComponent } from './Admin/productos/revisar-productos/revisar-productos.component';
 import { HttpClient } from '@angular/common/http';
+import { FooterComponent } from './Content/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { HttpClient } from '@angular/common/http';
     FormSolicitudComponent,
     CreacionProductosComponent,
     RevisarProductosComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

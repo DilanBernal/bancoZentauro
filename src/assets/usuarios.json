@@ -1,4 +1,4 @@
-{
+[{
     "email" : "example@mail.com",
     "nombres": "juan",
     "apellidos": "Perez",
@@ -7,4 +7,14 @@
     "contraseña":"12345",
     "numeroDocumento": "54321987",
     "tarjetas": ["Estudiantes"]
-}
+},
+{
+    "email" : "example@mail.com",
+    "nombres": "juan",
+    "apellidos": "Perez",
+    "telefono": "12345",
+    "tipoDocumento": "C.C",
+    "contraseña":"12345",
+    "numeroDocumento": "54321987",
+    "tarjetas": ["Plus"]
+}]
