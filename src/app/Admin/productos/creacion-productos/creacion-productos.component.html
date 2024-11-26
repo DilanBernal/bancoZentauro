@@ -2,16 +2,18 @@
     <h2>Crea un nuevo producto!</h2>
     <div class="input-group">
         <label for="nombre">Ingrese el nombre del producto</label>
-        <input class="form-control" type="text" id="nombre"  placeholder="Nombre del producto" ngModel required>
+        <input class="form-control" type="text" id="nombre" name="nombre"  placeholder="Nombre del producto" [(ngModel)]="nombreProducto" required>
     </div>
     <div class="input-group input-description">
         <label for="nombre">Ingese la descripción del producto</label>
-        <input class="form-control" type="text" id="descripcion"  placeholder="Descripcion del producto" ngModel required>
+        <input class="form-control" type="text" id="descripcion" name="descripcion"  placeholder="Descripcion del producto" [(ngModel)]="descripcionProduco" required>
     </div>
 
     <div class="input-group">
         <label for="imagen">Ingrese imagen del producto</label>
-        <input class="form-control" type="file" id="imagen" name=" ngModel required">
+
+        <input class="form-control" type="file" id="imagen" name="imagen" [(ngModel)]="imagen" required>
+
       </div> <br>
 
       <div class="submit-btn">

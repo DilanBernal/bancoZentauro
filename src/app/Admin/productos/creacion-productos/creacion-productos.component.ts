@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
 })
 export class CreacionProductosComponent {
 
+  nombreProducto = ''
+  descripcionProduco = ''
+  imagen:any =''
+
   public constructor(private router:Router) {
 
   }

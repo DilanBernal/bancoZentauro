@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent {
 
+  nombre:string = '';
+  apellido:string= '';
+  email:string= '';
+  password = '';
   constructor(private router:Router){}
 
   Home(){
@@ -15,5 +19,6 @@ export class SigninComponent {
   }
 
   onSubmitAccount() {
+    console.log("funciono signin")
   }
 }

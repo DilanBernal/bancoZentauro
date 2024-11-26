@@ -8,5 +8,6 @@ import { Component } from '@angular/core';
 export class BackupComponent {
 
   onSubmitCon() {
+    console.log("funciono backup")
   }
 }
