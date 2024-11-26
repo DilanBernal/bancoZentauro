@@ -1,16 +1,24 @@
 .products{
+    padding: 2%;
+    overflow: hidden;
     text-align: center;
 }
+
 h1{
     font-size: 3em;
+    margin: 2%;
 }
 
 .productsBannerTexto{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(400px, 1fr)
+    );
 
 }
 .imgBanner{
-    width: 20vw;
+    width: 50%;
     height: 28vh;
     display: flex;
     margin: auto;
@@ -19,16 +27,27 @@ h1{
 }
 .imgBanner img{
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 
 .btnVerde{
-    display: block;
     margin: auto;
+    display: block;
     font-size: 1.3em;
     padding-left: 3%;
+    transition: 0.2s;
     padding-right: 3%;
     font-weight: bolder;
     transform: scale(95%);
     background-color: #859F3D;
+}
+.btnVerde:hover{
+    transform: scale(1);
+    transition: 0.2s;
+}
+.product p{
+    width: 400px;
+    margin: auto;
+    padding: 5px;
+    height: 150px;
 }

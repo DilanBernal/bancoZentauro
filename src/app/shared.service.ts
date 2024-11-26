@@ -7,10 +7,20 @@ export class SharedService {
 
   public showHeader:boolean = true;
 
+  public selectedItem:string = '';
   getShowHeader(): boolean{
-    return this.showHeader
+    console.log("oasjfoa")
+    return this.showHeader;
   }
   setShowHeader(value:boolean):void{
     this.showHeader = value;
   }
+
+  getSelectedItem():string{
+    return this.selectedItem;
+  }
+  setSelectedItem(value:string):void{
+    this.selectedItem = value;
+  }
+
 }

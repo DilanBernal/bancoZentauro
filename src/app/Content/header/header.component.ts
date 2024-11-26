@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppComponent } from '../../app.component';
+import { SharedService } from '../../shared.service';
 
 @Component({
   selector: 'app-header',
@@ -11,16 +12,18 @@ export class HeaderComponent {
   
   selectedItem:string = '';
   
-  constructor(private router:Router){}
+  constructor(private router:Router, public item:SharedService){
+    console.log(item.getSelectedItem())
+  }
 
   Home(){
     this.router.navigate(["home"]);
-    this.selectedItem = ''
+    this.item.setSelectedItem('');
   }
 
   Products(){
     this.router.navigate(["products"]);
-    this.selectedItem = "products";
+    this.item.setSelectedItem("products");
   }
 
   ProductInfo(){

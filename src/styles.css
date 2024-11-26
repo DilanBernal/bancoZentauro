@@ -7,3 +7,15 @@ body{
     top: 0;
     z-index: 100;
 }
+
+::-webkit-scrollbar{
+    width: 15px;
+}
+::-webkit-scrollbar-thumb{
+    background: #1A1A19;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track{
+    background:linear-gradient( #859F3D 10%, #F6FCDF 15%)
+}
