@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { AppComponent } from '../../app.component';
+import { NavigationEnd, Router } from '@angular/router';
+import { SharedService } from '../../shared.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +10,11 @@ import { AppComponent } from '../../app.component';
 })
 export class HeaderComponent {
   
+  selectedItem:string = '';
   
-  showHeader: boolean = true;
+  constructor(private router:Router, public item:SharedService){
+  }
 
-  constructor(private router:Router){}
 
   Home(){
     this.router.navigate(["home"]);
@@ -27,7 +29,8 @@ export class HeaderComponent {
   }
 
   Services(){
-    this.router.navigate(["services"]);
+    this.router.navigate(["creacion-productos"]);
+    this.selectedItem = "services";
   }
 
   Login(){
@@ -39,4 +42,22 @@ export class HeaderComponent {
     this.router.navigate(["signin"]);
   }
 
+  ngOnInit() { 
+    console.log(this.router.url)
+    const ruta = this.router.url.split("/",1);
+    console.log("ruta"+ruta[0]);
+    this.item.setSelectedItem(ruta[1]);
+    this.router.events
+     .pipe(
+       filter(event => event instanceof NavigationEnd) 
+      )
+       .subscribe((event: NavigationEnd) => { 
+        this.onPageChange(event);
+       }); } onPageChange(event: NavigationEnd) { 
+        console.log('La página ha cambiado:', event.urlAfterRedirects);
+        this.item.setSelectedItem(this.router.url.split("/")[1])
+        console.log(this.item.getSelectedItem()) 
+        console.log(this.router.url.split("/")[1]+"perro malparido")
+      };
+    
 }
