@@ -35,7 +35,6 @@ export class HeaderComponent {
 
   Login(){
     this.router.navigate(["login"]);
-    this.showHeader = false;
   }
 
   Signin(){
