@@ -1,7 +1,10 @@
 ul{
-    display: flex;
+    display: grid;
     padding-left:0;
-
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(80px, 1fr)
+    );
 }
 li{
     margin: 5px;
