@@ -9,13 +9,6 @@ export class SharedService {
 
   public selectedItem:string = ''
 
-  getSelectedItem():string{
-    return this.selectedItem;
-  }
-
-  setSelectedItem(value:string){
-    this.selectedItem = value;
-  }
   getShowHeader(): boolean{
     console.log("oasjfoa")
     return this.showHeader;
