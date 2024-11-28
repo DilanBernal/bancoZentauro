@@ -1,13 +1,13 @@
-package co.ue;
+package co.ue.bancocentauroapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BancoCentauroApplication {
+public class BancocentauroapiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BancoCentauroApplication.class, args);
+		SpringApplication.run(BancocentauroapiApplication.class, args);
 	}
 
 }

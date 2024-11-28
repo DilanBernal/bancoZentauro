@@ -1,10 +1,10 @@
-package co.ue;
+package co.ue.bancocentauroapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BancoCentauroApplicationTests {
+class BancocentauroapiApplicationTests {
 
 	@Test
 	void contextLoads() {
