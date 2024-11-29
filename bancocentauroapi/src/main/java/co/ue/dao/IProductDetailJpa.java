@@ -8,7 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IProductDetailJpa  extends JpaRepository<ProductDetail, Integer>{
 
-    ProductDetail findByProductoId(int productoId);
+
+    ProductDetail findByProductoId(int id);
     List<ProductDetail> findByEstado(Status estado);
     List<ProductDetail> findByProductosClienteId(int productosClienteId);
     List<ProductDetail> findByProductoIdAndProductoStatus(int productoId, Status productoStatus);

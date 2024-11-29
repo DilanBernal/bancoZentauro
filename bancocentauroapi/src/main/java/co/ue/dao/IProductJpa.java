@@ -10,7 +10,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface IProductJpa extends JpaRepository<Producto,Integer>{
     Optional<Producto> findByProductoId(int productoId);
-    List<Producto> findByProductoNombre(String productoNombre);
+    Optional<Producto> findByProductoNombre(String productoNombre);
+    List<Producto> findAllByProductoNombre(String nnombre);
     List<Producto> findByProductTipo(Tipo productTipo);
     boolean existsByProductoNombre(String productoNombre);
     boolean existsByProductoId(int productoId);
