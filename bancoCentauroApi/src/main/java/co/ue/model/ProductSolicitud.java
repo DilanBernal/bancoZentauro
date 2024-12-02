@@ -1,11 +1,7 @@
 package co.ue.model;
 
-import jakarta.persistence.*;
 import java.io.Serializable;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.persistence.*;
 
 
 /**
@@ -13,10 +9,6 @@ import lombok.NoArgsConstructor;
  * 
  */
 @Entity
-@Data 
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Table(name="product_solicitud")
 @NamedQuery(name="ProductSolicitud.findAll", query="SELECT p FROM ProductSolicitud p")
 public class ProductSolicitud implements Serializable {
@@ -28,7 +20,8 @@ public class ProductSolicitud implements Serializable {
 	private int idSolicitud;
 
 	@Column(name="estado_solicitud")
-	private String estadoSolicitud;
+	@Enumerated(EnumType.STRING)
+	private Estado estadoSolicitud;
 
 	//bi-directional many-to-one association to Producto
 	@ManyToOne
@@ -39,6 +32,25 @@ public class ProductSolicitud implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
+
+	public ProductSolicitud() {
+	}
+
+	public int getIdSolicitud() {
+		return this.idSolicitud;
+	}
+
+	public void setIdSolicitud(int idSolicitud) {
+		this.idSolicitud = idSolicitud;
+	}
+
+	public Estado getEstadoSolicitud() {
+		return this.estadoSolicitud;
+	}
+
+	public void setEstadoSolicitud(Estado estadoSolicitud) {
+		this.estadoSolicitud = estadoSolicitud;
+	}
 
 	public Producto getProducto() {
 		return this.producto;
@@ -56,4 +68,9 @@ public class ProductSolicitud implements Serializable {
 		this.usuario = usuario;
 	}
 
+	public enum Estado{
+		aceptada,
+		rechazada,
+		en_espera
+	}
 }

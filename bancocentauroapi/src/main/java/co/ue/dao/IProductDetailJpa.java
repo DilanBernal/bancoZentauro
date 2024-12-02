@@ -2,17 +2,23 @@ package co.ue.dao;
 
 import co.ue.model.ProductDetail;
 import co.ue.model.ProductDetail.Status;
-import java.util.List;
+import co.ue.model.Usuario;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+import java.util.Date;
+
+
 
 
 public interface IProductDetailJpa  extends JpaRepository<ProductDetail, Integer>{
-
-
-    ProductDetail findByProductoId(int id);
-    List<ProductDetail> findByEstado(Status estado);
-    List<ProductDetail> findByProductosClienteId(int productosClienteId);
-    List<ProductDetail> findByProductoIdAndProductoStatus(int productoId, Status productoStatus);
-
-
+	
+	List<ProductDetail> findByEstado(Status estado);
+	List<ProductDetail> findByUsuario(Usuario usuario);
+	List<ProductDetail> findByFechaSolicitud(Date fechaSolicitud);
+	List<ProductDetail> findByFechaEntrega(Date fechaEntrega);
+	boolean existsByUsuario(Usuario usuario);
+	boolean existsByEstado(Status estado);
+	ProductDetail findByProductosClienteId(int productosClienteId);
+	
 }

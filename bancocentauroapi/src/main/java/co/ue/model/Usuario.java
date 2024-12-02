@@ -2,11 +2,6 @@ package co.ue.model;
 
 import java.io.Serializable;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.List;
 
 
@@ -15,10 +10,6 @@ import java.util.List;
  * 
  */
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -48,6 +39,61 @@ public class Usuario implements Serializable {
 	@OneToMany(mappedBy="usuario")
 	private List<ProductDetail> productDetails;
 
+	//bi-directional many-to-one association to ProductSolicitud
+	@OneToMany(mappedBy="usuario")
+	private List<ProductSolicitud> productSolicituds;
+
+	public Usuario() {
+	}
+
+	public int getUsuarioId() {
+		return this.usuarioId;
+	}
+
+	public void setUsuarioId(int usuarioId) {
+		this.usuarioId = usuarioId;
+	}
+
+	public String getUsuarioApellido() {
+		return this.usuarioApellido;
+	}
+
+	public void setUsuarioApellido(String usuarioApellido) {
+		this.usuarioApellido = usuarioApellido;
+	}
+
+	public String getUsuarioCorreo() {
+		return this.usuarioCorreo;
+	}
+
+	public void setUsuarioCorreo(String usuarioCorreo) {
+		this.usuarioCorreo = usuarioCorreo;
+	}
+
+	public String getUsuarioNombre() {
+		return this.usuarioNombre;
+	}
+
+	public void setUsuarioNombre(String usuarioNombre) {
+		this.usuarioNombre = usuarioNombre;
+	}
+
+	public String getUsuarioPassword() {
+		return this.usuarioPassword;
+	}
+
+	public void setUsuarioPassword(String usuarioPassword) {
+		this.usuarioPassword = usuarioPassword;
+	}
+
+	public Rol getUsuarioRol() {
+		return this.usuarioRol;
+	}
+
+	public void setUsuarioRol(Rol usuarioRol) {
+		this.usuarioRol = usuarioRol;
+	}
+
 	public List<ProductDetail> getProductDetails() {
 		return this.productDetails;
 	}
@@ -70,8 +116,31 @@ public class Usuario implements Serializable {
 		return productDetail;
 	}
 
+	public List<ProductSolicitud> getProductSolicituds() {
+		return this.productSolicituds;
+	}
+
+	public void setProductSolicituds(List<ProductSolicitud> productSolicituds) {
+		this.productSolicituds = productSolicituds;
+	}
+
+	public ProductSolicitud addProductSolicitud(ProductSolicitud productSolicitud) {
+		getProductSolicituds().add(productSolicitud);
+		productSolicitud.setUsuario(this);
+
+		return productSolicitud;
+	}
+
+	public ProductSolicitud removeProductSolicitud(ProductSolicitud productSolicitud) {
+		getProductSolicituds().remove(productSolicitud);
+		productSolicitud.setUsuario(null);
+
+		return productSolicitud;
+	}
+	
 	public enum Rol{
 		admin,
 		cliente
 	}
+
 }

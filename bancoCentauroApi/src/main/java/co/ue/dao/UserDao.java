@@ -18,7 +18,7 @@ public class UserDao implements IUserDao{
     }
 
     @Override
-    public Usuario updateUsuario(Usuario user) {
+    public Usuario updateUsuario(String email,Usuario user) {
         return jpa.save(user);
     }
 
@@ -43,7 +43,7 @@ public class UserDao implements IUserDao{
     }
 
     @Override
-    public Boolean existByEmail(String email) {
+    public boolean existByEmail(String email) {
         return jpa.existsByUsuarioCorreo(email);
     }
 

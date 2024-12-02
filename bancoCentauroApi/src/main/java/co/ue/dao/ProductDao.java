@@ -19,7 +19,7 @@ public class ProductDao implements IProductDao{
     }
 
     @Override
-    public Producto updateUsuario(Producto producto) {
+    public Producto updateUsuario(String email,Producto producto) {
         return jpa.save(producto);
     }
 
@@ -34,7 +34,7 @@ public class ProductDao implements IProductDao{
     }
 
     @Override
-    public Boolean existByName(String name) {
+    public boolean existByName(String name) {
         return jpa.existsByProductoNombre(name);
     }
 

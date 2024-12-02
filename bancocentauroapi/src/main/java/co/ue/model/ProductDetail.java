@@ -2,11 +2,6 @@ package co.ue.model;
 
 import java.io.Serializable;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.Date;
 
 
@@ -15,10 +10,6 @@ import java.util.Date;
  * 
  */
 @Entity
-@Data 
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Table(name="product_detail")
 @NamedQuery(name="ProductDetail.findAll", query="SELECT p FROM ProductDetail p")
 public class ProductDetail implements Serializable {
@@ -31,7 +22,7 @@ public class ProductDetail implements Serializable {
 
 	@Column(name="estado")
 	@Enumerated(EnumType.STRING)
-	private Status Estado;
+	private Status estado;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="fecha_entrega")
@@ -51,13 +42,62 @@ public class ProductDetail implements Serializable {
 	@JoinColumn(name="usuario_id")
 	private Usuario usuario;
 
-	public enum Status {
+	public ProductDetail() {
+	}
+
+	public int getProductosClienteId() {
+		return productosClienteId;
+	}
+
+	public void setProductosClienteId(int productosClienteId) {
+		this.productosClienteId = productosClienteId;
+	}
+
+	public Status getEstado() {
+		return this.estado;
+	}
+
+	public void setEstado(Status estado) {
+		this.estado = estado;
+	}
+
+	public Date getFechaEntrega() {
+		return this.fechaEntrega;
+	}
+
+	public void setFechaEntrega(Date fechaEntrega) {
+		this.fechaEntrega = fechaEntrega;
+	}
+
+	public Date getFechaSolicitud() {
+		return this.fechaSolicitud;
+	}
+
+	public void setFechaSolicitud(Date fechaSolicitud) {
+		this.fechaSolicitud = fechaSolicitud;
+	}
+
+	public Producto getProducto() {
+		return this.producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+
+	public Usuario getUsuario() {
+		return this.usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
+	public enum Status{
 		activo,
 		cancelada,
 		sin_entregar,
 		sin_activar
 	}
 
-	
-	
 }
