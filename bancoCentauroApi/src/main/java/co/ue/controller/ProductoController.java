@@ -33,7 +33,7 @@ public class ProductoController {
     public ResponseEntity<List<Producto>> getAll(){
         List<Producto> respuesta = service.allProducts();
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Cantidad_datos", String.valueOf(respuesta));
+        headers.add("Cantidad_datos", String.valueOf(respuesta.size()));
         return new ResponseEntity<>(respuesta, headers, HttpStatus.ACCEPTED);
     }
 
@@ -41,7 +41,7 @@ public class ProductoController {
     public ResponseEntity<List<Producto>> getAllByName(@PathVariable String nombre){
         List<Producto> respuesta = service.getAllByName(nombre);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Cantidad_datos", String.valueOf(respuesta));
+        headers.add("Cantidad_datos", String.valueOf(respuesta.size()));
 
         return new ResponseEntity<>(respuesta, HttpStatus.ACCEPTED);
     }

@@ -42,7 +42,7 @@ public class ProductDetailController {
     public ResponseEntity<List<ProductDetail>> getAll(){
         List<ProductDetail> respuesta = service.getAllDetails();
         HttpHeaders header = new HttpHeaders();
-        header.add("Cantidad_datos", String.valueOf(respuesta));
+        header.add("Cantidad_datos", String.valueOf(respuesta.size()));
         return new ResponseEntity<>(respuesta, header, HttpStatus.ACCEPTED);
     }
 
@@ -50,14 +50,14 @@ public class ProductDetailController {
     public ResponseEntity<List<ProductDetail>> getByEstado(@PathVariable Status estado){
         List<ProductDetail> respuesta = service.getByEstado(estado);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Cantidad_datos", String.valueOf(respuesta));
+        headers.add("Cantidad_datos", String.valueOf(respuesta.size()));
         return new ResponseEntity<>(respuesta, headers, HttpStatus.ACCEPTED);
     }
     @GetMapping(value = "buscarPorFechaSolicitud/{fecha}")
     public ResponseEntity<List<ProductDetail>> getByFechaSolicitud(@PathVariable Date fecha){
         List<ProductDetail>respuesta = service.getByFechaSolicitud(fecha);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Cantidad_datos", String.valueOf(respuesta));
+        headers.add("Cantidad_datos", String.valueOf(respuesta.size()));
         return new ResponseEntity<>(respuesta, headers,HttpStatus.ACCEPTED);
 
     }
@@ -65,7 +65,7 @@ public class ProductDetailController {
     public ResponseEntity<List<ProductDetail>> getByFechaEntrega(@PathVariable Date fecha){
         List<ProductDetail>respuesta = service.getByFechaEntrega(fecha);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Cantidad_datos", String.valueOf(respuesta));
+        headers.add("Cantidad_datos", String.valueOf(respuesta.size()));
         return new ResponseEntity<>(respuesta, headers, HttpStatus.ACCEPTED);
     }
     
@@ -73,7 +73,7 @@ public class ProductDetailController {
     public ResponseEntity<List<ProductDetail>> getByUsuario(@PathVariable Usuario usuario){
         List<ProductDetail>respuesta = service.getByUsuario(usuario);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Cantidad_datos", String.valueOf(respuesta));
+        headers.add("Cantidad_datos", String.valueOf(respuesta.size()));
         return new ResponseEntity<>(respuesta, headers, HttpStatus.ACCEPTED);
     }
     

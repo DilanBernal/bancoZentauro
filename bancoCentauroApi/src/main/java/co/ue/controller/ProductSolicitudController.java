@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import co.ue.model.ProductDetail;
 import co.ue.model.ProductSolicitud;
 import co.ue.service.IProductSolicitudService;
 
@@ -28,7 +27,7 @@ public class ProductSolicitudController {
         
         List<ProductSolicitud> respuesta = service.getAll();
         HttpHeaders header = new HttpHeaders();
-        header.add("Cantidad_datos", String.valueOf(respuesta));
+        header.add("Cantidad_datos", String.valueOf(respuesta.size()));
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
         
     }
