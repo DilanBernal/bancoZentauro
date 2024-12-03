@@ -10,11 +10,13 @@ import java.util.Optional;
 public interface IProductDetailService {
     ProductDetail addProductDetail(ProductDetail detalle);
     ProductDetail updateProductDetail(int id,ProductDetail detalle);
+    ProductDetail updateDetailStatus(int id,ProductDetail detalle);
     Optional<ProductDetail> getById(int id);
     List<ProductDetail> getByUsuario(Usuario usuario);
     List<ProductDetail> getByFechaSolicitud(Date fecha);
     List<ProductDetail> getByFechaEntrega(Date fecha);
     List<ProductDetail> getByEstado(Status estado);
+    List<ProductDetail> getAllDetails();
     boolean existsByUsuario(Usuario usuario);
     boolean existsByEstado(Status estado);
     void deleteProductDetail(int id);

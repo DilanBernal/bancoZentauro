@@ -1,15 +1,15 @@
 package co.ue.dao;
 
+import co.ue.model.ProductSolicitud;
+import co.ue.model.ProductSolicitud.Estado;
+import co.ue.model.Producto;
+import co.ue.model.Usuario;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import co.ue.model.ProductSolicitud;
-import co.ue.model.Producto;
-import co.ue.model.ProductSolicitud.Estado;
-import co.ue.model.Usuario;
-
+@Repository
 public class ProductSolicitudDao implements IProductSolicitudDao{
 
     @Autowired
@@ -21,7 +21,7 @@ public class ProductSolicitudDao implements IProductSolicitudDao{
     }
 
     @Override
-    public ProductSolicitud updateProductSolicitud(int id,ProductSolicitud productSolicitud) {
+    public ProductSolicitud updateProductSolicitud(ProductSolicitud productSolicitud) {
         return jpa.save(productSolicitud);
     }
 
@@ -54,6 +54,16 @@ public class ProductSolicitudDao implements IProductSolicitudDao{
     @Override
     public void deleteProductSolicitud(int id) {
         jpa.deleteById(id);
+    }
+
+    @Override
+    public ProductSolicitud updateSolicitudStatus(ProductSolicitud solicitud) {
+        return jpa.save(solicitud);
+    }
+
+    @Override
+    public List<ProductSolicitud> searchAll() {
+        return jpa.findAll();
     }
 
 }

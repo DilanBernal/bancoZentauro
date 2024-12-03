@@ -7,9 +7,8 @@ import java.util.Optional;
 
 public interface IUsuarioService {
     Usuario addUser(Usuario usuario);
-    Usuario updateUsuer(int id, Usuario usuario);
+    Usuario updateUsuer(String email, Usuario usuario);
     Optional<Usuario> getById(int id);
-    Optional<Usuario> getByName(String name);
     List<Usuario> allUser();
     List<Usuario> getByRol(Rol Rol);
     boolean existByEmail(String email);

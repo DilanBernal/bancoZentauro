@@ -1,12 +1,13 @@
 package co.ue.dao;
 
+import co.ue.model.Usuario;
+import co.ue.model.Usuario.Rol;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
-import co.ue.model.Usuario;
-
+@Repository
 public class UserDao implements IUserDao{
 
     @Autowired
@@ -18,7 +19,7 @@ public class UserDao implements IUserDao{
     }
 
     @Override
-    public Usuario updateUsuario(String email,Usuario user) {
+    public Usuario updateUsuario(Usuario user) {
         return jpa.save(user);
     }
 
@@ -26,10 +27,14 @@ public class UserDao implements IUserDao{
     public Optional<Usuario> searchById(int id) {
         return jpa.findById(id);
     }
-
     @Override
-    public Optional<Usuario> searchByName(String name) {
-        return jpa.findByUsuarioNombre(name);
+    public Optional<Usuario> searchByEmail(String email) {
+        return jpa.findByUsuarioCorreo(email);
+    }
+    
+    @Override
+    public List<Usuario> searchByRol(Rol rol) {
+        return jpa.findByUsuarioRol(rol);
     }
 
     @Override
@@ -51,5 +56,6 @@ public class UserDao implements IUserDao{
     public void deleteUser(int id) {
         jpa.deleteById(id);
     }
+
 
 }

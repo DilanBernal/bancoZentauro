@@ -1,13 +1,13 @@
 package co.ue.dao;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import co.ue.model.Producto;
 import co.ue.model.Producto.Tipo;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ProductDao implements IProductDao{
 
     @Autowired
@@ -19,7 +19,7 @@ public class ProductDao implements IProductDao{
     }
 
     @Override
-    public Producto updateUsuario(String email,Producto producto) {
+    public Producto updateUsuario(Producto producto) {
         return jpa.save(producto);
     }
 
@@ -51,6 +51,11 @@ public class ProductDao implements IProductDao{
     @Override
     public List<Producto> searchAllByTipo(Tipo tipo){
         return jpa.findByProductTipo(tipo);
+    }
+
+    @Override
+    public List<Producto> allProducts() {
+        return jpa.findAll();
     }
     
 }

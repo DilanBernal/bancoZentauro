@@ -1,7 +1,8 @@
 package co.ue.model;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -37,10 +38,12 @@ public class Usuario implements Serializable {
 
 	//bi-directional many-to-one association to ProductDetail
 	@OneToMany(mappedBy="usuario")
+	@JsonIgnore
 	private List<ProductDetail> productDetails;
 
 	//bi-directional many-to-one association to ProductSolicitud
 	@OneToMany(mappedBy="usuario")
+	@JsonIgnore
 	private List<ProductSolicitud> productSolicituds;
 
 	public Usuario() {

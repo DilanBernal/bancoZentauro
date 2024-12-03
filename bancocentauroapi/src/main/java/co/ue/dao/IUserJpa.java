@@ -11,7 +11,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface IUserJpa  extends JpaRepository<Usuario,Integer>{
     
     Optional<Usuario> findByUsuarioNombre(String usuarioNombre);
-    Usuario findByUsuarioCorreo(String usuarioCorreo);
+    Optional<Usuario> findByUsuarioCorreo(String usuarioCorreo);
     List<Usuario> findByUsuarioId(int usuarioId);
     List<Usuario> findAllByUsuarioNombre(String nombre);    
     List<Usuario> findByUsuarioRol(Rol usuarioRol);

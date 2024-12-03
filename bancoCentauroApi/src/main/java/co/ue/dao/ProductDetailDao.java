@@ -1,15 +1,15 @@
 package co.ue.dao;
 
-import java.sql.Date;
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-
 import co.ue.model.ProductDetail;
 import co.ue.model.ProductDetail.Status;
 import co.ue.model.Usuario;
+import java.sql.Date;
+import java.util.List;
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class ProductDetailDao implements IProductDetailDao{
 
 	@Autowired
@@ -21,7 +21,7 @@ public class ProductDetailDao implements IProductDetailDao{
 	}
 	
 	@Override
-	public ProductDetail updateProductDetail(int id,ProductDetail productDetail) {
+	public ProductDetail updateProductDetail(ProductDetail productDetail) {
 		return jpa.save(productDetail);
 	}
 
@@ -63,6 +63,16 @@ public class ProductDetailDao implements IProductDetailDao{
 	@Override
 	public void deleteProductDetail(int id) {
 		jpa.deleteById(id);
+	}
+
+	@Override
+	public boolean existById(int id) {
+		return jpa.existsById(id);
+	}
+
+	@Override
+	public List<ProductDetail> searchAll() {
+		return jpa.findAll();
 	}
 
 }

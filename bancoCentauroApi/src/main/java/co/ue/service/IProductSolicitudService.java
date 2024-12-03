@@ -11,8 +11,10 @@ import co.ue.model.ProductSolicitud.Estado;
 public interface IProductSolicitudService {
     ProductSolicitud addSolicitud(ProductSolicitud solicitud);
     ProductSolicitud updateSolicitud(int id,ProductSolicitud solicitud);
+    ProductSolicitud updateStatusSolicitud(int id, Estado estado);
     Optional<ProductSolicitud> getById(int id);
     List<ProductSolicitud> getByEstado(Estado estado);
+    List<ProductSolicitud> getAll();
     List<ProductSolicitud> getByProductoAndEstado(Producto producto, Estado estado);
     boolean existsByIdSolicitud(int id);
     boolean existsByUsuario(Usuario usuario);

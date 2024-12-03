@@ -10,8 +10,10 @@ import co.ue.model.ProductSolicitud.Estado;
 
 public interface IProductSolicitudDao {
     ProductSolicitud registerSolicitud(ProductSolicitud productSolicitud);
-    ProductSolicitud updateProductSolicitud(int id, ProductSolicitud productSolicitud);
+    ProductSolicitud updateProductSolicitud( ProductSolicitud productSolicitud);
+    ProductSolicitud updateSolicitudStatus(ProductSolicitud solicitud);
     Optional<ProductSolicitud> searchById(int id);
+    List<ProductSolicitud> searchAll();
     List<ProductSolicitud> searchByEstado(Estado estado);
     List<ProductSolicitud> searchByProductoAndEstadoSolicitud(Producto producto, Estado estado);
     boolean existsByIdSolicitud(int id);
