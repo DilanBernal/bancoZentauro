@@ -15,6 +15,7 @@ public interface IProductSolicitudService {
     Optional<ProductSolicitud> getById(int id);
     List<ProductSolicitud> getByEstado(Estado estado);
     List<ProductSolicitud> getAll();
+    List<ProductSolicitud> getByUsuario(Optional<Usuario> usuario);
     List<ProductSolicitud> getByProductoAndEstado(Producto producto, Estado estado);
     boolean existsByIdSolicitud(int id);
     boolean existsByUsuario(Usuario usuario);

@@ -14,6 +14,7 @@ public interface IProductSolicitudDao {
     ProductSolicitud updateSolicitudStatus(ProductSolicitud solicitud);
     Optional<ProductSolicitud> searchById(int id);
     List<ProductSolicitud> searchAll();
+    List<ProductSolicitud> searchByUser(Optional<Usuario> user);
     List<ProductSolicitud> searchByEstado(Estado estado);
     List<ProductSolicitud> searchByProductoAndEstadoSolicitud(Producto producto, Estado estado);
     boolean existsByIdSolicitud(int id);

@@ -17,7 +17,7 @@ public interface IProductSolicitudJpa extends JpaRepository<ProductSolicitud, In
 	Optional<ProductSolicitud> findByIdSolicitud(int idSolicitud);
 	List<ProductSolicitud> findByEstadoSolicitud(Estado estadoSolicitud);
 	List<ProductSolicitud> findByProductoAndEstadoSolicitud(Producto producto, Estado estado);
-	List<ProductSolicitud> findByUsuario(Usuario usuario);
+	List<ProductSolicitud> findByUsuario(Optional<Usuario> usuario);
 	boolean existsByIdSolicitud(int idSolicitud);
 	boolean existsByUsuario(Usuario usuario);
 	

@@ -66,4 +66,9 @@ public class ProductSolicitudDao implements IProductSolicitudDao{
         return jpa.findAll();
     }
 
+    @Override
+    public List<ProductSolicitud> searchByUser(Optional<Usuario> user) {
+        return jpa.findByUsuario(user);
+    }
+
 }

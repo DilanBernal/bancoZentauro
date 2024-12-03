@@ -78,4 +78,9 @@ public class ProductSolicitudService implements IProductSolicitudService{
         return dao.searchByEstado(Estado.aceptada);
     }
 
+    @Override
+    public List<ProductSolicitud> getByUsuario(Optional<Usuario> user) {
+        return dao.searchByUser(user);
+    }
+
 }
