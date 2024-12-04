@@ -44,7 +44,6 @@ export class HeaderComponent {
   }
 
   ngOnInit() { 
-    console.log(this.router.url)
     const ruta = this.router.url.split("/",1);
     this.item.setSelectedItem(ruta[1]);
     this.router.events
