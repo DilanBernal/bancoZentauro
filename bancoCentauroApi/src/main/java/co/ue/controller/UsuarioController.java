@@ -32,7 +32,7 @@ public class UsuarioController {
         return new ResponseEntity<List<Usuario>>(respuesta, HttpStatus.ACCEPTED);
     }
 
-    @GetMapping(value = "getById/{idu}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "getById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Optional<Usuario>> getUsuarioById(@PathVariable int id){
         return new ResponseEntity<Optional<Usuario>>(service.getById(id), HttpStatus.ACCEPTED);
     }
@@ -57,8 +57,8 @@ public class UsuarioController {
     }
 
     @DeleteMapping(value = "user/delete/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable int idU)  {
-        service.deleteUser(idU);
+    public ResponseEntity<Void> deleteUser(@PathVariable int id)  {
+        service.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 

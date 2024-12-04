@@ -38,8 +38,8 @@ public class ProductoController {
     }
 
     @GetMapping(value = "productosNombre/{name}")
-    public ResponseEntity<List<Producto>> getAllByName(@PathVariable String nombre){
-        List<Producto> respuesta = service.getAllByName(nombre);
+    public ResponseEntity<List<Producto>> getAllByName(@PathVariable String name){
+        List<Producto> respuesta = service.getAllByName(name);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cantidad_datos", String.valueOf(respuesta.size()));
 
@@ -50,11 +50,11 @@ public class ProductoController {
     public ResponseEntity<Optional<Producto>> getByName(@PathVariable int id){
 
         Optional<Producto> respuesta = service.getById(id);
-        
+
         return new ResponseEntity<Optional<Producto>>(respuesta, HttpStatus.ACCEPTED);
     }
 
-    // public ResponseEntity<> 
+    // public ResponseEntity<>
 
     @PostMapping(value = "crear", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> registerProduct(@RequestBody Producto product){
@@ -74,12 +74,12 @@ public class ProductoController {
 
     @DeleteMapping(value = "pruduct/delte/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 
-    public ResponseEntity<Void> deleteUser(@PathVariable int idP)  {
-        service.deleteProduct(idP);
+    public ResponseEntity<Void> deleteUser(@PathVariable int id)  {
+        service.deleteProduct(id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
-    } 
+    }
 
-    
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGeneralException(Exception ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor: " + ex.getMessage());
