@@ -9,23 +9,23 @@ import { ApiService } from '../../api.service';
 })
 export class SigninComponent {
 
-  nombre:string = '';
-  apellido:string= '';
-  email:string= '';
+  nombre: string = '';
+  apellido: string = '';
+  email: string = '';
   password = '';
   passwordConfirm = '';
 
-  datos:any;
-  constructor(private router:Router, public api:ApiService){}
+  datos: any;
+  constructor(private router: Router, public api: ApiService) { }
 
-  Home(){
+  Home() {
     this.router.navigate(["home"]);
   }
 
-  Coinciden(pas1:string, pas2:string):boolean{
-    if(pas1 === pas2){
+  Coinciden(pas1: string, pas2: string): boolean {
+    if (pas1 === pas2) {
       return true;
-    }else return false
+    } else return false
   }
 
   onSubmitAccount() {
@@ -37,17 +37,17 @@ export class SigninComponent {
       "usuarioPassword": this.password,
       "usuarioRol": "cliente"
     }
-    if(this.Coinciden(this.password, this.passwordConfirm)){
+    if (this.Coinciden(this.password, this.passwordConfirm)) {
       this.api.existEmail(this.email).subscribe({
-        next:(respuesta) => {
-          if(respuesta == false){
-              this.api.postUser(usuario).subscribe((response) => {
+        next: (respuesta) => {
+          if (respuesta == false) {
+            this.api.postUser(usuario).subscribe((response) => {
               this.datos = response;
               console.log("se creo correctamente");
             })
           }
         }
       })
-    }else console.log("no coinciden");
+    } else console.log("no coinciden");
   }
 }

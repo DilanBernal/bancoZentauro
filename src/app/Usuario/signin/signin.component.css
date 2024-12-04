@@ -1,8 +1,8 @@
-h3, h2{
+h3,h2 {
     text-align: center;
 }
 
-.btnVerde{
+.btnVerde {
     display: block;
     margin-top: 3%;
     margin-left: 3.5%;
@@ -13,7 +13,8 @@ h3, h2{
     transform: scale(120%);
     background-color: #859F3D;
 }
-.form-container{
+
+.form-container {
     margin: auto;
     display: block;
     text-align: center;
@@ -21,52 +22,53 @@ h3, h2{
     align-items: center;
 }
 
-.form-group{
+.form-group {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.form-group input{
+.form-group input {
     width: 45vw;
     background-color: #31511E;
     color: #f6fcdf;
 }
-.form-group input::placeholder{
-    color:#f6fcdfb3;
+
+.form-group input::placeholder {
+    color: #f6fcdfb3;
 }
 
-.parametros{
+.parametros {
     text-align: justify;
     width: 40vw;
     margin: auto;
 
 }
 
-.btnSubmit{
+.btnSubmit {
     align-items: center;
     margin: 50px;
     background-color: #31511E;
     color: #F6FCDF;
-    transition: 0,2s;
+    transition: 0, 2s;
 }
 
-h2{
+h2 {
     font-weight: 800;
 }
 
-h3{
+h3 {
     font-weight: 600;
 }
 
-.btnSubmit:hover{
+.btnSubmit:hover {
     transform: scale(101%);
     background-color: #4b9c0d;
     transition: 0.2s;
 }
 
-.checkbox[type="checkbox"]{
+.checkbox[type="checkbox"] {
     display: inline-flex !important;
     align-items: center !important;
     cursor: pointer !important;
@@ -82,18 +84,20 @@ h3{
     transition: all 0.3s ease-out;
     border-radius: 4px;
 }
+
 .checkbox[type="checkbox"]:checked {
     background-color: rgb(75, 156, 13);
     color: #4b9c0d;
     background-position: 0 0;
-} 
+}
 
-.logo img{
+.logo img {
     margin: auto;
     display: block;
     width: 100%;
 }
-.logo{
+
+.logo {
     width: 20vw;
     margin: auto;
     filter: drop-shadow(8px 8px 3px rgba(0, 0, 0, 0.5));
