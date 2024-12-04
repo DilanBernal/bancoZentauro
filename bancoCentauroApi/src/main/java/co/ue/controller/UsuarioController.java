@@ -43,9 +43,7 @@ public class UsuarioController {
     }
     @GetMapping(value = "existByEmail/{email}")
     public boolean existByEmail(@PathVariable String email){
-      if(service.existByEmail(email)) {
-        return true;
-      }else return false;
+        return service.existByEmail(email)
     }
 
     @PostMapping(value = "register" , produces = MediaType.APPLICATION_JSON_VALUE)
