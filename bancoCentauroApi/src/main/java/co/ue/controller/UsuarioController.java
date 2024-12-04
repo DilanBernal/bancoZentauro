@@ -56,7 +56,7 @@ public class UsuarioController {
         return new ResponseEntity<>(existe,HttpStatus.OK);
     }
 
-    @GetMapping(value = "login")
+    @PostMapping(value = "login")
     public ResponseEntity<Optional<Usuario>> loginUser(@RequestBody Usuario usuario){
       String tempCorreo = usuario.getUsuarioCorreo();
       String tempPassword = usuario.getUsuarioPassword();
