@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import co.ue.model.ProductSolicitud;
+import co.ue.model.ProductSolicitud.Estado;
 import co.ue.model.Producto;
 import co.ue.model.Usuario;
-import co.ue.model.ProductSolicitud.Estado;
 import co.ue.service.IProductSolicitudService;
 import co.ue.service.IUsuarioService;
 
@@ -42,7 +42,7 @@ public class ProductSolicitudController {
         List<ProductSolicitud> respuesta = service.getAll();
         HttpHeaders header = new HttpHeaders();
         header.add("Cantidad_datos", String.valueOf(respuesta.size()));
-        return new ResponseEntity<>(respuesta, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(respuesta,header, HttpStatus.ACCEPTED);
         
     }
     @GetMapping(value = "buscarPorEstado/{Estado}")
