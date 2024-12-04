@@ -33,13 +33,13 @@ public class UsuarioController {
     }
 
     @GetMapping(value = "getById/{idu}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Optional<Usuario>> getUsuarioById(@PathVariable("idU")int id){
+    public ResponseEntity<Optional<Usuario>> getUsuarioById(@PathVariable int id){
         return new ResponseEntity<Optional<Usuario>>(service.getById(id), HttpStatus.ACCEPTED);
     }
 
     @GetMapping(value = "getByRol/{rol}")
-    public ResponseEntity<List<Usuario>> getAllByRol(@PathVariable Rol rolX){
-        return new ResponseEntity<List<Usuario>>(service.getByRol(rolX),HttpStatus.ACCEPTED);
+    public ResponseEntity<List<Usuario>> getAllByRol(@PathVariable Rol rol){
+        return new ResponseEntity<List<Usuario>>(service.getByRol(rol),HttpStatus.ACCEPTED);
     }
     @GetMapping(value = "existByEmail/{email}")
     public ResponseEntity<Boolean> existByEmail(@PathVariable String email){
