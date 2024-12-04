@@ -41,7 +41,7 @@ public class UsuarioController {
     public ResponseEntity<List<Usuario>> getAllByRol(@PathVariable Rol rolX){
         return new ResponseEntity<List<Usuario>>(service.getByRol(rolX),HttpStatus.ACCEPTED);
     }
-    @GetMapping(value = "existByEmail/{}")
+    @GetMapping(value = "existByEmail/{email}")
     public boolean existByEmail(@PathVariable String email){
       if(service.existByEmail(email)) {
         return true;
