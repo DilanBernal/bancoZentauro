@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../../api.service';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +16,10 @@ export class LoginComponent {
 
   placeholderEmail = 'Escribe tu email aqui';
 
+  datos:any
   placeholderPassword = "Escribe tu contraseña aqui"
 
-  constructor(private router:Router){}
+  constructor(private router:Router, private api:ApiService){}
 
   Home(){
     this.router.navigate(["home"]);
@@ -33,14 +35,25 @@ export class LoginComponent {
 
   
   onSubmit(): void {
-    console.log('Formulario enviado');
-    console.log('Email:', this.email);
-    console.log('Contraseña:', this.password);
-    this.VerificarUsuario("hola","comoestas");
+
+    let usuario = {
+      "usuarioNombre": "",
+      "usuarioApellido": "",
+      "usuarioCorreo": this.email,
+      "usuarioPassword": this.password,
+      "usuarioRol": "cliente"
+    }
+    this.api.loginUser(usuario).subscribe({
+      next: (respuesta) => {
+        if (respuesta == false) {
+          this.api.postUser(usuario).subscribe((response) => {
+            this.datos = response;
+            console.log("se creo correctamente");
+          })
+        }
+      }
+    })
+    console.log(usuario)
   }
 
-  async VerificarUsuario(email:string,  password:string){
-    const json = await fetch('../');
-    console.log(json.text)
-  }
 }

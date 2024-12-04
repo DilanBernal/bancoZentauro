@@ -29,4 +29,32 @@ export class ApiService {
   postUser(datos:any): Observable<any>{
     return this.http.post(`${this.apiUrl}/usr/register`, datos);
   }
+
+  loginUser(datos:any): Observable<any>{
+    return this.http.post(`${this.apiUrl}/usr/login`,datos, { observe : 'response'}).pipe(
+      tap((response:any) => {
+        console.log('Respuesta de la API:', response.body);
+        console.log(response.status)
+        if(response.status == 202){
+          localStorage.setItem('authToken', JSON.stringify(response.body))
+          console.log('login exitoso', localStorage.getItem('authToken'))
+        }
+      }),
+      catchError(error => {
+        console.log(error.status)
+        switch(error.status){
+          case 404:{
+            console.log(error)
+            break
+          }
+          case 401:{
+            console.log(error)
+            break
+          }
+        }
+
+        return throwError(error);
+      })
+    );
+  }
 }
