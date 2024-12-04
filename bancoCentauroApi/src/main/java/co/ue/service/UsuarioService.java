@@ -60,6 +60,25 @@ public class UsuarioService implements IUsuarioService{
   }
 
   @Override
+  public boolean existByEmailAndPassword(String email, String password) {
+    if(existByEmail(email)){
+      Usuario tempUsuario = dao.searchByEmail(email).orElse(null);
+
+
+
+      String tempEmail = tempUsuario.getUsuarioCorreo();
+      String tempPassword = tempUsuario.getUsuarioPassword();
+
+      if(password.equals(tempPassword) & email.equals(tempEmail)){
+
+        Optional<Usuario> usuarioRespuesta = Optional.of(tempUsuario);
+        return true;
+      }else return false;
+    }else return false;
+
+  }
+
+  @Override
     public List<Usuario> getByRol(Rol rol) {
         return dao.searchByRol(rol);
     }

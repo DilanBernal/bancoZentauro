@@ -11,6 +11,7 @@ public interface IUsuarioService {
     Optional<Usuario> getById(int id);
     Optional<Usuario> getByEmail(String email);
     Optional<Usuario> getByEmailAndPassword(String email, String password);
+    boolean existByEmailAndPassword(String email, String password);
     List<Usuario> allUser();
     List<Usuario> getByRol(Rol Rol);
     boolean existByEmail(String email);

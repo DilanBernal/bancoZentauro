@@ -56,6 +56,18 @@ public class UsuarioController {
         return new ResponseEntity<>(existe,HttpStatus.OK);
     }
 
+    @GetMapping(value = "login")
+    public ResponseEntity<Optional<Usuario>> loginUser(@RequestBody Usuario usuario){
+      String tempCorreo = usuario.getUsuarioCorreo();
+      String tempPassword = usuario.getUsuarioPassword();
+
+      if(service.existByEmail(tempCorreo)){
+        if(service.existByEmailAndPassword(tempCorreo, tempPassword)){
+          Optional<Usuario> usuarioRespuesta = service.getByEmailAndPassword(tempCorreo, tempPassword);
+          return new ResponseEntity<>(usuarioRespuesta, HttpStatus.ACCEPTED);
+        }else return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+      }else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
     @PostMapping(value = "register" , produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> registerUser(@RequestBody Usuario user){
 
