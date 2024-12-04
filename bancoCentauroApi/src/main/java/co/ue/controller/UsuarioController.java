@@ -42,8 +42,9 @@ public class UsuarioController {
         return new ResponseEntity<List<Usuario>>(service.getByRol(rolX),HttpStatus.ACCEPTED);
     }
     @GetMapping(value = "existByEmail/{email}")
-    public boolean existByEmail(@PathVariable String email){
-        return service.existByEmail(email)
+    public ResponseEntity<Boolean> existByEmail(@PathVariable String email){
+        boolean existe = service.existByEmail(email);
+        return new ResponseEntity<>(existe,HttpStatus.OK);
     }
 
     @PostMapping(value = "register" , produces = MediaType.APPLICATION_JSON_VALUE)
