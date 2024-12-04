@@ -7,6 +7,8 @@ export class SharedService {
 
   public showHeader:boolean = true;
 
+  public saveUser:boolean = false;
+
   public selectedItem:string = ''
 
   getShowHeader(): boolean{

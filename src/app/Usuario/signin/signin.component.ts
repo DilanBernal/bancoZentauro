@@ -22,6 +22,10 @@ export class SigninComponent {
     this.router.navigate(["home"]);
   }
 
+  Login(){
+    this.router.navigate(["login"]);
+  }
+
   Coinciden(pas1: string, pas2: string): boolean {
     if (pas1 === pas2) {
       return true;
