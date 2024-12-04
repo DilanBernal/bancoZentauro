@@ -7,7 +7,7 @@ ul{
     );
 }
 li{
-    margin: 5px;
+    margin: 5px auto;
     padding: 5px;
     font-weight: 600;
     font-size: 1.2em;

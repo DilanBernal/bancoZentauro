@@ -19,8 +19,11 @@ import { PremiumComponent } from './Content/product-info/premium/premium.compone
 import { FormSolicitudComponent } from './Content/form-solicitud/form-solicitud.component';
 import { CreacionProductosComponent } from './Admin/productos/creacion-productos/creacion-productos.component';
 import { RevisarProductosComponent } from './Admin/productos/revisar-productos/revisar-productos.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FooterComponent } from './Content/footer/footer.component';
+import { ListaComponent } from './Admin/solicitudes/lista/lista.component';
+import { SolicitudDeEntregaComponent } from './Admin/solicitudes/solicitud-de-entrega/solicitud-de-entrega.component';
+import { TableroDeControlComponent } from './Admin/tablero-de-control/tablero-de-control.component';
 
 @NgModule({
   declarations: [
@@ -41,10 +44,14 @@ import { FooterComponent } from './Content/footer/footer.component';
     CreacionProductosComponent,
     RevisarProductosComponent,
     FooterComponent,
+    ListaComponent,
+    SolicitudDeEntregaComponent,
+    TableroDeControlComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule 
   ],
   providers: [],
