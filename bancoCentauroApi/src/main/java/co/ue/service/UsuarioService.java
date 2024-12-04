@@ -71,7 +71,6 @@ public class UsuarioService implements IUsuarioService{
 
       if(password.equals(tempPassword) & email.equals(tempEmail)){
 
-        Optional<Usuario> usuarioRespuesta = Optional.of(tempUsuario);
         return true;
       }else return false;
     }else return false;
