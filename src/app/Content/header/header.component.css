@@ -45,13 +45,14 @@ ul{
 ul li{
     padding: 25px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
     list-style: none;
     cursor: pointer;
     font-size: 1.2em;
     transition: 0.5s;
     font-weight: 600;
     color: #1A1A19;
-
 }
 ul li:hover{
     transform: scale(105%);

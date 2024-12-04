@@ -46,7 +46,6 @@ export class HeaderComponent {
   ngOnInit() { 
     console.log(this.router.url)
     const ruta = this.router.url.split("/",1);
-    console.log("ruta"+ruta[0]);
     this.item.setSelectedItem(ruta[1]);
     this.router.events
      .pipe(
@@ -55,10 +54,7 @@ export class HeaderComponent {
        .subscribe((event: NavigationEnd) => { 
         this.onPageChange(event);
        }); } onPageChange(event: NavigationEnd) { 
-        console.log('La página ha cambiado:', event.urlAfterRedirects);
         this.item.setSelectedItem(this.router.url.split("/")[1])
-        console.log(this.item.getSelectedItem()) 
-        console.log(this.router.url.split("/")[1]+"perro malparido")
       };
     
 }
