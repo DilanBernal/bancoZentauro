@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-premium',
   templateUrl: './premium.component.html',
-  styleUrl: './premium.component.css'
+  styleUrls: ['./premium.component.css']
 })
 export class PremiumComponent {
 

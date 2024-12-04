@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 @Component({
   selector: 'app-plus',
   templateUrl: './plus.component.html',
-  styleUrl: './plus.component.css'
+  styleUrls: ['./plus.component.css']
 })
 export class PlusComponent {
 

@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-estudiantes',
   templateUrl: './estudiantes.component.html',
-  styleUrl: './estudiantes.component.css'
+  styleUrls: ['./estudiantes.component.css']
 })
 export class EstudiantesComponent {
 
