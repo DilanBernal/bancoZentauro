@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Optional;
 
+import co.ue.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -38,6 +39,9 @@ public class ProductDetailController {
     @Autowired
     IProductSolicitudService solicitudService;
 
+    @Autowired
+    IUsuarioService usuarioService;
+
     @GetMapping(value = "buscarTodo", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ProductDetail>> getAll(){
         List<ProductDetail> respuesta = service.getAllDetails();
@@ -46,7 +50,7 @@ public class ProductDetailController {
         return new ResponseEntity<>(respuesta, header, HttpStatus.ACCEPTED);
     }
 
-    @GetMapping(value = "buscarPorEstado/{Estado}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "buscarPorEstado/{estado}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ProductDetail>> getByEstado(@PathVariable Status estado){
         List<ProductDetail> respuesta = service.getByEstado(estado);
         HttpHeaders headers = new HttpHeaders();
@@ -68,10 +72,12 @@ public class ProductDetailController {
         headers.add("Cantidad_datos", String.valueOf(respuesta.size()));
         return new ResponseEntity<>(respuesta, headers, HttpStatus.ACCEPTED);
     }
-    
-    @GetMapping(value = "buscarPorUsuario/{value}")
-    public ResponseEntity<List<ProductDetail>> getByUsuario(@PathVariable Usuario usuario){
-        List<ProductDetail>respuesta = service.getByUsuario(usuario);
+
+    @GetMapping(value = "buscarPorUsuario/{usuario}")
+    public ResponseEntity<List<ProductDetail>> getByUsuario(@PathVariable int id){
+
+        Optional<Usuario> usuario = usuarioService.getById(id);
+        List<ProductDetail>respuesta = service.getByUsuario(usuario.orElse(null));
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cantidad_datos", String.valueOf(respuesta.size()));
         return new ResponseEntity<>(respuesta, headers, HttpStatus.ACCEPTED);
@@ -89,29 +95,29 @@ public class ProductDetailController {
     public ResponseEntity<Void> postDetail(@RequestBody ProductDetail detail, @PathVariable int idSolicitud){
         solicitudService.updateStatusSolicitud(idSolicitud, Estado.aceptada);
         service.addProductDetail(detail);
-        return new ResponseEntity<>( HttpStatus.CREATED);        
+        return new ResponseEntity<>( HttpStatus.CREATED);
     }
 
     @PutMapping(value = "editarPorId/{id}")
     public ResponseEntity<Void> editDetail(@PathVariable int id, @RequestBody ProductDetail productDetail){
 
         service.updateDetailStatus(id, productDetail);
-        return new ResponseEntity<>(HttpStatus.OK);        
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping(value = "editarEstado/{id}")
     public ResponseEntity<Void> editStatusDetail(@PathVariable int id, @RequestBody ProductDetail detail){
         service.updateDetailStatus(id, detail);
-        return new ResponseEntity<>(HttpStatus.OK);        
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping ResponseEntity<Void> deleteDetail(@PathVariable int id){
 
         service.deleteProductDetail(id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
-    } 
+    }
 
-    
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGeneralException(Exception ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor: " + ex.getMessage());

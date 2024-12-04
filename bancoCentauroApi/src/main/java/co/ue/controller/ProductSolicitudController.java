@@ -38,17 +38,17 @@ public class ProductSolicitudController {
 
     @GetMapping(value = "buscar")
     public ResponseEntity<List<ProductSolicitud>> getAll(){
-        
+
         List<ProductSolicitud> respuesta = service.getAll();
         HttpHeaders header = new HttpHeaders();
         header.add("Cantidad_datos", String.valueOf(respuesta.size()));
         return new ResponseEntity<>(respuesta, HttpStatus.ACCEPTED);
-        
+
     }
-    @GetMapping(value = "buscarPorEstado/{Estado}")
+    @GetMapping(value = "buscarPorEstado/{stado}")
     public ResponseEntity<List<ProductSolicitud>> getByEstado(@PathVariable Estado stado){
         List<ProductSolicitud> respuesta = service.getByEstado(stado);
-        
+
         HttpHeaders header = new HttpHeaders();
         header.add("Cantidad_datos", String.valueOf(respuesta.size()));
         return new ResponseEntity<>(respuesta, header, HttpStatus.ACCEPTED);
@@ -66,7 +66,7 @@ public class ProductSolicitudController {
     @GetMapping(value = "buscarPorId/{id}")
     public ResponseEntity<Optional<ProductSolicitud>> getById(@PathVariable int id){
         Optional<ProductSolicitud> respuesta = service.getById(id);
-        
+
         return new ResponseEntity<>(respuesta, HttpStatus.ACCEPTED);
     }
 
