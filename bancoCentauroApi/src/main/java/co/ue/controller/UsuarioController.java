@@ -32,7 +32,7 @@ public class UsuarioController {
         return new ResponseEntity<List<Usuario>>(respuesta, HttpStatus.ACCEPTED);
     }
 
-    @GetMapping(value = "getById/{idu}", produces = MediaType.APPLICATION_JSON_VALUE)    
+    @GetMapping(value = "getById/{idu}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Optional<Usuario>> getUsuarioById(@PathVariable("idU")int id){
         return new ResponseEntity<Optional<Usuario>>(service.getById(id), HttpStatus.ACCEPTED);
     }
@@ -40,6 +40,12 @@ public class UsuarioController {
     @GetMapping(value = "getByRol/{rol}")
     public ResponseEntity<List<Usuario>> getAllByRol(@PathVariable Rol rolX){
         return new ResponseEntity<List<Usuario>>(service.getByRol(rolX),HttpStatus.ACCEPTED);
+    }
+    @GetMapping(value = "existByEmail/{}")
+    public boolean existByEmail(@PathVariable String email){
+      if(service.existByEmail(email)) {
+        return true;
+      }else return false;
     }
 
     @PostMapping(value = "register" , produces = MediaType.APPLICATION_JSON_VALUE)
@@ -55,8 +61,8 @@ public class UsuarioController {
     public ResponseEntity<Void> deleteUser(@PathVariable int idU)  {
         service.deleteUser(idU);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
-    }  
-    
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleGeneralException(Exception ex) {
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor: " + ex.getMessage());
