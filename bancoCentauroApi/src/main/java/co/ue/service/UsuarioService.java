@@ -23,7 +23,7 @@ public class UsuarioService implements IUsuarioService{
         if(existByEmail(email)){
             Optional<Usuario> optionalUser = dao.searchByEmail(email);
             Usuario existingUsuario = optionalUser.get();
-            
+
             existingUsuario.setUsuarioNombre(newDataUsuario.getUsuarioNombre());
             existingUsuario.setUsuarioApellido(newDataUsuario.getUsuarioApellido());
             return dao.updateUsuario(existingUsuario);
@@ -36,10 +36,35 @@ public class UsuarioService implements IUsuarioService{
         return dao.searchById(id);
     }
 
-    @Override
+  @Override
+  public Optional<Usuario> getByEmail(String email) {
+    return dao.searchByEmail(email);
+  }
+
+  @Override
+  public Optional<Usuario> getByEmailAndPassword(String email, String password) {
+      if(existByEmail(email)){
+        Usuario tempUsuario = dao.searchByEmail(email).orElse(null);
+
+
+
+        String tempEmail = tempUsuario.getUsuarioCorreo();
+        String tempPassword = tempUsuario.getUsuarioPassword();
+
+        if(password.equals(tempPassword) & email.equals(tempEmail)){
+
+          Optional<Usuario> usuarioRespuesta = Optional.of(tempUsuario);
+          return usuarioRespuesta;
+        }else return Optional.empty();
+      }else return Optional.empty();
+  }
+
+  @Override
     public List<Usuario> getByRol(Rol rol) {
         return dao.searchByRol(rol);
     }
+
+
 
     @Override
     public List<Usuario> allUser() {
