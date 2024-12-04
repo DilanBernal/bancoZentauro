@@ -1,8 +1,10 @@
 package co.ue.controller;
 
+import co.ue.model.Producto;
+import co.ue.service.IProductoService;
+
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,9 +20,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import co.ue.model.Producto;
-import co.ue.service.IProductoService;
 
 @RestController
 @RequestMapping(value = "prd")
@@ -44,7 +43,7 @@ public class ProductoController {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cantidad_datos", String.valueOf(respuesta.size()));
 
-        return new ResponseEntity<>(respuesta, headers, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(respuesta, HttpStatus.ACCEPTED);
     }
 
     @GetMapping(value = "productoId/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -52,9 +51,10 @@ public class ProductoController {
 
         Optional<Producto> respuesta = service.getById(id);
         
-        return new ResponseEntity<>(respuesta, HttpStatus.ACCEPTED);
+        return new ResponseEntity<Optional<Producto>>(respuesta, HttpStatus.ACCEPTED);
     }
 
+    // public ResponseEntity<> 
 
     @PostMapping(value = "crear", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> registerProduct(@RequestBody Producto product){
