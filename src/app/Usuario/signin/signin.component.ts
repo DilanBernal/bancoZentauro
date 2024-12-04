@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../../api.service';
 
 @Component({
   selector: 'app-signin',
@@ -12,13 +13,41 @@ export class SigninComponent {
   apellido:string= '';
   email:string= '';
   password = '';
-  constructor(private router:Router){}
+  passwordConfirm = '';
+
+  datos:any;
+  constructor(private router:Router, public api:ApiService){}
 
   Home(){
     this.router.navigate(["home"]);
   }
 
+  Coinciden(pas1:string, pas2:string):boolean{
+    if(pas1 === pas2){
+      return true;
+    }else return false
+  }
+
   onSubmitAccount() {
-    console.log("funciono signin")
+
+    let usuario = {
+      "usuarioNombre": this.nombre,
+      "usuarioApellido": this.apellido,
+      "usuarioCorreo": this.email,
+      "usuarioPassword": this.password,
+      "usuarioRol": "cliente"
+    }
+    if(this.Coinciden(this.password, this.passwordConfirm)){
+      this.api.existEmail(this.email).subscribe({
+        next:(respuesta) => {
+          if(respuesta == false){
+              this.api.postUser(usuario).subscribe((response) => {
+              this.datos = response;
+              console.log("se creo correctamente");
+            })
+          }
+        }
+      })
+    }else console.log("no coinciden");
   }
 }

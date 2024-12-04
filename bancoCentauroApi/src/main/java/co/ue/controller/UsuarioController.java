@@ -1,8 +1,5 @@
 package co.ue.controller;
 
-import co.ue.model.Usuario;
-import co.ue.model.Usuario.Rol;
-import co.ue.service.IUsuarioService;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +8,19 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import co.ue.model.Usuario;
+import co.ue.model.Usuario.Rol;
+import co.ue.service.IUsuarioService;
 
 
 
@@ -29,17 +38,17 @@ public class UsuarioController {
         List<Usuario> respuesta = service.allUser();
         HttpHeaders headers = new HttpHeaders();
         headers.add("Cantidad_datos", String.valueOf(respuesta.size()));
-        return new ResponseEntity<List<Usuario>>(respuesta, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(respuesta,headers, HttpStatus.ACCEPTED);
     }
 
     @GetMapping(value = "getById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Optional<Usuario>> getUsuarioById(@PathVariable int id){
-        return new ResponseEntity<Optional<Usuario>>(service.getById(id), HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(service.getById(id), HttpStatus.ACCEPTED);
     }
 
     @GetMapping(value = "getByRol/{rol}")
     public ResponseEntity<List<Usuario>> getAllByRol(@PathVariable Rol rol){
-        return new ResponseEntity<List<Usuario>>(service.getByRol(rol),HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(service.getByRol(rol),HttpStatus.ACCEPTED);
     }
     @GetMapping(value = "existByEmail/{email}")
     public ResponseEntity<Boolean> existByEmail(@PathVariable String email){
