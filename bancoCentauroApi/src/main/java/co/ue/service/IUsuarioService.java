@@ -9,6 +9,8 @@ public interface IUsuarioService {
     Usuario addUser(Usuario usuario);
     Usuario updateUsuer(String email, Usuario usuario);
     Optional<Usuario> getById(int id);
+    Optional<Usuario> getByEmail(String email);
+    Optional<Usuario> getByEmailAndPassword(String email, String password);
     List<Usuario> allUser();
     List<Usuario> getByRol(Rol Rol);
     boolean existByEmail(String email);
