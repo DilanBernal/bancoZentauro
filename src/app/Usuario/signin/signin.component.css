@@ -1,4 +1,5 @@
-h3,h2 {
+h3,
+h2 {
     text-align: center;
 }
 
@@ -103,6 +104,12 @@ h3 {
     filter: drop-shadow(8px 8px 3px rgba(0, 0, 0, 0.5));
 }
 
+.error-text {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 5px;
+}
+
 
 /*efecto de carga*/
 
@@ -111,85 +118,70 @@ h3 {
     --point-color: #1A1A19;
     --size: 5px;
 }
-.loader,  .errorVisual {
-  background-color: var(--main-color);
-  overflow: hidden;
-  width: 80%;
-  height: 80%;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;  
-  z-index: 100000;
-  backdrop-filter: blur(5px);
-  
-  border-radius: 40px;
-  animation: acercarse .6s ease-in-out;
-  
+
+.loader,
+.errorVisual {
+    background-color: var(--main-color);
+    overflow: hidden;
+    width: 80%;
+    height: 80%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    backdrop-filter: blur(5px);
+
+    border-radius: 40px;
+    animation: acercarse .6s ease-in-out;
+
 }
-.errorVisual{
+
+.errorVisual {
     background-color: #859F3Dd5;
     flex-direction: column;
 }
 
 .loader__element {
-  border-radius: 100%;
-  border: var(--size) solid var(--point-color);
-  margin: calc(var(--size)*2);
+    border-radius: 100%;
+    border: var(--size) solid var(--point-color);
+    margin: calc(var(--size)*2);
 }
 
 .loader__element:nth-child(1) {
-  animation: preloader .6s ease-in-out alternate infinite;
+    animation: preloader .6s ease-in-out alternate infinite;
 }
+
 .loader__element:nth-child(2) {
-  animation: preloader .6s ease-in-out alternate .2s infinite;
+    animation: preloader .6s ease-in-out alternate .2s infinite;
 }
 
 .loader__element:nth-child(3) {
-  animation: preloader .6s ease-in-out alternate .4s infinite;
+    animation: preloader .6s ease-in-out alternate .4s infinite;
 }
 
 .salida {
     animation: alejarse 1s;
-  }
+}
 
-.btnIniciar{
+.btnIniciar {
     margin: 2px;
     font-size: 1.1em;
 }
-.btnIniciar:hover{
+
+.btnIniciar:hover {
     text-decoration: underline;
     transition: 2s;
     cursor: pointer;
 }
-@keyframes preloader {
-  100% { transform: scale(2); }
-}
 
-@keyframes acercarse {
-    from{
-        scale: 0;
-    }
-    to{
-        scale: 1;
-    }
-}
-
-@keyframes alejarse {
-    from {
-      scale:1;
-    }
-    to {
-      scale:0 ;
-    }
-  }
 
 /**Login visual***/
 
-.registerVisual{
+.registerVisual {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -207,7 +199,9 @@ h3 {
     animation: acercarse .6s ease-in-out;
     filter: drop-shadow(0px 0px 1px black);
 }
-.checkmark, .crossmark {
+
+.checkmark,
+.crossmark {
     width: 100px;
     height: 100px;
     stroke-width: 2;
@@ -217,12 +211,16 @@ h3 {
     stroke-dashoffset: 48;
     animation: stroke 1s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
-.crossmark, .crossmark__circle, .crossmark__cross{
+
+.crossmark,
+.crossmark__circle,
+.crossmark__cross {
     stroke: #ff0015 !important;
     stroke-width: 5;
 }
 
-.checkmark__circle, .crossmark__circle {
+.checkmark__circle,
+.crossmark__circle {
     stroke-dasharray: 166;
     stroke-dashoffset: 166;
     stroke-width: 2;
@@ -232,7 +230,8 @@ h3 {
     animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
 
-.checkmark__check, .crossmark__cross {
+.checkmark__check,
+.crossmark__cross {
     stroke-dasharray: 48;
     stroke-dashoffset: 48;
     animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.5s forwards;
@@ -241,5 +240,30 @@ h3 {
 @keyframes stroke {
     100% {
         stroke-dashoffset: 0;
+    }
+}
+@keyframes preloader {
+    100% {
+        transform: scale(2);
+    }
+}
+
+@keyframes acercarse {
+    from {
+        scale: 0;
+    }
+
+    to {
+        scale: 1;
+    }
+}
+
+@keyframes alejarse {
+    from {
+        scale: 1;
+    }
+
+    to {
+        scale: 0;
     }
 }

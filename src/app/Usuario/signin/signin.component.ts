@@ -1,6 +1,7 @@
 import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-signin',
@@ -87,8 +88,8 @@ export class SigninComponent {
           sessionStorage.removeItem('user')
         }
       });
-    }else if(userString != null){
-      
+    } else if (userString != null) {
+
       const userObject = userString !== null ? JSON.parse(userString) : null;
       sessionStorage.setItem('usr', userObject)
       const userObjectSession = userStringSession !== null ? JSON.parse(userStringSession) : null;
@@ -142,8 +143,11 @@ export class SigninComponent {
     }, 200)
   }
 
-  onSubmitAccount() {
+  onSubmitAccount(form: NgForm) {
 
+    if (form.controls['email'].invalid) {
+      console.error('El correo electrónico es inválido.');
+    }
     let usuario = {
       "usuarioNombre": this.nombre,
       "usuarioApellido": this.apellido,
@@ -162,12 +166,16 @@ export class SigninComponent {
             this.api.postUser(usuario).subscribe({
               next: (response) => {
                 this.datos = response;
-                console.log("Se creó correctamente");
-                this.registerVisual(this.nombre);
-                if (this.recuerdame) {
-                  localStorage.setItem('user', JSON.stringify(usuario))
-                  console.log('login exitoso', localStorage.getItem('user'))
-                } else { sessionStorage.setItem('user', JSON.stringify(usuario)); console.log(sessionStorage.getItem('user')) }
+                if(form.controls['email'].invalid){
+                  this.errorVisual("Ingrese un correo valido")
+                  console.log("correo Vallido")
+                  console.log("Se creó correctamente");
+                  this.registerVisual(this.nombre);
+                  if (this.recuerdame) {
+                    localStorage.setItem('user', JSON.stringify(usuario))
+                    console.log('login exitoso', localStorage.getItem('user'))
+                  } else { sessionStorage.setItem('user', JSON.stringify(usuario)); console.log(sessionStorage.getItem('user')) }
+                }else console.log("correo Invalido")
               },
               error: (err) => {
                 console.error("Error al crear el usuario:", err);
