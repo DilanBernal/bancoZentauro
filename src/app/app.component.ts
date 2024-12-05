@@ -14,8 +14,8 @@ export class AppComponent {
   constructor(private router:Router, private sharedService:SharedService){
     this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd) {
-        const excludesRoutes =['/login', '/signin', '/backup'];
-        this.header = !excludesRoutes.includes(event.url);
+        const excludesRoutes =[/^\/login/, /^\/signin/, /^\/backup/];
+        this.header = !excludesRoutes.some(route => route.test(event.url))
       }
     })
   }

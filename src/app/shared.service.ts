@@ -9,8 +9,9 @@ export class SharedService {
 
   public saveUser:boolean = false;
 
+  
   public selectedItem:string = ''
-
+  
   getShowHeader(): boolean{
     console.log("oasjfoa")
     return this.showHeader;
@@ -18,8 +19,9 @@ export class SharedService {
   setShowHeader(value:boolean):void{
     this.showHeader = value;
   }
-
+  
   getSelectedItem():string{
+    console.log(localStorage.getItem('user'))
     return this.selectedItem;
   }
   setSelectedItem(value:string):void{

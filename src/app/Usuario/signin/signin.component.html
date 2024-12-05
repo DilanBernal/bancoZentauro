@@ -1,8 +1,17 @@
-<button (click)="Home()" class="btnVerde btn">Volver</button>
+<button (click)="Home()" class="btnVerde btn" >Volver</button>
 <div class="logo">
   <img src="logo.png" alt="logo de banco centauro" />
 </div>
-<div class="form-container">
+<div class="loginVisual" *ngIf ="seRegistro">
+  <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+      <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+      <path class="checkmark__check" fill="none" d="M14 26l10 10 15-15"/>
+  </svg>
+  <h2>Se ha registrado su cuenta correctamente</h2>
+  <br>
+  <p #personaHtml>Bienvenido </p>
+</div>
+<div class="form-container" >
   <h2>Crear Cuenta</h2>
   <form (ngSubmit)="onSubmitAccount()" #registroForm="ngForm">
     <div class="section">
@@ -31,6 +40,15 @@
       </div>
     </div>
 
+
+    
+    <div class="contenedorCarga" *ngIf="carga ==true" >
+      <div class="loader" #contenedorCarga>
+        <span class="loader__element"></span>
+        <span class="loader__element"></span>
+        <span class="loader__element"></span>
+      </div>
+    </div>
     <div class="section">
       <h3>Información de la Cuenta</h3>
       <div class="form-group">
@@ -64,24 +82,48 @@
           class="form-control"
           name="confirmPassword"
           [(ngModel)]="passwordConfirm"
+          minlength="8"
           required
         />
       </div>
     </div>
-    <br />
+    <br>
 
-    <div class="form-check">
+    <div class="parametros form-check">
       <input
-        type="checkbox"
-        id="terminos"
         class="checkbox"
-        name="terminos"
+        type="checkbox"
+        name="Recordarme"
+        [(ngModel)] ="recuerdame"
+        id="Recordarme"
+        ><label for="Recordarme">Recordarme</label
+      >
+      <br>
+      <input
+        class="checkbox"
+        type="checkbox"
+        [(ngModel)]="captcha"
+        #captchaInput="ngModel"
+        name="No soy un robot"
+        id="Capcha"
         required
-      />
-      <label for="terminos">Acepto los términos y condiciones</label>
+      /><label for="Capcha">No soy un robot</label>
+      <br>
+      <input
+        class="checkbox"
+        type="checkbox"
+        [(ngModel)]="terminos"
+        #terminosInput="ngModel"
+        name="Terminos y condiciones"
+        id="Terminos"
+        required
+      /><label for="Terminos">Acepto los terminos y condiciones</label>
+      <br><br>
+      <p class="btnIniciar" (click)="Login()">Iniciar sesion</p>
     </div>
 
-    <p (click)="Login()">Iniciar sesion</p>
+
+    <p></p>
 
     <button
       class="btn btnSubmit"

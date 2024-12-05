@@ -14,7 +14,6 @@ export class ApiService {
     return this.http.get(`${this.apiUrl}/usr/users`)
   }
 
-
   existEmail(datos:any): Observable<any>{
     return this.http.get(`${this.apiUrl}/usr/existByEmail/${datos}`).pipe(
       tap(response => {
@@ -35,10 +34,6 @@ export class ApiService {
       tap((response:any) => {
         console.log('Respuesta de la API:', response.body);
         console.log(response.status)
-        if(response.status == 202){
-          localStorage.setItem('authToken', JSON.stringify(response.body))
-          console.log('login exitoso', localStorage.getItem('authToken'))
-        }
       }),
       catchError(error => {
         console.log(error.status)
