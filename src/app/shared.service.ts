@@ -29,11 +29,9 @@ export class SharedService {
   }
 
   getRolUser(){
-    const userString = localStorage.getItem('user')
     const userStringSession = sessionStorage.getItem('user')
-    if(userString != null && userStringSession == null){
-      const userObject = JSON.parse(userString);
-      sessionStorage.setItem('user', userObject)
+    if(userStringSession != null){
+      const userObject = JSON.parse(userStringSession);
       return userObject.usuarioRol
     }else return'notLogueado'
   }
@@ -45,11 +43,12 @@ export class SharedService {
       var userObject = JSON.parse(userString)
       this.nombreUsuario = userObject.usuarioNombre;
       return true
-    }else if(userString == null && userStringSession != null){
-      var userObjectession = JSON.parse(userStringSession)
-      this.nombreUsuario = userObjectession.usuarioNombre;
-      console.log("Sesion, no local", userObjectession, "es el usuario")
+    }else if(userStringSession != null){
+      var userObject = JSON.parse(userStringSession)
+      this.nombreUsuario = userObject.usuarioNombre
+
+      console.log("Objeto usuario",userObject.usuarioNombre, "Nombre en el this", this.nombreUsuario)
       return true
-    }else return false;
+    }else return false
   }
 }
