@@ -1,4 +1,18 @@
-<ul>
+<ul class="sinLogear" *ngIf="!estaLogeado">
     <li (click)="Login()">Iniciar Sesion</li>
     <li (click)="Signin()">Registrarse</li>
 </ul>
+
+<nav ngIf="estaLogeado">
+    <!-- <div class="dropdown">
+        <button class="dropdown-button" (click)="toggleDropdown()">Menú</button>
+        <div class="dropdown-content" [class.show]="isDropdownOpen">
+          <a href="#">Opción 1</a>
+          <a href="#">Opción 2</a>
+          <a href="#">Opción 3</a>
+        </div>
+      </div> -->
+      
+</nav>
+
+    <!-- Contenido del menú desplegable -->

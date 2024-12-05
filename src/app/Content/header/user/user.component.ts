@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../../../api.service';
+import { SharedService } from '../../../shared.service';
 
 @Component({
   selector: 'app-user',
@@ -7,16 +9,19 @@ import { Router } from '@angular/router';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
+  
+  estaLogeado:boolean = false;
+  constructor(private router:Router, private api:ApiService, private shared:SharedService){
+    this.estaLogeado = shared.estaLogeado();
+  }
 
-  showHeader: boolean = true;
-
-  constructor(private router:Router){}
   Login(){
     this.router.navigate(["login"]);
-    this.showHeader = false;
   }
 
   Signin(){
     this.router.navigate(["signin"]);
   }
+
+  // isDropdownOpen = false; toggleDropdown(): void { this.isDropdownOpen = !this.isDropdownOpen; }
 }
