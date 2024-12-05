@@ -11,6 +11,24 @@
   <br>
   <p #personaHtml>Bienvenido </p>
 </div>
+
+<div class="errorVisual" *ngIf ="huboError"  [class.salida] = "!mostrarError">
+    <svg class="crossmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="crossmark__circle" cx="26" cy="26" r="25" fill="none"/>
+        <path class="crossmark__cross" fill="none" d="M16 16 l20 20 M16 36 l20 -20"/>
+    </svg>
+    <h2>Hubo un error</h2>
+    <br>
+    <p #errorHtml></p>
+</div>
+
+<div class="contenedorCarga" *ngIf="carga ==true" >
+  <div class="loader" #contenedorCarga>
+    <span class="loader__element"></span>
+    <span class="loader__element"></span>
+    <span class="loader__element"></span>
+  </div>
+</div>
 <div class="form-container" >
   <h2>Crear Cuenta</h2>
   <form (ngSubmit)="onSubmitAccount()" #registroForm="ngForm">
@@ -42,13 +60,6 @@
 
 
     
-    <div class="contenedorCarga" *ngIf="carga ==true" >
-      <div class="loader" #contenedorCarga>
-        <span class="loader__element"></span>
-        <span class="loader__element"></span>
-        <span class="loader__element"></span>
-      </div>
-    </div>
     <div class="section">
       <h3>Información de la Cuenta</h3>
       <div class="form-group">

@@ -111,8 +111,8 @@ h3 {
     --point-color: #1A1A19;
     --size: 5px;
 }
-.loader {
-    background-color: var(--main-color);
+.loader,  .errorVisual {
+  background-color: var(--main-color);
   overflow: hidden;
   width: 80%;
   height: 80%;
@@ -129,6 +129,10 @@ h3 {
   border-radius: 40px;
   animation: acercarse .6s ease-in-out;
   
+}
+.errorVisual{
+    background-color: #859F3Dd5;
+    flex-direction: column;
 }
 
 .loader__element {
@@ -203,7 +207,7 @@ h3 {
     animation: acercarse .6s ease-in-out;
     filter: drop-shadow(0px 0px 1px black);
 }
-.checkmark {
+.checkmark, .crossmark {
     width: 100px;
     height: 100px;
     stroke-width: 2;
@@ -213,8 +217,12 @@ h3 {
     stroke-dashoffset: 48;
     animation: stroke 1s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
+.crossmark, .crossmark__circle, .crossmark__cross{
+    stroke: #ff0015 !important;
+    stroke-width: 5;
+}
 
-.checkmark__circle {
+.checkmark__circle, .crossmark__circle {
     stroke-dasharray: 166;
     stroke-dashoffset: 166;
     stroke-width: 2;
@@ -224,7 +232,7 @@ h3 {
     animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
 
-.checkmark__check {
+.checkmark__check, .crossmark__cross {
     stroke-dasharray: 48;
     stroke-dashoffset: 48;
     animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.5s forwards;

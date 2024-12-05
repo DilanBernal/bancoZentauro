@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../api.service';
 
@@ -19,13 +19,16 @@ export class SigninComponent {
 
   recuerdame: boolean = false;
   seRegistro: boolean = false;
+  huboError:boolean = false;
+  mostrarError:boolean = false;
   carga: boolean = false;
 
   datos: any;
 
   @ViewChild('personaHtml') componente!: ElementRef;
   @ViewChild('contenedorCarga') cargador!: ElementRef;
-
+  @ViewChild('errorHtml') errorHtml!: ElementRef;
+  @ViewChild('errorContenedor') errorContenedor!: ElementRef;
 
   constructor(private router: Router, public api: ApiService) { }
 
@@ -45,11 +48,15 @@ export class SigninComponent {
 
   cerrarCarga() {
     this.cargador.nativeElement.classList.add('salida')
-    console.log("paso 1 bien")
     setTimeout(() => {
-      console.log("paso 2 bien")
-
       this.carga = false; // Desactiva la carga al completar
+    }, 1000)
+  }
+
+  cerrarError(){
+    this.mostrarError = false;
+    setTimeout(() => {
+      this.huboError = false; 
     }, 1000)
   }
 
@@ -57,9 +64,25 @@ export class SigninComponent {
     console.log(localStorage.getItem('user'))
     const userString =localStorage.getItem('user')
     if(userString != null){
-      this.seRegistro = true;
       const userObject = JSON.parse(userString);
-      this.loginVisual(userObject)
+      this.api.existEmail(userObject.usuarioCorreo).subscribe({
+        next: (respuesta) => {
+          if (respuesta == true) {
+            this.seRegistro = true;
+            const nombreUsuario = userObject.usuarioNombre
+            console.log("final",this.api.existEmail(userObject.usuarioCorreo))
+            this.loginVisual(nombreUsuario)
+          } else {
+            console.log("final",this.api.existEmail(userObject.usuarioCorreo))
+            localStorage.removeItem('user')
+          }
+        },
+        error: (err) => {
+          console.error("Error al verificar el correo:", err);
+          localStorage.removeItem('user')
+        }
+      });
+    
     }
   }
 
@@ -76,7 +99,18 @@ export class SigninComponent {
       setTimeout(() => {
         this.seRegistro = false;
         this.Home()
-      }, 3000)
+      }, 2600)
+    }, 200)
+  }
+
+  errorVisual(error:any){
+    this.huboError = true;
+    this.mostrarError = true;
+    setTimeout(() => {
+      this.errorHtml.nativeElement.innerHTML += `${error}`
+      setTimeout(() => {
+        this.cerrarError()
+      }, 2600)
     }, 200)
   }
 
@@ -109,19 +143,24 @@ export class SigninComponent {
               },
               error: (err) => {
                 console.error("Error al crear el usuario:", err);
+                this.errorVisual(err)
               },
               complete: () => {
                 this.cerrarCarga()
+                // this.cerrarError()
               }
             });
           } else {
             console.log("El correo ya existe");
             this.cerrarCarga()
+            this.errorVisual("El correo ya existe")
+            // this.cerrarError()
           }
         },
         error: (err) => {
           console.error("Error al verificar el correo:", err);
           this.cerrarCarga()
+          this.errorVisual("Error al verificar el correo" + err)
         }
       });
     } else {

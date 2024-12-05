@@ -21,10 +21,10 @@ export class SharedService {
   }
   
   getSelectedItem():string{
-    console.log(localStorage.getItem('user'))
     return this.selectedItem;
   }
   setSelectedItem(value:string):void{
+    console.log(localStorage.getItem('user'))
     this.selectedItem = value;
   }
 
