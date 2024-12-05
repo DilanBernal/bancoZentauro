@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SharedService } from '../../shared.service';
+import { SharedService } from '../../servicesAngular/shared.service';
 import { filter } from 'rxjs';
 
 @Component({

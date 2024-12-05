@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../../api.service';
-import { SharedService } from '../../../shared.service';
+import { ApiService } from '../../../servicesAngular/api.service';
+import { SharedService } from '../../../servicesAngular/shared.service';
 
 @Component({
   selector: 'app-user',
