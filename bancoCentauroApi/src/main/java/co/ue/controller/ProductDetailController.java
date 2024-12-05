@@ -73,7 +73,7 @@ public class ProductDetailController {
         return new ResponseEntity<>(respuesta, headers, HttpStatus.ACCEPTED);
     }
 
-    @GetMapping(value = "buscarPorUsuario/{usuario}")
+    @GetMapping(value = "buscarPorUsuario/{id}")
     public ResponseEntity<List<ProductDetail>> getByUsuario(@PathVariable int id){
 
         Optional<Usuario> usuario = usuarioService.getById(id);
@@ -83,7 +83,7 @@ public class ProductDetailController {
         return new ResponseEntity<>(respuesta, headers, HttpStatus.ACCEPTED);
     }
     
-    @GetMapping(value = "buscarId/{value}")
+    @GetMapping(value = "buscarId/{id}")
     public ResponseEntity<Optional<ProductDetail>> getByid(@PathVariable int id){
         Optional<ProductDetail>respuesta = service.getById(id);
         HttpHeaders headers = new HttpHeaders();
@@ -91,7 +91,7 @@ public class ProductDetailController {
         return new ResponseEntity<>(respuesta, headers, HttpStatus.ACCEPTED);
     }
 
-    @PostMapping(value = "agregarPorSolicitud/idSolicitud")
+    @PostMapping(value = "agregarPorSolicitud/{idSolicitud}")
     public ResponseEntity<Void> postDetail(@RequestBody ProductDetail detail, @PathVariable int idSolicitud){
         solicitudService.updateStatusSolicitud(idSolicitud, Estado.aceptada);
         service.addProductDetail(detail);
@@ -111,7 +111,9 @@ public class ProductDetailController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping ResponseEntity<Void> deleteDetail(@PathVariable int id){
+
+    @DeleteMapping (value = "delete/{id}")
+    ResponseEntity<Void> deleteDetail(@PathVariable int id){
 
         service.deleteProductDetail(id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);

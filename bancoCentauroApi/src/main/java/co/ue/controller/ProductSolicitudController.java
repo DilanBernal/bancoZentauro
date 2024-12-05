@@ -26,7 +26,7 @@ import co.ue.service.IProductSolicitudService;
 import co.ue.service.IUsuarioService;
 
 @RestController
-@RequestMapping(value = "solicitudes")
+@RequestMapping(value = "slt")
 @CrossOrigin(origins = "*")
 public class ProductSolicitudController {
 
@@ -91,7 +91,7 @@ public class ProductSolicitudController {
         service.updateStatusSolicitud(id, estado);
         return new ResponseEntity<>( HttpStatus.OK);
     }
-    @DeleteMapping(value = "delte/{id}")
+    @DeleteMapping(value = "delete/{id}")
     public ResponseEntity<Void> deleteSolicitud(@PathVariable int id){
         service.deleteProductSolicitud(id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
