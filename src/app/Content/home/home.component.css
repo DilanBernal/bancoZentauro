@@ -1,7 +1,10 @@
+*{
+    color: #1A1A19;
+}
 .home{
     text-align:center;
     background-color: #F6FCDF;
-    overflow: hidden;
+    overflow: hidden;;
 }
 .home h1{
     padding: 4%;
@@ -59,4 +62,46 @@
     margin: 5px auto;
     padding: 3%;
 
+}
+
+
+/*******Nosotros*********/
+
+.nosotros{
+    padding: 2%;
+}
+.nosotros h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px auto;
+    border-radius:20px;
+    background-color: #859F3D;
+    height: 90px;
+    width: 80%;
+    padding: 5px;
+    transition: 2s;
+}
+.nosotros div{
+    display: flex;
+}
+.nosotros div:hover > p{
+    transition: 2s;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    margin: 2px auto;
+    padding: 5px;
+    background-color: #1A1A19;
+    border-radius: 0 20px 20px 0;
+    color: #F6FCDF;
+}
+.nosotros div:hover > h2{
+    border-radius: 20px 0 0px 20px;
+    transition: 2s;
+    margin: auto;
+}
+.nosotros p{
+    transition: 02s;
+    font-size: 0;
 }

@@ -42,7 +42,7 @@ ul{
     /* justify-content: space-around; */
     margin: 0 auto;
 }
-ul li{
+nav ul li{
     padding: 25px;
     margin: 0 auto;
     display: flex;
