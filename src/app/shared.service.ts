@@ -8,7 +8,7 @@ export class SharedService {
   public showHeader:boolean = true;
   public rolUser:any = ''
   public saveUser:boolean = false;
-
+  public nombreUsuario = '';
   
   public selectedItem:string = ''
   
@@ -29,17 +29,19 @@ export class SharedService {
   }
 
   getRolUser(){
-    var tempData = localStorage.getItem('user')
     const userString = localStorage.getItem('user')
     if(userString != null){
       const userObject = JSON.parse(userString);
-      console.log(userObject.usuarioRol)
       return userObject.usuarioRol
     }else return'notLogueado'
   }
   
   public estaLogeado():boolean{
-    if(localStorage.getItem('user')){
+    var userString = localStorage.getItem('user')
+    if(userString != null){
+      var userObject = JSON.parse(userString)
+
+      this.nombreUsuario = userObject.usuarioNombre;
       return true
     }else return false;
   }

@@ -11,17 +11,32 @@ import { SharedService } from '../../../shared.service';
 export class UserComponent {
 
   showHeader: boolean = true;
+  menuAbierto: boolean = false;
+  estaLogeado: boolean = false;
 
-  estaLogeado:boolean = false;
-  constructor(private router:Router, private api:ApiService, private shared:SharedService){
+  nombreUsuario: string = '';
+  constructor(private router: Router, private api: ApiService, private shared: SharedService) {
     this.estaLogeado = shared.estaLogeado();
   }
-  Login(){
+  Login() {
     this.router.navigate(["login"]);
     this.showHeader = false;
   }
 
-  Signin(){
+  ngOnInit(){
+    if(this.estaLogeado ==true ){
+      this.nombreUsuario = this.shared.nombreUsuario
+    }
+  }
+
+  Logout(){
+    localStorage.removeItem('user')
+    console.log("removido")
+    this.estaLogeado = this.shared.estaLogeado();
+  }
+
+  Signin() {
     this.router.navigate(["signin"]);
   }
+  toggleDropdown(): void { this.menuAbierto = !this.menuAbierto; }
 }

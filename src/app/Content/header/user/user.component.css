@@ -1,12 +1,11 @@
-ul{
+ul {
     display: grid;
-    padding-left:0;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(80px, 1fr)
-    );
+    padding-left: 0;
+    grid-template-columns: repeat(auto-fit,
+            minmax(80px, 1fr));
 }
-li{
+
+li {
     margin: 5px auto;
     padding: 5px;
     font-weight: 600;
@@ -14,7 +13,96 @@ li{
     transition: 0.5s;
     list-style: none;
 }
-li:hover{
-    transform:scale(105%);
+
+li:hover {
+    transform: scale(105%);
     transition: 0.5s;
+}
+
+/* Estilo del botón del menú */
+.dropdown-button {
+    background-color: #1A1A19;
+    color: #F6FCDF;
+    padding: 10px;
+    width: 160px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.5s;
+    z-index: 2;
+}
+.dropdown-button-open{
+    border-radius: 20px 20px 0 0 ;
+    transition: 0.5s;
+    z-index: 3;
+}
+/* Contenedor del menú desplegable */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Contenido del menú desplegable */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #F6FCDF;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 0;
+}
+
+/* Estilo de los enlaces del menú */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 0;
+    transition: 0.1s;
+}
+
+/* Mostrar el menú desplegable cuando .show está presente */
+.dropdown-content.show {
+    display: block;
+    transition: opacity 0.5s, transform 0.5s;
+    animation: aparecer 0.5s forwards;
+    z-index: 0;
+    border-radius: 0 0 20px 20px;
+}
+
+/* Cambiar el color de fondo de los enlaces cuando se pasa el mouse por encima */
+.dropdown-content a:hover {
+    background-color: #ddd;
+    transition: 0.2s;
+    font-weight: bold;
+}
+.logout{
+    background-color: red;
+    border-radius: 0 0 20px 20px;
+    color: #F6FCDF !important;
+    transition: 0.2s;
+}
+.logout:hover{
+    background-color: rgb(148, 6, 6) !important;
+    transition: 0.2s;
+    font-weight: bold;
+}
+
+.user-icon {
+    width: 50px;
+    height: 50px;
+    fill: #F6FCDF;
+    /* Cambia este color según tus necesidades */
+}
+
+@keyframes aparecer {
+    from{
+        transform: translateY(-10%);
+        opacity: 0;
+    }    
+    to{
+        opacity: 1;
+    }
 }
