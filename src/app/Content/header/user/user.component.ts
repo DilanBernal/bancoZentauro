@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../../../api.service';
+import { SharedService } from '../../../shared.service';
 
 @Component({
   selector: 'app-user',
@@ -10,7 +12,10 @@ export class UserComponent {
 
   showHeader: boolean = true;
 
-  constructor(private router:Router){}
+  estaLogeado:boolean = false;
+  constructor(private router:Router, private api:ApiService, private shared:SharedService){
+    this.estaLogeado = shared.estaLogeado();
+  }
   Login(){
     this.router.navigate(["login"]);
     this.showHeader = false;
