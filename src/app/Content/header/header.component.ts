@@ -35,6 +35,11 @@ export class HeaderComponent {
     this.selectedItem = "services";
   }
 
+  prueba(){
+    this.router.navigate(["lista-productos"]);
+    this.selectedItem = "prueba";
+  }
+
   Login(){
     this.router.navigate(["login"]);
   }

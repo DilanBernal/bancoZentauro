@@ -36,6 +36,7 @@ import { AdminComponent } from './Content/header/admin/admin.component';
     ProductInfoComponent,
     ServicesComponent,
     BackupComponent,
+    ProductsComponent,
     HeaderComponent,
     UserComponent,
     EstudiantesComponent,
