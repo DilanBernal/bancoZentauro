@@ -1,6 +1,5 @@
-
 <header class="header">
-    <div class="headerLogo"><img src="logo.png"></div>
+    <div class="headerLogo" (click)="Home()"><img src="logo.png"></div>
     <nav>
       <ul>
         <li [ngClass]="{ 'selected': item.getSelectedItem() === 'services' || item.getSelectedItem() == 'creacion-productos'}" (click)="Services()">Servicios</li>

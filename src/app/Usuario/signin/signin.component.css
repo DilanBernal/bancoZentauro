@@ -1,8 +1,8 @@
-h3, h2{
+h3,h2 {
     text-align: center;
 }
 
-.btnVerde{
+.btnVerde {
     display: block;
     margin-top: 3%;
     margin-left: 3.5%;
@@ -13,7 +13,8 @@ h3, h2{
     transform: scale(120%);
     background-color: #859F3D;
 }
-.form-container{
+
+.form-container {
     margin: auto;
     display: block;
     text-align: center;
@@ -21,44 +22,53 @@ h3, h2{
     align-items: center;
 }
 
-.form-group{
+.form-group {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.form-group input{
+.form-group input {
     width: 45vw;
     background-color: #31511E;
     color: #f6fcdf;
 }
-.form-group input::placeholder{
-    color:#f6fcdfb3;
+
+.form-group input::placeholder {
+    color: #f6fcdfb3;
 }
 
-.parametros{
+.parametros {
     text-align: justify;
     width: 40vw;
     margin: auto;
 
 }
 
-.btnSubmit{
+.btnSubmit {
     align-items: center;
     margin: 50px;
     background-color: #31511E;
     color: #F6FCDF;
-    transition: 0,2s;
+    transition: 0, 2s;
 }
 
-.btnSubmit:hover{
+h2 {
+    font-weight: 800;
+}
+
+h3 {
+    font-weight: 600;
+}
+
+.btnSubmit:hover {
     transform: scale(101%);
     background-color: #4b9c0d;
     transition: 0.2s;
 }
 
-.checkbox[type="checkbox"]{
+.checkbox[type="checkbox"] {
     display: inline-flex !important;
     align-items: center !important;
     cursor: pointer !important;
@@ -74,13 +84,162 @@ h3, h2{
     transition: all 0.3s ease-out;
     border-radius: 4px;
 }
+
 .checkbox[type="checkbox"]:checked {
     background-color: rgb(75, 156, 13);
     color: #4b9c0d;
     background-position: 0 0;
-} 
+}
 
-.logo img{
+.logo img {
     margin: auto;
     display: block;
+    width: 100%;
+}
+
+.logo {
+    width: 20vw;
+    margin: auto;
+    filter: drop-shadow(8px 8px 3px rgba(0, 0, 0, 0.5));
+}
+
+
+/*efecto de carga*/
+
+.contenedorCarga {
+    --main-color: #859f3dc5;
+    --point-color: #1A1A19;
+    --size: 5px;
+}
+.loader,  .errorVisual {
+  background-color: var(--main-color);
+  overflow: hidden;
+  width: 80%;
+  height: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  z-index: 100000;
+  backdrop-filter: blur(5px);
+  
+  border-radius: 40px;
+  animation: acercarse .6s ease-in-out;
+  
+}
+.errorVisual{
+    background-color: #859F3Dd5;
+    flex-direction: column;
+}
+
+.loader__element {
+  border-radius: 100%;
+  border: var(--size) solid var(--point-color);
+  margin: calc(var(--size)*2);
+}
+
+.loader__element:nth-child(1) {
+  animation: preloader .6s ease-in-out alternate infinite;
+}
+.loader__element:nth-child(2) {
+  animation: preloader .6s ease-in-out alternate .2s infinite;
+}
+
+.loader__element:nth-child(3) {
+  animation: preloader .6s ease-in-out alternate .4s infinite;
+}
+
+.salida {
+    animation: alejarse 1s;
+  }
+
+.btnIniciar{
+    margin: 2px;
+    font-size: 1.1em;
+}
+.btnIniciar:hover{
+    text-decoration: underline;
+    transition: 2s;
+    cursor: pointer;
+}
+@keyframes preloader {
+  100% { transform: scale(2); }
+}
+
+@keyframes acercarse {
+    from{
+        scale: 0;
+    }
+    to{
+        scale: 1;
+    }
+}
+
+@keyframes alejarse {
+    from {
+      scale:1;
+    }
+    to {
+      scale:0 ;
+    }
+  }
+
+/**Login visual***/
+
+.registerVisual{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #f6fcdf;
+    align-items: center;
+    padding: 10%;
+    border-radius: 40px;
+    height: 50vh;
+    backdrop-filter: blur(5px);
+    font-size: 1.5em;
+    animation: acercarse .6s ease-in-out;
+    filter: drop-shadow(0px 0px 1px black);
+}
+.checkmark, .crossmark {
+    width: 100px;
+    height: 100px;
+    stroke-width: 2;
+    stroke: rgb(8, 71, 8);
+    stroke-miterlimit: 10;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 1s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+.crossmark, .crossmark__circle, .crossmark__cross{
+    stroke: #ff0015 !important;
+    stroke-width: 5;
+}
+
+.checkmark__circle, .crossmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: rgb(2, 39, 2);
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark__check, .crossmark__cross {
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.5s forwards;
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
 }
