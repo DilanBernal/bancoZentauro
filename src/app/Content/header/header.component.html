@@ -4,7 +4,7 @@
       <ul>
         <li [ngClass]="{ 'selected': item.getSelectedItem() === 'services' || item.getSelectedItem() == 'creacion-productos'}" (click)="Services()">Servicios</li>
         <li [ngClass]="{ 'selected': item.getSelectedItem() === 'products'}" (click)="Products()">Productos</li>
-        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'prueba'}" (click)="prueba()">lista de productos</li>
+        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lista-productos'}" (click)="prueba()">lista de productos</li>
         <app-user></app-user>
       </ul>
     </nav>

@@ -24,8 +24,8 @@ export class SharedService {
     return this.selectedItem;
   }
   setSelectedItem(value:string):void{
-    console.log(localStorage.getItem('user'))
     this.selectedItem = value;
+    console.log(value)
   }
 
   getRolUser(){
@@ -41,12 +41,12 @@ export class SharedService {
     var userStringSession = sessionStorage.getItem('user')
     if(userString != null && userStringSession == null){
       var userObject = JSON.parse(userString)
+      sessionStorage.setItem('user', userString)
       this.nombreUsuario = userObject.usuarioNombre;
       return true
     }else if(userStringSession != null){
       var userObject = JSON.parse(userStringSession)
       this.nombreUsuario = userObject.usuarioNombre
-
       console.log("Objeto usuario",userObject.usuarioNombre, "Nombre en el this", this.nombreUsuario)
       return true
     }else return false
