@@ -19,8 +19,8 @@ export class SigninComponent {
 
   recuerdame: boolean = false;
   seRegistro: boolean = false;
-  huboError:boolean = false;
-  mostrarError:boolean = false;
+  huboError: boolean = false;
+  mostrarError: boolean = false;
   carga: boolean = false;
 
   datos: any;
@@ -53,40 +53,68 @@ export class SigninComponent {
     }, 1000)
   }
 
-  cerrarError(){
+  cerrarError() {
     this.mostrarError = false;
     setTimeout(() => {
-      this.huboError = false; 
+      this.huboError = false;
     }, 1000)
   }
 
-  ngOnInit(){
+  ngOnInit() {
     console.log(localStorage.getItem('user'))
-    const userString =localStorage.getItem('user')
-    if(userString != null){
-      const userObject = JSON.parse(userString);
-      this.api.existEmail(userObject.usuarioCorreo).subscribe({
+    const userString = localStorage.getItem('user')
+    const userStringSession = sessionStorage.getItem('user')
+    if (userString != null && sessionStorage.getItem('user') == null) {
+      const userObject = userString !== null ? JSON.parse(userString) : null;
+      sessionStorage.setItem('usr', userObject)
+      const userObjectSession = userStringSession !== null ? JSON.parse(userStringSession) : null;
+      this.api.existEmail(userObjectSession.usuarioCorreo).subscribe({
         next: (respuesta) => {
           if (respuesta == true) {
             this.seRegistro = true;
-            const nombreUsuario = userObject.usuarioNombre
-            console.log("final",this.api.existEmail(userObject.usuarioCorreo))
+            const nombreUsuario = userObjectSession.usuarioNombre
+            console.log("final", this.api.existEmail(userObjectSession.usuarioCorreo))
             this.registerVisual(nombreUsuario)
           } else {
-            console.log("final",this.api.existEmail(userObject.usuarioCorreo))
+            console.log("final", this.api.existEmail(userObjectSession.usuarioCorreo))
             localStorage.removeItem('user')
+            sessionStorage.removeItem('user')
           }
         },
         error: (err) => {
           console.error("Error al verificar el correo:", err);
           localStorage.removeItem('user')
+          sessionStorage.removeItem('user')
         }
       });
-    
+    }else if(userString != null){
+      
+      const userObject = userString !== null ? JSON.parse(userString) : null;
+      sessionStorage.setItem('usr', userObject)
+      const userObjectSession = userStringSession !== null ? JSON.parse(userStringSession) : null;
+      this.api.existEmail(userObjectSession.usuarioCorreo).subscribe({
+        next: (respuesta) => {
+          if (respuesta == true) {
+            this.seRegistro = true;
+            const nombreUsuario = userObjectSession.usuarioNombre
+            console.log("final", this.api.existEmail(userObjectSession.usuarioCorreo))
+            this.registerVisual(nombreUsuario)
+          } else {
+            console.log("final", this.api.existEmail(userObjectSession.usuarioCorreo))
+            localStorage.removeItem('user')
+            sessionStorage.removeItem('user')
+          }
+        },
+        error: (err) => {
+          console.error("Error al verificar el correo:", err);
+          localStorage.removeItem('user')
+          sessionStorage.removeItem('user')
+        }
+      });
     }
   }
 
-  borrarUsuarioLocal(){
+  borrarUsuarioLocal() {
     console.log(localStorage.getItem('user'))
     localStorage.removeItem('user')
     console.log(localStorage.getItem('user'))
@@ -103,7 +131,7 @@ export class SigninComponent {
     }, 200)
   }
 
-  errorVisual(error:any){
+  errorVisual(error: any) {
     this.huboError = true;
     this.mostrarError = true;
     setTimeout(() => {
@@ -139,7 +167,7 @@ export class SigninComponent {
                 if (this.recuerdame) {
                   localStorage.setItem('user', JSON.stringify(usuario))
                   console.log('login exitoso', localStorage.getItem('user'))
-                }
+                } else { sessionStorage.setItem('user', JSON.stringify(usuario)); console.log(sessionStorage.getItem('user')) }
               },
               error: (err) => {
                 console.error("Error al crear el usuario:", err);

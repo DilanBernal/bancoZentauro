@@ -142,6 +142,9 @@ export class LoginComponent {
                 console.log(response.body)
                 localStorage.setItem('user', JSON.stringify(response.body))
                 console.log(localStorage.getItem('user'))
+              }else{
+                sessionStorage.setItem('user', JSON.stringify(response.body))
+               console.log("sesionLocal", sessionStorage.getItem('user'))
               }
               this.loginVisual(usuario.usuarioNombre)
               break
