@@ -1,6 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../servicesAngular/api.service';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-login',

@@ -5,7 +5,7 @@ import { ProductInfoComponent } from './Content/product-info/product-info.compon
 import { ProductsComponent } from './Content/products/products.component';
 import { LoginComponent } from './Usuario/login/login.component';
 import { SigninComponent } from './Usuario/signin/signin.component';
-import { ServicesComponent } from './Content/services/services.component';
+import { ServicesComponent } from './Content/servicesBanco/services.component';
 import { BackupComponent } from './Usuario/backup/backup.component';
 import { EstudiantesComponent } from './Content/product-info/estudiantes/estudiantes.component';
 import { PlusComponent } from './Content/product-info/plus/plus.component';
