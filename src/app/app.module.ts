@@ -24,6 +24,7 @@ import { FooterComponent } from './Content/footer/footer.component';
 import { ListaComponent } from './Admin/solicitudes/lista/lista.component';
 import { SolicitudDeEntregaComponent } from './Admin/solicitudes/solicitud-de-entrega/solicitud-de-entrega.component';
 import { TableroDeControlComponent } from './Admin/tablero-de-control/tablero-de-control.component';
+import { AdminComponent } from './Content/header/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { TableroDeControlComponent } from './Admin/tablero-de-control/tablero-de
     ListaComponent,
     SolicitudDeEntregaComponent,
     TableroDeControlComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
