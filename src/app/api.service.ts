@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, tap, throwError } from 'rxjs';
+import { catchError, Observable, of, tap, throwError, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class ApiService {
   existEmail(datos:any): Observable<any>{
     return this.http.get(`${this.apiUrl}/usr/existByEmail/${datos}`).pipe(
       tap(response => {
-        console.log('Respuesta de la API:', response);
+        console.log('Respuesta de la APaI:', response);
       }),
       catchError(error => {
         console.error('Error en la solicitud:', error);
@@ -35,20 +35,25 @@ export class ApiService {
         console.log('Respuesta de la API:', response.body);
         console.log(response.status)
       }),
+      map((response: any) => {
+        console.log("Map")
+        return { status:response.status, body: response.body}
+      }),
       catchError(error => {
-        console.log(error.status)
+        console.log(error.status, error)
         switch(error.status){
           case 404:{
             console.log(error)
-            break
+            console.log(error.status)
+            return of({ status: 404, body: "No persona con este email encontrada" });
           }
           case 401:{
+            console.log(error.status)
             console.log(error)
-            break
+            return of({ status: 401, body: "Contraseña incorrecta" });
           }
         }
-
-        return throwError(error);
+        return "throwError(error)";
       })
     );
   }

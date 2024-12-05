@@ -71,7 +71,7 @@ export class SigninComponent {
             this.seRegistro = true;
             const nombreUsuario = userObject.usuarioNombre
             console.log("final",this.api.existEmail(userObject.usuarioCorreo))
-            this.loginVisual(nombreUsuario)
+            this.registerVisual(nombreUsuario)
           } else {
             console.log("final",this.api.existEmail(userObject.usuarioCorreo))
             localStorage.removeItem('user')
@@ -92,7 +92,7 @@ export class SigninComponent {
     console.log(localStorage.getItem('user'))
   }
 
-  loginVisual(nombr: string) {
+  registerVisual(nombr: string) {
     this.seRegistro = true;
     setTimeout(() => {
       this.componente.nativeElement.innerHTML += `${nombr}`
@@ -135,7 +135,7 @@ export class SigninComponent {
               next: (response) => {
                 this.datos = response;
                 console.log("Se creó correctamente");
-                this.loginVisual(this.nombre);
+                this.registerVisual(this.nombre);
                 if (this.recuerdame) {
                   localStorage.setItem('user', JSON.stringify(usuario))
                   console.log('login exitoso', localStorage.getItem('user'))
