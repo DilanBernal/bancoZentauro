@@ -5,29 +5,26 @@ import { Injectable } from '@angular/core';
 })
 export class SharedService {
 
+  public showHeader:boolean = true;
+
+  public saveUser:boolean = false;
+
+  
   public selectedItem:string = ''
-
-  public rolUser:any = ''
-
-  getRolUser(){
-    var tempData = localStorage.getItem('user')
-    const userString = localStorage.getItem('user')
-    if(userString != null){
-      const userObject = JSON.parse(userString);
-      console.log(userObject.usuarioRol)
-      return userObject.usuarioRol
-    }else return'notLogueado'
+  
+  getShowHeader(): boolean{
+    console.log("oasjfoa")
+    return this.showHeader;
+  }
+  setShowHeader(value:boolean):void{
+    this.showHeader = value;
   }
   
-  public estaLogeado():boolean{
-    if(localStorage.getItem('user')){
-      return true
-    }else return false;
-  }
   getSelectedItem():string{
     return this.selectedItem;
   }
   setSelectedItem(value:string):void{
+    console.log(localStorage.getItem('user'))
     this.selectedItem = value;
   }
 
