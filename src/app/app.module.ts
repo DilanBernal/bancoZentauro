@@ -9,7 +9,7 @@ import { HomeComponent } from './Content/home/home.component';
 import { ProductsComponent } from './Content/products/products.component';
 import { ProductInfoComponent } from './Content/product-info/product-info.component';
 import { ServicesComponent } from './Content/servicesBanco/services.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BackupComponent } from './Usuario/backup/backup.component';
 import { HeaderComponent } from './Content/header/header.component';
 import { UserComponent } from './Content/header/user/user.component';
@@ -55,7 +55,8 @@ import { AdminComponent } from './Content/header/admin/admin.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule 
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

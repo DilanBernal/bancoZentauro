@@ -1,14 +1,15 @@
-:host{
+:host {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
 }
-h2{
+
+h2 {
     text-align: center;
 }
 
-.btnVerde{
+.btnVerde {
     display: block;
     margin-top: 3%;
     margin-left: 3.5%;
@@ -20,7 +21,8 @@ h2{
     background-color: #859F3D;
     margin: auto;
 }
-.form-container{
+
+.form-container {
     margin: auto;
     display: block;
     text-align: center;
@@ -29,46 +31,57 @@ h2{
     align-items: center;
 }
 
-.input-group{
+.input-group {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+.form-select {
+    background-color: #31511E;
+    color: #F6FCDF;
+    appearance: none;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjRjZGQ0RGIiBoZWlnaHQ9IjE2IiB2aWV3Qm94PSIwIDAgMTIgMTIiIHdpZHRoPSIxNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBkPSJNOC4yOSAzLjVsLTMuMjkgMy4yOS0zLjI5LTMuMjktMS4wNyAxLjA3TDUgOS4xNGw0LjM2LTQuMzZMOC4yOSAzLjV6IiBmaWxsPSIjRjZGQ0RGIi8+Cjwvc3ZnPgo=');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 16px;
+}
 
-.input-group input{
+.input-group input {
     width: 45vw;
     background-color: #31511E;
     color: #f6fcdf;
 }
-.input-group input::placeholder{
-    color:#f6fcdfb3;
+
+.input-group input::placeholder {
+    color: #f6fcdfb3;
 }
 
-.parametros{
+.parametros {
     text-align: justify;
     width: 40vw;
     margin: auto;
 
 }
 
-.btnSubmit{
+.btnSubmit {
     align-items: center;
     margin: 50px;
     background-color: #31511E;
     color: #F6FCDF;
-    transition: 0,2s;
+    transition: 0, 2s;
 }
 
 
-.form-control{
+.form-control {
     border-radius: 20px !important;
 }
-.input-description{
+
+.input-description {
     height: 30vh;
 }
 
-.btnVolver{
+.btnVolver {
     position: absolute;
     top: 1vh;
     left: 1vw;

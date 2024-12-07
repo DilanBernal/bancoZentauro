@@ -163,10 +163,10 @@ export class SigninComponent {
       this.api.existEmail(this.email).subscribe({
         next: (respuesta) => {
           if (respuesta == false) {
-            this.api.postUser(usuario).subscribe({
+            this.api.registerUser(usuario).subscribe({
               next: (response) => {
                 this.datos = response;
-                if(form.controls['email'].invalid){
+                if (form.controls['email'].invalid) {
                   this.errorVisual("Ingrese un correo valido")
                   console.log("correo Vallido")
                   console.log("Se creó correctamente");
@@ -175,7 +175,7 @@ export class SigninComponent {
                     localStorage.setItem('user', JSON.stringify(usuario))
                     console.log('login exitoso', localStorage.getItem('user'))
                   } else { sessionStorage.setItem('user', JSON.stringify(usuario)); console.log(sessionStorage.getItem('user')) }
-                }else console.log("correo Invalido")
+                } else console.log("correo Invalido")
               },
               error: (err) => {
                 console.error("Error al crear el usuario:", err);
