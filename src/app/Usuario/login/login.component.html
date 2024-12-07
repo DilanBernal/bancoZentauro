@@ -10,7 +10,7 @@
   </svg>
   <h2>Ha iniciado sesion en su cuenta correctamente</h2>
   <br />
-  <p #personaHtml>Bienvenido/a {{nombreM}} </p>
+  <p #personaHtml>Bienvenido/a {{ nombreM }}</p>
 </div>
 
 <div class="errorVisual" *ngIf="huboError" [class.salida]="!mostrarError">
@@ -80,7 +80,7 @@
         class="checkbox"
         type="checkbox"
         name="Recordarme"
-        [(ngModel)] ="recuerdame"
+        [(ngModel)]="recuerdame"
         id="Recordarme"
       /><label for="Recordarme">Recordarme</label>
       <br />
@@ -94,15 +94,6 @@
         required
       /><label for="Capcha">No soy un robot</label>
       <br />
-      <input
-        class="checkbox"
-        type="checkbox"
-        [(ngModel)]="terminos"
-        #terminosInput="ngModel"
-        name="Terminos y condiciones"
-        id="Terminos"
-        required
-      /><label for="Terminos">Terminos y condiciones</label>
       <br />
       <a (click)="Backup()">¿Olvidaste tu contraseña?</a> <br />
       <a (click)="Signin()">Crear cuenta</a>

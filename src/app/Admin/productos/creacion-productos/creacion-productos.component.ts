@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,12 +13,15 @@ export class CreacionProductosComponent {
 
   fileForm: FormGroup;
   fileError: string | null = null
-  huboError:boolean = false
-  carga:boolean = false
-  seRegistro:boolean = false
-  mostrarError:boolean = false
+  huboError: boolean = false
+  carga: boolean = false
+  seRegistro: boolean = false
+  mostrarError: boolean = false
 
-  public constructor(private router: Router, public shared:SharedService, public api: ApiService, private fb: FormBuilder) {
+  @ViewChild('loader') loader!: ElementRef;
+  @ViewChild('productoHtml') componente!: ElementRef
+
+  public constructor(private router: Router, public shared: SharedService, public api: ApiService, private fb: FormBuilder) {
     this.fileForm = this.fb.group({
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
@@ -72,12 +75,21 @@ export class CreacionProductosComponent {
 
 
   ngOnInit() {
-    if(this.shared.estaLogeado() && this.shared.getRolUser() == 'admin'){
+    if (this.shared.estaLogeado() && this.shared.getRolUser() == 'admin') {
       console.log("Esta logeado en admin mode")
-    }else {
+    } else {
       console.log("no esta logeado o no esta como admin")
       this.router.navigate(['home'])
     }
+  }
+
+  cerrarCarga() {
+    this.loader.nativeElement.classList.add('salida')
+    console.log(1)
+    setTimeout(() => {
+      console.log(2)
+      this.carga = false; // Desactiva la carga al completar
+    }, 1000)
   }
 
   onSubmit() {
@@ -91,6 +103,7 @@ export class CreacionProductosComponent {
 
     this.api.addImg(this.fileForm.value.imagen, this.fileForm.value.nombre).subscribe({
       next: (respuesta) => {
+        this.carga = true;
         var idImagen = respuesta.body.file.img_id
         var datosParaBDProducto = {
           "productoNombre": this.fileForm.value.nombre,
@@ -101,10 +114,12 @@ export class CreacionProductosComponent {
         console.log(datosParaBDProducto)
         this.api.registerProduct(datosParaBDProducto).subscribe({
           next: (respuesta) => {
+            this.cerrarCarga();
             console.log(respuesta)
           },
           error: (err) => {
             console.log(`Error regis prod ${err}`)
+            this.cerrarCarga();
           }
         })
       },

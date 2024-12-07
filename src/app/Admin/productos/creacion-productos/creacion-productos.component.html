@@ -1,12 +1,11 @@
-
-<div class="loginVisual" *ngIf="seRegistro">
+<div class="registerVisual" *ngIf="seRegistro">
   <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
     <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
     <path class="checkmark__check" fill="none" d="M14 26l10 10 15-15" />
   </svg>
   <h2>Ha iniciado sesion en su cuenta correctamente</h2>
   <br />
-  <p #personaHtml>Bienvenido/a </p>
+  <p #productoHtml>Producto registrado correctamente!</p>
 </div>
 
 <div class="errorVisual" *ngIf="huboError" [class.salida]="!mostrarError">
@@ -44,19 +43,45 @@
       required
     />
   </div>
+  <span
+    *ngIf="
+      fileForm.get('nombre')?.hasError('required') &&
+      fileForm.get('nombre')?.touched
+    "
+    class="error"
+    >Tiene que tener un nombre</span
+  >
   <div class="input-group input-description">
     <label for="descripcion">Ingrese la descripción del producto</label>
-    <input
+    <textarea
       class="form-control"
-      type="text"
+      type="textarea  "
       id="descripcion"
+      minlength="25"
       formControlName="descripcion"
       placeholder="Descripción del producto"
       required
-    />
+    ></textarea>
   </div>
 
-  
+  <span
+    *ngIf="
+      fileForm.get('descripcion')?.hasError('required') &&
+      fileForm.get('descripcion')?.touched
+    "
+    class="error"
+    >La descripcion es obligatoria <br
+  /></span>
+
+  <span
+    *ngIf="
+      fileForm.get('descripcion')?.value < 25 &&
+      fileForm.get('descripcion')?.touched
+    "
+    class="error"
+    >La descripcion tiene que tener minimo 25 caracteres</span
+  >
+
   <div class="input-group">
     <div class="selection-input">
       <label for="tipo">Seleccione el tipo de producto</label>
@@ -67,17 +92,15 @@
         <option value="prepagada">Prepagada</option>
       </select>
     </div>
-    <span *ngIf="fileForm.get('tipo')?.hasError('required') && fileForm.get('tipo')?.touched" class="error">
+    <span
+      *ngIf="
+        fileForm.get('tipo')?.hasError('required') &&
+        fileForm.get('tipo')?.touched
+      "
+      class="error"
+    >
       Este campo es obligatorio.
     </span>
-    <!-- <input
-      class="form-control"
-      type="option"
-      id="tipo"
-      formControlName="tipo"
-      placeholder="Descripción del producto"
-      required
-    /> -->
   </div>
 
   <div class="input-group">

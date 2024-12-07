@@ -175,35 +175,9 @@ h3 {
     animation: alejarse 1s;
 }
 
-@keyframes preloader {
-    100% {
-        transform: scale(2);
-    }
-}
-
-@keyframes acercarse {
-    from {
-        scale: 0;
-    }
-
-    to {
-        scale: 1;
-    }
-}
-
-@keyframes alejarse {
-    from {
-        scale: 1;
-    }
-
-    to {
-        scale: 0;
-    }
-}
-
-  /*********************************************************
-  ***********************Alerta visual***********************
-  *********************************************************/
+/*********************************************************
+***********************Alerta visual***********************
+*********************************************************/
 .loginVisual {
     position: fixed;
     top: 50%;
@@ -264,5 +238,31 @@ h3 {
 @keyframes stroke {
     100% {
         stroke-dashoffset: 0;
+    }
+}
+
+@keyframes preloader {
+    100% {
+        transform: scale(2);
+    }
+}
+
+@keyframes acercarse {
+    from {
+        scale: 0;
+    }
+
+    to {
+        scale: 1;
+    }
+}
+
+@keyframes alejarse {
+    from {
+        scale: 1;
+    }
+
+    to {
+        scale: 0;
     }
 }
