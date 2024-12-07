@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SharedService } from '../../../services/shared.service';
 
 @Component({
   selector: 'app-creacion-productos',
@@ -13,7 +14,7 @@ export class CreacionProductosComponent {
   fileForm: FormGroup;
   fileError: string | null = null
 
-  public constructor(private router: Router, public api: ApiService, private fb: FormBuilder) {
+  public constructor(private router: Router, public shared:SharedService, public api: ApiService, private fb: FormBuilder) {
     this.fileForm = this.fb.group({
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
@@ -67,12 +68,12 @@ export class CreacionProductosComponent {
 
 
   ngOnInit() {
-    // this.api.getAllProducts().subscribe({
-    //   next: (respuesta) => {
-
-    //     console.log(respuesta.body[0])
-    //   }
-    // })
+    if(this.shared.estaLogeado() && this.shared.getRolUser() == 'admin'){
+      console.log("Esta logeado en admin mode")
+    }else {
+      console.log("no esta logeado o no esta como admin")
+      this.router.navigate(['home'])
+    }
   }
 
   onSubmit() {
