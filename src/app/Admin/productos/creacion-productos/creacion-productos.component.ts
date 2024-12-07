@@ -13,6 +13,10 @@ export class CreacionProductosComponent {
 
   fileForm: FormGroup;
   fileError: string | null = null
+  huboError:boolean = false
+  carga:boolean = false
+  seRegistro:boolean = false
+  mostrarError:boolean = false
 
   public constructor(private router: Router, public shared:SharedService, public api: ApiService, private fb: FormBuilder) {
     this.fileForm = this.fb.group({

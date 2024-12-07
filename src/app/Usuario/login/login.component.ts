@@ -8,6 +8,8 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+
+  nombreM: string = ''
   email: string = '';
   password: string = '';
 
@@ -92,20 +94,20 @@ export class LoginComponent {
   }
 
 
-  ngOnInit(){
+  ngOnInit() {
     console.log(localStorage.getItem('user'))
-    const userString =localStorage.getItem('user')
-    if(userString != null){
+    const userString = sessionStorage.getItem('user')
+    if (userString != null) {
       const userObject = JSON.parse(userString);
       this.api.existEmail(userObject.usuarioCorreo).subscribe({
         next: (respuesta) => {
           if (respuesta == true) {
             this.seRegistro = true;
             const nombreUsuario = userObject.usuarioNombre
-            console.log("final",this.api.existEmail(userObject.usuarioCorreo))
+            console.log("final", this.api.existEmail(userObject.usuarioCorreo))
             this.loginVisual(nombreUsuario)
           } else {
-            console.log("final",this.api.existEmail(userObject.usuarioCorreo))
+            console.log("final", this.api.existEmail(userObject.usuarioCorreo))
             localStorage.removeItem('user')
           }
         },
@@ -133,26 +135,27 @@ export class LoginComponent {
       this.api.loginUser(usuario).subscribe({
         next: response => {
           console.log('inicio exitoso', response.status)
-          console.log('respuesta ',response)
+          console.log('respuesta ', response)
           switch (response.status) {
             case 202: {
               this.cerrarCarga()
               console.log(response)
-              if(this.recuerdame){
+              if (this.recuerdame) {
                 console.log(response.body)
                 localStorage.setItem('user', JSON.stringify(response.body))
                 console.log(localStorage.getItem('user'))
-              }else{
+              } else {
                 sessionStorage.setItem('user', JSON.stringify(response.body))
-               console.log("sesionLocal", sessionStorage.getItem('user'))
+                console.log("sesionLocal", sessionStorage.getItem('user'))
               }
+              this.nombreM = usuario.usuarioNombre
               this.loginVisual(usuario.usuarioNombre)
               break
             }
             case 401: {
               this.cerrarCarga()
               this.errorVisual(response.body)
-              console.log(response,"resonacn")
+              console.log(response, "resonacn")
               break
             }
             case 404: {

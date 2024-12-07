@@ -32,6 +32,7 @@ export class UserComponent {
   Logout(){
     sessionStorage.removeItem('user')
     localStorage.removeItem('user')
+    this.router.navigate(["home"])
     this.estaLogeado = this.shared.estaLogeado();
   }
   
