@@ -117,7 +117,7 @@ h3 {
   *********************Efecto de carga**********************
   *********************************************************/
 
-.contenedorCarga {
+/* .contenedorCarga {
     --main-color: #859f3dc5;
     --point-color: #1A1A19;
     --size: 5px;
@@ -160,25 +160,25 @@ h3 {
 
 .loader__element:nth-child(3) {
     animation: preloader .6s ease-in-out alternate .4s infinite;
-}
+} */
 
 /*********************************************************
   **********************Error visual************************
   *********************************************************/
 
-.errorVisual {
+/* .errorVisual {
     background-color: #859F3Dd5;
     flex-direction: column;
 }
 
 .salida {
     animation: alejarse 1s;
-}
+} */
 
 /*********************************************************
 ***********************Alerta visual***********************
 *********************************************************/
-.loginVisual {
+/* .loginVisual {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -265,4 +265,4 @@ h3 {
     to {
         scale: 0;
     }
-}
+} */

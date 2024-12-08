@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { ApiService } from '../../../services/api.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../../../services/shared.service';
+import { LoaderComponent } from '../../../Content/popup/loader/loader.component';
+import { LoaderService } from '../../../Content/popup/loader/loader.service';
 
 @Component({
   selector: 'app-creacion-productos',
@@ -18,10 +20,14 @@ export class CreacionProductosComponent {
   seRegistro: boolean = false
   mostrarError: boolean = false
 
-  @ViewChild('loader') loader!: ElementRef;
   @ViewChild('productoHtml') componente!: ElementRef
 
-  public constructor(private router: Router, public shared: SharedService, public api: ApiService, private fb: FormBuilder) {
+  public constructor(
+    private router: Router,
+    public shared: SharedService,
+    public loader: LoaderService,
+    public api: ApiService,
+    private fb: FormBuilder) {
     this.fileForm = this.fb.group({
       nombre: ['', Validators.required],
       descripcion: ['', Validators.required],
@@ -83,16 +89,19 @@ export class CreacionProductosComponent {
     }
   }
 
-  cerrarCarga() {
-    this.loader.nativeElement.classList.add('salida')
-    console.log(1)
-    setTimeout(() => {
-      console.log(2)
-      this.carga = false; // Desactiva la carga al completar
-    }, 1000)
-  }
+  // cerrarCarga() {
+  //   this.loader.nativeElement.classList.add('salida')
+  //   console.log(1)
+  //   setTimeout(() => {
+  //     console.log(2)
+  //     this.carga = false; // Desactiva la carga al completar
+  //   }, 1000)
+  // }
 
   onSubmit() {
+    this.loader.activarLoader()
+
+    
     console.log(this.fileForm.value.imagen)
     console.log(this.fileForm.value.imagen.name)
 
@@ -103,7 +112,6 @@ export class CreacionProductosComponent {
 
     this.api.addImg(this.fileForm.value.imagen, this.fileForm.value.nombre).subscribe({
       next: (respuesta) => {
-        this.carga = true;
         var idImagen = respuesta.body.file.img_id
         var datosParaBDProducto = {
           "productoNombre": this.fileForm.value.nombre,
@@ -114,17 +122,18 @@ export class CreacionProductosComponent {
         console.log(datosParaBDProducto)
         this.api.registerProduct(datosParaBDProducto).subscribe({
           next: (respuesta) => {
-            this.cerrarCarga();
+            this.loader.cerrarLoader()
             console.log(respuesta)
           },
           error: (err) => {
             console.log(`Error regis prod ${err}`)
-            this.cerrarCarga();
+            this.loader.cerrarLoader()
           }
         })
       },
       error: (err) => {
         console.log("errir imagenes" + err)
+        this.loader.cerrarLoader();
       }
     })
 

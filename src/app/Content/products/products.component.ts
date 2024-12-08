@@ -4,6 +4,7 @@ import { ApiService } from '../../services/api.service';
 import { Observable, map } from 'rxjs';
 
 interface Product {
+  productoId: number,
   productoIdImagen: number;
   productoNombre: string;
   productoDescripcion: string;
@@ -43,7 +44,7 @@ export class ProductsComponent implements OnInit {
           // Suscribimos para obtener la URL
           imageUrlObservable.subscribe(
             imageUrl => {
-              product.imageUrl = "https://dq5jx513-3000.use2.devtunnels.ms/"+imageUrl;
+              product.imageUrl = "http://localhost:3000/"+imageUrl;
             },
             error => {
               console.error(`Error obteniendo imagen para producto ${product.productoNombre}:`, error);

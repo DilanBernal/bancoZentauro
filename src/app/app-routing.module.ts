@@ -13,6 +13,7 @@ import { PremiumComponent } from './Content/product-info/premium/premium.compone
 import { FormSolicitudComponent } from './Content/form-solicitud/form-solicitud.component';
 import { CreacionProductosComponent } from './Admin/productos/creacion-productos/creacion-productos.component';
 import { ListaProductosComponent } from './Admin/productos/lista-productos/lista-productos.component';
+import { LoaderComponent } from './Content/popup/loader/loader.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'signin', component:SigninComponent},
   {path: 'backup', component:BackupComponent},
   {path: 'services', component:ServicesComponent},
+  {path: 'loader', component:LoaderComponent},
   {path: 'estudiantes', component:EstudiantesComponent},
   {path: 'plus', component:PlusComponent},
   {path: 'premium', component:PremiumComponent},
