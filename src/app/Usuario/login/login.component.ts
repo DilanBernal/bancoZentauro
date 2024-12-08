@@ -30,10 +30,6 @@ export class LoginComponent {
 
 
   @ViewChild('personaHtml') componente!: ElementRef;
-  @ViewChild('contenedorCarga') cargador!: ElementRef;
-  @ViewChild('errorHtml') errorHtml!: ElementRef;
-  @ViewChild('errorContenedor') errorContenedor!: ElementRef;
-
   datos: any
 
   constructor(private router: Router, private api: ApiService, public loader: LoaderService, public alertC: CompleteService) { }

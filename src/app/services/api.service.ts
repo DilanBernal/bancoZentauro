@@ -7,10 +7,10 @@ import { catchError, Observable, of, tap, throwError, map } from 'rxjs';
 })
 export class ApiService {
   private apiUrl = 'https://dq5jx513-8080.use2.devtunnels.ms'
-  private apiImgUrl = 'https://dq5jx513-3000.use2.devtunnels.ms'
+  // private apiImgUrl = 'https://dq5jx513-3000.use2.devtunnels.ms'
 
   // private apiUrl = 'http://localhost:8080'
-  // private apiImgUrl = 'http://localhost:3000'
+  private apiImgUrl = 'http://localhost:3000'
   constructor(private http: HttpClient) { }
 
   /*********************************************************

@@ -48,7 +48,7 @@ export class ProductsComponent implements OnInit {
             },
             error => {
               console.error(`Error obteniendo imagen para producto ${product.productoNombre}:`, error);
-              product.imageUrl = '';  // URL por defecto en caso de error
+              product.imageUrl = 'Error.png';  // URL por defecto en caso de error
             }
           );
 

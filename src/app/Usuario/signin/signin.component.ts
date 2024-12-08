@@ -2,6 +2,9 @@ import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
 import { NgForm } from '@angular/forms';
+import { LoaderService } from '../../Content/popup/loader/loader.service';
+import { CompleteComponent } from '../../Content/popup/complete/complete.component';
+import { CompleteService } from '../../Content/popup/complete/complete.service';
 
 @Component({
   selector: 'app-signin',
@@ -9,6 +12,7 @@ import { NgForm } from '@angular/forms';
   styleUrl: './signin.component.css'
 })
 export class SigninComponent {
+
 
   nombre: string = '';
   apellido: string = '';
@@ -31,7 +35,7 @@ export class SigninComponent {
   @ViewChild('errorHtml') errorHtml!: ElementRef;
   @ViewChild('errorContenedor') errorContenedor!: ElementRef;
 
-  constructor(private router: Router, public api: ApiService) { }
+  constructor(private router: Router, public api: ApiService, public loader: LoaderService, public alertC: CompleteService) { }
 
   Home() {
     this.router.navigate(["home"]);
@@ -42,9 +46,7 @@ export class SigninComponent {
   }
 
   Coinciden(pas1: string, pas2: string): boolean {
-    if (pas1 === pas2) {
-      return true;
-    } else return false
+    return pas1 === pas2
   }
 
   cerrarCarga() {
@@ -75,7 +77,7 @@ export class SigninComponent {
             this.seRegistro = true;
             const nombreUsuario = userObjectSession.usuarioNombre
             console.log("final", this.api.existEmail(userObjectSession.usuarioCorreo))
-            this.registerVisual(nombreUsuario)
+            this.alertC.activarLoader('Se completo correctamente el registro', `Bienvenido/a ${nombreUsuario}`, true)
           } else {
             console.log("final", this.api.existEmail(userObjectSession.usuarioCorreo))
             localStorage.removeItem('user')
@@ -99,7 +101,7 @@ export class SigninComponent {
             this.seRegistro = true;
             const nombreUsuario = userObjectSession.usuarioNombre
             console.log("final", this.api.existEmail(userObjectSession.usuarioCorreo))
-            this.registerVisual(nombreUsuario)
+            this.alertC.activarLoader('Se completo correctamente el registro', `Bienvenido/a ${nombreUsuario}!`, true)
           } else {
             console.log("final", this.api.existEmail(userObjectSession.usuarioCorreo))
             localStorage.removeItem('user')
@@ -121,16 +123,6 @@ export class SigninComponent {
     console.log(localStorage.getItem('user'))
   }
 
-  registerVisual(nombr: string) {
-    this.seRegistro = true;
-    setTimeout(() => {
-      this.componente.nativeElement.innerHTML += `${nombr}`
-      setTimeout(() => {
-        this.seRegistro = false;
-        this.Home()
-      }, 2600)
-    }, 200)
-  }
 
   errorVisual(error: any) {
     this.huboError = true;
@@ -170,7 +162,7 @@ export class SigninComponent {
                   this.errorVisual("Ingrese un correo valido")
                   console.log("correo Vallido")
                   console.log("Se creó correctamente");
-                  this.registerVisual(this.nombre);
+                  // this.registerVisual(this.nombre);
                   if (this.recuerdame) {
                     localStorage.setItem('user', JSON.stringify(usuario))
                     console.log('login exitoso', localStorage.getItem('user'))
@@ -182,8 +174,7 @@ export class SigninComponent {
                 this.errorVisual(err)
               },
               complete: () => {
-                this.cerrarCarga()
-                // this.cerrarError()
+                this.alertC.cerrarLoader()
               }
             });
           } else {
@@ -196,7 +187,7 @@ export class SigninComponent {
         error: (err) => {
           console.error("Error al verificar el correo:", err);
           this.cerrarCarga()
-          this.errorVisual("Error al verificar el correo" + err)
+          // this.errorVisual("Error al verificar el correo" + err)
         }
       });
     } else {
