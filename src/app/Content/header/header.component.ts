@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SharedService } from '../../shared.service';
 import { filter } from 'rxjs';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-header',
