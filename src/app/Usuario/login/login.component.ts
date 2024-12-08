@@ -1,6 +1,9 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { LoaderService } from '../../Content/popup/loader/loader.service';
+import { CompleteComponent } from '../../Content/popup/complete/complete.component';
+import { CompleteService } from '../../Content/popup/complete/complete.service';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +26,7 @@ export class LoginComponent {
   recuerdame: boolean = false;
 
   placeholderEmail = 'Escribe tu email aqui';
+  placeholderPassword = "Escribe tu contraseña aqui"
 
 
   @ViewChild('personaHtml') componente!: ElementRef;
@@ -31,9 +35,8 @@ export class LoginComponent {
   @ViewChild('errorContenedor') errorContenedor!: ElementRef;
 
   datos: any
-  placeholderPassword = "Escribe tu contraseña aqui"
 
-  constructor(private router: Router, private api: ApiService) { }
+  constructor(private router: Router, private api: ApiService, public loader: LoaderService, public alertC: CompleteService) { }
 
   Home() {
     this.router.navigate(["home"]);
@@ -47,50 +50,10 @@ export class LoginComponent {
     this.router.navigate(["signin"]);
   }
 
-
-  cerrarCarga() {
-    this.cargador.nativeElement.classList.add('salida')
-    console.log(1)
-    setTimeout(() => {
-      console.log(2)
-      this.carga = false; // Desactiva la carga al completar
-    }, 1000)
-  }
-
-  cerrarError() {
-    this.mostrarError = false;
-    setTimeout(() => {
-      this.huboError = false;
-    }, 1000)
-  }
-
-
   borrarUsuarioLocal() {
     console.log(localStorage.getItem('user'))
     localStorage.removeItem('user')
     console.log(localStorage.getItem('user'))
-  }
-
-  loginVisual(nombr: string) {
-    this.seRegistro = true;
-    setTimeout(() => {
-      this.componente.nativeElement.innerHTML += `${nombr}`
-      setTimeout(() => {
-        this.seRegistro = false;
-        this.Home()
-      }, 2600)
-    }, 200)
-  }
-
-  errorVisual(error: any) {
-    this.huboError = true;
-    this.mostrarError = true;
-    setTimeout(() => {
-      this.errorHtml.nativeElement.innerHTML += `${error}`
-      setTimeout(() => {
-        this.cerrarError()
-      }, 2600)
-    }, 200)
   }
 
 
@@ -104,8 +67,7 @@ export class LoginComponent {
           if (respuesta == true) {
             this.seRegistro = true;
             const nombreUsuario = userObject.usuarioNombre
-            console.log("final", this.api.existEmail(userObject.usuarioCorreo))
-            this.loginVisual(nombreUsuario)
+            this.alertC.activarLoader('Se inicio sesion correctamete', `Bienvenido/a ${nombreUsuario}`, true)
           } else {
             console.log("final", this.api.existEmail(userObject.usuarioCorreo))
             localStorage.removeItem('user')
@@ -128,48 +90,45 @@ export class LoginComponent {
       "usuarioPassword": this.password,
       "usuarioRol": "cliente"
     }
-
-    this.carga = true;
+    this.loader.activarLoader()
 
     if (this.api.existEmail(this.email)) {
       this.api.loginUser(usuario).subscribe({
         next: response => {
-          console.log('inicio exitoso', response.status)
-          console.log('respuesta ', response)
           switch (response.status) {
             case 202: {
-              this.cerrarCarga()
-              console.log(response)
+              this.loader.cerrarLoader()
               if (this.recuerdame) {
-                console.log(response.body)
                 localStorage.setItem('user', JSON.stringify(response.body))
                 console.log(localStorage.getItem('user'))
               } else {
                 sessionStorage.setItem('user', JSON.stringify(response.body))
-                console.log("sesionLocal", sessionStorage.getItem('user'))
               }
-              this.nombreM = usuario.usuarioNombre
-              this.loginVisual(usuario.usuarioNombre)
+
+              this.loader.cerrarLoader()
+              this.nombreM = usuario.usuarioNombre              
+              this.alertC.activarLoader('Se inicio sesion correctamete', `Bienvenido/a ${this.nombreM}`, true)
               break
             }
             case 401: {
-              this.cerrarCarga()
-              this.errorVisual(response.body)
+              
+              this.alertC.activarLoader('ERROR!', `Contraseña o correo incorrectos`, false)
               console.log(response, "resonacn")
               break
             }
             case 404: {
-              this.cerrarCarga()
-              this.errorVisual(response.body)
+              this.alertC.activarLoader('ERROR!', `No se pudo encontrar al usuario`, false)
               console.log(response)
             }
           }
 
         },
         error: error => {
-          console.log(error.status)
-          console.error('error durante el inicio: ', error);
-        }
+          this.loader.cerrarLoader()
+        },
+        complete: (() => {
+          this.loader.cerrarLoader()
+        })
       })
     }
     console.log(usuario)

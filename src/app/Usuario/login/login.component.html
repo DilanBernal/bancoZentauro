@@ -3,15 +3,7 @@
   <img src="logo.png" alt="logo de banco centauro" />
 </div>
 
-<div class="loginVisual" *ngIf="seRegistro">
-  <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
-    <path class="checkmark__check" fill="none" d="M14 26l10 10 15-15" />
-  </svg>
-  <h2>Ha iniciado sesion en su cuenta correctamente</h2>
-  <br />
-  <p #personaHtml>Bienvenido/a {{ nombreM }}</p>
-</div>
+<complete></complete>
 
 <div class="errorVisual" *ngIf="huboError" [class.salida]="!mostrarError">
   <svg class="crossmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
@@ -27,13 +19,7 @@
   <p #errorHtml></p>
 </div>
 
-<div class="contenedorCarga" *ngIf="carga == true">
-  <div class="loader" #contenedorCarga>
-    <span class="loader__element"></span>
-    <span class="loader__element"></span>
-    <span class="loader__element"></span>
-  </div>
-</div>
+<app-loader></app-loader>
 
 <div class="login-container">
   <h2>Iniciar Sesión</h2>

@@ -1,5 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root{
+    --oscuro: #1a1a19;
+    --blanco: #f6fcd;
+    --verdeclaro: #859f39;
+    --verdeoscuro: #31511E;
+}
+
 *{
     font-family: "Nunito", sans-serif;
     font-optical-sizing: auto;
@@ -29,5 +36,6 @@ body{
 }
 
 ::-webkit-scrollbar-track{
-    background:linear-gradient( #859F3D 10%, #F6FCDF 15%)
+    background: #859F3D 10%;
+    border: 1px #1A1A19;
 }

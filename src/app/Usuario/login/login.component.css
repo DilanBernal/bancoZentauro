@@ -114,66 +114,13 @@ h3 {
 }
 
 /*********************************************************
-  *********************Efecto de carga**********************
-  *********************************************************/
-
-/* .contenedorCarga {
-    --main-color: #859f3dc5;
-    --point-color: #1A1A19;
-    --size: 5px;
-}
-
-.loader,
-.errorVisual {
-    background-color: var(--main-color);
-    overflow: hidden;
-    width: 80%;
-    height: 80%;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 100000;
-    backdrop-filter: blur(5px);
-
-    border-radius: 40px;
-    animation: acercarse .6s ease-in-out;
-
-}
-
-.loader__element {
-    border-radius: 100%;
-    border: var(--size) solid var(--point-color);
-    margin: calc(var(--size)*2);
-}
-
-.loader__element:nth-child(1) {
-    animation: preloader .6s ease-in-out alternate infinite;
-}
-
-.loader__element:nth-child(2) {
-    animation: preloader .6s ease-in-out alternate .2s infinite;
-}
-
-.loader__element:nth-child(3) {
-    animation: preloader .6s ease-in-out alternate .4s infinite;
-} */
-
-/*********************************************************
   **********************Error visual************************
   *********************************************************/
 
-/* .errorVisual {
+.errorVisual {
     background-color: #859F3Dd5;
     flex-direction: column;
 }
-
-.salida {
-    animation: alejarse 1s;
-} */
 
 /*********************************************************
 ***********************Alerta visual***********************

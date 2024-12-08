@@ -12,7 +12,6 @@ export class LoaderService {
   constructor() { }
 
   activarLoader() {
-    console.log('xd')
     this.activo.next(true)
   }
 
@@ -22,7 +21,7 @@ export class LoaderService {
       setTimeout(() => {
         this.activo.next(false)
       }, 950)
-    }, 2600)
+    }, 1000)
   }
 
   getLoaderStatus() {

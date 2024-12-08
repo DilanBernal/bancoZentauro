@@ -89,19 +89,10 @@ export class CreacionProductosComponent {
     }
   }
 
-  // cerrarCarga() {
-  //   this.loader.nativeElement.classList.add('salida')
-  //   console.log(1)
-  //   setTimeout(() => {
-  //     console.log(2)
-  //     this.carga = false; // Desactiva la carga al completar
-  //   }, 1000)
-  // }
-
   onSubmit() {
     this.loader.activarLoader()
 
-    
+
     console.log(this.fileForm.value.imagen)
     console.log(this.fileForm.value.imagen.name)
 
