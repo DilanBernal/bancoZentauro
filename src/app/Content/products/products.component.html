@@ -1,42 +1,96 @@
 <section class="products">
-    <h1>Nuestros productos!</h1>
-    <section class="productsBanner">
-      <div class="productsBannerTexto">
-            <div class="product">
-                <div class="imgBanner">
-                    <img src="tarjeta estudiantes.png" alt="Persona Feliz En Banco">
-                </div>
-                <strong>Tarjeta de credito Estudiantes.</strong><br>
-                <p>
-                    Disfruta de un cupo accesible sin cuotas de manejo ni intereses. 
-                    Además, aprovecha descuentos exclusivos en tus lugares favoritos, desde librerías hasta cafés. 
-                    Maneja tu dinero con libertad y ahorra mientras estudias.
-                </p>
-                <button class="btn btnVerde" (click)="tarjetaEstudiantes()">Solicitar</button>
-            </div>
-            <div class="product">
-                <div class="imgBanner">
-                    <img src="tarjeta plus.png" alt="Persona Feliz En Banco">
-                </div>
-                <strong>Tarjeta de credito Plus</strong><br>
-                <p>
-                Haz que cada compra cuente: acumula puntos con cada gasto y canjéalos por increíbles beneficios exclusivos.
-                Además, disfruta de promociones especiales que te harán ahorrar en tus compras favoritas. 
-            </p>
-                <button class="btn btnVerde" (click)="tarjetaPlus()" >Solicitar</button>
-            </div>
-            <div class="product">
-                <div class="imgBanner">
-                    <img src="Tarjeta Premium.png" alt="Persona Feliz En Banco">
-                </div>
-                <strong>Tarjeta de credito Premium</strong><br>
-                <p>
-                Disfruta de beneficios exclusivos, una alta capacidad de crédito y recompensas que se adaptan a tu estilo de vida.
-                 La tarjeta ideal para quienes buscan más y mejor.
-                </p>
-                 <button class="btn btnVerde" (click)="tarjetaPremium()" class="btn btnVerde">Solicitar</button>
-            </div>
+  <h1>Nuestros productos!</h1>
+  <section class="productsBanner">
+    <!-- <div class="productsBannerTexto">
+      <div class="product">
+        <div class="imgBanner">
+          <img src="tarjeta estudiantes.png" alt="Persona Feliz En Banco" />
+        </div>
+        <strong>Tarjeta de credito Estudiantes.</strong><br />
+        <p>
+          Disfruta de un cupo accesible sin cuotas de manejo ni intereses.
+          Además, aprovecha descuentos exclusivos en tus lugares favoritos,
+          desde librerías hasta cafés. Maneja tu dinero con libertad y ahorra
+          mientras estudias.
+        </p>
+        <button class="btn btnVerde" (click)="tarjetaEstudiantes()">
+          Solicitar
+        </button>
       </div>
-    </section>
-</section>
+      <div class="product">
+        <div class="imgBanner">
+          <img src="tarjeta plus.png" alt="Persona Feliz En Banco" />
+        </div>
+        <strong>Tarjeta de credito Plus</strong><br />
+        <p>
+          Haz que cada compra cuente: acumula puntos con cada gasto y canjéalos
+          por increíbles beneficios exclusivos. Además, disfruta de promociones
+          especiales que te harán ahorrar en tus compras favoritas.
+        </p>
+        <button class="btn btnVerde" (click)="tarjetaPlus()">Solicitar</button>
+      </div>
+      <div class="product">
+        <div class="imgBanner">
+          <img src="Tarjeta Premium.png" alt="Persona Feliz En Banco" />
+        </div>
+        <strong>Tarjeta de credito Premium</strong><br />
+        <p>
+          Disfruta de beneficios exclusivos, una alta capacidad de crédito y
+          recompensas que se adaptan a tu estilo de vida. La tarjeta ideal para
+          quienes buscan más y mejor.
+        </p>
+        <button
+          class="btn btnVerde"
+          (click)="tarjetaPremium()"
+          class="btn btnVerde"
+        >
+          Solicitar
+        </button>
+      </div>
+    </div> -->
+    <!-- <div class="productsBannerTexto">
 
+        <div class="product" *ngFor="let product of products">
+        <div class="imgBanner">
+            <img [src]="this.api.getUrlImg(product.product.productoIdImagen)" alt="" />
+        </div>
+        <strong> {{ product.productoNombre }} </strong><br />
+        <p>
+            {{ product.productoDescripcion }}
+        </p>
+        <button class="btn btnVerde" (click)="tarjetaEstudiantes()">
+            Solicitar
+        </button>
+        </div>
+    </div> -->
+  </section>
+
+   <div *ngIf="loading" class="spinner">Cargando...</div>
+   <div *ngIf="error" class="error-message">
+       {{ error }}
+    </div>
+    <!--
+    
+<div *ngIf="!loading && !error">
+  <div *ngFor="let product of products">
+    <img [src]="product.productUrl" [alt]="product.nombre">
+    <h3>{{ product.nombre }}</h3>
+    <p>{{ product.precio | currency }}</p>
+  </div>
+</div> -->
+  <div class="productsBannerTexto">
+    <div class="product" *ngFor="let product of products">
+      <div class="imgBanner">
+        <img [src]="product.imageUrl" alt="{{ product.productoNombre }}" />
+      </div>
+      <strong>{{ product.productoNombre }}</strong
+      ><br />
+      <p>
+        {{ product.productoDescripcion }}
+      </p>
+      <button class="btn btnVerde" (click)="tarjetaEstudiantes()">
+        Solicitar
+      </button>
+    </div>
+  </div>
+</section>

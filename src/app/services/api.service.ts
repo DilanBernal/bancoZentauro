@@ -99,6 +99,26 @@ export class ApiService {
       )
     );
   }
+
+  getOneImg(id: number): Observable<any> {
+    return this.http.get(`${this.apiImgUrl}/uploadOne/${id}`, {observe: 'response'}).pipe(
+      map((response) => {
+        return { status: response.status, body: response.body, header: response.headers }
+      })
+    )
+  };
+
+  getUrlImg(id: number): Observable<any> {
+    return this.http.get(`${this.apiImgUrl}/uploadOne/${id}`, {observe: 'response'}).pipe(
+      map((response) =>{
+        var tempResponse = response.body
+        console.log("teampresponse url",tempResponse)
+        return tempResponse
+      })
+    )
+  }
+
+  //*************************Productos************************
   registerProduct(datos: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/prd/register`, datos, { observe: 'response' }).pipe(
       tap((response) => {
@@ -122,7 +142,7 @@ export class ApiService {
         console.log("Estado de la api: ", response.status)
       }),
       map((response) => {
-        return { status: response.status, body: response.body, Headers: response.headers }
+        return { status: response.status, body: response.body, Headers: response.headers, ImgUrl: response.body}
       }),
       catchError(error => {
         return "throwError(error)";

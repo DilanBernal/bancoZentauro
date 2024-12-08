@@ -17,6 +17,9 @@ h1{
     );
 
 }
+.product{
+    box-shadow: inset;
+}
 .imgBanner{
     width: 50%;
     height: 28vh;
