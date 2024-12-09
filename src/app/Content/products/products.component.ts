@@ -52,7 +52,7 @@ export class ProductsComponent implements OnInit {
             (imageUrls: string[]) => {
               // Asignamos la URL de imagen a cada producto
               data.body.forEach((product: Product, index: number) => {
-                product.imageUrl = imageUrls[index] ? "http://localhost:3000/" + imageUrls[index] : 'assets/default-product.png';
+                product.imageUrl = imageUrls[index] ? "http://localhost:3000/" + imageUrls[index] : 'Error.png';
               });
               this.products = data.body;
               sessionStorage.setItem('products', JSON.stringify(this.products));  // Guardamos todos los productos

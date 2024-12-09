@@ -33,6 +33,9 @@ h1::before{
     background-color: var(--verdeoscuro);
     color: var(--blanco);
     padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
     border-radius: 10px;
 }
 
