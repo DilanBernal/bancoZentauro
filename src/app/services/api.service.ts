@@ -1,16 +1,40 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, tap, throwError, map } from 'rxjs';
+import { catchError, Observable, of, tap, throwError, map, forkJoin } from 'rxjs';
+
+interface enumProductTipo {
+  credito: string;
+  debito: string;
+  prepago: string;
+}
+
+interface Product {
+  productoId: number,
+  productoIdImagen: number;
+  productoNombre: string;
+  productoDescripcion: string;
+  productoTipo: enumProductTipo;
+  imageUrl?: string;  // Añadimos una propiedad para almacenar la URL de la imagen
+}
+
+interface ProductSolicitud {
+
+}
+
+interface ApiResponse<T> {
+  body: T[];
+  status: number;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   private apiUrl = 'https://dq5jx513-8080.use2.devtunnels.ms'
-  // private apiImgUrl = 'https://dq5jx513-3000.use2.devtunnels.ms'
+  private apiImgUrl = 'https://dq5jx513-3000.use2.devtunnels.ms'
 
   // private apiUrl = 'http://localhost:8080'
-  private apiImgUrl = 'http://localhost:3000'
+  // private apiImgUrl = 'http://localhost:3000'
   constructor(private http: HttpClient) { }
 
   /*********************************************************
@@ -95,7 +119,7 @@ export class ApiService {
   }
 
   getOneImg(id: number): Observable<any> {
-    return this.http.get(`${this.apiImgUrl}/uploadOne/${id}`, {observe: 'response'}).pipe(
+    return this.http.get(`${this.apiImgUrl}/uploadOne/${id}`, { observe: 'response' }).pipe(
       map((response) => {
         return { status: response.status, body: response.body, header: response.headers }
       })
@@ -103,8 +127,8 @@ export class ApiService {
   };
 
   getUrlImg(id: number): Observable<any> {
-    return this.http.get(`${this.apiImgUrl}/uploadOne/${id}`, {observe: 'response'}).pipe(
-      map((response) =>{
+    return this.http.get(`${this.apiImgUrl}/uploadOne/${id}`, { observe: 'response' }).pipe(
+      map((response) => {
         var tempResponse = response.body
         return tempResponse
       })
@@ -130,11 +154,59 @@ export class ApiService {
       tap((response) => {
       }),
       map((response) => {
-        return { status: response.status, body: response.body, Headers: response.headers, ImgUrl: response.body}
+        return { status: response.status, body: response.body, Headers: response.headers, ImgUrl: response.body }
       }),
       catchError(error => {
         return "throwError(error)";
       })
     )
   }
+  // getAllProdu
+  async getAllProductsJson(): Promise<Product[]> {
+    try {
+      // Obtener todos los productos
+      const data: ApiResponse<Product> = await this.getAllProducts().toPromise();
+
+      // Procesar cada producto para obtener su URL de imagen
+      const productsWithImages = await Promise.all(
+        data.body.map(async (product) => {
+          try {
+            const response = await this.getUrlImg(product.productoIdImagen).toPromise();
+            return {
+              ...product,
+              imageUrl: response.img_url ? `http://localhost:3000/${response.img_url}` : 'Error.png',
+            };
+          } catch (error) {
+            console.error(`Error obteniendo imagen para producto ${product.productoNombre}:`, error);
+            return {
+              ...product,
+              imageUrl: 'Error.png', // Valor por defecto en caso de error
+            };
+          }
+        })
+      );
+
+      console.log(productsWithImages)
+      return productsWithImages;
+
+    } catch (error) {
+      console.error('Error al cargar productos:', error);
+      throw new Error('No se pudieron cargar los productos');
+    }
+  }
+
+  async getAllSolicitudProduct(): Promise<Product[]> {
+    try {
+      var dataSolicitud = this.http.get(`${this.apiUrl}/slt/solicitudes`).subscribe((products) => {
+        console.log(dataSolicitud)
+      })
+
+      return this.getAllProductsJson();
+    } catch (error) {
+      console.log(error)
+      throw new Error('error' + error)
+    }
+  }
+
+
 }
