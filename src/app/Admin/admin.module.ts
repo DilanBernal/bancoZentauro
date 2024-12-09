@@ -6,6 +6,8 @@ import { RevisarProductosComponent } from './productos/revisar-productos/revisar
 import { SolicitudDeEntregaComponent } from './solicitudes/solicitud-de-entrega/solicitud-de-entrega.component';
 import { ListaSolicitudComponent } from './solicitudes/lista-solicitud/lista.component';
 import { TableroDeControlComponent } from './tablero-de-control/tablero-de-control.component';
+import { PopupModule } from '../Content/popup/popup.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,7 +21,10 @@ import { TableroDeControlComponent } from './tablero-de-control/tablero-de-contr
     TableroDeControlComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    PopupModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

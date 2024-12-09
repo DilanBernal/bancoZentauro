@@ -6,7 +6,7 @@ import { LoginComponent } from './Usuario/login/login.component';
 import { SigninComponent } from './Usuario/signin/signin.component';
 import { ServicesComponent } from './Content/servicesBanco/services.component';
 import { BackupComponent } from './Usuario/backup/backup.component';
-import { FormSolicitudComponent } from './Content/form-solicitud/form-solicitud.component';
+import { FormSolicitudComponent } from './Usuario/form-solicitud/form-solicitud.component';
 import { CreacionProductosComponent } from './Admin/productos/creacion-productos/creacion-productos.component';
 import { ListaProductosComponent } from './Admin/productos/lista-productos/lista-productos.component';
 import { CompleteComponent } from './Content/popup/complete/complete.component';

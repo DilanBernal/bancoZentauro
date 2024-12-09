@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { SigninComponent } from './signin/signin.component';
 import { BackupComponent } from './backup/backup.component';
+import { PopupModule } from '../Content/popup/popup.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormSolicitudComponent } from './form-solicitud/form-solicitud.component';
 
 
 
@@ -10,9 +13,13 @@ import { BackupComponent } from './backup/backup.component';
   declarations: [
     LoginComponent,
     SigninComponent,
-    BackupComponent
+    BackupComponent,
+    FormSolicitudComponent
   ],
   imports: [
+    PopupModule,
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule
   ]
 })

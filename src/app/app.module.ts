@@ -14,7 +14,6 @@ import { UsuarioModule } from './Usuario/usuario.module';
 @NgModule({
   declarations: [
     AppComponent
-    // ServicesComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,9 +26,7 @@ import { UsuarioModule } from './Usuario/usuario.module';
     UsuarioModule,
     PopupModule,
   ],
-  providers: [
-    ApiService
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

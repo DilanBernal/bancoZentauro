@@ -3,7 +3,7 @@ import { LoaderService } from './loader.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-loader',
+  selector: 'loader',
   templateUrl: './loader.component.html',
   styleUrl: './loader.component.css'
 })
