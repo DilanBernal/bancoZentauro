@@ -24,7 +24,7 @@ h1::before{
 .productsBannerTexto {
     display: grid;
     grid-template-columns: repeat(auto-fit,
-            minmax(300px, 1fr));
+            minmax(400px, 1fr));
 }
 
 .product {

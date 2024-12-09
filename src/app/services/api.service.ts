@@ -23,7 +23,6 @@ export class ApiService {
   existEmail(datos: any): Observable<any> {
     return this.http.get(`${this.apiUrl}/usr/existByEmail/${datos}`).pipe(
       tap(response => {
-        console.log('Respuesta de la APaI:', response);
       }),
       catchError(error => {
         console.error('Error en la solicitud:', error);
@@ -38,11 +37,8 @@ export class ApiService {
   loginUser(datos: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/usr/login`, datos, { observe: 'response' }).pipe(
       tap((response: any) => {
-        console.log('Respuesta de la API:', response.body);
-        console.log(response.status)
       }),
       map((response: any) => {
-        console.log("Map")
         return { status: response.status, body: response.body }
       }),
       catchError(error => {
@@ -78,10 +74,6 @@ export class ApiService {
     datos.append('nombre', nombre)
 
     return this.http.post(`${this.apiImgUrl}/file`, datos, { observe: 'response' }).pipe(
-      tap((response) => {
-        console.log("Respuesta de la API de imagenes:", response.body)
-        console.log("Estado de la api: ", response.status)
-      }),
       map((response) => {
         console.log(map)
         return { status: response.status, body: response.body, header: response.headers }
@@ -114,7 +106,6 @@ export class ApiService {
     return this.http.get(`${this.apiImgUrl}/uploadOne/${id}`, {observe: 'response'}).pipe(
       map((response) =>{
         var tempResponse = response.body
-        console.log("teampresponse url",tempResponse)
         return tempResponse
       })
     )
@@ -124,8 +115,6 @@ export class ApiService {
   registerProduct(datos: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/prd/register`, datos, { observe: 'response' }).pipe(
       tap((response) => {
-        console.log("Respuesta de la api par registrar producto", response.body)
-        console.log("Estado de la api reg prod" + response.status)
       }),
       map((response) => {
         return { status: response.status, body: response.body, header: response.headers }
@@ -137,11 +126,8 @@ export class ApiService {
     )
   }
   getAllProducts(): Observable<any> {
-    console.log("entre")
     return this.http.get(`${this.apiUrl}/prd/products`, { observe: 'response' }).pipe(
       tap((response) => {
-        console.log("Respuesta de la API de imagenes:", response.body)
-        console.log("Estado de la api: ", response.status)
       }),
       map((response) => {
         return { status: response.status, body: response.body, Headers: response.headers, ImgUrl: response.body}

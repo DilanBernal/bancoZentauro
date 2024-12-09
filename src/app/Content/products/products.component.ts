@@ -32,8 +32,8 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-  
-    if (sessionStorage.getItem('user') != null) {
+
+    if (sessionStorage.getItem('products') == null) {
       this.api.getAllProducts().subscribe({
         next: (data: any) => {
           const productObservables = data.body.map((product: Product) => {
@@ -46,7 +46,7 @@ export class ProductsComponent implements OnInit {
               })
             );
           });
-  
+
           // Usamos forkJoin para esperar a que todas las solicitudes de imágenes se resuelvan
           forkJoin<string[]>(productObservables).subscribe(
             (imageUrls: string[]) => {
@@ -55,7 +55,15 @@ export class ProductsComponent implements OnInit {
                 product.imageUrl = imageUrls[index] ? "http://localhost:3000/" + imageUrls[index] : 'Error.png';
               });
               this.products = data.body;
-              sessionStorage.setItem('products', JSON.stringify(this.products));  // Guardamos todos los productos
+              sessionStorage.setItem('products', JSON.stringify(this.products));
+              // console.log(`Solo get item ${sessionStorage.getItem('products')}`)
+              // const storedProducts = sessionStorage.getItem('products');
+              // if (storedProducts !== null) {
+              //   const productsArray = JSON.parse(storedProducts);
+              //   console.log('Con json item', productsArray);
+              // } else {
+              //   console.log('No hay productos almacenados en sessionStorage');
+              // }
               this.loading = false;
             },
             (error) => {
@@ -74,13 +82,15 @@ export class ProductsComponent implements OnInit {
     } else {
       // Si no hay sesión de usuario, cargamos los productos desde sessionStorage
       const storedProducts = sessionStorage.getItem('products');
-      if (storedProducts) {
+      console.log(storedProducts)
+      if (storedProducts != null) {
         this.products = JSON.parse(storedProducts);
+        console.log("Stored products: " + this.products)
         this.loading = false;
       }
     }
   }
-  
+
   // ngOnInit() {
   //   this.loading = true;
   //   if (sessionStorage.getItem('user') != null) {
