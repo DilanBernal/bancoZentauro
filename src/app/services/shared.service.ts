@@ -47,7 +47,6 @@ export class SharedService {
     }else if(userStringSession != null){
       var userObject = JSON.parse(userStringSession)
       this.nombreUsuario = userObject.usuarioNombre
-      console.log("Objeto usuario",userObject.usuarioNombre, "Nombre en el this", this.nombreUsuario)
       return true
     }else return false
   }

@@ -7,14 +7,11 @@ import { LoginComponent } from './Usuario/login/login.component';
 import { SigninComponent } from './Usuario/signin/signin.component';
 import { HomeComponent } from './Content/home/home.component';
 import { ProductsComponent } from './Content/products/products.component';
-import { ProductInfoComponent } from './Content/product-info/product-info.component';
 import { ServicesComponent } from './Content/servicesBanco/services.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BackupComponent } from './Usuario/backup/backup.component';
 import { HeaderComponent } from './Content/header/header.component';
 import { UserComponent } from './Content/header/user/user.component';
-import { EstudiantesComponent } from './Content/product-info/estudiantes/estudiantes.component';
-import { PremiumComponent } from './Content/product-info/premium/premium.component';
 import { FormSolicitudComponent } from './Content/form-solicitud/form-solicitud.component';
 import { CreacionProductosComponent } from './Admin/productos/creacion-productos/creacion-productos.component';
 import { RevisarProductosComponent } from './Admin/productos/revisar-productos/revisar-productos.component';
@@ -27,6 +24,7 @@ import { AdminComponent } from './Content/header/admin/admin.component';
 import { LoaderComponent } from './Content/popup/loader/loader.component';
 import { ErrorComponent } from './Content/popup/error/error.component';
 import { CompleteComponent } from './Content/popup/complete/complete.component';
+import { ListaProductosComponent } from './Admin/productos/lista-productos/lista-productos.component';
 
 @NgModule({
   declarations: [
@@ -35,19 +33,17 @@ import { CompleteComponent } from './Content/popup/complete/complete.component';
     SigninComponent,
     HomeComponent,
     ProductsComponent,
-    ProductInfoComponent,
     ServicesComponent,
     BackupComponent,
     ProductsComponent,
     HeaderComponent,
     UserComponent,
-    EstudiantesComponent,
-    PremiumComponent,
     FormSolicitudComponent,
     CreacionProductosComponent,
     RevisarProductosComponent,
     FooterComponent,
     ListaComponent,
+    ListaProductosComponent,
     SolicitudDeEntregaComponent,
     TableroDeControlComponent,
     AdminComponent,
