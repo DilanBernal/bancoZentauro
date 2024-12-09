@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-lista-productos',
   templateUrl: './lista-productos.component.html',
-  styleUrl: './lista-productos.component.css'
+  styleUrls: ['./lista-productos.component.css']
 })
-
 export class ListaProductosComponent implements OnInit {
 
   productos = [
@@ -14,9 +14,12 @@ export class ListaProductosComponent implements OnInit {
     { nombre: 'Producto 3', descripcion: 'Descripción del Producto 3', vecesAdquirido: 20, tipo: 'Alimentos' }
   ];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private translate: TranslateService) {
+    this.translate.setDefaultLang('es');
+    this.translate.use('es');  // Cambia 'es' por 'en' si deseas usar inglés
   }
 
+  ngOnInit(): void {
+    // Aquí puedes cargar idiomas adicionales o hacer cambios dinámicos si es necesario
+  }
 }

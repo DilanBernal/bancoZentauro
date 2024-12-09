@@ -1,48 +1,60 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { SharedService } from './shared.service';
-;
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title = 'bancoZentauro';
-  header:boolean = true;
-  constructor(private router:Router, private sharedService:SharedService){
+  header: boolean = true;
+
+  constructor(
+    private router: Router,
+    private sharedService: SharedService,
+    private translate: TranslateService
+  ) {
+    // Establecer el idioma predeterminado
+    this.translate.setDefaultLang('es');
+    this.translate.use('es');  // El idioma predeterminado es español
+
     this.router.events.subscribe(event => {
-      if(event instanceof NavigationEnd) {
-        const excludesRoutes =[/^\/login/, /^\/signin/, /^\/backup/];
-        this.header = !excludesRoutes.some(route => route.test(event.url))
+      if (event instanceof NavigationEnd) {
+        const excludesRoutes = [/^\/login/, /^\/signin/, /^\/backup/];
+        this.header = !excludesRoutes.some(route => route.test(event.url));
       }
-    })
+    });
   }
 
-  Home(){
+  Home() {
     this.router.navigate(["home"]);
   }
 
-  Products(){
+  Products() {
     this.router.navigate(["products"]);
   }
 
-  ProductInfo(){
+  ProductInfo() {
     this.router.navigate(["product-info"]);
   }
 
-  Services(){
+  Services() {
     this.router.navigate(["services"]);
   }
 
-  Login(){
+  Login() {
     this.router.navigate(["login"]);
   }
 
-  Signin(){
+  Signin() {
     this.router.navigate(["signin"]);
   }
 
+  // Método para cambiar el idioma
+  switchLanguage(lang: string) {
+    this.translate.use(lang);
+  }
 }
-

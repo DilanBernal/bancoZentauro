@@ -4,19 +4,18 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-creacion-productos',
   templateUrl: './creacion-productos.component.html',
-  styleUrl: './creacion-productos.component.css'
+  styleUrls: ['./creacion-productos.component.css'] // Asegúrate de que el nombre sea styleUrls y no styleUrl
 })
 export class CreacionProductosComponent {
 
-  nombreProducto = ''
-  descripcionProduco = ''
-  imagen:any =''
+  nombreProducto = '';
+  descripcionProducto = ''; // Corregí el nombre de la variable
+  imagen: any = '';
 
-  public constructor(private router:Router) {
+  constructor(private router: Router) { }
 
-  }
-
-  Back(){
-    this.router.navigate([this.Back]);
+  // Método para volver a la página anterior o a la ruta específicav
+  Back() {
+    this.router.navigate(['/ruta-anterior']); // Reemplaza '/ruta-anterior' por la ruta que deseas
   }
 }

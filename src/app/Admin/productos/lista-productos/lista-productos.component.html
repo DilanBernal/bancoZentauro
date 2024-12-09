@@ -1,23 +1,25 @@
-<!-- products.component.html -->
 <div class="container">
-    <h1>Lista de Productos</h1>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Nombre del Producto</th>
-          <th>Descripción</th>
-          <th>Veces que se ha adquirido</th>
-          <th>Tipo de Producto</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let producto of productos">
-          <td>{{ producto.nombre }}</td>
-          <td>{{ producto.descripcion }}</td>
-          <td>{{ producto.vecesAdquirido }}</td>
-          <td>{{ producto.tipo }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+  <!-- Título traducido -->
+  <h1>{{ 'productList.title' | translate }}</h1>
+
+  <!-- Tabla de productos -->
+  <table class="table">
+    <thead>
+      <tr>
+        <!-- Encabezados traducidos -->
+        <th>{{ 'productList.productName' | translate }}</th>
+        <th>{{ 'productList.description' | translate }}</th>
+        <th>{{ 'productList.timesAcquired' | translate }}</th>
+        <th>{{ 'productList.productType' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.vecesAdquirido }}</td>
+        <td>{{ producto.tipo }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

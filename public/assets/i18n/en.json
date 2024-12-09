@@ -1,0 +1,17 @@
+{
+  "CREATE_PRODUCT_TITLE": "Create a new product!",
+  "ENTER_PRODUCT_NAME": "Enter the product name",
+  "PLACEHOLDER_PRODUCT_NAME": "Product name",
+  "ENTER_PRODUCT_DESCRIPTION": "Enter the product description",
+  "PLACEHOLDER_PRODUCT_DESCRIPTION": "Product description",
+  "ENTER_PRODUCT_IMAGE": "Upload product image",
+  "SUBMIT_BUTTON": "Create Product",
+  "BACK_BUTTON": "Back",
+  "productList": {
+    "title": "Product List",
+    "productName": "Product Name",
+    "description": "Description",
+    "timesAcquired": "Times Acquired",
+    "productType": "Product Type"
+  }
+}

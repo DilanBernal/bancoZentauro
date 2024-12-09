@@ -19,12 +19,16 @@ import { PremiumComponent } from './Content/product-info/premium/premium.compone
 import { FormSolicitudComponent } from './Content/form-solicitud/form-solicitud.component';
 import { CreacionProductosComponent } from './Admin/productos/creacion-productos/creacion-productos.component';
 import { RevisarProductosComponent } from './Admin/productos/revisar-productos/revisar-productos.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FooterComponent } from './Content/footer/footer.component';
 import { ListaComponent } from './Admin/solicitudes/lista/lista.component';
 import { SolicitudDeEntregaComponent } from './Admin/solicitudes/solicitud-de-entrega/solicitud-de-entrega.component';
 import { TableroDeControlComponent } from './Admin/tablero-de-control/tablero-de-control.component';
 import { AdminComponent } from './Content/header/admin/admin.component';
+import { ListaProductosCLComponent } from './Usuario/lista-productos-cl/lista-productos-cl.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ListaProductosComponent } from './Admin/productos/lista-productos/lista-productos.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,6 @@ import { AdminComponent } from './Content/header/admin/admin.component';
     ProductInfoComponent,
     ServicesComponent,
     BackupComponent,
-    ProductsComponent,
     HeaderComponent,
     UserComponent,
     EstudiantesComponent,
@@ -50,14 +53,27 @@ import { AdminComponent } from './Content/header/admin/admin.component';
     SolicitudDeEntregaComponent,
     TableroDeControlComponent,
     AdminComponent,
+    ListaProductosCLComponent,
+    ListaProductosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule 
+    FormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

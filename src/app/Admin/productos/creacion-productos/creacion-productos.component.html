@@ -1,23 +1,27 @@
 <form #formulario="ngForm">
-    <h2>Crea un nuevo producto!</h2>
-    <div class="input-group">
-        <label for="nombre">Ingrese el nombre del producto</label>
-        <input class="form-control" type="text" id="nombre" name="nombre"  placeholder="Nombre del producto" [(ngModel)]="nombreProducto" required>
-    </div>
-    <div class="input-group input-description">
-        <label for="nombre">Ingese la descripción del producto</label>
-        <input class="form-control" type="text" id="descripcion" name="descripcion"  placeholder="Descripcion del producto" [(ngModel)]="descripcionProduco" required>
-    </div>
-
-    <div class="input-group">
-        <label for="imagen">Ingrese imagen del producto</label>
-
-        <input class="form-control" type="file" id="imagen" name="imagen" [(ngModel)]="imagen" required>
-
-      </div> <br>
-
-      <div class="submit-btn">
-        <button class="btn btnVerde" type="submit" [disabled]="!formulario.valid">Crear Producto</button>
-      </div>
+  <h2>{{ 'CREATE_PRODUCT_TITLE' | translate }}</h2>
+  <div class="input-group">
+      <label for="nombre">{{ 'ENTER_PRODUCT_NAME' | translate }}</label>
+      <input class="form-control" type="text" id="nombre" name="nombre"  
+             [placeholder]="'PLACEHOLDER_PRODUCT_NAME' | translate" 
+             [(ngModel)]="nombreProducto" required>
+  </div>
+  <div class="input-group input-description">
+      <label for="descripcion">{{ 'ENTER_PRODUCT_DESCRIPTION' | translate }}</label>
+      <input class="form-control" type="text" id="descripcion" name="descripcion"  
+             [placeholder]="'PLACEHOLDER_PRODUCT_DESCRIPTION' | translate" 
+             [(ngModel)]="descripcionProducto" required> <!-- Corregí aquí el nombre de la variable -->
+  </div>
+  <div class="input-group">
+      <label for="imagen">{{ 'ENTER_PRODUCT_IMAGE' | translate }}</label>
+      <input class="form-control" type="file" id="imagen" name="imagen" 
+             [(ngModel)]="imagen" required>
+  </div>
+  <br>
+  <div class="submit-btn">
+      <button class="btn btnVerde" type="submit" [disabled]="!formulario.valid">
+          {{ 'SUBMIT_BUTTON' | translate }}
+      </button>
+  </div>
 </form>
-<button class="btn btnVerde btnVolver">Volver</button>
+<button class="btn btnVerde btnVolver" (click)="Back()">{{ 'BACK_BUTTON' | translate }}</button> <!-- Agregué el (click) para llamar el método Back -->
