@@ -1,4 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ApiService } from '../../../services/api.service';
+import { forkJoin, Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+
+interface Product {
+  productoId: number;
+  productoIdImagen: number;
+  productoNombre: string;
+  productoDescripcion: string;
+  productoVeces: number;
+  imageUrl?: string;
+  productTipo: string;
+}
+
+interface ApiResponse {
+  body: Product[];
+}
+
+interface ImageResponse {
+  img_url?: string;
+}
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -7,19 +28,58 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./lista-productos.component.css']
 })
 export class ListaProductosComponent implements OnInit {
+  productos: Product[] = [];
+  loading = false;
+  error: string | null = null;
 
-  productos = [
-    { nombre: 'Producto 1', descripcion: 'Descripción del Producto 1', vecesAdquirido: 10, tipo: 'Electrónica' },
-    { nombre: 'Producto 2', descripcion: 'Descripción del Producto 2', vecesAdquirido: 5, tipo: 'Ropa' },
-    { nombre: 'Producto 3', descripcion: 'Descripción del Producto 3', vecesAdquirido: 20, tipo: 'Alimentos' }
-  ];
-
-  constructor(private translate: TranslateService) {
+  constructor(private translate: TranslateService ,private api: ApiService) {
     this.translate.setDefaultLang('es');
     this.translate.use('es');  // Cambia 'es' por 'en' si deseas usar inglés
   }
+  ngOnInit() {
+    this.loadProductsWithImages();
+  }
 
-  ngOnInit(): void {
-    // Aquí puedes cargar idiomas adicionales o hacer cambios dinámicos si es necesario
+  loadProductsWithImages() {
+    this.loading = true;
+
+    this.api.getAllProducts().pipe(
+      map((response: ApiResponse) => response.body),
+      map((products: Product[]) => products.map(product => this.getProductWithImage(product))),
+      catchError(err => {
+        this.handleError(err);
+        return of([]);
+      })
+    ).subscribe({
+      next: (productsWithImages: Observable<Product>[]) => {
+        forkJoin(productsWithImages).subscribe({
+          next: (resolvedProducts: Product[]) => {
+            this.productos = resolvedProducts;
+            this.loading = false;
+          },
+          error: (err) => this.handleError(err)
+        });
+      }
+    });
+  }
+
+  private getProductWithImage(product: Product): Observable<Product> {
+    console.log(product)
+    return this.api.getUrlImg(product.productoIdImagen).pipe(
+      map((response: ImageResponse) => ({
+        ...product,
+        imageUrl: response.img_url ? `http://localhost:3000/${response.img_url}` : 'assets/default-product.png'
+      })),
+      catchError(() => of({
+        ...product,
+        imageUrl: 'assets/default-product.png'
+      }))
+    );
+  }
+
+  private handleError(err: any) {
+    console.error('Error al cargar productos:', err);
+    this.error = 'No se pudieron cargar los productos';
+    this.loading = false;
   }
 }

@@ -29,7 +29,7 @@ public class ProductoController {
     @Autowired
     IProductoService service;
 
-    @GetMapping(value = "productos", produces =  MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "products", produces =  MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Producto>> getAll(){
         List<Producto> respuesta = service.allProducts();
         HttpHeaders headers = new HttpHeaders();
@@ -37,7 +37,7 @@ public class ProductoController {
         return new ResponseEntity<>(respuesta, headers, HttpStatus.ACCEPTED);
     }
 
-    @GetMapping(value = "productosNombre/{name}")
+    @GetMapping(value = "searchByName/{name}")
     public ResponseEntity<List<Producto>> getAllByName(@PathVariable String name){
         List<Producto> respuesta = service.getAllByName(name);
         HttpHeaders headers = new HttpHeaders();
@@ -46,7 +46,7 @@ public class ProductoController {
         return new ResponseEntity<>(respuesta, HttpStatus.ACCEPTED);
     }
 
-    @GetMapping(value = "productoId/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "searchById/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Optional<Producto>> getByName(@PathVariable int id){
 
         Optional<Producto> respuesta = service.getById(id);
@@ -56,14 +56,14 @@ public class ProductoController {
 
     // public ResponseEntity<>
 
-    @PostMapping(value = "crear", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "register", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> registerProduct(@RequestBody Producto product){
 
         service.addProducto(product);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping(value = "editar", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = "edit", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Void> editProduct(@RequestBody Producto product){
         String nombre = product.getProductoNombre();
         if(service.existByName(nombre)){
@@ -72,7 +72,7 @@ public class ProductoController {
         }else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @DeleteMapping(value = "pruduct/delte/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 
     public ResponseEntity<Void> deleteUser(@PathVariable int id)  {
         service.deleteProduct(id);

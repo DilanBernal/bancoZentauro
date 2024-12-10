@@ -1,27 +1,111 @@
-<form #formulario="ngForm">
-  <h2>{{ 'CREATE_PRODUCT_TITLE' | translate }}</h2>
+<loader></loader>
+
+<div class="errorVisual" *ngIf="huboError" [class.salida]="!mostrarError">
+  <svg class="crossmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+    <circle class="crossmark__circle" cx="26" cy="26" r="25" fill="none" />
+    <path
+      class="crossmark__cross"
+      fill="none"
+      d="M16 16 l20 20 M16 36 l20 -20"
+    />
+  </svg>
+  <h2>Hubo un error</h2>
+  <br />
+  <p #errorHtml></p>
+</div>
+
+
+<form [formGroup]="fileForm" (ngSubmit)="onSubmit()" novalidate>
+  <h2>Crea un nuevo producto!</h2>
   <div class="input-group">
-      <label for="nombre">{{ 'ENTER_PRODUCT_NAME' | translate }}</label>
-      <input class="form-control" type="text" id="nombre" name="nombre"  
-             [placeholder]="'PLACEHOLDER_PRODUCT_NAME' | translate" 
-             [(ngModel)]="nombreProducto" required>
+    <label for="nombre">Ingrese el nombre del producto</label>
+    <input
+      class="form-control"
+      type="text"
+      id="nombre"
+      formControlName="nombre"
+      placeholder="Nombre del producto"
+      required
+    />
   </div>
+  <span
+    *ngIf="
+      fileForm.get('nombre')?.hasError('required') &&
+      fileForm.get('nombre')?.touched
+    "
+    class="error"
+    >Tiene que tener un nombre</span
+  >
   <div class="input-group input-description">
-      <label for="descripcion">{{ 'ENTER_PRODUCT_DESCRIPTION' | translate }}</label>
-      <input class="form-control" type="text" id="descripcion" name="descripcion"  
-             [placeholder]="'PLACEHOLDER_PRODUCT_DESCRIPTION' | translate" 
-             [(ngModel)]="descripcionProducto" required> <!-- Corregí aquí el nombre de la variable -->
+    <label for="descripcion">Ingrese la descripción del producto</label>
+    <textarea
+      class="form-control"
+      type="textarea  "
+      id="descripcion"
+      minlength="25"
+      formControlName="descripcion"
+      placeholder="Descripción del producto"
+      required
+    ></textarea>
   </div>
+
+  <span
+    *ngIf="
+      fileForm.get('descripcion')?.hasError('required') &&
+      fileForm.get('descripcion')?.touched
+    "
+    class="error"
+    >La descripcion es obligatoria <br
+  /></span>
+
+  <span
+    *ngIf="
+      fileForm.get('descripcion')?.value < 25 &&
+      fileForm.get('descripcion')?.touched
+    "
+    class="error"
+    >La descripcion tiene que tener minimo 25 caracteres</span
+  >
+
   <div class="input-group">
-      <label for="imagen">{{ 'ENTER_PRODUCT_IMAGE' | translate }}</label>
-      <input class="form-control" type="file" id="imagen" name="imagen" 
-             [(ngModel)]="imagen" required>
+    <div class="selection-input">
+      <label for="tipo">Seleccione el tipo de producto</label>
+      <select id="tipo" formControlName="tipo" class="form-select" required>
+        <option value="" disabled selected>Seleccione un producto</option>
+        <option value="credito">Credito</option>
+        <option value="debito">Debito</option>
+        <option value="prepagada">Prepagada</option>
+      </select>
+    </div>
+    <span
+      *ngIf="
+        fileForm.get('tipo')?.hasError('required') &&
+        fileForm.get('tipo')?.touched
+      "
+      class="error"
+    >
+      Este campo es obligatorio.
+    </span>
   </div>
-  <br>
+
+  <div class="input-group">
+    <label for="imagen">Ingrese imagen del producto</label>
+    <input
+      class="form-control"
+      type="file"
+      id="imagen"
+      (change)="onFileChange($event)"
+      accept=".png"
+      required
+    />
+    <span *ngIf="fileError" class="error">{{ fileError }}</span>
+  </div>
+  <br />
+
   <div class="submit-btn">
-      <button class="btn btnVerde" type="submit" [disabled]="!formulario.valid">
-          {{ 'SUBMIT_BUTTON' | translate }}
-      </button>
+    <button class="btn btnVerde" type="submit" [disabled]="!fileForm.valid">
+      Crear Producto
+    </button>
   </div>
 </form>
-<button class="btn btnVerde btnVolver" (click)="Back()">{{ 'BACK_BUTTON' | translate }}</button> <!-- Agregué el (click) para llamar el método Back -->
+<button class="btn btnVerde btnVolver">Volver</button>

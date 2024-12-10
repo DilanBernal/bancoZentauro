@@ -1,0 +1,87 @@
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #f6fcdf;
+    align-items: center;
+    padding: 10%;
+    border-radius: 40px;
+    height: 50vh;
+    backdrop-filter: blur(5px);
+    font-size: 1.5em;
+    animation: acercarse .6s ease-in-out;
+    z-index: 800;
+}
+
+.checkmark{
+    width: 100px;
+    height: 100px;
+    stroke-width: 2;
+    stroke: var(--verdeclaro);
+    stroke-miterlimit: 10;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 1s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+
+.checkmark__circle{
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: var(--verdeoscuro);
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.crossmark__cross{
+    stroke: red;
+}
+
+.checkmark__check ,
+.crossmark__cross {
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.5s forwards;
+}
+
+.salida {
+    animation: alejarse 1s;
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes preloader {
+    100% {
+        transform: scale(2);
+    }
+}
+
+@keyframes acercarse {
+    from {
+        scale: 0;
+    }
+
+    to {
+        scale: 1;
+    }
+}
+
+@keyframes alejarse {
+    from {
+        scale: 1;
+    }
+
+    to {
+        scale: 0;
+    }
+}

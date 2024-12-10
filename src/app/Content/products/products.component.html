@@ -1,31 +1,25 @@
 <section class="products">
-    <h1>{{ 'products.title' | translate }}</h1> <!-- Usar el pipe de translate -->
-    <section class="productsBanner">
-      <div class="productsBannerTexto">
-            <div class="product">
-                <div class="imgBanner">
-                    <img src="tarjeta estudiantes.png" alt="{{ 'productscardStudent' | translate }}">
-                </div>
-                <strong>{{ 'products student Card' | translate }}</strong><br>
-                <p>{{ 'products.cardStudentDescription' | translate }}</p>
-                <button class="btn btnVerde" (click)="tarjetaEstudiantes()">{{ 'products.request' | translate }}</button>
-            </div>
-            <div class="product">
-                <div class="imgBanner">
-                    <img src="tarjeta plus.png" alt="{{ 'products.cardPlus' | translate }}">
-                </div>
-                <strong>{{ 'products plus Card' | translate }}</strong><br>
-                <p>{{ 'products.cardPlusDescription' | translate }}</p>
-                <button class="btn btnVerde" (click)="tarjetaPlus()">{{ 'products.request' | translate }}</button>
-            </div>
-            <div class="product">
-                <div class="imgBanner">
-                    <img src="Tarjeta Premium.png" alt="{{ 'products.cardPremium' | translate }}">
-                </div>
-                <strong>{{ 'products premium Card' | translate }}</strong><br>
-                <p>{{ 'products.cardPremiumDescription' | translate }}</p>
-                <button class="btn btnVerde" (click)="tarjetaPremium()">{{ 'products.request' | translate }}</button>
-            </div>
+  <h1>Nuestros productos!</h1>
+  <section class="productsBanner">
+  </section>
+
+   <div *ngIf="loading == true" class="spinner">Cargando...</div>
+   <div *ngIf="error" class="error-message">
+       {{ error }}
+    </div>
+  <div class="productsBannerTexto">
+    <div class="product" *ngFor="let product of products">
+      <div class="imgBanner">
+        <img [src]="product.imageUrl" alt="{{ product.productoNombre }}" />
       </div>
-    </section>
+      <strong>{{ product.productoNombre }}</strong
+      ><br />
+      <p>
+        {{ product.productoDescripcion }}
+      </p>
+      <button class="btn btnVerde" (click)="infoComponent(product.productoId)">
+        Solicitar
+      </button>
+    </div>
+  </div>
 </section>

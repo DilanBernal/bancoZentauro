@@ -23,10 +23,11 @@ import co.ue.model.Producto;
 import co.ue.model.Usuario;
 import co.ue.model.ProductSolicitud.Estado;
 import co.ue.service.IProductSolicitudService;
+import co.ue.service.IProductoService;
 import co.ue.service.IUsuarioService;
 
 @RestController
-@RequestMapping(value = "solicitudes")
+@RequestMapping(value = "slt")
 @CrossOrigin(origins = "*")
 public class ProductSolicitudController {
 
@@ -36,7 +37,10 @@ public class ProductSolicitudController {
     @Autowired
     IUsuarioService serviceUsuario;
 
-    @GetMapping(value = "buscar")
+    @Autowired
+    IProductoService serviceProducto;
+
+    @GetMapping(value = "solicitudes")
     public ResponseEntity<List<ProductSolicitud>> getAll(){
 
         List<ProductSolicitud> respuesta = service.getAll();
@@ -45,7 +49,7 @@ public class ProductSolicitudController {
         return new ResponseEntity<>(respuesta, HttpStatus.ACCEPTED);
 
     }
-    @GetMapping(value = "buscarPorEstado/{stado}")
+    @GetMapping(value = "searchByEstado/{stado}")
     public ResponseEntity<List<ProductSolicitud>> getByEstado(@PathVariable Estado stado){
         List<ProductSolicitud> respuesta = service.getByEstado(stado);
 
@@ -54,8 +58,12 @@ public class ProductSolicitudController {
         return new ResponseEntity<>(respuesta, header, HttpStatus.ACCEPTED);
     }
 
-    @GetMapping(value = "buscarPorEYP/{estado}")
-    public ResponseEntity<List<ProductSolicitud>> getByProductAndEstado (@PathVariable Estado estado, @RequestBody Producto producto){
+    @GetMapping(value = "searchByEYP/{estado}/{idProducto}")
+    public ResponseEntity<List<ProductSolicitud>> getByProductAndEstado (@PathVariable Estado estado, @PathVariable int id){
+        Optional<Producto> optionalProduct = serviceProducto.getById(id);
+
+        Producto producto = optionalProduct.get();
+        
         List<ProductSolicitud> respuesta = service.getByProductoAndEstado(producto, estado);
 
         HttpHeaders header = new HttpHeaders();
@@ -63,14 +71,14 @@ public class ProductSolicitudController {
         return new ResponseEntity<>(respuesta, header, HttpStatus.ACCEPTED);
     }
 
-    @GetMapping(value = "buscarPorId/{id}")
+    @GetMapping(value = "searchById/{id}")
     public ResponseEntity<Optional<ProductSolicitud>> getById(@PathVariable int id){
         Optional<ProductSolicitud> respuesta = service.getById(id);
 
         return new ResponseEntity<>(respuesta, HttpStatus.ACCEPTED);
     }
 
-    @GetMapping(value = "buscarPorUsuario/{id}")
+    @GetMapping(value = "searchByUsuario/{id}")
     public ResponseEntity<List<ProductSolicitud>> buscarPorUsuario(@PathVariable int id){
         Optional<Usuario> usuario;
         usuario = serviceUsuario.getById(id);
@@ -79,19 +87,19 @@ public class ProductSolicitudController {
         return new ResponseEntity<>(respuesta, HttpStatus.ACCEPTED);
     }
 
-    @PostMapping(value = "crearSolicitud")
+    @PostMapping(value = "register")
     public ResponseEntity<Void> postSolicitud(@RequestBody ProductSolicitud solicitud){
         service.addSolicitud(solicitud);
 
         return new ResponseEntity<>( HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "editarEstado/{id}")
+    @PutMapping(value = "editEstado/{id}")
     public ResponseEntity<Void> putSolicitudEstado(@PathVariable int id, @RequestBody Estado estado){
         service.updateStatusSolicitud(id, estado);
         return new ResponseEntity<>( HttpStatus.OK);
     }
-    @DeleteMapping(value = "delte/{id}")
+    @DeleteMapping(value = "delete/{id}")
     public ResponseEntity<Void> deleteSolicitud(@PathVariable int id){
         service.deleteProductSolicitud(id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);

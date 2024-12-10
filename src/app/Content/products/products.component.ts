@@ -1,29 +1,58 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';  // Asegúrate de importar el servicio de traducción
+import { ApiService } from '../../services/api.service';
+import { Observable, catchError, forkJoin, map, of } from 'rxjs';
+
+interface Product {
+  productoId: number,
+  productoIdImagen: number;
+  productoNombre: string;
+  productoDescripcion: string;
+  imageUrl?: string;  // Añadimos una propiedad para almacenar la URL de la imagen
+}
+
+interface ApiResponse<T> {
+  body: T[];
+  status: number;
+}
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
-export class ProductsComponent {
+export class ProductsComponent implements OnInit {
+  products: Product[] = [];
+  loading = false;
+  error: string | null = null;
 
-  constructor(private router: Router, private translate: TranslateService) {
-    // Definir el idioma por defecto
-    this.translate.setDefaultLang('es');  // Puedes cambiar esto según tu preferencia de idioma
+  constructor(
+    private router: Router,
+    public api: ApiService
+  ) { }
+
+
+  infoComponent(id:any){
+    this.router.navigate([`products/${id}`])
   }
+  
+  ngOnInit() {
+    this.loading = true;
 
-  tarjetaEstudiantes() {
-    this.router.navigate(["estudiantes"]);
+    this.api.getAllProductsJson().then ((products) => {
+      this.loading = false
+      if(products.length !==0){
+        this.products = products
+      }else if(products.length == 0){
+
+        this.error = 'No se pudieron encontrar productos'
+      }
+    })
+    .catch((error) => {
+      this.error = error.message
+      this.loading = false
+    })
+
   }
-
-  tarjetaPlus() {
-    this.router.navigate(["plus"]);
-  }
-
-  tarjetaPremium() {
-    this.router.navigate(["premium"]);
-  }
-
+  
 }

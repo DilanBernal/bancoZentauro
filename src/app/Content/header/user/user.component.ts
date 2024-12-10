@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../../api.service';
-import { SharedService } from '../../../shared.service';
+import { ApiService } from '../../../services/api.service';
+import { SharedService } from '../../../services/shared.service';
 
 @Component({
   selector: 'app-user',
@@ -32,6 +32,7 @@ export class UserComponent {
   Logout(){
     sessionStorage.removeItem('user')
     localStorage.removeItem('user')
+    this.router.navigate(["home"])
     this.estaLogeado = this.shared.estaLogeado();
   }
   

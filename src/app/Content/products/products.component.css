@@ -1,36 +1,62 @@
-.products{
+.products {
     padding: 2%;
     overflow: hidden;
     text-align: center;
 }
 
-h1{
+h1 {
     font-size: 3em;
     margin: 2%;
+    position: relative;
 }
 
-.productsBannerTexto{
+h1::before{
+    content: '';
+    height: 5px;
+    width: 20%;
+    left: 40%;
+    position: absolute;
+    top: 110%;
+    background-color: var(--oscuro);
+    border-radius: 10px;
+}
+
+.productsBannerTexto {
     display: grid;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(400px, 1fr)
-    );
-
+    grid-template-columns: repeat(auto-fit,
+            minmax(400px, 1fr));
 }
-.imgBanner{
+
+.product {
+    margin: 10px;
+    border: 2px var(--oscuro) solid;
+    background-color: var(--verdeoscuro);
+    color: var(--blanco);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 10px;
+}
+
+.imgBanner {
     width: 50%;
-    height: 28vh;
+    max-width: 290px;
+    min-width: 155px;
+    max-height: 180px;
+    min-height: 135px;
     display: flex;
     margin: auto;
     align-items: center;
     justify-content: center;
 }
-.imgBanner img{
+
+.imgBanner img {
     width: 100%;
     height: auto;
 }
 
-.btnVerde{
+.btnVerde {
     margin: auto;
     display: block;
     font-size: 1.3em;
@@ -41,13 +67,15 @@ h1{
     transform: scale(95%);
     background-color: #859F3D;
 }
-.btnVerde:hover{
+
+.btnVerde:hover {
     transform: scale(1);
     transition: 0.2s;
 }
-.product p{
-    width: 400px;
+
+.product p {
     margin: auto;
     padding: 5px;
-    height: 150px;
+    min-height: 50px;
+    max-height: 280px;
 }

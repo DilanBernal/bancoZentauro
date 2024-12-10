@@ -20,14 +20,14 @@ public class Usuario implements Serializable {
 	@Column(name="usuario_id")
 	private int usuarioId;
 
-	@Column(name="usuario_apellido")
-	private String usuarioApellido;
-
-	@Column(name="usuario_correo")
-	private String usuarioCorreo;
-
 	@Column(name="usuario_nombre")
 	private String usuarioNombre;
+	
+	@Column(name="usuario_apellido")
+	private String usuarioApellido;
+	
+	@Column(name="usuario_correo")
+	private String usuarioCorreo;
 
 	@Column(name="usuario_password")
 	private String usuarioPassword;

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SharedService } from '../../shared.service';
+import { SharedService } from '../../services/shared.service';
 import { filter } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';  // Importar el servicio de traducción
 

@@ -1,6 +1,13 @@
+<!-- products.component.html -->
 <div class="container">
   <!-- Título traducido -->
   <h1>{{ 'productList.title' | translate }}</h1>
+
+  div *ngIf="loading" class="spinner">Cargando productos...</div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
 
   <!-- Tabla de productos -->
   <table class="table">
