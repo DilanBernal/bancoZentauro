@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { SharedService } from '../../services/shared.service';
 import { filter } from 'rxjs';
@@ -29,7 +29,8 @@ export class HeaderComponent {
 
 
   toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen; // Alternamos el estado del menú desplegable
+    event?.stopPropagation()
+    this.isDropdownOpen = !this.isDropdownOpen; 
   }
 
   // Funciones de navegación
@@ -48,7 +49,7 @@ export class HeaderComponent {
   }
 
   Services() {
-    this.router.navigate(["creacion-productos"]);
+    this.router.navigate(["services"]);
     this.selectedItem = "services";
   }
 
@@ -97,6 +98,11 @@ export class HeaderComponent {
       .subscribe((event: NavigationEnd) => {
         this.onPageChange(event);
       });
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    this.isDropdownOpen = false; // Cerrar el menú al hacer clic en cualquier otra parte
   }
 
   onPageChange(event: NavigationEnd) {

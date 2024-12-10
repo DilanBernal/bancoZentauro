@@ -24,12 +24,12 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'backup', component: BackupComponent },
   { path: 'services', component: ServicesComponent },
-  { path: 'creacion-productos', component: CreacionProductosComponent },
+  { path: 'admin/creacion-productos', component: CreacionProductosComponent },
   { path: 'form-solicitud', component: FormSolicitudComponent },
-  { path: 'lista-productos', component: ListaProductosComponent },
+  { path: 'admin/lista-productos', component: ListaProductosComponent },
   { path: 'lista-productos-cli', component: ListaProductosCLComponent },
   { path: 'lista-Solicitudes', component: ListaSolicitudComponent },
-  { path: 'tablero-de-control', component: TableroDeControlComponent }
+  { path: 'admin/tablero-de-control', component: TableroDeControlComponent }
 ];
 
 @NgModule({

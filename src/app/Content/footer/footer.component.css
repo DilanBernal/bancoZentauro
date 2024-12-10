@@ -1,18 +1,18 @@
 footer {
     display: grid !important;
-    align-items: start; /* Alineación de elementos al inicio */
+    align-items: start; 
     justify-content: center;
     background-color: #1A1A19;
     color: #F6FCDF;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem; /* Agrega espacio entre las secciones */
-    padding: 1rem; /* Ajusté el padding para mayor control */
+    gap: 1rem; 
+    padding: 1rem; 
 }
 
 h4 {
-    font-size: 1.0em; /* Aumenté el tamaño de la fuente */
+    font-size: 1.0em; 
     text-align: center;
-    margin-bottom: 0,5rem; /* Añadí margen abajo del título */
+    margin-bottom: 0,5rem; 
 }
 
 ul {
@@ -21,17 +21,16 @@ ul {
 
 li {
     list-style: none;
-    margin-bottom: 1rem; /* Espaciado entre los elementos de la lista */
+    margin-bottom: 1rem; 
 }
 
 a {
     color: #F6FCDF;
     text-decoration: none;
-    transition: color 0.3s ease; /* Transición suave en el color del enlace */
+    transition: color 0.3s ease; 
 }
-
 a:hover {
-    color: #31511E; /* Cambié el color al pasar el ratón */
+    color: #31511E; 
 }
 
 footer {
@@ -57,11 +56,10 @@ footer {
 }
 
 .logo {
-    width: 10vw; /* Ajusté el tamaño del logo */
+    width: 3vw; 
 }
 
 .logo img {
     width: 100%;
     height: auto; /* Mantiene la proporción de la imagen */
 }
-

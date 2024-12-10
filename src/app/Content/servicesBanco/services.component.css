@@ -1,0 +1,89 @@
+.service-card {
+    background: #fbfdf3;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    margin: 20px auto;
+    max-width: 800px;
+    overflow: hidden;
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: var(--oscuro);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba;
+}
+
+.service-card h2 {
+    font-size: 1.8rem;
+    color: var(--verdeoscuro);
+    margin-bottom: 10px;
+}
+
+.service-card .content {
+    font-size: 1rem;
+    color: var(--oscuro);
+}
+
+.service-card p {
+    margin: 10px 0;
+    line-height: 1.8;
+}
+
+.service-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.service-card ul li {
+    background: var(--verdeclaro);
+    color: var(--oscuro);
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.service-card ul li::before {
+    content: '✔️';
+    margin-right: 10px;
+    color: var(--verdeoscuro);
+}
+
+.service-card h4 {
+    font-size: 1.2rem;
+    margin: 15px 0 5px;
+    color: var(--verdeoscuro);
+}
+
+.service-card strong {
+    color: var(--verdeclaro);
+}
+
+.service-card a {
+    text-decoration: none;
+    color: var(--verdeoscuro);
+    font-weight: bold;
+}
+
+.service-card a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-card {
+        padding: 15px;
+    }
+
+    .service-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .service-card p,
+    .service-card ul li {
+        font-size: 0.9rem;
+    }
+}

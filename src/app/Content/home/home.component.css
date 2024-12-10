@@ -96,6 +96,10 @@
     border-radius: 0 20px 20px 0;
     color: #F6FCDF;
 }
+.nosotros div:hover > p::selection{
+    background-color: #F6FCDF;
+    color: #1A1A19 !important;
+}
 .nosotros div:hover > h2{
     border-radius: 20px 0 0px 20px;
     transition: 2s;
