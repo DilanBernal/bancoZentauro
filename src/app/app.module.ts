@@ -14,6 +14,7 @@ import { ListaProductosCLComponent } from './Usuario/lista-productos-cl/lista-pr
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ListaProductosComponent } from './Admin/productos/lista-productos/lista-productos.component';
+import { ServicesComponent } from './Content/servicesBanco/services.component';
 
 @NgModule({
   declarations: [

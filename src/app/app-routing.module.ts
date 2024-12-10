@@ -29,7 +29,8 @@ const routes: Routes = [
   { path: 'admin/lista-productos', component: ListaProductosComponent },
   { path: 'lista-productos-cli', component: ListaProductosCLComponent },
   { path: 'lista-Solicitudes', component: ListaSolicitudComponent },
-  { path: 'admin/tablero-de-control', component: TableroDeControlComponent }
+  { path: 'admin/tablero-de-control', component: TableroDeControlComponent },
+  { path: 'servicesBanco', component: ServicesComponent},
 ];
 
 @NgModule({
