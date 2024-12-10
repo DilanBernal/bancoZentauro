@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, of, tap, throwError, map, forkJoin } from 'rxjs';
+import { catchError, Observable, of, tap, throwError, map, forkJoin, firstValueFrom } from 'rxjs';
 
 interface enumProductTipo {
   credito: string;
@@ -174,7 +174,7 @@ export class ApiService {
             const response = await this.getUrlImg(product.productoIdImagen).toPromise();
             return {
               ...product,
-              imageUrl: response.img_url ? `http://localhost:3000/${response.img_url}` : 'Error.png',
+              imageUrl: response.img_url ? `${this.apiImgUrl}/${response.img_url}` : 'Error.png',
             };
           } catch (error) {
             console.error(`Error obteniendo imagen para producto ${product.productoNombre}:`, error);
@@ -191,9 +191,35 @@ export class ApiService {
 
     } catch (error) {
       console.error('Error al cargar productos:', error);
-      throw new Error('No se pudieron cargar los productos');
+      throw new Error('No se pudieron cargar los productos, error con el servidor');
     }
   }
+  async getProductById(id: number): Promise<Product> {
+    try {
+      // Obtener el producto por su ID
+      const dataProduct: Product = await firstValueFrom(
+        this.http.get<Product>(`${this.apiUrl}/prd/searchById/${id}`)
+      );
+  
+      // Obtener la URL de la imagen asociada al producto
+      try {
+        const response = await firstValueFrom(this.getUrlImg(dataProduct.productoIdImagen));
+        dataProduct.imageUrl = response.img_url
+          ? `${this.apiImgUrl}/${response.img_url}`
+          : 'Error.png';
+      } catch (imgError) {
+        console.error(`Error obteniendo imagen para producto ${dataProduct.productoNombre}:`, imgError);
+        dataProduct.imageUrl = 'Error.png'; // Valor por defecto en caso de error
+      }
+  
+      console.log(dataProduct);
+      return dataProduct;
+    } catch (error) {
+      console.error('Error al obtener el producto:', error);
+      throw new Error('No se pudo cargar el producto, error con el servidor');
+    }
+  }
+  
 
   async getAllSolicitudProduct(): Promise<Product[]> {
     try {

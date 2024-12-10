@@ -6,6 +6,7 @@ import { BackupComponent } from './backup/backup.component';
 import { PopupModule } from '../Content/popup/popup.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormSolicitudComponent } from './form-solicitud/form-solicitud.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -19,6 +20,7 @@ import { FormSolicitudComponent } from './form-solicitud/form-solicitud.componen
   imports: [
     PopupModule,
     FormsModule,
+    AppRoutingModule,
     ReactiveFormsModule,
     CommonModule
   ]

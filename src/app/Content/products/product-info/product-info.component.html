@@ -1,0 +1,28 @@
+<!-- 
+<div class="product" *ngFor="let product of products">
+    <div class="imgBanner">
+      <img [src]="product.imageUrl" alt="{{ product.productoNombre }}" />
+    </div>
+    <strong>{{ product.productoNombre }}</strong
+    ><br />
+    <p>
+      {{ product.productoDescripcion }}
+    </p>
+    <button class="btn btnVerde" (click)="infoComponent(product.productoId)">
+      Solicitar
+    </button>
+  </div> -->
+
+  <div class="product" *ngIf="product">
+    <div class="imgBanner">
+      <img [src]="product.imageUrl" alt="{{ product.productoNombre }}" />
+    </div>
+    <strong>{{ product.productoNombre }}</strong><br />
+    <p>
+      {{ product.productoDescripcion }}
+    </p>
+    <!-- <button class="btn btnVerde" (click)="solicitarProducto(product.productoId)">
+      Solicitar
+    </button> -->
+  </div>
+  

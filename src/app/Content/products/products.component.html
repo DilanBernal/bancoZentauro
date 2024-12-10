@@ -3,7 +3,7 @@
   <section class="productsBanner">
   </section>
 
-   <div *ngIf="loading" class="spinner">Cargando...</div>
+   <div *ngIf="loading == true" class="spinner">Cargando...</div>
    <div *ngIf="error" class="error-message">
        {{ error }}
     </div>
@@ -17,7 +17,7 @@
       <p>
         {{ product.productoDescripcion }}
       </p>
-      <button class="btn btnVerde" (click)="tarjetaEstudiantes()">
+      <button class="btn btnVerde" (click)="infoComponent(product.productoId)">
         Solicitar
       </button>
     </div>

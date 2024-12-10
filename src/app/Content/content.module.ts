@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { UserComponent } from './header/user/user.component';
 import { LoginComponent } from '../Usuario/login/login.component';
+import { ProductInfoComponent } from './products/product-info/product-info.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { LoginComponent } from '../Usuario/login/login.component';
     UserComponent,
     FooterComponent,
     ProductsComponent,
+    ProductInfoComponent,
   ],
   imports: [
     CommonModule

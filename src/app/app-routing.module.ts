@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './Content/home/home.component';
 import { ProductsComponent } from './Content/products/products.component';
@@ -9,26 +9,27 @@ import { BackupComponent } from './Usuario/backup/backup.component';
 import { FormSolicitudComponent } from './Usuario/form-solicitud/form-solicitud.component';
 import { CreacionProductosComponent } from './Admin/productos/creacion-productos/creacion-productos.component';
 import { ListaProductosComponent } from './Admin/productos/lista-productos/lista-productos.component';
-import { CompleteComponent } from './Content/popup/complete/complete.component';
+import { ProductInfoComponent } from './Content/products/product-info/product-info.component';
 
 const routes: Routes = [
-  {path: '', component:HomeComponent},
-  {path: 'home', component:HomeComponent},
-  {path: 'products', component:ProductsComponent},
-  {path: 'login', component:LoginComponent},
-  {path: 'signin', component:SigninComponent},
-  {path: 'backup', component:BackupComponent},
-  {path: 'services', component:ServicesComponent},
-  {path: 'creacion-productos', component:CreacionProductosComponent},
-  {path: 'form-solicitud', component:FormSolicitudComponent},
-  {path: 'lista-productos', component:ListaProductosComponent}
+  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'products', component: ProductsComponent },
+  { path: 'products/:id', component: ProductInfoComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'signin', component: SigninComponent },
+  { path: 'backup', component: BackupComponent },
+  { path: 'services', component: ServicesComponent },
+  { path: 'creacion-productos', component: CreacionProductosComponent },
+  { path: 'form-solicitud', component: FormSolicitudComponent },
+  { path: 'lista-productos', component: ListaProductosComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
+export class AppRoutingModule {
 
 }
 
