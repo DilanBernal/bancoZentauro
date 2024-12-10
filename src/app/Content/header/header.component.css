@@ -1,7 +1,8 @@
-body{
+body {
     margin: 0;
 }
-.header{
+
+.header {
     display: grid;
     grid-template-columns: 0.2fr 1fr 0.2fr;
     justify-content: space-around;
@@ -10,14 +11,15 @@ body{
     position: sticky;
     top: 0;
     box-shadow: 0 0 3px 2px #859F3D,
-    0 1px 10px 1px #1A1A19;
+        0 1px 10px 1px #1A1A19;
 }
 
-app-user{
+app-user {
     margin: auto;
 }
-  
-.headerCasa, .headerLogo{
+
+.headerCasa,
+.headerLogo {
     width: 55px;
     display: flex;
     margin: 0 auto;
@@ -25,24 +27,23 @@ app-user{
     justify-content: center;
 }
 
-.headerCasa{
+.headerCasa {
     width: 35px;
 }
-.headerCasa img, .headerLogo img{
+
+.headerCasa img,
+.headerLogo img {
     width: 100%;
     position: sticky;
 }
 
-ul{
+ul {
     display: grid;
-    grid-template-columns: repeat(
-        auto-fit,
-        minmax(130px, 1fr)
-    );
-    /* justify-content: space-around; */
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
     margin: 0 auto;
 }
-nav ul li{
+
+nav ul li {
     padding: 25px;
     margin: 0 auto;
     display: flex;
@@ -54,18 +55,19 @@ nav ul li{
     font-weight: 600;
     color: #1A1A19;
 }
-ul li:hover{
+
+ul li:hover {
     transform: scale(105%);
     transition: 0.5s ease;
-
 }
 
-.selected{
+.selected {
     transform: scale(105%);
     transition: 0.2s ease;
     position: relative;
 }
-.selected::after{
+
+.selected::after {
     content: '';
     position: absolute;
     width: 50%;
@@ -77,30 +79,107 @@ ul li:hover{
     background-color: #1A1A19;
 }
 
-.btnInterUp{
-    top: 5px;
-    right: 5px;
-    position: absolute;
+.btnInterUp {
     color: var(--blanco);
     background-color: var(--oscuro);
 }
-.btnInterDown{
+
+.btnInterDown {
     background-color: var(--oscuro);
-    position: absolute;
     right: 5px;
-    top: 20%;
+    top: 5vh;
     color: var(--blanco);
 }
-.btnActivo{
+
+.btnActivo {
     background-color: var(--verdeoscuro);
 }
 
+/* Estilos para el botón de idioma */
+.dropdown-button {
+    background-color: #1A1A19;
+    color: #F6FCDF;
+    padding: 10px;
+    width: 160px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 0 10px 0;
+    transition: 0.5s;
+    z-index: 10; /* Asegura que el botón de idioma se muestre encima */
+}
+
+.dropdown-button-open {
+    border-radius:0 !important;
+    transition: 0.7s;
+    z-index: 11;
+}
+
+/* Estilo para el contenedor del menú desplegable */
+.dropdown {
+    position: fixed;
+    display: inline-block;
+    z-index: 20; /* Asegura que el contenedor del dropdown esté encima de otros elementos */
+}
+
+/* Estilo para el contenido del menú desplegable */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%; /* Coloca el menú justo debajo del botón */
+    left: 0;
+    background-color: #F6FCDF;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* Mostrar el menú desplegable cuando .show está presente */
+.dropdown-content.show {
+    display: block;
+    transition: opacity 0.5s, transform 0.5s;
+    animation: aparecerMenu 0.3s forwards;
+    border-radius: 0 0 10px 0;
+}
+
+/* Estilo para los enlaces del menú */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 50; /* Para que el texto del menú se mantenga visible */
+    transition: 0.1s;
+}
+
+/* Cambiar el color de fondo de los enlaces cuando se pasa el mouse por encima */
+.dropdown-content a:hover {
+    background-color: #ddd;
+    transition: 0.2s;
+    font-weight: bold;
+}
+
+/* Activar la clase para el idioma seleccionado */
+.btnActivo {
+    font-weight: bold;
+    color: #1A1A19;
+}
+
+
+@keyframes aparecerMenu {
+    0% {
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 
 @keyframes aparecer {
-    0%{
+    0% {
         transform: scale(0);
     }
-    100%{
-        transform:scale(1);
+    100% {
+        transform: scale(1);
     }
 }

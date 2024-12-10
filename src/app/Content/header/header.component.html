@@ -1,22 +1,43 @@
 <header class="header">
-    <div class="headerLogo" (click)="Home()"><img src="logo.png"></div>
-    <nav>
-      <ul>
-        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'services' || item.getSelectedItem() == 'creacion-productos'}" (click)="Services()">Servicios</li>
-        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'products'}" (click)="Products()">Productos</li>
-        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lProductos'}" (click)="listaProducts()">Lista de productos</li>
-        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lProductosCliente'}" (click)="listaCliente()">Lista productos cliente</li>
-        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lProductosCliente'}" (click)="listaSolicitudes()">Lista solicitudes cliente</li>
-        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lProductosCliente'}" (click)="tableroDeControl()">LtableroDeControl</li>
-        <app-user></app-user>
-      </ul>
-    </nav>
-    
-    <!-- Botones de cambio de idioma -->
-    <div class="language-switcher">
-      <button [ngClass]="{'btnActivo': translate.currentLang == 'es'}"  class="btn btnInterUp" (click)="switchLanguage('es')">Español</button>
-      <button [ngClass]="{'btnActivo': translate.currentLang == 'en'}" class="btn btnInterDown" (click)="switchLanguage('en')">English</button>
-    </div>
-    
-    <div class="headerCasa"><img src="casa.png" (click)="Home()" style="cursor: pointer;"></div>
+  <div class="headerLogo" (click)="Home()"><img src="logo.png" /></div>
+  <nav>
+    <ul>
+      <li
+        [ngClass]="{
+          selected:
+            item.getSelectedItem() === 'services' ||
+            item.getSelectedItem() == 'creacion-productos'
+        }"
+        (click)="Services()"
+      >
+        Servicios
+      </li>
+      <li
+        [ngClass]="{ selected: item.getSelectedItem() === 'products' }"
+        (click)="Products()"
+      >
+        Productos
+      </li>
+      <app-user></app-user>
+    </ul>
+  </nav>
+
+  <div class="headerCasa">
+    <img src="casa.png" (click)="Home()" style="cursor: pointer" />
+  </div>
+
+  <!-- Botones de cambio de idioma -->
 </header>
+<div class="language-switcher dropdown" [ngClass]="{'dropdown-button-open': isDropdownOpen}">
+  <button [ngClass]="{'dropdown-button-open': isDropdownOpen}" class="dropdown-button" (click)="toggleDropdown()">Seleccionar idioma</button>
+
+  <div class="dropdown-content" [ngClass]="{'show': isDropdownOpen}">
+    <a href="#" [ngClass]="{'btnActivo': translate.currentLang == 'es'}" (click)="switchLanguage('es')">Español</a>
+    <a href="#" [ngClass]="{'btnActivo': translate.currentLang == 'en'}" (click)="switchLanguage('en')">English</a>
+  </div>
+</div>
+
+  <!-- <div class="language-switcher dropdown">
+    <button [ngClass]="{'btnActivo': translate.currentLang == 'es'}"  class="btn btnInterUp" (click)="switchLanguage('es')">Español</button>
+    <button [ngClass]="{'btnActivo': translate.currentLang == 'en'}" class="btn btnInterDown" (click)="switchLanguage('en')">English</button>
+  </div> -->

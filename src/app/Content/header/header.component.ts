@@ -13,6 +13,8 @@ export class HeaderComponent {
   
   selectedItem: string = '';
   
+  isDropdownOpen = false;
+
   constructor(
     private router: Router, 
     public item: SharedService, 
@@ -23,6 +25,11 @@ export class HeaderComponent {
   switchLanguage(language: string) {
     this.translate.use(language); 
     localStorage.setItem('language', this.translate.currentLang)
+  }
+
+
+  toggleDropdown() {
+    this.isDropdownOpen = !this.isDropdownOpen; // Alternamos el estado del menú desplegable
   }
 
   // Funciones de navegación
