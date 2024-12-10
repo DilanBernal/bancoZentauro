@@ -108,10 +108,14 @@
     "button": "Solicitar"
   },
 
-  "premium": {
-    "titulo": "Proceso de solicitud de tarjeta de crédito de Premium",
-    "mensaje1": "¡Tu Tarjeta de Crédito Premium Te Espera! 🎓💳",
-    "mensaje2": "La Tarjeta Premium de Banco Centauros te ofrece una experiencia de lujo, con un alto límite de crédito 💎, acceso a beneficios exclusivos 🏖️ y un servicio personalizado 🌟. ¡Solicítala hoy y lleva tu experiencia financiera al siguiente nivel! 🔝",
-    "boton": "Solicitar"
+  "products": {
+    "title": "¡Nuestros productos!",
+    "cardStudent": "Tarjeta de Crédito Estudiantes",
+    "cardStudentDescription": "Disfruta de un cupo accesible sin cuotas de manejo ni intereses. Además, aprovecha descuentos exclusivos en tus lugares favoritos, desde librerías hasta cafés. Maneja tu dinero con libertad y ahorra mientras estudias.",
+    "request": "Solicitar",
+    "cardPlus": "Tarjeta de Crédito Plus",
+    "cardPlusDescription": "Haz que cada compra cuente: acumula puntos con cada gasto y canjéalos por increíbles beneficios exclusivos. Además, disfruta de promociones especiales que te harán ahorrar en tus compras favoritas.",
+    "cardPremium": "Tarjeta de Crédito Premium",
+    "cardPremiumDescription": "Disfruta de beneficios exclusivos, una alta capacidad de crédito y recompensas que se adaptan a tu estilo de vida. La tarjeta ideal para quienes buscan más y mejor."
   }
 }

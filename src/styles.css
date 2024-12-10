@@ -1,5 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
+
+:root{
+    --oscuro: #1a1a19;
+    --blanco: #f6fcdf;
+    --verdeclaro: #859f39;
+    --verdeoscuro: #31511E;
+}
+
+
 *{
     font-family: "Nunito", sans-serif;
     font-optical-sizing: auto;

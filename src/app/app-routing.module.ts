@@ -13,6 +13,7 @@ import { PremiumComponent } from './Content/product-info/premium/premium.compone
 import { FormSolicitudComponent } from './Content/form-solicitud/form-solicitud.component';
 import { CreacionProductosComponent } from './Admin/productos/creacion-productos/creacion-productos.component';
 import { ListaProductosComponent } from './Admin/productos/lista-productos/lista-productos.component';
+import { ListaProductosCLComponent } from './Usuario/lista-productos-cl/lista-productos-cl.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -28,7 +29,8 @@ const routes: Routes = [
   {path: 'premium', component:PremiumComponent},
   {path: 'creacion-productos', component:CreacionProductosComponent},
   {path: 'form-solicitud', component:FormSolicitudComponent},
-  {path: 'lista-productos', component:ListaProductosComponent}
+  {path: 'lista-productos', component:ListaProductosComponent},
+  {path: 'lista-productos-cli', component: ListaProductosCLComponent}
 ];
 
 @NgModule({

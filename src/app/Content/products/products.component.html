@@ -1,42 +1,31 @@
 <section class="products">
-    <h1>Nuestros productos!</h1>
+    <h1>{{ 'products.title' | translate }}</h1> <!-- Usar el pipe de translate -->
     <section class="productsBanner">
       <div class="productsBannerTexto">
             <div class="product">
                 <div class="imgBanner">
-                    <img src="tarjeta estudiantes.png" alt="Persona Feliz En Banco">
+                    <img src="tarjeta estudiantes.png" alt="{{ 'productscardStudent' | translate }}">
                 </div>
-                <strong>Tarjeta de credito Estudiantes.</strong><br>
-                <p>
-                    Disfruta de un cupo accesible sin cuotas de manejo ni intereses. 
-                    Además, aprovecha descuentos exclusivos en tus lugares favoritos, desde librerías hasta cafés. 
-                    Maneja tu dinero con libertad y ahorra mientras estudias.
-                </p>
-                <button class="btn btnVerde" (click)="tarjetaEstudiantes()">Solicitar</button>
+                <strong>{{ 'products student Card' | translate }}</strong><br>
+                <p>{{ 'products.cardStudentDescription' | translate }}</p>
+                <button class="btn btnVerde" (click)="tarjetaEstudiantes()">{{ 'products.request' | translate }}</button>
             </div>
             <div class="product">
                 <div class="imgBanner">
-                    <img src="tarjeta plus.png" alt="Persona Feliz En Banco">
+                    <img src="tarjeta plus.png" alt="{{ 'products.cardPlus' | translate }}">
                 </div>
-                <strong>Tarjeta de credito Plus</strong><br>
-                <p>
-                Haz que cada compra cuente: acumula puntos con cada gasto y canjéalos por increíbles beneficios exclusivos.
-                Además, disfruta de promociones especiales que te harán ahorrar en tus compras favoritas. 
-            </p>
-                <button class="btn btnVerde" (click)="tarjetaPlus()" >Solicitar</button>
+                <strong>{{ 'products plus Card' | translate }}</strong><br>
+                <p>{{ 'products.cardPlusDescription' | translate }}</p>
+                <button class="btn btnVerde" (click)="tarjetaPlus()">{{ 'products.request' | translate }}</button>
             </div>
             <div class="product">
                 <div class="imgBanner">
-                    <img src="Tarjeta Premium.png" alt="Persona Feliz En Banco">
+                    <img src="Tarjeta Premium.png" alt="{{ 'products.cardPremium' | translate }}">
                 </div>
-                <strong>Tarjeta de credito Premium</strong><br>
-                <p>
-                Disfruta de beneficios exclusivos, una alta capacidad de crédito y recompensas que se adaptan a tu estilo de vida.
-                 La tarjeta ideal para quienes buscan más y mejor.
-                </p>
-                 <button class="btn btnVerde" (click)="tarjetaPremium()" class="btn btnVerde">Solicitar</button>
+                <strong>{{ 'products premium Card' | translate }}</strong><br>
+                <p>{{ 'products.cardPremiumDescription' | translate }}</p>
+                <button class="btn btnVerde" (click)="tarjetaPremium()">{{ 'products.request' | translate }}</button>
             </div>
       </div>
     </section>
 </section>
-

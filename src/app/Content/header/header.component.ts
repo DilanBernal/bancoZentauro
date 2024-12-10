@@ -45,7 +45,7 @@ export class HeaderComponent {
   }
 
   listaCliente() {
-    this.router.navigate(["lista-productos-cl"]);
+    this.router.navigate(["lista-productos-cli"]);
     this.selectedItem = "lProductosCliente";
   }
 

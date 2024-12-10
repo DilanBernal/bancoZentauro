@@ -90,11 +90,15 @@
     "button": "Apply Now"
   },
 
-  "premium": {
-    "titulo": "Credit Card Application Process for Premium",
-    "mensaje1": "Your Premium Credit Card is Waiting for You! 🎓💳",
-    "mensaje2": "The Premium Card from Banco Centauros offers you a luxury experience, with a high credit limit 💎, access to exclusive benefits 🏖️, and personalized service 🌟. Apply today and take your financial experience to the next level! 🔝",
-    "boton": "Apply"
+  "products": {
+    "title": "Our Products!",
+    "cardStudent": "Student Credit Card",
+    "cardStudentDescription": "Enjoy an accessible credit limit with no fees and exclusive discounts at your favorite places, from bookstores to cafés. Manage your money freely and save while studying.",
+    "request": "Apply",
+    "cardPlus": "Plus Credit Card",
+    "cardPlusDescription": "Make every purchase count: earn points with every purchase and redeem them for incredible exclusive benefits. Plus, enjoy special promotions to save on your favorite items.",
+    "cardPremium": "Premium Credit Card",
+    "cardPremiumDescription": "Enjoy exclusive benefits, a high credit limit, and rewards tailored to your lifestyle. The ideal card for those seeking more and better."
   }
 }
 
