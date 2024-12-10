@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
-import { ActivatedRoute } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';  // Importar el servicio de traducción
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core'; 
 interface enumProductTipo {
   credito: string;
   debito: string;
@@ -32,16 +31,20 @@ export class ProductInfoComponent {
   constructor(
     private api: ApiService, 
     private route: ActivatedRoute,
-    private translate: TranslateService  // Inyectamos el servicio de traducción
+    private translate: TranslateService,  // Inyectamos el servicio de traducción
+    private router:Router
   ) {}
 
-  ngOnInit() {
+  ngOnInit(){
     const productId = Number(this.route.snapshot.paramMap.get('id'));
     this.cargarProducto(productId);
   }
 
-  async cargarProducto(int: number) {
-    this.loading = true;
+  registerSolicitud(id:number){
+    this.router.navigate([`product/${id}/form-solicitud`])
+  }
+  async cargarProducto(int:number){
+    this.loading= true
     try {
       this.product = await this.api.getProductById(int);
       this.loading = false;

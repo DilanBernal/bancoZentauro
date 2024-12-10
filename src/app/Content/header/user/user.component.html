@@ -23,10 +23,10 @@
 
     <!-- Por parte del administrador -->
     <a *ngIf="shared.getRolUser() === 'admin'" (click)="creacionProductoBtn()"> Creacion de producto</a>
-    <a *ngIf="shared.getRolUser() === 'admin'">Lista de solicitudes</a>
-    <a *ngIf="shared.getRolUser() === 'admin'">Tablero de control</a>
+    <a *ngIf="shared.getRolUser() === 'admin'" (click)="listaSolicitudesBtn()">Lista de solicitudes</a>
+    <a *ngIf="shared.getRolUser() === 'admin'" (click)="tableroDeControl()">Tablero de control</a>
     <a *ngIf="shared.getRolUser() === 'admin'">Solicitudes de entrega</a>
-    <a *ngIf="shared.getRolUser() === 'admin'">Lista de productos</a>
+    <a *ngIf="shared.getRolUser() === 'admin'" (click)="listaProducts()" >Lista de productos</a>
 
     <a (click)="Logout()" class="logout">Logout</a>
   </div>

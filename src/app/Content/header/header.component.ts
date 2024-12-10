@@ -54,24 +54,6 @@ export class HeaderComponent {
     this.selectedItem = "services";
   }
 
-  listaCliente() {
-    this.router.navigate(["lista-productos-cli"]);
-    this.selectedItem = "lProductosCliente";
-  }
-
-  tableroDeControl(){
-    this.router.navigate(["tablero-de-control"]);
-    this.selectedItem = "lProductosCliente";
-  }
-  listaSolicitudes() {
-    this.router.navigate(["lista-Solicitudes"]);
-    this.selectedItem = "lProductosCliente";
-  }
-  listaProducts() {
-    this.router.navigate(["lista-productos"]);
-    this.selectedItem = "lProductos";
-  }
-
   Login() {
     this.router.navigate(["login"]);
   }

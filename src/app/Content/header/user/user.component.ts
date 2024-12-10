@@ -23,9 +23,22 @@ export class UserComponent {
     this.showHeader = false;
   }
 
+  tableroDeControl() {
+    this.router.navigate(["admin/tablero-de-control"]);
+  }
+
+  
+  listaProducts() {
+    this.router.navigate(["admin/lista-productos"]);
+  }
+
+  listaSolicitudesBtn() {
+    this.router.navigate(["lista-Solicitudes"]);
+  }
+
   ngOnInit() {
     if (this.estaLogeado == true) {
-      var temp = (this.shared.nombreUsuario).split(" ",1)
+      var temp = (this.shared.nombreUsuario).split(" ", 1)
       this.nombreUsuario = temp[0]
     }
   }
