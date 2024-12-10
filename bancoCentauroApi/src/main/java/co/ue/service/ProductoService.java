@@ -25,6 +25,7 @@ public class ProductoService implements IProductoService{
             existingProducto.setProductoNombre(producto.getProductoNombre());
             existingProducto.setProductoDescripcion(producto.getProductoDescripcion());
             existingProducto.setProductTipo(producto.getProductTipo());
+            existingProducto.setProductoIdImagen(producto.getProductoIdImagen());
 
             return dao.updateUsuario(existingProducto);
         }

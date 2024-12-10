@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SharedService } from '../../shared.service';
+import { SharedService } from '../../services/shared.service';
 import { filter } from 'rxjs';
 
 @Component({
@@ -33,6 +33,11 @@ export class HeaderComponent {
   Services(){
     this.router.navigate(["creacion-productos"]);
     this.selectedItem = "services";
+  }
+
+  prueba(){
+    this.router.navigate(["lista-productos"]);
+    this.selectedItem = "prueba";
   }
 
   Login(){

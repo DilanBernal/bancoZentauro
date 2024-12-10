@@ -1,172 +1,165 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../api.service';
+import { ApiService } from '../../services/api.service';
+import { AuthService } from '../../services/auth.service';
+import { LoaderService } from '../../Content/popup/loader/loader.service';
+import { CompleteService } from '../../Content/popup/complete/complete.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
-
-
-  carga: boolean = false;
-  seRegistro: boolean = false;
-  terminos: boolean = false;
-  huboError: boolean = false;
-  mostrarError: boolean = false;
-  captcha: boolean = false;
   recuerdame: boolean = false;
+  captcha: boolean = false;
+  isLoading: boolean = false;
+  errorMessage: string = '';
 
   placeholderEmail = 'Escribe tu email aqui';
+  placeholderPassword = "Escribe tu contraseña aqui";
 
+  constructor(
+    private router: Router, 
+    private api: ApiService, 
+    private authService: AuthService,
+    public loader: LoaderService, 
+    public alertC: CompleteService
+  ) { }
 
-  @ViewChild('personaHtml') componente!: ElementRef;
-  @ViewChild('contenedorCarga') cargador!: ElementRef;
-  @ViewChild('errorHtml') errorHtml!: ElementRef;
-  @ViewChild('errorContenedor') errorContenedor!: ElementRef;
-
-  datos: any
-  placeholderPassword = "Escribe tu contraseña aqui"
-
-  constructor(private router: Router, private api: ApiService) { }
-
-  Home() {
-    this.router.navigate(["home"]);
+  ngOnInit() {
+    this.checkExistingSession();
   }
 
-  Backup() {
-    this.router.navigate(["backup"])
-  }
-
-  Signin() {
-    this.router.navigate(["signin"]);
-  }
-
-
-  cerrarCarga() {
-    this.cargador.nativeElement.classList.add('salida')
-    console.log(1)
-    setTimeout(() => {
-      console.log(2)
-      this.carga = false; // Desactiva la carga al completar
-    }, 1000)
-  }
-
-  cerrarError() {
-    this.mostrarError = false;
-    setTimeout(() => {
-      this.huboError = false;
-    }, 1000)
-  }
-
-
-  borrarUsuarioLocal() {
-    console.log(localStorage.getItem('user'))
-    localStorage.removeItem('user')
-    console.log(localStorage.getItem('user'))
-  }
-
-  loginVisual(nombr: string) {
-    this.seRegistro = true;
-    setTimeout(() => {
-      this.componente.nativeElement.innerHTML += `${nombr}`
-      setTimeout(() => {
-        this.seRegistro = false;
-        this.Home()
-      }, 2600)
-    }, 200)
-  }
-
-  errorVisual(error: any) {
-    this.huboError = true;
-    this.mostrarError = true;
-    setTimeout(() => {
-      this.errorHtml.nativeElement.innerHTML += `${error}`
-      setTimeout(() => {
-        this.cerrarError()
-      }, 2600)
-    }, 200)
-  }
-
-
-  ngOnInit(){
-    console.log(localStorage.getItem('user'))
-    const userString =localStorage.getItem('user')
-    if(userString != null){
+  private checkExistingSession() {
+    const userString = sessionStorage.getItem('user') || localStorage.getItem('user');
+    if (userString) {
       const userObject = JSON.parse(userString);
-      this.api.existEmail(userObject.usuarioCorreo).subscribe({
-        next: (respuesta) => {
-          if (respuesta == true) {
-            this.seRegistro = true;
-            const nombreUsuario = userObject.usuarioNombre
-            console.log("final",this.api.existEmail(userObject.usuarioCorreo))
-            this.loginVisual(nombreUsuario)
-          } else {
-            console.log("final",this.api.existEmail(userObject.usuarioCorreo))
-            localStorage.removeItem('user')
-          }
-        },
-        error: (err) => {
-          console.error("Error al verificar el correo:", err);
-          localStorage.removeItem('user')
-        }
-      });
-
+      this.verifyExistingUser(userObject);
     }
   }
-  onSubmit(): void {
 
-    let usuario = {
+  private verifyExistingUser(userObject: any) {
+    this.api.existEmail(userObject.usuarioCorreo).subscribe({
+      next: (respuesta) => {
+        if (respuesta) {
+          this.alertC.activarLoader(
+            'Sesión existente', 
+            `Bienvenido/a ${userObject.usuarioNombre}`, 
+            true
+          );
+          this.router.navigate(['/home']);
+        } else {
+          this.authService.clearStoredUser();
+        }
+      },
+      error: (err) => {
+        console.error("Error al verificar el correo:", err);
+        this.authService.clearStoredUser();
+      }
+    });
+  }
+
+  onSubmit(): void {
+    // Validaciones básicas
+    if (!this.email || !this.password || !this.captcha) {
+      this.errorMessage = 'Por favor complete todos los campos';
+      return;
+    }
+
+    // Preparar datos de usuario
+    const usuario = {
       "usuarioNombre": "",
       "usuarioApellido": "",
       "usuarioCorreo": this.email,
       "usuarioPassword": this.password,
       "usuarioRol": "cliente"
-    }
+    };
 
-    this.carga = true;
+    this.isLoading = true;
+    this.loader.activarLoader();
 
-    if (this.api.existEmail(this.email)) {
-      this.api.loginUser(usuario).subscribe({
-        next: response => {
-          console.log('inicio exitoso', response.status)
-          console.log('respuesta ',response)
-          switch (response.status) {
-            case 202: {
-              this.cerrarCarga()
-              console.log(response)
-              if(this.recuerdame){
-                console.log(response.body)
-                localStorage.setItem('user', JSON.stringify(response.body))
-                console.log(localStorage.getItem('user'))
-              }
-              this.loginVisual(usuario.usuarioNombre)
-              break
-            }
-            case 401: {
-              this.cerrarCarga()
-              this.errorVisual(response.body)
-              console.log(response,"resonacn")
-              break
-            }
-            case 404: {
-              this.cerrarCarga()
-              this.errorVisual(response.body)
-              console.log(response)
-            }
-          }
-
-        },
-        error: error => {
-          console.log(error.status)
-          console.error('error durante el inicio: ', error);
+    // Verificar existencia de email
+    this.api.existEmail(this.email).subscribe({
+      next: (emailExists) => {
+        if (emailExists) {
+          this.loginUser(usuario);
+        } else {
+          this.handleLoginError('El correo electrónico no está registrado');
         }
-      })
-    }
-    console.log(usuario)
+      },
+      error: (err) => {
+        this.handleLoginError('Error al verificar el correo electrónico');
+      }
+    });
   }
 
+  private loginUser(usuario: any) {
+    this.api.loginUser(usuario).subscribe({
+      next: (response) => {
+        this.handleLoginResponse(response);
+      },
+      error: (error) => {
+        this.handleLoginError('Error de conexión. Intente nuevamente.');
+      },
+      complete: () => {
+        this.isLoading = false;
+        this.loader.cerrarLoader();
+      }
+    });
+  }
+
+  private handleLoginResponse(response: any) {
+    switch (response.status) {
+      case 202: {
+        // Inicio de sesión exitoso
+        if (this.recuerdame) {
+          localStorage.setItem('user', JSON.stringify(response.body));
+        } else {
+          sessionStorage.setItem('user', JSON.stringify(response.body));
+        }
+
+        this.alertC.activarLoader(
+          'Inicio de sesión exitoso', 
+          `Bienvenido/a ${response.body.usuarioNombre}`, 
+          true
+        );
+        this.router.navigate(['/home']);
+        break;
+      }
+      case 401: {
+        this.handleLoginError('Contraseña o correo incorrectos');
+        break;
+      }
+      case 404: {
+        this.handleLoginError('No se pudo encontrar al usuario');
+        break;
+      }
+      default: {
+        this.handleLoginError('Error desconocido al iniciar sesión');
+      }
+    }
+  }
+
+  private handleLoginError(message: string) {
+    this.isLoading = false;
+    this.loader.cerrarLoader();
+    this.errorMessage = message;
+    this.alertC.activarLoader('ERROR!', message, false);
+  }
+
+  // Métodos de navegación
+  Home() {
+    this.router.navigate(["home"]);
+  }
+
+  Backup() {
+    this.router.navigate(["backup"]);
+  }
+
+  Signin() {
+    this.router.navigate(["signin"]);
+  }
 }

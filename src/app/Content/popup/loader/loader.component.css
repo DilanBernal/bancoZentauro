@@ -1,0 +1,78 @@
+.popup {
+    --main-color: #859f3dc5;
+    --point-color: #1A1A19;
+    --size: 5px;
+}
+
+.loader,
+.errorVisual    {
+    background-color: var(--main-color);
+    overflow: hidden;
+    width: 80%;
+    height: 80%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+    backdrop-filter: blur(5px);
+    animation: acercarse 0.6s ease-in-out;
+    border-radius: 40px;
+}
+
+.loader__element {
+    border-radius: 100%;
+    border: var(--size) solid var(--point-color);
+    margin: calc(var(--size)*2);
+}
+
+.loader__element:nth-child(1) {
+    animation: preloader .6s ease-in-out alternate infinite;
+}
+
+.loader__element:nth-child(2) {
+    animation: preloader .6s ease-in-out alternate .2s infinite;
+}
+
+.loader__element:nth-child(3) {
+    animation: preloader .6s ease-in-out alternate .4s infinite;
+}
+
+.salida {
+    animation: alejarse 1s;
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes preloader {
+    100% {
+        transform: scale(2);
+    }
+}
+
+@keyframes acercarse {
+    from {
+        scale: 0;
+    }
+
+    to {
+        scale: 1;
+    }
+}
+
+@keyframes alejarse {
+    from {
+        scale: 1;
+    }
+
+    to {
+        scale: 0;
+    }
+}

@@ -1,1 +1,28 @@
-<p>lista-productos works!</p>
+<div class="container">
+  <h1>Lista de Productos</h1>
+
+  <div *ngIf="loading" class="spinner">Cargando productos...</div>
+
+  <div *ngIf="error" class="alert alert-danger">
+    {{ error }}
+  </div>
+
+  <table *ngIf="!loading && !error" class="custom-table">
+    <thead>
+      <tr>
+        <th>Nombre del Producto</th>
+        <th>Descripción</th>
+        <th>Veces Adquirido</th>
+        <th>Tipo de Producto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of productos">
+        <td class="text-center">{{ product.productoNombre }}</td>
+        <td>{{ product.productoDescripcion }}</td>
+        <td class="text-center">{{ product.productoVeces }}</td>
+        <td class="text-center">{{ product.productTipo }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

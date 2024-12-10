@@ -1,10 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
+:root{
+    --oscuro: #1a1a19;
+    --blanco: #f6fcdf;
+    --verdeclaro: #859f39;
+    --verdeoscuro: #31511E;
+}
+
 *{
     font-family: "Nunito", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+}
+
+*::selection{
+    background-color: #1A1A19;
+    color: #F6FCDF;
 }
 body{
     background-color: #F6FCDF;
@@ -16,13 +28,21 @@ body{
 }
 
 ::-webkit-scrollbar{
-    width: 15px;
+    width: 20px;
 }
 ::-webkit-scrollbar-thumb{
-    background: #1A1A19;
+    border: 3.5px solid #31511E;
     border-radius: 20px;
+    background-color: #31511E;
+}
+
+::-webkit-scrollbar-button{
+    display: none;
 }
 
 ::-webkit-scrollbar-track{
-    background:linear-gradient( #859F3D 10%, #F6FCDF 15%)
+    background: #F6FCDF;
+    border-left: 3.5px solid #31511E; border-right: 3.5px solid #31511E;
+    padding: 2px;
 }
+
