@@ -1,35 +1,4 @@
-:host {
-    padding: 5px;
-}
-
-h1 {
+h1{
     text-align: center;
     font-weight: 800;
-    font-size: 5em;
-}
-
-.detalles {
-    background-color: var(--verdeoscuro);
-    display: flex;
-    flex-wrap: wrap;
-    margin: 5%;
-    padding-top: 3%;
-    padding-bottom: 3%;
-    color: var(--blanco);
-    font-size: 1.4em;
-    align-items: center;
-    border-radius: 25px;
-    justify-content: space-around;
-}
-.detalles p{
-    min-width: 600px;
-    max-width: 600px;
-}
-.imgProduct{
-    min-width: 400px;
-    max-width: 700px;
-}
-.imgProduct img{
-    width: 100%;
-
 }
