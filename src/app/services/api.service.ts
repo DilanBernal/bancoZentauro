@@ -13,7 +13,7 @@ interface Product {
   productoIdImagen: number;
   productoNombre: string;
   productoDescripcion: string;
-  productoTipo: enumProductTipo;
+  productTipo: enumProductTipo;
   imageUrl?: string;  // Añadimos una propiedad para almacenar la URL de la imagen
 }
 
