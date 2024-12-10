@@ -90,7 +90,8 @@
       "mision": "Mission",
       "misionTexto": "Our mission is to provide financial services that empower people to achieve their goals.",
       "vision": "Vision",
-      "visionTexto": "To be the most trusted and sustainable bank, leading innovation in financial services."
+      "visionTexto": "To be the most trusted and sustainable bank, leading innovation in financial services.",
+      "misionVision": "Our mision and vision"
     },
     "nosotros": {
       "sobreNosotros": "About Us",

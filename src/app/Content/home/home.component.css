@@ -50,7 +50,7 @@
     grid-template-columns: repeat(2, 1fr);
     margin: 3px;
     grid-template-columns: repeat(auto-fit,
-            minmax(500px, 1fr));
+            minmax(700px, 1fr));
 }
 .valores h2{
     grid-column: 1 / -1;

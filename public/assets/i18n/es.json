@@ -108,7 +108,8 @@
     "mision": "Misión",
     "misionTexto": "Nuestra misión es proporcionar servicios financieros que empoderen a las personas para alcanzar sus metas.",
     "vision": "Visión",
-    "visionTexto": "Ser el banco más confiable y sostenible, liderando la innovación en servicios financieros."
+    "visionTexto": "Ser el banco más confiable y sostenible, liderando la innovación en servicios financieros.",
+    "misionVision": "Nuestra misión y visión"
   },
   "nosotros": {
     "sobreNosotros": "Sobre Nosotros",

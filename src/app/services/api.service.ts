@@ -47,8 +47,11 @@ interface ApiResponse<T> {
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'https://dq5jx513-8080.use2.devtunnels.ms'
-  private apiImgUrl = 'https://dq5jx513-3000.use2.devtunnels.ms'
+  
+  public apiUrl = 'https://hjsgcvmt-8080.use2.devtunnels.ms'
+  private apiImgUrl = 'https://hjsgcvmt-3000.use2.devtunnels.ms'
+  // private apiUrl = 'https://dq5jx513-8080.use2.devtunnels.ms'
+  // private apiImgUrl = 'https://dq5jx513-3000.use2.devtunnels.ms'
 
   // private apiUrl = 'http://localhost:8080'
   // private apiImgUrl = 'http://localhost:3000'
@@ -153,17 +156,21 @@ export class ApiService {
   }
 
   //*************************Productos************************
-  registerProduct(datos: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/prd/register`, datos, { observe: 'response' }).pipe(
-      map((response) => {
-        return { status: response.status, body: response.body, header: response.headers }
-      }),
-      catchError(error => {
-        console.log(error)
-        return error
-      })
-    )
+  // registerProduct(datos: any): Observable<any> {
+  //   return this.http.post(`${this.apiUrl}/prd/register`, datos, { observe: 'response' }).pipe(
+  //     map((response) => {
+  //       return { status: response.status, body: response.body, header: response.headers }
+  //     }),
+  //     catchError(error => {
+  //       console.log(error)
+  //       return error
+  //     })
+  //   )
+  // }
+  registerProduct(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}product/register`, data);
   }
+  
   getAllProducts(): Observable<any> {
     return this.http.get(`${this.apiUrl}/prd/products`, { observe: 'response' }).pipe(
       tap((response) => {
