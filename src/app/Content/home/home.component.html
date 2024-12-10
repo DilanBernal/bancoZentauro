@@ -1,48 +1,47 @@
 <section class="home">
-    <h1>Bienvenido a <br>Banco centauros!</h1>
+    <h1>{{ 'bienvenido.titulo' | translate }} <br>{{ 'bienvenido.bancoCentauros' | translate }}!</h1>
     <section class="homeBanner">
-    <div class="homeBannerTexto">
-        <h2>¡Cumple tus sueños con nosotros! 🚀</h2><br>
-        <p>
-            Desde abrir tu primera cuenta hasta financiar tus grandes proyectos, estamos aquí para ayudarte a avanzar.<br>
-            Banca segura, fácil y hecha a tu medida.<br> <br>   
-            <strong>💳Solicita tu tarjeta.</strong>
-            <strong>🏡Revisa tus cuotas.</strong>
-            <strong>💰Invierte en tu futuro.</strong>
-        </p>
-    </div>
-    <div class="imgBanner">
-        <img src="personaFeliz.png" alt="Persona Feliz En Banco">
-    </div>
+        <div class="homeBannerTexto">
+            <h2>{{ 'home.bannerSlogan' | translate }} 🚀</h2><br>
+            <p>
+                {{ 'home.texto1' | translate }}<br>
+                {{ 'home.texto2' | translate }}<br><br>   
+                <strong>{{ 'home.solicitaTarjeta' | translate }}</strong>
+                <strong>{{ 'home.revisaCuotas' | translate }}</strong>
+                <strong>{{ 'home.invierteFuturo' | translate }}</strong>
+            </p>
+        </div>
+        <div class="imgBanner">
+            <img src="personaFeliz.png" alt="{{ 'home.imagenAlt' | translate }}">
+        </div>
     </section>
+
     <section class="valores">
-    <h2>Mision y vision</h2>
-    <div class="mision">
-        <h3>Mision</h3>
-        <p>Ofrecer soluciones financieras innovadoras, accesibles y seguras que empoderen a nuestros clientes a alcanzar sus metas personales y profesionales, mientras fomentamos la inclusión financiera, la sostenibilidad y el desarrollo económico de nuestras comunidades.</p>
-    </div>
-    <div class="vision">
-        <h3>Vision</h3>
-        <p>Ser el banco líder en confianza, tecnología y sostenibilidad, reconocido por transformar la experiencia financiera de nuestros clientes y por impulsar el progreso económico y social a nivel global.</p>
-    </div>
+        <h2>{{ 'valores.misionVision' | translate }}</h2>
+        <div class="mision">
+            <h3>{{ 'valores.mision' | translate }}</h3>
+            <p>{{ 'valores.misionTexto' | translate }}</p>
+        </div>
+        <div class="vision">
+            <h3>{{ 'valores.vision' | translate }}</h3>
+            <p>{{ 'valores.visionTexto' | translate }}</p>
+        </div>
     </section>
 </section>
+
 <section class="nosotros">
     <div class="sobrenosotros">
-        <h2>Sobre nosotros</h2>
-        <p class="parrafoNosotros">Banco Centauro es una institución financiera comprometida con la innovación y la excelencia en el servicio. Nos dedicamos a proporcionar soluciones financieras personalizadas que ayudan a nuestros clientes a alcanzar sus metas y sueños. Nuestra misión es ser el banco de confianza para todas sus necesidades financieras, brindando productos y servicios de alta calidad respaldados por una atención excepcional al cliente.</p>
-
+        <h2>{{ 'nosotros.sobreNosotros' | translate }}</h2>
+        <p class="parrafoNosotros">{{ 'nosotros.descripcion' | translate }}</p>
     </div>
+
     <div class="historia">
-        <h2>Nuestra Historia</h2>
-        <p class="parrafoNosotros">Fundado en el año 2000, Banco Centauro inició sus operaciones con el objetivo de revolucionar el sector bancario a través de la tecnología y la innovación. Con un pequeño equipo pero con grandes ideas, abrimos nuestras primeras sucursales en Bogotá, Colombia. A lo largo de los años, hemos crecido de manera sostenida, expandiendo nuestra presencia a nivel nacional e internacional. Hemos introducido múltiples avances en servicios digitales, desde aplicaciones móviles intuitivas hasta soluciones de banca en línea seguras, todo pensado para ofrecer la mejor experiencia bancaria a nuestros clientes.</p>
+        <h2>{{ 'nosotros.nuestraHistoria' | translate }}</h2>
+        <p class="parrafoNosotros">{{ 'nosotros.historiaTexto' | translate }}</p>
     </div>
-    <div class="quien">
-        <h2>Quiénes Somos</h2>
-        <p class="parrafoNosotros">Somos un equipo de profesionales apasionados por las finanzas y la tecnología. En Banco Centauro, creemos en el poder de la colaboración y la innovación para transformar la experiencia bancaria. Nos enorgullece contar con un equipo diverso y talentoso que trabaja arduamente para ofrecer productos y servicios que realmente marquen la diferencia en la vida de nuestros clientes.
-        Nuestro enfoque está centrado en el cliente; nos esforzamos por entender sus necesidades únicas y ofrecer soluciones personalizadas. Desde cuentas de ahorro y préstamos, hasta inversiones y seguros, estamos aquí para apoyar a nuestros clientes en cada paso de su viaje financiero.
-        
-        Si deseas más información o detalles específicos sobre algún aspecto de Banco Centauro, ¡házmelo saber! Estoy aquí para ayudarte. 😊</p>
 
+    <div class="quien">
+        <h2>{{ 'nosotros.quienesSomos' | translate }}</h2>
+        <p class="parrafoNosotros">{{ 'nosotros.quienesSomosTexto' | translate }}</p>
     </div>
 </section>

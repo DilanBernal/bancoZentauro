@@ -1,4 +1,42 @@
 {
+  "formulario": {
+    "titulo": "Formulario de Solicitud",
+    "datosPersonales": "Datos Personales",
+    "nombre": "Nombre",
+    "primerApellido": "Primer Apellido",
+    "segundoApellido": "Segundo Apellido",
+    "cedula": "Cédula de Ciudadanía",
+    "fechaNacimiento": "Fecha de Nacimiento",
+    "fechaExpedicion": "Fecha de Expedición",
+    "datosContacto": "Datos de Contacto",
+    "telefono": "Número de Teléfono",
+    "correo": "Correo Electrónico",
+    "direccion": "Dirección",
+    "documentosRespaldo": "Documentos de Respaldo",
+    "comprobanteIngreso": "Comprobante de Ingresos",
+    "declaracionImpuestos": "Declaración de Impuestos",
+    "terminos": "Acepto los términos y condiciones.",
+    "solicitar": "Solicitar"
+  },
+  "formularioEn": {
+    "titulo": "Application Form",
+    "datosPersonales": "Personal Information",
+    "nombre": "First Name",
+    "primerApellido": "Last Name",
+    "segundoApellido": "Second Last Name",
+    "cedula": "ID Number",
+    "fechaNacimiento": "Date of Birth",
+    "fechaExpedicion": "Date of Issue",
+    "datosContacto": "Contact Information",
+    "telefono": "Phone Number",
+    "correo": "Email Address",
+    "direccion": "Address",
+    "documentosRespaldo": "Supporting Documents",
+    "comprobanteIngreso": "Proof of Income",
+    "declaracionImpuestos": "Tax Declaration",
+    "terminos": "I accept the terms and conditions.",
+    "solicitar": "Submit"
+  },
   "CREATE_PRODUCT_TITLE": "¡Crear un nuevo producto!",
   "ENTER_PRODUCT_NAME": "Ingrese el nombre del producto",
   "PLACEHOLDER_PRODUCT_NAME": "Nombre del producto",
@@ -7,12 +45,60 @@
   "ENTER_PRODUCT_IMAGE": "Subir imagen del producto",
   "SUBMIT_BUTTON": "Crear Producto",
   "BACK_BUTTON": "Volver",
-  
   "productList": {
     "title": "Lista de Productos",
     "productName": "Nombre del Producto",
     "description": "Descripción",
     "timesAcquired": "Veces que se ha adquirido",
     "productType": "Tipo de Producto"
+  },
+  "footer": {
+    "teInteresa": "Te puede interesar",
+    "legales": "Legales",
+    "contacto": "Contáctanos",
+    "vinculos": {
+      "1": "Vinculo 1",
+      "2": "Vinculo 2",
+      "3": "Vinculo 3",
+      "4": "Vinculo 4",
+      "5": "Vinculo 5",
+      "6": "Vinculo 6"
+    },
+    "copyright": "Copyright © 2024 Grupo Centauro"
+  },
+
+  "bienvenido": {
+    "titulo": "Bienvenido a",
+    "bancoCentauros": "Banco Centauros"
+  },
+  "home": {
+    "bannerSlogan": "¡Cumple tus sueños con nosotros!",
+    "texto1": "Desde abrir tu primera cuenta hasta financiar tus grandes proyectos, estamos aquí para ayudarte a avanzar.",
+    "texto2": "Banca segura, fácil y hecha a tu medida.",
+    "solicitaTarjeta": "💳 Solicita tu tarjeta.",
+    "revisaCuotas": "🏡 Revisa tus cuotas.",
+    "invierteFuturo": "💰 Invierte en tu futuro.",
+    "imagenAlt": "Persona Feliz En Banco"
+  },
+  "valores": {
+    "misionVision": "Misión y Visión",
+    "mision": "Misión",
+    "misionTexto": "Ofrecer soluciones financieras innovadoras, accesibles y seguras que empoderen a nuestros clientes a alcanzar sus metas personales y profesionales, mientras fomentamos la inclusión financiera, la sostenibilidad y el desarrollo económico de nuestras comunidades.",
+    "vision": "Visión",
+    "visionTexto": "Ser el banco líder en confianza, tecnología y sostenibilidad, reconocido por transformar la experiencia financiera de nuestros clientes y por impulsar el progreso económico y social a nivel global."
+  },
+  "nosotros": {
+    "sobreNosotros": "Sobre nosotros",
+    "descripcion": "Banco Centauro es una institución financiera comprometida con la innovación y la excelencia en el servicio. Nos dedicamos a proporcionar soluciones financieras personalizadas que ayudan a nuestros clientes a alcanzar sus metas y sueños. Nuestra misión es ser el banco de confianza para todas sus necesidades financieras, brindando productos y servicios de alta calidad respaldados por una atención excepcional al cliente.",
+    "nuestraHistoria": "Nuestra Historia",
+    "historiaTexto": "Fundado en el año 2000, Banco Centauro inició sus operaciones con el objetivo de revolucionar el sector bancario a través de la tecnología y la innovación. Con un pequeño equipo pero con grandes ideas, abrimos nuestras primeras sucursales en Bogotá, Colombia. A lo largo de los años, hemos crecido de manera sostenida, expandiendo nuestra presencia a nivel nacional e internacional. Hemos introducido múltiples avances en servicios digitales, desde aplicaciones móviles intuitivas hasta soluciones de banca en línea seguras, todo pensado para ofrecer la mejor experiencia bancaria a nuestros clientes.",
+    "quienesSomos": "Quiénes Somos",
+    "quienesSomosTexto": "Somos un equipo de profesionales apasionados por las finanzas y la tecnología. En Banco Centauro, creemos en el poder de la colaboración y la innovación para transformar la experiencia bancaria. Nos enorgullece contar con un equipo diverso y talentoso que trabaja arduamente para ofrecer productos y servicios que realmente marquen la diferencia en la vida de nuestros clientes. Nuestro enfoque está centrado en el cliente; nos esforzamos por entender sus necesidades únicas y ofrecer soluciones personalizadas. Desde cuentas de ahorro y préstamos, hasta inversiones y seguros, estamos aquí para apoyar a nuestros clientes en cada paso de su viaje financiero. Si deseas más información o detalles específicos sobre algún aspecto de Banco Centauro, ¡házmelo saber! Estoy aquí para ayudarte."
+  },
+
+  "estudiantes": {
+    "title": "Proceso de solicitud de tarjeta de crédito de Estudiantes",
+    "description": "¡Tu Tarjeta de Crédito Estudiantes Te Espera! 🎓💳\nCon la Tarjeta de Crédito Estudiantes de Banco Centauros, disfruta de un límite de crédito adaptado a tus necesidades 💰, descuentos exclusivos 🛍️ y beneficios pensados para ti 🎉. ¡Solicítala ahora y empieza a aprovechar todo lo que te ofrecemos! 🚀.",
+    "button": "Solicitar"
   }
 }

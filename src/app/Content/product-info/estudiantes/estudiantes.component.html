@@ -1,18 +1,14 @@
 <section class="estudiantes">
-    <h1>Proceso de solicitud de tarjeta de credito de Estudiantes</h1>
-    <section class="estudiantesBanner">
-      <div class="estudiantesBannerTexto">
-          <p>
-            ¡Tu Tarjeta de Crédito Estudiantes Te Espera! 🎓💳
-            Con la Tarjeta de Crédito Estudiantes de Banco Centauros, disfruta de un límite de crédito 
-            adaptado a tus necesidades 💰, descuentos exclusivos 🛍️ y beneficios pensados para ti 🎉. 
-            ¡Solicítala ahora y empieza a aprovechar todo lo que te ofrecemos! 🚀.<br> <br>   
-          </p>
-
-          <button class="btnTarjetaEstudiantes btn" (click)="solicitudTarjetaEstudiantes()">Solicitar</button>
-      </div>
-      <div class="estudiantesImgBanner">
-          <img src="tarjeta estudiantes.png" alt="Persona Feliz En Banco">
-      </div>
-    </section>
+  <h1>{{ 'estudiantes.title' | translate }}</h1>
+  <section class="estudiantesBanner">
+    <div class="estudiantesBannerTexto">
+      <p>{{ 'estudiantes.description' | translate }}</p>
+      <button class="btnTarjetaEstudiantes btn" (click)="solicitudTarjetaEstudiantes()">
+        {{ 'estudiantes.button' | translate }}
+      </button>
+    </div>
+    <div class="estudiantesImgBanner">
+      <img src="tarjeta estudiantes.png" alt="Persona Feliz En Banco">
+    </div>
+  </section>
 </section>
