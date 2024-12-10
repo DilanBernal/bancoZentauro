@@ -19,7 +19,6 @@ h1 {
 .custom-table {
   width: 100%;
   border-collapse: collapse;
-  
 }
 
 .custom-table thead {
@@ -28,27 +27,32 @@ h1 {
   font-size: 1.2em;
   font-weight: bolder;
 }
-.custom-table *::selection{
+
+.custom-table *::selection {
   background-color: var(--blanco);
   color: var(--oscuro);
 }
 
 .custom-table tbody tr:nth-child(even) {
   background-color: var(--verdeclaro);
-  /* Color para filas pares */
   transition: 0.3s;
 }
 
 .custom-table tbody tr:nth-child(odd) {
   background-color: var(--verdeoscuro);
   color: var(--blanco);
-  /* Color para filas impares */
   transition: 0.3s;
 }
-td{
-  padding: 4px;
+
+.custom-table td {
+  padding: 10px;
+  max-height: 140px;  /* Límite de altura máximo para las celdas */
+  overflow: hidden;   /* Evita que el contenido se desborde */
+  text-overflow: ellipsis;  /* Muestra puntos suspensivos si el contenido es largo */
+  white-space: nowrap;  /* Evita que el texto se rompa en varias líneas */
 }
-.custom-table thead tr th{
+
+.custom-table thead tr th {
   padding: 5px;
   text-align: center;
 }
@@ -57,11 +61,8 @@ td{
   background-color: var(--oscuro);
   color: var(--blanco);
   transition: 0.3s;
-  /* Color para hover */
 }
 
-
-/* Estilo de estados */
 .spinner {
   text-align: center;
   font-size: 1.2rem;
