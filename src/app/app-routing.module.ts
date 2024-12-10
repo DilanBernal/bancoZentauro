@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'backup', component: BackupComponent },
   { path: 'services', component: ServicesComponent },
   { path: 'admin/creacion-productos', component: CreacionProductosComponent },
-  { path: 'form-solicitud', component: FormSolicitudComponent },
+  { path: 'product/:id/form-solicitud', component: FormSolicitudComponent },
   { path: 'admin/lista-productos', component: ListaProductosComponent },
   { path: 'lista-productos-cli', component: ListaProductosCLComponent },
   { path: 'lista-Solicitudes', component: ListaSolicitudComponent },

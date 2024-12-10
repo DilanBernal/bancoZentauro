@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 interface enumProductTipo {
@@ -30,13 +30,16 @@ export class ProductInfoComponent {
 
   loading:boolean = false
 
-  constructor(private api:ApiService, private route:ActivatedRoute){}
+  constructor(private api:ApiService, private route:ActivatedRoute, private router:Router){}
 
   ngOnInit(){
     const productId = Number(this.route.snapshot.paramMap.get('id'));
     this.cargarProducto(productId);
   }
 
+  registerSolicitud(id:number){
+    this.router.navigate([`product/${id}/form-solicitud`])
+  }
   async cargarProducto(int:number){
     this.loading= true
     try {
