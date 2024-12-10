@@ -9,87 +9,79 @@
       d="M16 16 l20 20 M16 36 l20 -20"
     />
   </svg>
-  <h2>Hubo un error</h2>
+  <h2>{{ 'error.huboError' | translate }}</h2>
   <br />
-  <p #errorHtml></p>
+  <p #errorHtml>{{ errorMessage }}</p>
 </div>
 
-
 <form [formGroup]="fileForm" (ngSubmit)="onSubmit()" novalidate>
-  <h2>Crea un nuevo producto!</h2>
+  <h2>{{ 'producto.crearNuevo' | translate }}</h2>
+  
   <div class="input-group">
-    <label for="nombre">Ingrese el nombre del producto</label>
+    <label for="nombre">{{ 'producto.nombre' | translate }}</label>
     <input
       class="form-control"
       type="text"
       id="nombre"
       formControlName="nombre"
-      placeholder="Nombre del producto"
+      placeholder="{{ 'producto.nombrePlaceholder' | translate }}"
       required
     />
   </div>
   <span
-    *ngIf="
-      fileForm.get('nombre')?.hasError('required') &&
-      fileForm.get('nombre')?.touched
-    "
+    *ngIf="fileForm.get('nombre')?.hasError('required') && fileForm.get('nombre')?.touched"
     class="error"
-    >Tiene que tener un nombre</span
   >
+    {{ 'producto.nombreRequerido' | translate }}
+  </span>
+
   <div class="input-group input-description">
-    <label for="descripcion">Ingrese la descripción del producto</label>
+    <label for="descripcion">{{ 'producto.descripcion' | translate }}</label>
     <textarea
       class="form-control"
-      type="textarea  "
+      type="textarea"
       id="descripcion"
       minlength="25"
       formControlName="descripcion"
-      placeholder="Descripción del producto"
+      placeholder="{{ 'producto.descripcionPlaceholder' | translate }}"
       required
     ></textarea>
   </div>
 
   <span
-    *ngIf="
-      fileForm.get('descripcion')?.hasError('required') &&
-      fileForm.get('descripcion')?.touched
-    "
+    *ngIf="fileForm.get('descripcion')?.hasError('required') && fileForm.get('descripcion')?.touched"
     class="error"
-    >La descripcion es obligatoria <br
-  /></span>
+  >
+    {{ 'producto.descripcionRequerida' | translate }}
+  </span>
 
   <span
-    *ngIf="
-      fileForm.get('descripcion')?.value < 25 &&
-      fileForm.get('descripcion')?.touched
-    "
+    *ngIf="fileForm.get('descripcion')?.value < 25 && fileForm.get('descripcion')?.touched"
     class="error"
-    >La descripcion tiene que tener minimo 25 caracteres</span
   >
+    {{ 'producto.descripcionMinima' | translate }}
+  </span>
 
   <div class="input-group">
     <div class="selection-input">
-      <label for="tipo">Seleccione el tipo de producto</label>
+      <label for="tipo">{{ 'producto.tipo' | translate }}</label>
       <select id="tipo" formControlName="tipo" class="form-select" required>
-        <option value="" disabled selected>Seleccione un producto</option>
-        <option value="credito">Credito</option>
-        <option value="debito">Debito</option>
-        <option value="prepagada">Prepagada</option>
+        <option value="" disabled selected>{{ 'producto.tipoPlaceholder' | translate }}</option>
+        <option value="credito">{{ 'producto.tipoCredito' | translate }}</option>
+        <option value="debito">{{ 'producto.tipoDebito' | translate }}</option>
+        <option value="prepagada">{{ 'producto.tipoPrepagada' | translate }}</option>
       </select>
     </div>
     <span
-      *ngIf="
-        fileForm.get('tipo')?.hasError('required') &&
-        fileForm.get('tipo')?.touched
-      "
+      *ngIf="fileForm.get('tipo')?.hasError('required') && fileForm.get('tipo')?.touched"
       class="error"
     >
-      Este campo es obligatorio.
+      {{ 'producto.tipoRequerido' | translate }}
     </span>
   </div>
 
   <div class="input-group">
-    <label for="imagen">Ingrese imagen del producto</label>
+    <label for="imagen">{{ 'producto.imagen' | translate }}</label>
     <input
       class="form-control"
       type="file"
@@ -104,8 +96,9 @@
 
   <div class="submit-btn">
     <button class="btn btnVerde" type="submit" [disabled]="!fileForm.valid">
-      Crear Producto
+      {{ 'producto.crear' | translate }}
     </button>
   </div>
 </form>
-<button class="btn btnVerde btnVolver">Volver</button>
+
+<button class="btn btnVerde btnVolver">{{ 'producto.volver' | translate }}</button>

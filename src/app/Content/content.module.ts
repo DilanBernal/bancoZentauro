@@ -9,6 +9,7 @@ import { ProductInfoComponent } from './products/product-info/product-info.compo
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpLoaderFactory } from '../app.module';
+import { ServicesComponent } from './servicesBanco/services.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HttpLoaderFactory } from '../app.module';
     FooterComponent,
     ProductsComponent,
     ProductInfoComponent,
+    ServicesComponent
   ],
   imports: [
     CommonModule,

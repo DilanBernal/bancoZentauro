@@ -49,35 +49,6 @@
     "solicitar": "Submit"
   },
 
-  "bienvenido": {
-    "titulo": "Welcome to",
-    "bancoCentauros": "Banco Centauros"
-  },
-  "home": {
-    "bannerSlogan": "Fulfill your dreams with us!",
-    "texto1": "From opening your first account to financing your big projects, we're here to help you move forward.",
-    "texto2": "Secure, easy, and customized banking.",
-    "solicitaTarjeta": "💳 Apply for your card.",
-    "revisaCuotas": "🏡 Check your installments.",
-    "invierteFuturo": "💰 Invest in your future.",
-    "imagenAlt": "Happy Person at Bank"
-  },
-  "valores": {
-    "misionVision": "Mission and Vision",
-    "mision": "Mission",
-    "misionTexto": "To offer innovative, accessible, and secure financial solutions that empower our clients to achieve their personal and professional goals, while promoting financial inclusion, sustainability, and the economic development of our communities.",
-    "vision": "Vision",
-    "visionTexto": "To be the leading bank in trust, technology, and sustainability, recognized for transforming our clients' financial experience and for driving economic and social progress globally."
-  },
-  "nosotros": {
-    "sobreNosotros": "About Us",
-    "descripcion": "Banco Centauro is a financial institution committed to innovation and excellence in service. We provide personalized financial solutions to help our clients achieve their goals and dreams. Our mission is to be the trusted bank for all their financial needs, offering high-quality products and services backed by exceptional customer service.",
-    "nuestraHistoria": "Our History",
-    "historiaTexto": "Founded in 2000, Banco Centauro began its operations with the goal of revolutionizing the banking sector through technology and innovation. With a small team but big ideas, we opened our first branches in Bogotá, Colombia. Over the years, we have grown steadily, expanding our presence nationally and internationally. We have introduced multiple advances in digital services, from intuitive mobile apps to secure online banking solutions, all designed to provide the best banking experience to our clients.",
-    "quienesSomos": "Who We Are",
-    "quienesSomosTexto": "We are a team of professionals passionate about finance and technology. At Banco Centauro, we believe in the power of collaboration and innovation to transform the banking experience. We take pride in having a diverse and talented team that works hard to offer products and services that truly make a difference in the lives of our clients. Our focus is client-centered; we strive to understand their unique needs and provide personalized solutions. From savings accounts and loans to investments and insurance, we are here to support our clients at every step of their financial journey. If you want more information or specific details about any aspect of Banco Centauro, let me know! I'm here to help."
-  },
-
   "estudiantes": {
     "title": "Student Credit Card Application Process",
     "description": "Your Student Credit Card Awaits! 🎓💳\nWith the Banco Centauros Student Credit Card, enjoy a credit limit tailored to your needs 💰, exclusive discounts 🛍️, and benefits designed for you 🎉. Apply now and start taking advantage of everything we offer! 🚀.",
@@ -99,7 +70,67 @@
     "cardPlusDescription": "Make every purchase count: earn points with every purchase and redeem them for incredible exclusive benefits. Plus, enjoy special promotions to save on your favorite items.",
     "cardPremium": "Premium Credit Card",
     "cardPremiumDescription": "Enjoy exclusive benefits, a high credit limit, and rewards tailored to your lifestyle. The ideal card for those seeking more and better."
+  },
+
+    "bienvenido": {
+      "titulo": "Welcome to",
+      "bancoCentauros": "Banco Centauros"
+    },
+    "home": {
+      "bannerSlogan": "Achieve your dreams with us!",
+      "texto1": "From opening your first account to financing your big projects, we are here to help you move forward.",
+      "texto2": "Secure, easy, and tailored banking for you.",
+      "solicitaTarjeta": "Request your credit card with competitive rates and exclusive benefits.",
+      "revisaCuotas": "Review and manage your mortgage loans with flexible payment options.",
+      "invierteFuturo": "Plan your future investments with personalized advice and advanced tools.",
+      "imagenAlt": "Happy person with their bank card"
+    },
+    "valores": {
+      "titulo": "Our Values",
+      "mision": "Mission",
+      "misionTexto": "Our mission is to provide financial services that empower people to achieve their goals.",
+      "vision": "Vision",
+      "visionTexto": "To be the most trusted and sustainable bank, leading innovation in financial services."
+    },
+    "nosotros": {
+      "sobreNosotros": "About Us",
+      "descripcion": "Banco Centauros is a financial institution committed to excellence and customer service.",
+      "nuestraHistoria": "Our History",
+      "historiaTexto": "With over 20 years of experience, we have been pioneers in innovative financial solutions.",
+      "quienesSomos": "Who Are We?",
+      "quienesSomosTexto": "We are a team dedicated to providing personalized and effective financial solutions."
+    },
+
+    "productos": {
+      "cargando": "Loading...",
+      "error": "An error has occurred",
+      "detallesTarjeta": "Details for the card of",
+      "solicitar": "Request"
+    },
+
+    "producto": {
+      "crearNuevo": "Create a new product!",
+      "nombre": "Enter the product name",
+      "nombrePlaceholder": "Product name",
+      "nombreRequerido": "It must have a name",
+      "descripcion": "Enter the product description",
+      "descripcionPlaceholder": "Product description",
+      "descripcionRequerida": "Description is required",
+      "descripcionMinima": "The description must be at least 25 characters long",
+      "tipo": "Select the product type",
+      "tipoPlaceholder": "Select a product",
+      "tipoCredito": "Credit",
+      "tipoDebito": "Debit",
+      "tipoPrepagada": "Prepaid",
+      "tipoRequerido": "This field is required.",
+      "imagen": "Enter the product image",
+      "errorFormulario": "The form has errors, please fix them.",
+      "errorArchivo": "Only PNG images are allowed.",
+      "crear": "Create Product",
+      "volver": "Go Back",
+      "huboError": "There was an error"
+    }
   }
-}
+
 
 
