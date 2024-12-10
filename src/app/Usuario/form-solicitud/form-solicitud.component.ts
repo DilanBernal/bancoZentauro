@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 @Component({
-  selector: 'app-form-solicitud',
+  selector: 'form-solicitud',
   templateUrl: './form-solicitud.component.html',
   styleUrl: './form-solicitud.component.css'
 })

@@ -25,6 +25,7 @@ export class HeaderComponent {
   switchLanguage(language: string) {
     this.translate.use(language); 
     localStorage.setItem('language', this.translate.currentLang)
+    console.log(this.translate.currentLang)
   }
 
 
@@ -82,7 +83,7 @@ export class HeaderComponent {
   // Manejo de la selección de la página
   ngOnInit() {
     const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage) {
+    if (savedLanguage != null) {
       this.translate.use(savedLanguage);  // Usamos el idioma guardado en localStorage
     } else {
       // Si no hay idioma guardado, establecemos un idioma por defecto

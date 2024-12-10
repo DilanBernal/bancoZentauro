@@ -1,5 +1,6 @@
 :host {
     padding: 5px;
+    min-height: 80vh;
 }
 
 h1 {
@@ -24,6 +25,12 @@ h1 {
 .detalles p{
     min-width: 600px;
     max-width: 600px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+.detalles p > strong{
+    font-weight: 700;
 }
 .imgProduct{
     min-width: 400px;
@@ -31,5 +38,18 @@ h1 {
 }
 .imgProduct img{
     width: 100%;
+}
 
+@media (max-width:1400px){
+    ::host{
+        margin-top: 1001vh;
+    }
+    .detalles{
+        display: flex;
+        justify-content: center;
+        font-size: 1.8em;
+    }
+    h1{
+        font-size: 3em;
+    }
 }
