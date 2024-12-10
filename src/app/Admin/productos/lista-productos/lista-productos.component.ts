@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ApiService } from '../../../services/api.service';
 import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 interface Product {
   productoId: number;
@@ -20,7 +21,6 @@ interface ApiResponse {
 interface ImageResponse {
   img_url?: string;
 }
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'lista-productos-admin',

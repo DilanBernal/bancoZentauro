@@ -5,8 +5,10 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductsComponent } from './products/products.component';
 import { UserComponent } from './header/user/user.component';
-import { LoginComponent } from '../Usuario/login/login.component';
 import { ProductInfoComponent } from './products/product-info/product-info.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { HttpLoaderFactory } from '../app.module';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,19 @@ import { ProductInfoComponent } from './products/product-info/product-info.compo
     ProductInfoComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   exports: [
     HeaderComponent,
     UserComponent,
-    FooterComponent
+    FooterComponent,
   ]
 })
 export class ContentModule { }

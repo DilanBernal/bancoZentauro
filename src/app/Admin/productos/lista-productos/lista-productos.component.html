@@ -3,7 +3,7 @@
   <!-- Título traducido -->
   <h1>{{ 'productList.title' | translate }}</h1>
 
-  div *ngIf="loading" class="spinner">Cargando productos...</div>
+  <div *ngIf="loading" class="spinner">Cargando productos...</div>
 
   <div *ngIf="error" class="alert alert-danger">
     {{ error }}
@@ -22,10 +22,10 @@
     </thead>
     <tbody>
       <tr *ngFor="let producto of productos">
-        <td>{{ producto.nombre }}</td>
-        <td>{{ producto.descripcion }}</td>
-        <td>{{ producto.vecesAdquirido }}</td>
-        <td>{{ producto.tipo }}</td>
+        <td>{{ producto.productoNombre }}</td>
+        <td>{{ producto.productoDescripcion }}</td>
+        <td>{{ producto.productoVeces }}</td>
+        <td>{{ producto.productTipo }}</td>
       </tr>
     </tbody>
   </table>

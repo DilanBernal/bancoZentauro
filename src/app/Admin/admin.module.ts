@@ -8,6 +8,9 @@ import { ListaSolicitudComponent } from './solicitudes/lista-solicitud/lista.com
 import { TableroDeControlComponent } from './tablero-de-control/tablero-de-control.component';
 import { PopupModule } from '../Content/popup/popup.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpLoaderFactory } from '../app.module';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -24,7 +27,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     PopupModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ]
 })
 export class AdminModule { }

@@ -7,6 +7,10 @@ import { PopupModule } from '../Content/popup/popup.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormSolicitudComponent } from './form-solicitud/form-solicitud.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpLoaderFactory } from '../app.module';
+import { HttpClient } from '@angular/common/http';
+import { ListaProductosCLComponent } from './lista-productos-cl/lista-productos-cl.component';
 
 
 
@@ -15,14 +19,22 @@ import { AppRoutingModule } from '../app-routing.module';
     LoginComponent,
     SigninComponent,
     BackupComponent,
-    FormSolicitudComponent
+    FormSolicitudComponent,
+    ListaProductosCLComponent
   ],
   imports: [
     PopupModule,
     FormsModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ]
 })
 export class UsuarioModule { }
