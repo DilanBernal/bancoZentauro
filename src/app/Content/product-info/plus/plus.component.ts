@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-plus',
   templateUrl: './plus.component.html',
-  styleUrl: './plus.component.css'
+  styleUrls: ['./plus.component.css']  // Cambié styleUrl a styleUrls
 })
 export class PlusComponent {
 
-  constructor(private router:Router){}
+  constructor(private router: Router) {}
 
-  solicitudTarjetaEstudiantes(){
+  // Cambié el nombre del método para que coincida con el HTML
+  solicitudTarjetaPlus() {
     this.router.navigate(["form-solicitud"]);
   }
 }

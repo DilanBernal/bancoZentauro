@@ -82,6 +82,19 @@
     "title": "Student Credit Card Application Process",
     "description": "Your Student Credit Card Awaits! 🎓💳\nWith the Banco Centauros Student Credit Card, enjoy a credit limit tailored to your needs 💰, exclusive discounts 🛍️, and benefits designed for you 🎉. Apply now and start taking advantage of everything we offer! 🚀.",
     "button": "Apply Now"
+  },
+
+  "plus": {
+    "title": "Plus Credit Card Application Process",
+    "description": "Your Plus Credit Card Awaits! 🎓💳\nWith the Banco Centauros Plus Credit Card, enjoy a credit limit tailored to your needs 💰, exclusive discounts 🛍️, and benefits designed for you 🎉. Apply now and start taking advantage of everything we offer! 🚀.",
+    "button": "Apply Now"
+  },
+
+  "premium": {
+    "titulo": "Credit Card Application Process for Premium",
+    "mensaje1": "Your Premium Credit Card is Waiting for You! 🎓💳",
+    "mensaje2": "The Premium Card from Banco Centauros offers you a luxury experience, with a high credit limit 💎, access to exclusive benefits 🏖️, and personalized service 🌟. Apply today and take your financial experience to the next level! 🔝",
+    "boton": "Apply"
   }
 }
 

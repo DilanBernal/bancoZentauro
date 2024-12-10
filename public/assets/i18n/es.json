@@ -100,5 +100,18 @@
     "title": "Proceso de solicitud de tarjeta de crédito de Estudiantes",
     "description": "¡Tu Tarjeta de Crédito Estudiantes Te Espera! 🎓💳\nCon la Tarjeta de Crédito Estudiantes de Banco Centauros, disfruta de un límite de crédito adaptado a tus necesidades 💰, descuentos exclusivos 🛍️ y beneficios pensados para ti 🎉. ¡Solicítala ahora y empieza a aprovechar todo lo que te ofrecemos! 🚀.",
     "button": "Solicitar"
+  },
+
+  "plus": {
+    "title": "Proceso de solicitud de tarjeta de crédito Plus",
+    "description": "¡Tu Tarjeta de Crédito Plus Te Espera! 🎓💳\nCon la Tarjeta de Crédito Plus de Banco Centauros, disfruta de un límite de crédito adaptado a tus necesidades 💰, descuentos exclusivos 🛍️ y beneficios pensados para ti 🎉. ¡Solicítala ahora y empieza a aprovechar todo lo que te ofrecemos! 🚀.",
+    "button": "Solicitar"
+  },
+
+  "premium": {
+    "titulo": "Proceso de solicitud de tarjeta de crédito de Premium",
+    "mensaje1": "¡Tu Tarjeta de Crédito Premium Te Espera! 🎓💳",
+    "mensaje2": "La Tarjeta Premium de Banco Centauros te ofrece una experiencia de lujo, con un alto límite de crédito 💎, acceso a beneficios exclusivos 🏖️ y un servicio personalizado 🌟. ¡Solicítala hoy y lleva tu experiencia financiera al siguiente nivel! 🔝",
+    "boton": "Solicitar"
   }
 }
