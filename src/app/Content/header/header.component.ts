@@ -16,12 +16,13 @@ export class HeaderComponent {
   constructor(
     private router: Router, 
     public item: SharedService, 
-    private translate: TranslateService  // Inyectar el servicio de traducción
+    public translate: TranslateService  // Inyectar el servicio de traducción
   ) { }
 
   // Método para cambiar el idioma
   switchLanguage(language: string) {
-    this.translate.use(language);  // Cambia el idioma
+    this.translate.use(language); 
+    localStorage.setItem('language', this.translate.currentLang)
   }
 
   // Funciones de navegación
@@ -72,6 +73,14 @@ export class HeaderComponent {
 
   // Manejo de la selección de la página
   ngOnInit() {
+    const savedLanguage = localStorage.getItem('language');
+    if (savedLanguage) {
+      this.translate.use(savedLanguage);  // Usamos el idioma guardado en localStorage
+    } else {
+      // Si no hay idioma guardado, establecemos un idioma por defecto
+      this.translate.setDefaultLang('es');
+      this.translate.use('es');
+    }
     const ruta = this.router.url.split("/", 1);
     this.item.setSelectedItem(ruta[1]);
     this.router.events

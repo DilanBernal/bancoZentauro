@@ -1,5 +1,5 @@
-:host {
-    display: grid;
+footer {
+    display: grid !important;
     align-items: start; /* Alineación de elementos al inicio */
     justify-content: center;
     background-color: #1A1A19;

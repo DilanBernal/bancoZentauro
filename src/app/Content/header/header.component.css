@@ -77,6 +77,24 @@ ul li:hover{
     background-color: #1A1A19;
 }
 
+.btnInterUp{
+    top: 5px;
+    right: 5px;
+    position: absolute;
+    color: var(--blanco);
+    background-color: var(--oscuro);
+}
+.btnInterDown{
+    background-color: var(--oscuro);
+    position: absolute;
+    right: 5px;
+    top: 20%;
+    color: var(--blanco);
+}
+.btnActivo{
+    background-color: var(--verdeoscuro);
+}
+
 
 @keyframes aparecer {
     0%{

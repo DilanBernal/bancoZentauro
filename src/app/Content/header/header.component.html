@@ -14,8 +14,8 @@
     
     <!-- Botones de cambio de idioma -->
     <div class="language-switcher">
-      <button (click)="switchLanguage('es')">Español</button>
-      <button (click)="switchLanguage('en')">English</button>
+      <button [ngClass]="{'btnActivo': translate.currentLang == 'es'}"  class="btn btnInterUp" (click)="switchLanguage('es')">Español</button>
+      <button [ngClass]="{'btnActivo': translate.currentLang == 'en'}" class="btn btnInterDown" (click)="switchLanguage('en')">English</button>
     </div>
     
     <div class="headerCasa"><img src="casa.png" (click)="Home()" style="cursor: pointer;"></div>
