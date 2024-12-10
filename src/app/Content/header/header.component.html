@@ -6,6 +6,8 @@
         <li [ngClass]="{ 'selected': item.getSelectedItem() === 'products'}" (click)="Products()">Productos</li>
         <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lProductos'}" (click)="listaProducts()">Lista de productos</li>
         <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lProductosCliente'}" (click)="listaCliente()">Lista productos cliente</li>
+        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lProductosCliente'}" (click)="listaSolicitudes()">Lista solicitudes cliente</li>
+        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lProductosCliente'}" (click)="tableroDeControl()">LtableroDeControl</li>
         <app-user></app-user>
       </ul>
     </nav>

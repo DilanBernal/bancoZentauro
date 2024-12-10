@@ -14,6 +14,8 @@ import { FormSolicitudComponent } from './Content/form-solicitud/form-solicitud.
 import { CreacionProductosComponent } from './Admin/productos/creacion-productos/creacion-productos.component';
 import { ListaProductosComponent } from './Admin/productos/lista-productos/lista-productos.component';
 import { ListaProductosCLComponent } from './Usuario/lista-productos-cl/lista-productos-cl.component';
+import { ListaComponent } from './Admin/solicitudes/lista/lista.component';
+import { TableroDeControlComponent } from './Admin/tablero-de-control/tablero-de-control.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent},
@@ -30,7 +32,9 @@ const routes: Routes = [
   {path: 'creacion-productos', component:CreacionProductosComponent},
   {path: 'form-solicitud', component:FormSolicitudComponent},
   {path: 'lista-productos', component:ListaProductosComponent},
-  {path: 'lista-productos-cli', component: ListaProductosCLComponent}
+  {path: 'lista-productos-cli', component: ListaProductosCLComponent},
+  {path: 'lista-Solicitudes', component: ListaComponent},
+  {path: 'tablero-de-control', component: TableroDeControlComponent }
 ];
 
 @NgModule({

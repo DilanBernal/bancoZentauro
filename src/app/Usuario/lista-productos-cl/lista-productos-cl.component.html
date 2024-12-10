@@ -6,7 +6,6 @@
       <tr>
         <th>{{ 'productList.productName' | translate }}</th>
         <th>{{ 'productList.description' | translate }}</th>
-        <th>{{ 'productList.timesAcquired' | translate }}</th>
         <th>{{ 'productList.productType' | translate }}</th>
       </tr>
     </thead>
@@ -14,7 +13,6 @@
       <tr *ngFor="let producto of productos">
         <td>{{ producto.productoNombre }}</td>
         <td>{{ producto.productoDescripcion }}</td>
-        <td>{{ producto.productoVeces }}</td>
         <td>{{ producto.productTipo }}</td>
       </tr>
     </tbody>
