@@ -1,14 +1,19 @@
 <div class="product" *ngIf="product">
-  <h1> Detalles de para la tarjeta de {{product.productTipo}} <br> {{product.productoNombre}}</h1>
-  <div class="imgBanner">
-    <img [src]="product.imageUrl" alt="{{ product.productoNombre }}" />
+  <h1>
+    Destalles de para la tarjeta de {{ product.productTipo }} <br />
+    {{ product.productoNombre }}
+  </h1>
+  <div class="detalles">
+    <br />
+    <p>
+      <strong>{{ product.productoNombre }}:</strong>
+      {{ product.productoDescripcion }}
+    </p>
+    <div class="imgProduct">
+      <img [src]="product.imageUrl" alt="{{ product.productoNombre }}" />
+    </div>
   </div>
-  <strong>{{ product.productoNombre }}</strong
-  ><br />
-  <p>
-    {{ product.productoDescripcion }}
-  </p>
-  <!-- <button class="btn btnVerde" (click)="solicitarProducto(product.productoId)">
+  <button class="btn btnVerde" (click)="cargarProducto(product.productoId)">
       Solicitar
-    </button> -->
+    </button>
 </div>
