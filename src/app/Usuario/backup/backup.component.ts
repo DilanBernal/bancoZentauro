@@ -1,13 +1,24 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-backup',
   templateUrl: './backup.component.html',
-  styleUrl: './backup.component.css'
+  styleUrls: ['./backup.component.css']
 })
 export class BackupComponent {
 
+  constructor(private translate: TranslateService) {
+    // Establecer el idioma predeterminado, por ejemplo, inglés.
+    this.translate.setDefaultLang('en');
+  }
+
+  changeLanguage(language: string) {
+    // Cambiar el idioma de la aplicación.
+    this.translate.use(language);
+  }
+
   onSubmitCon() {
-    console.log("funciono backup")
+    console.log(this.translate.instant('BACKUP.MESSAGE'));
   }
 }

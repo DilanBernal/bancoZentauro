@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>{{ 'productList.title' | translate }}</h1>
+
+  <table class="custom-table">
+    <thead>
+      <tr>
+        <th>{{ 'productList.productName' | translate }}</th>
+        <th>{{ 'productList.description' | translate }}</th>
+        <th>{{ 'productList.productType' | translate }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.productoNombre }}</td>
+        <td>{{ producto.productoDescripcion }}</td>
+        <td>{{ producto.productTipo }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

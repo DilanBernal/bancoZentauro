@@ -1,1 +1,34 @@
-<p>lista works!</p>
+<div class="container">
+    <!-- <h1>{{ 'productList.title' | translate }}</h1> -->
+    <h1>Lista de solicitudes</h1>
+  
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <!-- <th>{{ 'productList.productName' | translate }}</th>
+          <th>{{ 'productList.description' | translate }}</th>
+          <th>{{ 'productList.productType' | translate }}</th> -->
+          
+          <th>Id de solicitud</th>
+          <th>Estado de solicitud</th>
+          <th>Producto Id</th>
+          <th>Producto Nombre</th>
+          <th>usuario id</th>
+          <th>usuario nombre</th>
+          <th>usuario apellido</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let solicitud of solicitudes">
+          <td>{{ solicitud.idSolicitud }}</td>
+          <td>{{ solicitud.estadoSolicitud }}</td>
+          <td >{{ solicitud.producto.productoId }}</td>
+          <td >{{ solicitud.producto.productoNombre }}</td>
+          <td>{{ solicitud.usuario.usuarioId}}</td>
+          <td>{{ solicitud.usuario.usuarioNombre }}</td>
+          <td>{{ solicitud.usuario.usuarioApellido }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,42 +1,67 @@
-:host{
+:host {
     display: grid;
-    align-items: center;
+    align-items: start; /* Alineación de elementos al inicio */
     justify-content: center;
     background-color: #1A1A19;
     color: #F6FCDF;
     grid-template-columns: repeat(3, 1fr);
-    /* padding: calc(5vh + 5vw); */
-}
-h4{
-    font-size: 2em;
-    text-align: center;
-}
-li{
-    list-style: none;
-}
-a{
-    color: #F6FCDF;
-    text-decoration: none;
+    gap: 1rem; /* Agrega espacio entre las secciones */
+    padding: 1rem; /* Ajusté el padding para mayor control */
 }
 
-.pie{
+h4 {
+    font-size: 1.0em; /* Aumenté el tamaño de la fuente */
+    text-align: center;
+    margin-bottom: 0,5rem; /* Añadí margen abajo del título */
+}
+
+ul {
+    padding-left: 0;
+}
+
+li {
+    list-style: none;
+    margin-bottom: 1rem; /* Espaciado entre los elementos de la lista */
+}
+
+a {
+    color: #F6FCDF;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Transición suave en el color del enlace */
+}
+
+a:hover {
+    color: #31511E; /* Cambié el color al pasar el ratón */
+}
+
+footer {
+    display: grid;
+    gap: 2rem;
+}
+
+.pie {
     display: flex;
     color: #1A1A19;
     grid-column: 1 / -1;
     background-color: #F6FCDF;
-    text-align: right;
     justify-content: space-between;
-    padding: 1%;
-}
-.pie span{
-    vertical-align: middle;
-    display: flex;
-    justify-content: center;
+    padding: 1rem 2rem;
     align-items: center;
+    text-align: right;
 }
-.logo{
-    width: 4vw;
+
+.pie span {
+    display: inline-block;
+    vertical-align: middle;
+    padding-left: 10px;
 }
-.logo img{
+
+.logo {
+    width: 10vw; /* Ajusté el tamaño del logo */
+}
+
+.logo img {
     width: 100%;
+    height: auto; /* Mantiene la proporción de la imagen */
 }
+

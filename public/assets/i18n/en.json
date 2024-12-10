@@ -1,0 +1,105 @@
+{
+  "CREATE_PRODUCT_TITLE": "Create a new product!",
+  "ENTER_PRODUCT_NAME": "Enter the product name",
+  "PLACEHOLDER_PRODUCT_NAME": "Product name",
+  "ENTER_PRODUCT_DESCRIPTION": "Enter the product description",
+  "PLACEHOLDER_PRODUCT_DESCRIPTION": "Product description",
+  "ENTER_PRODUCT_IMAGE": "Upload product image",
+  "SUBMIT_BUTTON": "Create Product",
+  "BACK_BUTTON": "Back",
+  "productList": {
+    "title": "Product List",
+    "productName": "Product Name",
+    "description": "Description",
+    "timesAcquired": "Times Acquired",
+    "productType": "Product Type"
+  },
+  "footer": {
+    "teInteresa": "You might be interested",
+    "legales": "Legal",
+    "contacto": "Contact Us",
+    "vinculos": {
+      "1": "Link 1",
+      "2": "Link 2",
+      "3": "Link 3",
+      "4": "Link 4",
+      "5": "Link 5",
+      "6": "Link 6"
+    },
+    "copyright": "Copyright © 2024 Grupo Centauro"
+  },
+  
+  "formulario": {
+    "titulo": "Application Form",
+    "datosPersonales": "Personal Information",
+    "nombre": "First Name",
+    "primerApellido": "Last Name",
+    "segundoApellido": "Second Last Name",
+    "cedula": "Citizenship ID",
+    "fechaNacimiento": "Date of Birth",
+    "fechaExpedicion": "Issue Date",
+    "datosContacto": "Contact Information",
+    "telefono": "Phone Number",
+    "correo": "Email Address",
+    "direccion": "Address",
+    "documentosRespaldo": "Supporting Documents",
+    "comprobanteIngreso": "Proof of Income",
+    "declaracionImpuestos": "Tax Declaration",
+    "terminos": "I accept the terms and conditions.",
+    "solicitar": "Submit"
+  },
+
+  "bienvenido": {
+    "titulo": "Welcome to",
+    "bancoCentauros": "Banco Centauros"
+  },
+  "home": {
+    "bannerSlogan": "Fulfill your dreams with us!",
+    "texto1": "From opening your first account to financing your big projects, we're here to help you move forward.",
+    "texto2": "Secure, easy, and customized banking.",
+    "solicitaTarjeta": "💳 Apply for your card.",
+    "revisaCuotas": "🏡 Check your installments.",
+    "invierteFuturo": "💰 Invest in your future.",
+    "imagenAlt": "Happy Person at Bank"
+  },
+  "valores": {
+    "misionVision": "Mission and Vision",
+    "mision": "Mission",
+    "misionTexto": "To offer innovative, accessible, and secure financial solutions that empower our clients to achieve their personal and professional goals, while promoting financial inclusion, sustainability, and the economic development of our communities.",
+    "vision": "Vision",
+    "visionTexto": "To be the leading bank in trust, technology, and sustainability, recognized for transforming our clients' financial experience and for driving economic and social progress globally."
+  },
+  "nosotros": {
+    "sobreNosotros": "About Us",
+    "descripcion": "Banco Centauro is a financial institution committed to innovation and excellence in service. We provide personalized financial solutions to help our clients achieve their goals and dreams. Our mission is to be the trusted bank for all their financial needs, offering high-quality products and services backed by exceptional customer service.",
+    "nuestraHistoria": "Our History",
+    "historiaTexto": "Founded in 2000, Banco Centauro began its operations with the goal of revolutionizing the banking sector through technology and innovation. With a small team but big ideas, we opened our first branches in Bogotá, Colombia. Over the years, we have grown steadily, expanding our presence nationally and internationally. We have introduced multiple advances in digital services, from intuitive mobile apps to secure online banking solutions, all designed to provide the best banking experience to our clients.",
+    "quienesSomos": "Who We Are",
+    "quienesSomosTexto": "We are a team of professionals passionate about finance and technology. At Banco Centauro, we believe in the power of collaboration and innovation to transform the banking experience. We take pride in having a diverse and talented team that works hard to offer products and services that truly make a difference in the lives of our clients. Our focus is client-centered; we strive to understand their unique needs and provide personalized solutions. From savings accounts and loans to investments and insurance, we are here to support our clients at every step of their financial journey. If you want more information or specific details about any aspect of Banco Centauro, let me know! I'm here to help."
+  },
+
+  "estudiantes": {
+    "title": "Student Credit Card Application Process",
+    "description": "Your Student Credit Card Awaits! 🎓💳\nWith the Banco Centauros Student Credit Card, enjoy a credit limit tailored to your needs 💰, exclusive discounts 🛍️, and benefits designed for you 🎉. Apply now and start taking advantage of everything we offer! 🚀.",
+    "button": "Apply Now"
+  },
+
+  "plus": {
+    "title": "Plus Credit Card Application Process",
+    "description": "Your Plus Credit Card Awaits! 🎓💳\nWith the Banco Centauros Plus Credit Card, enjoy a credit limit tailored to your needs 💰, exclusive discounts 🛍️, and benefits designed for you 🎉. Apply now and start taking advantage of everything we offer! 🚀.",
+    "button": "Apply Now"
+  },
+
+  "products": {
+    "title": "Our Products!",
+    "cardStudent": "Student Credit Card",
+    "cardStudentDescription": "Enjoy an accessible credit limit with no fees and exclusive discounts at your favorite places, from bookstores to cafés. Manage your money freely and save while studying.",
+    "request": "Apply",
+    "cardPlus": "Plus Credit Card",
+    "cardPlusDescription": "Make every purchase count: earn points with every purchase and redeem them for incredible exclusive benefits. Plus, enjoy special promotions to save on your favorite items.",
+    "cardPremium": "Premium Credit Card",
+    "cardPremiumDescription": "Enjoy exclusive benefits, a high credit limit, and rewards tailored to your lifestyle. The ideal card for those seeking more and better."
+  }
+}
+
+

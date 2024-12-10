@@ -20,19 +20,22 @@ interface ApiResponse {
 interface ImageResponse {
   img_url?: string;
 }
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-lista-productos',
+  selector: 'lista-productos-admin',
   templateUrl: './lista-productos.component.html',
-  styleUrl: './lista-productos.component.css',
+  styleUrls: ['./lista-productos.component.css']
 })
 export class ListaProductosComponent implements OnInit {
   productos: Product[] = [];
   loading = false;
   error: string | null = null;
 
-  constructor(private api: ApiService) {}
-
+  constructor(private translate: TranslateService ,private api: ApiService) {
+    this.translate.setDefaultLang('es');
+    this.translate.use('es');  // Cambia 'es' por 'en' si deseas usar inglés
+  }
   ngOnInit() {
     this.loadProductsWithImages();
   }

@@ -4,9 +4,19 @@
       <ul>
         <li [ngClass]="{ 'selected': item.getSelectedItem() === 'services' || item.getSelectedItem() == 'creacion-productos'}" (click)="Services()">Servicios</li>
         <li [ngClass]="{ 'selected': item.getSelectedItem() === 'products'}" (click)="Products()">Productos</li>
-        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lista-productos'}" (click)="prueba()">lista de productos</li>
+        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lProductos'}" (click)="listaProducts()">Lista de productos</li>
+        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lProductosCliente'}" (click)="listaCliente()">Lista productos cliente</li>
+        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lProductosCliente'}" (click)="listaSolicitudes()">Lista solicitudes cliente</li>
+        <li [ngClass]="{ 'selected': item.getSelectedItem() === 'lProductosCliente'}" (click)="tableroDeControl()">LtableroDeControl</li>
         <app-user></app-user>
       </ul>
     </nav>
-    <div class="headerCasa"><img src="casa.png" (click)="Home()" style="cursor: pointer;" ></div>
-</header>       
+    
+    <!-- Botones de cambio de idioma -->
+    <div class="language-switcher">
+      <button (click)="switchLanguage('es')">Español</button>
+      <button (click)="switchLanguage('en')">English</button>
+    </div>
+    
+    <div class="headerCasa"><img src="casa.png" (click)="Home()" style="cursor: pointer;"></div>
+</header>
