@@ -1,3 +1,9 @@
+<p *ngIf="loading == true" class="spinner">Cargando...</p>
+
+<div *ngIf="error" class="error-message">
+  {{ error }}
+</div>
+
 <div class="product" *ngIf="product">
   <h1>
     Detalles de para la tarjeta de {{ product.productTipo }} <br />
@@ -14,6 +20,6 @@
     </div>
   </div>
   <button class="btn btnVerde" (click)="cargarProducto(product.productoId)">
-      Solicitar
-    </button>
+    Solicitar
+  </button>
 </div>

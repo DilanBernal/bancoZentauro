@@ -1,12 +1,17 @@
-:host {
-    padding: 5px;
-    min-height: 80vh;
-}
-
 h1 {
+    margin-top: 5vh;
     text-align: center;
     font-weight: 800;
     font-size: 5em;
+}
+
+.spinner{
+    margin: auto;
+    height: 50vh;
+    font-size: 4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .detalles {
@@ -40,6 +45,25 @@ h1 {
     width: 100%;
 }
 
+
+.btnVerde {
+    display: block;
+    font-size: 1.3em;
+    padding-left: 3%;
+    transition: 0.2s;
+    padding-right: 3%;
+    font-weight: bolder;
+    transform: scale(95%);
+    background-color: #859F3D;
+    translate: 50% -50%;
+}
+
+.btnVerde:hover {
+    transform: scale(1);
+    transition: 0.2s;
+}
+
+
 @media (max-width:1400px){
     ::host{
         margin-top: 1001vh;
@@ -51,5 +75,10 @@ h1 {
     }
     h1{
         font-size: 3em;
+    }
+    .btnVerde{
+        translate: 0 0;
+        margin: 3% auto;
+        scale: 2;
     }
 }

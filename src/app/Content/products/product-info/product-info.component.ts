@@ -26,6 +26,10 @@ export class ProductInfoComponent {
 
   product?: Product
 
+  error?: string
+
+  loading:boolean = false
+
   constructor(private api:ApiService, private route:ActivatedRoute){}
 
   ngOnInit(){
@@ -34,11 +38,14 @@ export class ProductInfoComponent {
   }
 
   async cargarProducto(int:number){
+    this.loading= true
     try {
       this.product = await this.api.getProductById(int);
+      this.loading = false
     } catch(error) {
       console.error('Error al obtener el producto:', error)
-    }
+      this.loading = false
+    } 
   }
 
 }

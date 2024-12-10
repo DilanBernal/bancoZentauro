@@ -5,6 +5,8 @@ import { ApiService } from '../../services/api.service';
 import { AuthService } from '../../services/auth.service';
 import { finalize } from 'rxjs/operators';
 import { LoaderService } from '../../Content/popup/loader/loader.service';
+import { CompleteComponent } from '../../Content/popup/complete/complete.component';
+import { CompleteService } from '../../Content/popup/complete/complete.service';
 
 interface UserRegistration {
   usuarioNombre: string;
@@ -30,7 +32,8 @@ export class SigninComponent implements OnInit {
     private router: Router,
     private apiService: ApiService,
     private authService:AuthService,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private alertC: CompleteService
   ) {
     this.registrationForm = this.createRegistrationForm();
   }
@@ -124,6 +127,8 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit(): void {
+
+    this.loaderService.activarLoader()
     if (this.registrationForm.invalid) {
       this.markFormGroupTouched(this.registrationForm);
       return;
@@ -149,6 +154,7 @@ export class SigninComponent implements OnInit {
             this.registerUser(userData, formValues.recuerdame);
           } else {
             this.errorMessage = 'El correo electrónico ya está registrado';
+            this.alertC.activarLoader('Error', this.errorMessage, false)
           }
         },
         error: (err) => {

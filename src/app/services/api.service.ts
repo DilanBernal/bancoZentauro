@@ -8,17 +8,34 @@ interface enumProductTipo {
   prepago: string;
 }
 
+interface User{
+  usuarioId?: number;
+  usuarioNombre: string;
+  usuarioApellido: string
+  usuarioPassword: string;
+  usuarioRol: string;
+}
+
+interface enumSolicitudEstado{
+  aceptado: string;
+  rechazado: string;
+  en_espera:string;
+}
+
 interface Product {
   productoId: number,
   productoIdImagen: number;
   productoNombre: string;
   productoDescripcion: string;
   productTipo: enumProductTipo;
-  imageUrl?: string;  // Añadimos una propiedad para almacenar la URL de la imagen
+  imageUrl?: string;  
 }
 
 interface ProductSolicitud {
-
+    idSolicitud:number;
+    estadoSolicitud: enumSolicitudEstado;
+    producto: Product;
+    usuario: User
 }
 
 interface ApiResponse<T> {
@@ -40,8 +57,8 @@ export class ApiService {
   /*********************************************************
   *******************Seccion del usuario********************
   *********************************************************/
-  getUser(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/usr/users`)
+  getUser(): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/usr/users`)
   }
 
   existEmail(datos: any): Observable<any> {
@@ -54,7 +71,7 @@ export class ApiService {
       })
     );
   }
-  registerUser(datos: any): Observable<any> {
+  registerUser(datos: User): Observable<any> {
     return this.http.post(`${this.apiUrl}/usr/register`, datos);
   }
 
@@ -219,7 +236,10 @@ export class ApiService {
       throw new Error('No se pudo cargar el producto, error con el servidor');
     }
   }
-  
+
+  async registerSolicitud(): Promise<any>{
+
+  }
 
   async getAllSolicitudProduct(): Promise<Product[]> {
     try {

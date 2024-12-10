@@ -1,14 +1,16 @@
 package co.ue.service;
 
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import co.ue.dao.IProductSolicitudDao;
 import co.ue.model.ProductSolicitud;
 import co.ue.model.ProductSolicitud.Estado;
 import co.ue.model.Producto;
 import co.ue.model.Usuario;
-import java.util.List;
-import java.util.Optional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
 public class ProductSolicitudService implements IProductSolicitudService{
@@ -75,7 +77,7 @@ public class ProductSolicitudService implements IProductSolicitudService{
 
     @Override
     public List<ProductSolicitud> getAll() {
-        return dao.searchByEstado(Estado.aceptada);
+        return dao.searchAll();
     }
 
     @Override
