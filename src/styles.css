@@ -20,11 +20,21 @@
 }
 body{
     background-color: #F6FCDF;
+    padding-top: 15vh;
 }
 .header{
-    position: sticky;
+    position: fixed;
     top: 0;
-    z-index: 100;
+    z-index: 10;
+}
+app-header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 800;
+}
+.espaciador{
+    height: 07vh;
 }
 
 ::-webkit-scrollbar{

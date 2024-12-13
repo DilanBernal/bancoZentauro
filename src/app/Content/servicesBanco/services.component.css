@@ -1,0 +1,90 @@
+body {
+  background-color: var(--blanco);
+  color: var(--oscuro);
+}
+
+.home {
+  text-align: center;
+  padding: 30px;
+  background-color: var(--blanco);
+}
+
+.home h1 {
+  font-size: 2rem;
+  color: var(--verdeoscuro);
+  margin-bottom: 15px;
+}
+
+.home .homeBanner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--verdeclaro);
+  border-radius: 8px;
+  color: var(--blanco);
+}
+
+.home .homeBannerTexto {
+  flex: 1;
+}
+
+.home .imgBanner img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.home ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.home ul li {
+  margin-bottom: 10px;
+}
+
+/* Sección Valores */
+.valores {
+  padding: 30px;
+  background-color: var(--blanco);
+}
+
+.valores h2 {
+  font-size: 1.8rem;
+  color: var(--verdeoscuro);
+  margin-bottom: 20px;
+}
+
+.valores .mision,
+.valores .vision {
+  margin-bottom: 20px;
+}
+
+.valores h3 {
+  color: var(--verdeclaro);
+}
+
+/* Sección Nosotros */
+.nosotros {
+  padding: 30px;
+  background-color: var(--blanco);
+}
+
+.nosotros h2 {
+  font-size: 1.8rem;
+  color: var(--verdeoscuro);
+  margin-bottom: 20px;
+}
+
+.nosotros .sobrenosotros,
+.nosotros .historia,
+.nosotros .quien {
+  margin-bottom: 20px;
+}
+
+.nosotros .parrafoNosotros {
+  color: var(--oscuro);
+  font-size: 1rem;
+  line-height: 1.5;
+}

@@ -8,17 +8,34 @@ interface enumProductTipo {
   prepago: string;
 }
 
+interface User {
+  usuarioId?: number;
+  usuarioNombre: string;
+  usuarioApellido: string
+  usuarioPassword: string;
+  usuarioRol: string;
+}
+
+interface enumSolicitudEstado {
+  aceptado: string;
+  rechazado: string;
+  en_espera: string;
+}
+
 interface Product {
   productoId: number,
   productoIdImagen: number;
   productoNombre: string;
   productoDescripcion: string;
   productTipo: enumProductTipo;
-  imageUrl?: string;  // Añadimos una propiedad para almacenar la URL de la imagen
+  imageUrl?: string;
 }
 
 interface ProductSolicitud {
-
+  idSolicitud: number;
+  estadoSolicitud: enumSolicitudEstado;
+  producto: Product;
+  usuario: User
 }
 
 interface ApiResponse<T> {
@@ -30,8 +47,11 @@ interface ApiResponse<T> {
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'https://dq5jx513-8080.use2.devtunnels.ms'
-  private apiImgUrl = 'https://dq5jx513-3000.use2.devtunnels.ms'
+  
+  public apiUrl = 'https://hjsgcvmt-8080.use2.devtunnels.ms'
+  private apiImgUrl = 'https://hjsgcvmt-3000.use2.devtunnels.ms'
+  // private apiUrl = 'https://dq5jx513-8080.use2.devtunnels.ms'
+  // private apiImgUrl = 'https://dq5jx513-3000.use2.devtunnels.ms'
 
   // private apiUrl = 'http://localhost:8080'
   // private apiImgUrl = 'http://localhost:3000'
@@ -40,8 +60,8 @@ export class ApiService {
   /*********************************************************
   *******************Seccion del usuario********************
   *********************************************************/
-  getUser(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/usr/users`)
+  getUser(): Observable<User> {
+    return this.http.get<User>(`${this.apiUrl}/usr/users`)
   }
 
   existEmail(datos: any): Observable<any> {
@@ -54,7 +74,7 @@ export class ApiService {
       })
     );
   }
-  registerUser(datos: any): Observable<any> {
+  registerUser(datos: User): Observable<any> {
     return this.http.post(`${this.apiUrl}/usr/register`, datos);
   }
 
@@ -136,19 +156,21 @@ export class ApiService {
   }
 
   //*************************Productos************************
-  registerProduct(datos: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/prd/register`, datos, { observe: 'response' }).pipe(
-      tap((response) => {
-      }),
-      map((response) => {
-        return { status: response.status, body: response.body, header: response.headers }
-      }),
-      catchError(error => {
-        console.log(error)
-        return error
-      })
-    )
+  // registerProduct(datos: any): Observable<any> {
+  //   return this.http.post(`${this.apiUrl}/prd/register`, datos, { observe: 'response' }).pipe(
+  //     map((response) => {
+  //       return { status: response.status, body: response.body, header: response.headers }
+  //     }),
+  //     catchError(error => {
+  //       console.log(error)
+  //       return error
+  //     })
+  //   )
+  // }
+  registerProduct(data: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}product/register`, data);
   }
+  
   getAllProducts(): Observable<any> {
     return this.http.get(`${this.apiUrl}/prd/products`, { observe: 'response' }).pipe(
       tap((response) => {
@@ -197,10 +219,9 @@ export class ApiService {
   async getProductById(id: number): Promise<Product> {
     try {
       // Obtener el producto por su ID
-      const dataProduct: Product = await firstValueFrom(
-        this.http.get<Product>(`${this.apiUrl}/prd/searchById/${id}`)
+      const dataProduct: Product = await firstValueFrom(this.http.get<Product>(`${this.apiUrl}/prd/searchById/${id}`)
       );
-  
+
       // Obtener la URL de la imagen asociada al producto
       try {
         const response = await firstValueFrom(this.getUrlImg(dataProduct.productoIdImagen));
@@ -211,7 +232,7 @@ export class ApiService {
         console.error(`Error obteniendo imagen para producto ${dataProduct.productoNombre}:`, imgError);
         dataProduct.imageUrl = 'Error.png'; // Valor por defecto en caso de error
       }
-  
+
       console.log(dataProduct);
       return dataProduct;
     } catch (error) {
@@ -219,7 +240,22 @@ export class ApiService {
       throw new Error('No se pudo cargar el producto, error con el servidor');
     }
   }
-  
+
+  async registerSolicitud(datos: ProductSolicitud): Promise<any> {
+    try {
+      var respuesta = this.http.post(`${this.apiUrl}/slt/register`, datos, { observe: 'response' }).pipe(
+        map((response: any) => {
+          return { status: response.status, body: response.body }
+        }),
+        catchError(error => {
+          return error
+        })
+      )
+      return respuesta
+    } catch (error) {
+      return error
+    }
+  }
 
   async getAllSolicitudProduct(): Promise<Product[]> {
     try {

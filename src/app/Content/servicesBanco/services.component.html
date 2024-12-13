@@ -1,1 +1,46 @@
-<p>services works!</p>
+<section class="home">
+  <h1>{{ 'bienvenido.titulo' | translate }} <br>{{ 'bienvenido.bancoCentauros' | translate }}!</h1>
+  <section class="homeBanner">
+      <div class="homeBannerTexto">
+          <h2>{{ 'home.bannerSlogan' | translate }} 🚀</h2><br>
+          <div>
+              {{ 'home.texto1' | translate }}
+              {{ 'home.texto2' | translate }}
+            </div>
+            <ul>
+                <li><strong>{{ 'home.solicitaTarjeta' | translate }}</strong></li>
+                <li><strong>{{ 'home.revisaCuotas' | translate }}</strong></li>
+                <li><strong>{{ 'home.invierteFuturo' | translate }}</strong></li>
+            </ul>
+      </div>
+  </section>
+
+  <section class="valores">
+      <h2>{{ 'valores.titulo' | translate }}</h2>
+      <div class="mision">
+          <h3>{{ 'valores.mision' | translate }}</h3>
+          <p>{{ 'valores.misionTexto' | translate }}</p>
+      </div>
+      <div class="vision">
+          <h3>{{ 'valores.vision' | translate }}</h3>
+          <p>{{ 'valores.visionTexto' | translate }}</p>
+      </div>
+  </section>
+</section>
+
+<section class="nosotros">
+  <div class="sobrenosotros">
+      <h2>{{ 'nosotros.sobreNosotros' | translate }}</h2>
+      <p class="parrafoNosotros">{{ 'nosotros.descripcion' | translate }}</p>
+  </div>
+
+  <div class="historia">
+      <h2>{{ 'nosotros.nuestraHistoria' | translate }}</h2>
+      <p class="parrafoNosotros">{{ 'nosotros.historiaTexto' | translate }}</p>
+  </div>
+
+  <div class="quien">
+      <h2>{{ 'nosotros.quienesSomos' | translate }}</h2>
+      <p class="parrafoNosotros">{{ 'nosotros.quienesSomosTexto' | translate }}</p>
+  </div>
+</section>

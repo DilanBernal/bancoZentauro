@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ApiService } from '../../../services/api.service';
 import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 interface Product {
   productoId: number;
@@ -22,17 +23,19 @@ interface ImageResponse {
 }
 
 @Component({
-  selector: 'app-lista-productos',
+  selector: 'lista-productos-admin',
   templateUrl: './lista-productos.component.html',
-  styleUrl: './lista-productos.component.css',
+  styleUrls: ['./lista-productos.component.css']
 })
 export class ListaProductosComponent implements OnInit {
   productos: Product[] = [];
   loading = false;
   error: string | null = null;
 
-  constructor(private api: ApiService) {}
-
+  constructor(private translate: TranslateService ,private api: ApiService) {
+    this.translate.setDefaultLang('es');
+    this.translate.use('es');  // Cambia 'es' por 'en' si deseas usar inglés
+  }
   ngOnInit() {
     this.loadProductsWithImages();
   }

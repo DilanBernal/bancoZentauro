@@ -9,7 +9,11 @@ import { BackupComponent } from './Usuario/backup/backup.component';
 import { FormSolicitudComponent } from './Usuario/form-solicitud/form-solicitud.component';
 import { CreacionProductosComponent } from './Admin/productos/creacion-productos/creacion-productos.component';
 import { ListaProductosComponent } from './Admin/productos/lista-productos/lista-productos.component';
+import { ListaProductosCLComponent } from './Usuario/lista-productos-cl/lista-productos-cl.component';
+
+import { TableroDeControlComponent } from './Admin/tablero-de-control/tablero-de-control.component';
 import { ProductInfoComponent } from './Content/products/product-info/product-info.component';
+import { ListaSolicitudComponent } from './Admin/solicitudes/lista-solicitud/lista.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,9 +24,13 @@ const routes: Routes = [
   { path: 'signin', component: SigninComponent },
   { path: 'backup', component: BackupComponent },
   { path: 'services', component: ServicesComponent },
-  { path: 'creacion-productos', component: CreacionProductosComponent },
-  { path: 'form-solicitud', component: FormSolicitudComponent },
-  { path: 'lista-productos', component: ListaProductosComponent }
+  { path: 'admin/creacion-productos', component: CreacionProductosComponent },
+  { path: 'product/:id/form-solicitud', component: FormSolicitudComponent },
+  { path: 'admin/lista-productos', component: ListaProductosComponent },
+  { path: 'lista-productos-cli', component: ListaProductosCLComponent },
+  { path: 'lista-Solicitudes', component: ListaSolicitudComponent },
+  { path: 'admin/tablero-de-control', component: TableroDeControlComponent },
+  { path: 'servicesBanco', component: ServicesComponent},
 ];
 
 @NgModule({

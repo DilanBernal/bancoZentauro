@@ -9,7 +9,7 @@ import { LoaderService } from '../../../Content/popup/loader/loader.service';
 @Component({
   selector: 'app-creacion-productos',
   templateUrl: './creacion-productos.component.html',
-  styleUrl: './creacion-productos.component.css'
+  styleUrls: ['./creacion-productos.component.css'] // Asegúrate de que el nombre sea styleUrls y no styleUrl
 })
 export class CreacionProductosComponent {
 

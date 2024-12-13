@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../../../services/api.service';
-import { ActivatedRoute } from '@angular/router';
-
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core'; 
 interface enumProductTipo {
   credito: string;
   debito: string;
   prepago: string;
 }
+
 interface Product {
-  productoId: number,
+  productoId: number;
   productoIdImagen: number;
   productoNombre: string;
   productoDescripcion: string;
@@ -24,20 +24,34 @@ interface Product {
 })
 export class ProductInfoComponent {
 
-  product?: Product
+  product?: Product;
+  error?: string;
+  loading: boolean = false;
 
-  constructor(private api:ApiService, private route:ActivatedRoute){}
+  constructor(
+    private api: ApiService, 
+    private route: ActivatedRoute,
+    private translate: TranslateService,  // Inyectamos el servicio de traducción
+    private router:Router
+  ) {}
 
   ngOnInit(){
     const productId = Number(this.route.snapshot.paramMap.get('id'));
     this.cargarProducto(productId);
   }
 
+  registerSolicitud(id:number){
+    this.router.navigate([`product/${id}/form-solicitud`])
+  }
   async cargarProducto(int:number){
+    this.loading= true
     try {
       this.product = await this.api.getProductById(int);
-    } catch(error) {
-      console.error('Error al obtener el producto:', error)
+      this.loading = false;
+    } catch (error) {
+      console.error('Error al obtener el producto:', error);
+      this.loading = false;
+      this.error = this.translate.instant('producto.error');  // Traducción del mensaje de error
     }
   }
 
