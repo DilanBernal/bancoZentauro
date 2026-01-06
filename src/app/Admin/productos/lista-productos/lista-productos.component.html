@@ -3,11 +3,15 @@
   <!-- Título traducido -->
   <h1>{{ 'productList.title' | translate }}</h1>
 
-  <div *ngIf="loading" class="spinner">Cargando productos...</div>
+  @if (loading) {
+    <div class="spinner">Cargando productos...</div>
+  }
 
-  <div *ngIf="error" class="alert alert-danger">
-    {{ error }}
-  </div>
+  @if (error) {
+    <div class="alert alert-danger">
+      {{ error }}
+    </div>
+  }
 
   <!-- Tabla de productos -->
   <table class="custom-table">
@@ -21,12 +25,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let producto of productos">
-        <td>{{ producto.productoNombre }}</td>
-        <td>{{ producto.productoDescripcion }}</td>
-        <td>{{ producto.productoVeces }}</td>
-        <td>{{ producto.productTipo }}</td>
-      </tr>
+      @for (producto of productos; track producto) {
+        <tr>
+          <td>{{ producto.productoNombre }}</td>
+          <td>{{ producto.productoDescripcion }}</td>
+          <td>{{ producto.productoVeces }}</td>
+          <td>{{ producto.productTipo }}</td>
+        </tr>
+      }
     </tbody>
   </table>
 </div>

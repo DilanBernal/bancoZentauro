@@ -1,7 +1,9 @@
-<div class="contenedorCarga popup" [ngClass]="{'salida': salida}" *ngIf="activo == true">
+@if (activo == true) {
+  <div class="contenedorCarga popup" [ngClass]="{'salida': salida}">
     <div class="loader" >
-        <span class="loader__element"></span>
-        <span class="loader__element"></span>
-        <span class="loader__elemenrot"></span>
+      <span class="loader__element"></span>
+      <span class="loader__element"></span>
+      <span class="loader__elemenrot"></span>
     </div>
-</div>
+  </div>
+}

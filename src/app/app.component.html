@@ -1,4 +1,8 @@
-<app-header *ngIf="header"></app-header>
+@if (header) {
+  <app-header></app-header>
+}
 <div class="espaciador"></div>
 <router-outlet />
-<app-footer *ngIf="header"></app-footer>
+@if (header) {
+  <app-footer></app-footer>
+}

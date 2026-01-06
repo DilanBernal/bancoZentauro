@@ -1,33 +1,51 @@
-<ul *ngIf="!estaLogeado">
-  <li (click)="Login()">Iniciar Sesion</li>
-  <li (click)="Signin()">Registrarse</li>
-</ul>
+@if (!estaLogeado) {
+  <ul>
+    <li (click)="Login()">Iniciar Sesion</li>
+    <li (click)="Signin()">Registrarse</li>
+  </ul>
+}
 
-<nav *ngIf="estaLogeado" class="dropdown">
-  <button class="dropdown-button" [ngClass]="{'dropdown-button-open': menuAbierto}" (click)="toggleDropdown()">
-    <svg *ngIf="shared.getRolUser() === 'cliente'" class="user-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-4.418 0-8 3.582-8 8h2c0-3.313 2.686-6 6-6s6 2.687 6 6h2c0-4.418-3.582-8-8-8z"/> </svg>
-    
-    <svg *ngIf="shared.getRolUser() === 'admin'" class="user-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <circle cx="12" cy="8" r="4" fill="#F6FCDF"/>
-      <path d="M12 12c-3.5 0-8 1.75-8 5.25V20h16v-2.75c0-3.5-4.5-5.25-8-5.25z" fill="#F6FCDF"/>
-      <polygon points="17,11 17,7.5 21,7.5 21,11 20,11 20,8.5 18,8.5 18,11" fill="#FFD700"/>
-      <polygon points="15,13 15,10.5 19,10.5 19,13 18,13 18,11.5 16,11.5 16,13" fill="#FFD700"/>
-    </svg>
-    
-    {{ nombreUsuario }}
-  </button>
-  <div class="dropdown-content" [class.show]="menuAbierto">
-    <!-- Por parte del usuairo -->
-    <a *ngIf="shared.getRolUser() === 'cliente'" href="#">Lista de productos</a>
-    <a *ngIf="shared.getRolUser() === 'cliente'">Lista de solicitudes</a>
-
-    <!-- Por parte del administrador -->
-    <a *ngIf="shared.getRolUser() === 'admin'" (click)="creacionProductoBtn()"> Creacion de producto</a>
-    <a *ngIf="shared.getRolUser() === 'admin'" (click)="listaSolicitudesBtn()">Lista de solicitudes</a>
-    <a *ngIf="shared.getRolUser() === 'admin'" (click)="tableroDeControl()">Tablero de control</a>
-    <a *ngIf="shared.getRolUser() === 'admin'">Solicitudes de entrega</a>
-    <a *ngIf="shared.getRolUser() === 'admin'" (click)="listaProducts()" >Lista de productos</a>
-
-    <a (click)="Logout()" class="logout">Logout</a>
-  </div>
-</nav>
+@if (estaLogeado) {
+  <nav class="dropdown">
+    <button class="dropdown-button" [ngClass]="{'dropdown-button-open': menuAbierto}" (click)="toggleDropdown()">
+      @if (shared.getRolUser() === 'cliente') {
+        <svg class="user-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <path d="M12 12c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm0 2c-4.418 0-8 3.582-8 8h2c0-3.313 2.686-6 6-6s6 2.687 6 6h2c0-4.418-3.582-8-8-8z"/> </svg>
+      }
+      @if (shared.getRolUser() === 'admin') {
+        <svg class="user-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <circle cx="12" cy="8" r="4" fill="#F6FCDF"/>
+          <path d="M12 12c-3.5 0-8 1.75-8 5.25V20h16v-2.75c0-3.5-4.5-5.25-8-5.25z" fill="#F6FCDF"/>
+          <polygon points="17,11 17,7.5 21,7.5 21,11 20,11 20,8.5 18,8.5 18,11" fill="#FFD700"/>
+          <polygon points="15,13 15,10.5 19,10.5 19,13 18,13 18,11.5 16,11.5 16,13" fill="#FFD700"/>
+        </svg>
+      }
+      {{ nombreUsuario }}
+    </button>
+    <div class="dropdown-content" [class.show]="menuAbierto">
+      <!-- Por parte del usuairo -->
+      @if (shared.getRolUser() === 'cliente') {
+        <a href="#">Lista de productos</a>
+      }
+      @if (shared.getRolUser() === 'cliente') {
+        <a>Lista de solicitudes</a>
+      }
+      <!-- Por parte del administrador -->
+      @if (shared.getRolUser() === 'admin') {
+        <a (click)="creacionProductoBtn()"> Creacion de producto</a>
+      }
+      @if (shared.getRolUser() === 'admin') {
+        <a (click)="listaSolicitudesBtn()">Lista de solicitudes</a>
+      }
+      @if (shared.getRolUser() === 'admin') {
+        <a (click)="tableroDeControl()">Tablero de control</a>
+      }
+      @if (shared.getRolUser() === 'admin') {
+        <a>Solicitudes de entrega</a>
+      }
+      @if (shared.getRolUser() === 'admin') {
+        <a (click)="listaProducts()" >Lista de productos</a>
+      }
+      <a (click)="Logout()" class="logout">Logout</a>
+    </div>
+  </nav>
+}

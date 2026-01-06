@@ -1,12 +1,12 @@
 <div class="login-container">
   <button (click)="Home()" class="btnVerde btn">Volver</button>
-  
+
   <div class="logo">
     <img src="logo.png" alt="logo de banco centauro" />
   </div>
 
   <h2>Iniciar Sesión</h2>
-  
+
   <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
     <div class="form-group">
       <label for="email">Email</label>
@@ -21,11 +21,17 @@
         email
         class="form-control"
         [placeholder]="placeholderEmail"
-      />
-      <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
-        <small *ngIf="emailInput.errors?.['required']">El correo es obligatorio</small>
-        <small *ngIf="emailInput.errors?.['email']">Ingrese un correo electrónico válido</small>
-      </div>
+        />
+      @if (emailInput.invalid && emailInput.touched) {
+        <div class="error">
+          @if (emailInput.errors?.['required']) {
+            <small>El correo es obligatorio</small>
+          }
+          @if (emailInput.errors?.['email']) {
+            <small>Ingrese un correo electrónico válido</small>
+          }
+        </div>
+      }
     </div>
 
     <div class="form-group">
@@ -40,11 +46,17 @@
         minlength="8"
         class="form-control"
         [placeholder]="placeholderPassword"
-      />
-      <div *ngIf="passwordInput.invalid && passwordInput.touched" class="error">
-        <small *ngIf="passwordInput.errors?.['required']">La contraseña es obligatoria</small>
-        <small *ngIf="passwordInput.errors?.['minlength']">La contraseña debe tener al menos 8 caracteres</small>
-      </div>
+        />
+      @if (passwordInput.invalid && passwordInput.touched) {
+        <div class="error">
+          @if (passwordInput.errors?.['required']) {
+            <small>La contraseña es obligatoria</small>
+          }
+          @if (passwordInput.errors?.['minlength']) {
+            <small>La contraseña debe tener al menos 8 caracteres</small>
+          }
+        </div>
+      }
     </div>
 
     <div class="parametros form-check">
@@ -55,10 +67,10 @@
           name="Recordarme"
           [(ngModel)]="recuerdame"
           id="Recordarme"
-        />
+          />
         <label for="Recordarme">Recordarme</label>
       </div>
-      
+
       <div class="checkbox-group">
         <input
           class="form-check-input"
@@ -67,27 +79,29 @@
           name="captcha"
           id="Capcha"
           required
-        />
+          />
         <label for="Capcha">No soy un robot</label>
       </div>
-      
+
       <div class="links">
         <a (click)="Backup()">¿Olvidaste tu contraseña?</a>
         <a (click)="Signin()">Crear cuenta</a>
       </div>
     </div>
 
-    <button 
-      type="submit" 
-      [disabled]="loginForm.invalid || isLoading" 
+    <button
+      type="submit"
+      [disabled]="loginForm.invalid || isLoading"
       class="btn btnSubmit"
-    >
+      >
       {{ isLoading ? 'Iniciando sesión...' : 'Iniciar sesión' }}
     </button>
 
-    <div *ngIf="errorMessage" class="alert alert-danger">
-      {{ errorMessage }}
-    </div>
+    @if (errorMessage) {
+      <div class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
+    }
   </form>
 </div>
 

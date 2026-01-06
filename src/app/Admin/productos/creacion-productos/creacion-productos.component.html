@@ -1,18 +1,20 @@
 <loader></loader>
 
-<div class="errorVisual" *ngIf="huboError" [class.salida]="!mostrarError">
-  <svg class="crossmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-    <circle class="crossmark__circle" cx="26" cy="26" r="25" fill="none" />
-    <path
-      class="crossmark__cross"
-      fill="none"
-      d="M16 16 l20 20 M16 36 l20 -20"
-    />
-  </svg>
-  <h2>Hubo un error</h2>
-  <br />
-  <p #errorHtml></p>
-</div>
+@if (huboError) {
+  <div class="errorVisual" [class.salida]="!mostrarError">
+    <svg class="crossmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+      <circle class="crossmark__circle" cx="26" cy="26" r="25" fill="none" />
+      <path
+        class="crossmark__cross"
+        fill="none"
+        d="M16 16 l20 20 M16 36 l20 -20"
+        />
+    </svg>
+    <h2>Hubo un error</h2>
+    <br />
+    <p #errorHtml></p>
+  </div>
+}
 
 
 <form [formGroup]="fileForm" (ngSubmit)="onSubmit()" novalidate>
@@ -26,86 +28,92 @@
       formControlName="nombre"
       placeholder="Nombre del producto"
       required
-    />
+      />
   </div>
-  <span
-    *ngIf="
-      fileForm.get('nombre')?.hasError('required') &&
-      fileForm.get('nombre')?.touched
-    "
-    class="error"
-    >Tiene que tener un nombre</span
-  >
-  <div class="input-group input-description">
-    <label for="descripcion">Ingrese la descripción del producto</label>
-    <textarea
-      class="form-control"
-      type="textarea  "
-      id="descripcion"
-      minlength="25"
-      formControlName="descripcion"
-      placeholder="Descripción del producto"
-      required
-    ></textarea>
-  </div>
+  @if (
+    fileForm.get('nombre')?.hasError('required') &&
+    fileForm.get('nombre')?.touched
+    ) {
+    <span
+      class="error"
+      >Tiene que tener un nombre</span
+      >
+    }
+    <div class="input-group input-description">
+      <label for="descripcion">Ingrese la descripción del producto</label>
+      <textarea
+        class="form-control"
+        type="textarea  "
+        id="descripcion"
+        minlength="25"
+        formControlName="descripcion"
+        placeholder="Descripción del producto"
+        required
+      ></textarea>
+    </div>
 
-  <span
-    *ngIf="
+    @if (
       fileForm.get('descripcion')?.hasError('required') &&
       fileForm.get('descripcion')?.touched
-    "
-    class="error"
-    >La descripcion es obligatoria <br
-  /></span>
+      ) {
+      <span
+        class="error"
+        >La descripcion es obligatoria <br
+      /></span>
+    }
 
-  <span
-    *ngIf="
+    @if (
       fileForm.get('descripcion')?.value < 25 &&
       fileForm.get('descripcion')?.touched
-    "
-    class="error"
-    >La descripcion tiene que tener minimo 25 caracteres</span
-  >
+      ) {
+      <span
+        class="error"
+        >La descripcion tiene que tener minimo 25 caracteres</span
+        >
+      }
 
-  <div class="input-group">
-    <div class="selection-input">
-      <label for="tipo">Seleccione el tipo de producto</label>
-      <select id="tipo" formControlName="tipo" class="form-select" required>
-        <option value="" disabled selected>Seleccione un producto</option>
-        <option value="credito">Credito</option>
-        <option value="debito">Debito</option>
-        <option value="prepagada">Prepagada</option>
-      </select>
-    </div>
-    <span
-      *ngIf="
-        fileForm.get('tipo')?.hasError('required') &&
-        fileForm.get('tipo')?.touched
-      "
-      class="error"
-    >
-      Este campo es obligatorio.
-    </span>
-  </div>
+      <div class="input-group">
+        <div class="selection-input">
+          <label for="tipo">Seleccione el tipo de producto</label>
+          <select id="tipo" formControlName="tipo" class="form-select" required>
+            <option value="" disabled selected>Seleccione un producto</option>
+            <option value="credito">Credito</option>
+            <option value="debito">Debito</option>
+            <option value="prepagada">Prepagada</option>
+          </select>
+        </div>
+        @if (
+          fileForm.get('tipo')?.hasError('required') &&
+          fileForm.get('tipo')?.touched
+          ) {
+          <span
+            class="error"
+            >
+            Este campo es obligatorio.
+          </span>
+        }
+      </div>
 
-  <div class="input-group">
-    <label for="imagen">Ingrese imagen del producto</label>
-    <input
-      class="form-control"
-      type="file"
-      id="imagen"
-      (change)="onFileChange($event)"
-      accept=".png"
-      required
-    />
-    <span *ngIf="fileError" class="error">{{ fileError }}</span>
-  </div>
-  <br />
+      <div class="input-group">
+        <label for="imagen">Ingrese imagen del producto</label>
+        <input
+          class="form-control"
+          type="file"
+          id="imagen"
+          (change)="onFileChange($event)"
+          accept=".png"
+          required
+          />
+        @if (fileError) {
+          <span class="error">{{ fileError }}</span>
+        }
+      </div>
+      <br />
 
-  <div class="submit-btn">
-    <button class="btn btnVerde" type="submit" [disabled]="!fileForm.valid">
-      Crear Producto
-    </button>
-  </div>
-</form>
-<button class="btn btnVerde btnVolver">Volver</button>
+      <div class="submit-btn">
+        <button class="btn btnVerde" type="submit" [disabled]="!fileForm.valid">
+          Crear Producto
+        </button>
+      </div>
+    </form>
+    <button class="btn btnVerde btnVolver">Volver</button>

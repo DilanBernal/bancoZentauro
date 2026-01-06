@@ -10,11 +10,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let producto of productos">
-        <td>{{ producto.productoNombre }}</td>
-        <td>{{ producto.productoDescripcion }}</td>
-        <td>{{ producto.productTipo }}</td>
-      </tr>
+      @for (producto of productos; track producto) {
+        <tr>
+          <td>{{ producto.productoNombre }}</td>
+          <td>{{ producto.productoDescripcion }}</td>
+          <td>{{ producto.productTipo }}</td>
+        </tr>
+      }
     </tbody>
   </table>
 </div>

@@ -1,25 +1,31 @@
-<p *ngIf="loading == true" class="spinner">Cargando...</p>
+@if (loading == true) {
+  <p class="spinner">Cargando...</p>
+}
 
-<div *ngIf="error" class="error-message">
-  {{ error }}
-</div>
-
-<div class="product" *ngIf="product">
-  <h1>
-    Detalles de para la tarjeta de {{ product.productTipo }} <br />
-    {{ product.productoNombre }}
-  </h1>
-  <div class="detalles">
-    <br />
-    <p>
-      <strong>{{ product.productoNombre }}:</strong>
-      {{ product.productoDescripcion }}
-    </p>
-    <div class="imgProduct">
-      <img [src]="product.imageUrl" alt="{{ product.productoNombre }}" />
-    </div>
+@if (error) {
+  <div class="error-message">
+    {{ error }}
   </div>
-  <button class="btn btnVerde" (click)="cargarProducto(product.productoId)">
-    Solicitar
-  </button>
-</div>
+}
+
+@if (product) {
+  <div class="product">
+    <h1>
+      Detalles de para la tarjeta de {{ product.productTipo }} <br />
+      {{ product.productoNombre }}
+    </h1>
+    <div class="detalles">
+      <br />
+      <p>
+        <strong>{{ product.productoNombre }}:</strong>
+        {{ product.productoDescripcion }}
+      </p>
+      <div class="imgProduct">
+        <img [src]="product.imageUrl" alt="{{ product.productoNombre }}" />
+      </div>
+    </div>
+    <button class="btn btnVerde" (click)="cargarProducto(product.productoId)">
+      Solicitar
+    </button>
+  </div>
+}

@@ -3,23 +3,29 @@
   <section class="productsBanner">
   </section>
 
-   <div *ngIf="loading == true" class="spinner">Cargando...</div>
-   <div *ngIf="error" class="error-message">
-       {{ error }}
+  @if (loading == true) {
+    <div class="spinner">Cargando...</div>
+  }
+  @if (error) {
+    <div class="error-message">
+      {{ error }}
     </div>
+  }
   <div class="productsBannerTexto">
-    <div class="product" *ngFor="let product of products">
-      <div class="imgBanner">
-        <img [src]="product.imageUrl" alt="{{ product.productoNombre }}" />
-      </div>
-      <strong>{{ product.productoNombre }}</strong
-      ><br />
-      <p>
-        {{ product.productoDescripcion }}
-      </p>
-      <button class="btn btnVerde" (click)="infoComponent(product.productoId)">
-        Solicitar
-      </button>
+    @for (product of products; track product) {
+      <div class="product">
+        <div class="imgBanner">
+          <img [src]="product.imageUrl" alt="{{ product.productoNombre }}" />
+        </div>
+        <strong>{{ product.productoNombre }}</strong
+          ><br />
+          <p>
+            {{ product.productoDescripcion }}
+          </p>
+          <button class="btn btnVerde" (click)="infoComponent(product.productoId)">
+            Solicitar
+          </button>
+        </div>
+      }
     </div>
-  </div>
-</section>
+  </section>
