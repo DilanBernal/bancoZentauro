@@ -7,9 +7,11 @@ import { LoaderComponent } from '../../../Content/popup/loader/loader.component'
 import { LoaderService } from '../../../Content/popup/loader/loader.service';
 
 @Component({
-  selector: 'app-creacion-productos',
-  templateUrl: './creacion-productos.component.html',
-  styleUrls: ['./creacion-productos.component.css'] // Asegúrate de que el nombre sea styleUrls y no styleUrl
+    selector: 'app-creacion-productos',
+    templateUrl: './creacion-productos.component.html',
+    styleUrls: ['./creacion-productos.component.css'] // Asegúrate de que el nombre sea styleUrls y no styleUrl
+    ,
+    standalone: false
 })
 export class CreacionProductosComponent {
 

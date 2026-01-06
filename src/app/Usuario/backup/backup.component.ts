@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-backup',
-  templateUrl: './backup.component.html',
-  styleUrls: ['./backup.component.css']
+    selector: 'app-backup',
+    templateUrl: './backup.component.html',
+    styleUrls: ['./backup.component.css'],
+    standalone: false
 })
 export class BackupComponent {
 

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-lista-productos-cl',
-  templateUrl: './lista-productos-cl.component.html',
-  styleUrl: './lista-productos-cl.component.css'
+    selector: 'app-lista-productos-cl',
+    templateUrl: './lista-productos-cl.component.html',
+    styleUrl: './lista-productos-cl.component.css',
+    standalone: false
 })
 export class ListaProductosCLComponent {
   productos = [

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'lista-solicitudes-admin',
-  templateUrl: './lista.component.html',
-  styleUrl: './lista.component.css'
+    selector: 'lista-solicitudes-admin',
+    templateUrl: './lista.component.html',
+    styleUrl: './lista.component.css',
+    standalone: false
 })
 export class ListaSolicitudComponent {
 

@@ -3,9 +3,10 @@ import { LoaderService } from './loader.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'loader',
-  templateUrl: './loader.component.html',
-  styleUrl: './loader.component.css'
+    selector: 'loader',
+    templateUrl: './loader.component.html',
+    styleUrl: './loader.component.css',
+    standalone: false
 })
 export class LoaderComponent {
   public activo: boolean = false

@@ -3,9 +3,10 @@ import { TranslateService } from '@ngx-translate/core';
 import { ApiService } from '../../services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 @Component({
-  selector: 'form-solicitud',
-  templateUrl: './form-solicitud.component.html',
-  styleUrl: './form-solicitud.component.css'
+    selector: 'form-solicitud',
+    templateUrl: './form-solicitud.component.html',
+    styleUrl: './form-solicitud.component.css',
+    standalone: false
 })
 export class FormSolicitudComponent {
   constructor(private api:ApiService, private route:ActivatedRoute,private translate: TranslateService, private router:Router) {

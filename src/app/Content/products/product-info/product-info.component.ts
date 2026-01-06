@@ -18,9 +18,10 @@ interface Product {
 }
 
 @Component({
-  selector: 'app-product-info',
-  templateUrl: './product-info.component.html',
-  styleUrl: './product-info.component.css'
+    selector: 'app-product-info',
+    templateUrl: './product-info.component.html',
+    styleUrl: './product-info.component.css',
+    standalone: false
 })
 export class ProductInfoComponent {
 

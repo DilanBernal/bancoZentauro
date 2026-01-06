@@ -4,9 +4,10 @@ import { ApiService } from '../../../services/api.service';
 import { SharedService } from '../../../services/shared.service';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrl: './user.component.css'
+    selector: 'app-user',
+    templateUrl: './user.component.html',
+    styleUrl: './user.component.css',
+    standalone: false
 })
 export class UserComponent {
 

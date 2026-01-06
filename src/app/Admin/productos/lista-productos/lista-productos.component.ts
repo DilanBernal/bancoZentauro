@@ -23,9 +23,10 @@ interface ImageResponse {
 }
 
 @Component({
-  selector: 'lista-productos-admin',
-  templateUrl: './lista-productos.component.html',
-  styleUrls: ['./lista-productos.component.css']
+    selector: 'lista-productos-admin',
+    templateUrl: './lista-productos.component.html',
+    styleUrls: ['./lista-productos.component.css'],
+    standalone: false
 })
 export class ListaProductosComponent implements OnInit {
   productos: Product[] = [];

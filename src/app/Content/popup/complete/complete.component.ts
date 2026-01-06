@@ -3,9 +3,10 @@ import { Subscription } from 'rxjs';
 import { CompleteService } from './complete.service';
 
 @Component({
-  selector: 'complete',
-  templateUrl: './complete.component.html',
-  styleUrl: './complete.component.css'
+    selector: 'complete',
+    templateUrl: './complete.component.html',
+    styleUrl: './complete.component.css',
+    standalone: false
 })
 export class CompleteComponent {
   frase1:string = ''
