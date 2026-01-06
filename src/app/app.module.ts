@@ -4,17 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { AdminModule } from './Admin/admin.module';
-import { ApiService } from './services/api.service';
+import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
+
 import { ContentModule } from './Content/content.module';
 import { PopupModule } from './Content/popup/popup.module';
-import { UsuarioModule } from './Usuario/usuario.module';
-import { ListaProductosCLComponent } from './Usuario/lista-productos-cl/lista-productos-cl.component';
+
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ListaProductosComponent } from './Admin/productos/lista-productos/lista-productos.component';
-import { ServicesComponent } from './Content/servicesBanco/services.component';
+import { AdminModule } from './pages/Admin/admin.module';
+import { UsuarioModule } from './pages/Usuario/usuario.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +21,6 @@ import { ServicesComponent } from './Content/servicesBanco/services.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     AdminModule,
@@ -39,7 +36,7 @@ import { ServicesComponent } from './Content/servicesBanco/services.component';
       }
     })
   ],
-  providers: [],
+  providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

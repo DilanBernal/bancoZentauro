@@ -1,13 +1,13 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../../services/api.service';
-import { SharedService } from '../../../services/shared.service';
+import { ApiService } from '../../../core/services/api.service';
+import { SharedService } from '../../../core/services/shared.service';
 
 @Component({
-    selector: 'app-user',
-    templateUrl: './user.component.html',
-    styleUrl: './user.component.css',
-    standalone: false
+  selector: 'app-user',
+  templateUrl: './user.component.html',
+  styleUrl: './user.component.css',
+  standalone: false
 })
 export class UserComponent {
 
@@ -28,7 +28,7 @@ export class UserComponent {
     this.router.navigate(["admin/tablero-de-control"]);
   }
 
-  
+
   listaProducts() {
     this.router.navigate(["admin/lista-productos"]);
   }

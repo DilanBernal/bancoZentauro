@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../services/api.service';
+import { ApiService } from '../../core/services/api.service';
 import { Observable, catchError, forkJoin, map, of } from 'rxjs';
 
 interface Product {
@@ -17,10 +17,10 @@ interface ApiResponse<T> {
 }
 
 @Component({
-    selector: 'app-products',
-    templateUrl: './products.component.html',
-    styleUrls: ['./products.component.css'],
-    standalone: false
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css'],
+  standalone: false
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
@@ -33,27 +33,27 @@ export class ProductsComponent implements OnInit {
   ) { }
 
 
-  infoComponent(id:any){
+  infoComponent(id: any) {
     this.router.navigate([`products/${id}`])
   }
-  
+
   ngOnInit() {
     this.loading = true;
 
-    this.api.getAllProductsJson().then ((products) => {
+    this.api.getAllProductsJson().then((products) => {
       this.loading = false
-      if(products.length !==0){
+      if (products.length !== 0) {
         this.products = products
-      }else if(products.length == 0){
+      } else if (products.length == 0) {
 
         this.error = 'No se pudieron encontrar productos'
       }
     })
-    .catch((error) => {
-      this.error = error.message
-      this.loading = false
-    })
+      .catch((error) => {
+        this.error = error.message
+        this.loading = false
+      })
 
   }
-  
+
 }

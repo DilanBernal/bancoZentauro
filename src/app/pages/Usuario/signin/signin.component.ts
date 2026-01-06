@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from '../../services/api.service';
-import { AuthService } from '../../services/auth.service';
 import { finalize } from 'rxjs/operators';
-import { LoaderService } from '../../Content/popup/loader/loader.service';
-import { CompleteComponent } from '../../Content/popup/complete/complete.component';
-import { CompleteService } from '../../Content/popup/complete/complete.service';
+import { CompleteService } from '../../../Content/popup/complete/complete.service';
+import { LoaderService } from '../../../Content/popup/loader/loader.service';
+import { ApiService } from '../../../core/services/api.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 interface UserRegistration {
   usuarioNombre: string;
@@ -17,33 +16,33 @@ interface UserRegistration {
 }
 
 @Component({
-    selector: 'app-signin',
-    templateUrl: './signin.component.html',
-    styleUrls: ['./signin.component.css'],
-    standalone: false
+  selector: 'app-signin',
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.css'],
+  standalone: false
 })
 export class SigninComponent implements OnInit {
   registrationForm: FormGroup;
   isLoading = false;
   errorMessage = '';
-  terminos:boolean = false
-  
+  terminos: boolean = false
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private apiService: ApiService,
-    private authService:AuthService,
+    private authService: AuthService,
     private loaderService: LoaderService,
     private alertC: CompleteService
   ) {
     this.registrationForm = this.createRegistrationForm();
   }
 
-  Home(){
+  Home() {
     this.router.navigate(['home'])
   }
-  
-  Login(){
+
+  Login() {
     this.router.navigate(['login'])
   }
 
@@ -54,17 +53,17 @@ export class SigninComponent implements OnInit {
   private createRegistrationForm(): FormGroup {
     return this.fb.group({
       nombre: ['', [
-        Validators.required, 
-        Validators.minLength(2), 
+        Validators.required,
+        Validators.minLength(2),
         Validators.maxLength(50)
       ]],
       apellido: ['', [
-        Validators.required, 
-        Validators.minLength(2), 
+        Validators.required,
+        Validators.minLength(2),
         Validators.maxLength(50)
       ]],
       email: ['', [
-        Validators.required, 
+        Validators.required,
         Validators.email
       ]],
       password: ['', [
@@ -75,29 +74,29 @@ export class SigninComponent implements OnInit {
       passwordConfirm: ['', [Validators.required]],
       terminos: [false, Validators.requiredTrue],
       recuerdame: [false]
-    }, { 
-      validators: this.passwordMatchValidator 
+    }, {
+      validators: this.passwordMatchValidator
     });
   }
 
-  private passwordStrengthValidator(control: AbstractControl): {[key: string]: boolean} | null {
+  private passwordStrengthValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const value = control.value;
     const hasNumber = /\d/.test(value);
     const hasUpper = /[A-Z]/.test(value);
     const hasLower = /[a-z]/.test(value);
     const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(value);
-    
+
     const passwordValid = hasNumber && hasUpper && hasLower && hasSpecial && value.length >= 8;
-    
+
     return passwordValid ? null : { 'weakPassword': true };
   }
 
-  private passwordMatchValidator(group: FormGroup): {[key: string]: boolean} | null {
+  private passwordMatchValidator(group: FormGroup): { [key: string]: boolean } | null {
     const password = group.get('password');
     const confirmPassword = group.get('passwordConfirm');
-    
-    return password && confirmPassword && password.value === confirmPassword.value 
-      ? null 
+
+    return password && confirmPassword && password.value === confirmPassword.value
+      ? null
       : { 'passwordMismatch': true };
   }
 

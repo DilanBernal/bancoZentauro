@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, signal, WritableSignal } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SharedService } from './services/shared.service';
+import { SharedService } from './core/services/shared.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
-    standalone: false
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  standalone: false
 })
 export class AppComponent {
   title = 'bancoZentauro';
-  header: boolean = true;
+  showHeader: WritableSignal<boolean> = signal(true);
 
   constructor(
     private router: Router,
@@ -25,7 +25,7 @@ export class AppComponent {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const excludesRoutes = [/^\/login/, /^\/signin/, /^\/backup/];
-        this.header = !excludesRoutes.some(route => route.test(event.url));
+        this.showHeader.set(!excludesRoutes.some(route => route.test(event.url)));
       }
     });
   }

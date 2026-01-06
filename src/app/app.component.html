@@ -1,8 +1,8 @@
-@if (header) {
-  <app-header></app-header>
+@if (showHeader()) {
+<app-header></app-header>
 }
 <div class="espaciador"></div>
 <router-outlet />
-@if (header) {
-  <app-footer></app-footer>
+@if (showHeader()) {
+<app-footer></app-footer>
 }

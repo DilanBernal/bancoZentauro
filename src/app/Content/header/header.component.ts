@@ -1,30 +1,30 @@
 import { Component, HostListener } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SharedService } from '../../services/shared.service';
+import { SharedService } from '../../core/services/shared.service';
 import { filter } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';  // Importar el servicio de traducción
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styleUrl: './header.component.css',
-    standalone: false
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.css',
+  standalone: false
 })
 export class HeaderComponent {
-  
+
   selectedItem: string = '';
-  
+
   isDropdownOpen = false;
 
   constructor(
-    private router: Router, 
-    public item: SharedService, 
+    private router: Router,
+    public item: SharedService,
     public translate: TranslateService  // Inyectar el servicio de traducción
   ) { }
 
   // Método para cambiar el idioma
   switchLanguage(language: string) {
-    this.translate.use(language); 
+    this.translate.use(language);
     localStorage.setItem('language', this.translate.currentLang)
     console.log(this.translate.currentLang)
   }
@@ -32,7 +32,7 @@ export class HeaderComponent {
 
   toggleDropdown() {
     event?.stopPropagation()
-    this.isDropdownOpen = !this.isDropdownOpen; 
+    this.isDropdownOpen = !this.isDropdownOpen;
   }
 
   // Funciones de navegación

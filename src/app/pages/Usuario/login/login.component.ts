@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../services/api.service';
-import { AuthService } from '../../services/auth.service';
-import { LoaderService } from '../../Content/popup/loader/loader.service';
-import { CompleteService } from '../../Content/popup/complete/complete.service';
+import { CompleteService } from '../../../Content/popup/complete/complete.service';
+import { LoaderService } from '../../../Content/popup/loader/loader.service';
+import { ApiService } from '../../../core/services/api.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
-    selector: 'app-login',
-    templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css'],
-    standalone: false
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
+  standalone: false
 })
 export class LoginComponent implements OnInit {
   email: string = '';
@@ -23,10 +23,10 @@ export class LoginComponent implements OnInit {
   placeholderPassword = "Escribe tu contraseña aqui";
 
   constructor(
-    private router: Router, 
-    private api: ApiService, 
+    private router: Router,
+    private api: ApiService,
     private authService: AuthService,
-    public loader: LoaderService, 
+    public loader: LoaderService,
     public alertC: CompleteService
   ) { }
 
@@ -47,8 +47,8 @@ export class LoginComponent implements OnInit {
       next: (respuesta) => {
         if (respuesta) {
           this.alertC.activarLoader(
-            'Sesión existente', 
-            `Bienvenido/a ${userObject.usuarioNombre}`, 
+            'Sesión existente',
+            `Bienvenido/a ${userObject.usuarioNombre}`,
             true
           );
           this.router.navigate(['/home']);
@@ -123,8 +123,8 @@ export class LoginComponent implements OnInit {
         }
 
         this.alertC.activarLoader(
-          'Inicio de sesión exitoso', 
-          `Bienvenido/a ${response.body.usuarioNombre}`, 
+          'Inicio de sesión exitoso',
+          `Bienvenido/a ${response.body.usuarioNombre}`,
           true
         );
         this.router.navigate(['/home']);

@@ -6,11 +6,11 @@ import { RevisarProductosComponent } from './productos/revisar-productos/revisar
 import { SolicitudDeEntregaComponent } from './solicitudes/solicitud-de-entrega/solicitud-de-entrega.component';
 import { ListaSolicitudComponent } from './solicitudes/lista-solicitud/lista.component';
 import { TableroDeControlComponent } from './tablero-de-control/tablero-de-control.component';
-import { PopupModule } from '../Content/popup/popup.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpLoaderFactory } from '../app.module';
 import { HttpClient } from '@angular/common/http';
+import { HttpLoaderFactory } from '../../app.module';
+import { PopupModule } from '../../Content/popup/popup.module';
 
 
 
