@@ -1,14 +1,17 @@
 import { Component, HostListener } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SharedService } from '../../core/services/shared.service';
 import { filter } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';  // Importar el servicio de traducción
+import { SharedService } from '../../services/shared.service';
+import { CommonModule } from '@angular/common';
+import { UserComponent } from "./user/user.component";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
-  standalone: false
+  standalone: true,
+  imports: [CommonModule, UserComponent]
 })
 export class HeaderComponent {
 

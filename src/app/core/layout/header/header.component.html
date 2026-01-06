@@ -28,16 +28,33 @@
 
   <!-- Botones de cambio de idioma -->
 </header>
-<div class="language-switcher dropdown" [ngClass]="{'dropdown-button-open': isDropdownOpen}">
-  <button [ngClass]="{'dropdown-button-open': isDropdownOpen}" class="dropdown-button" (click)="toggleDropdown()">Seleccionar idioma</button>
+<div
+  class="language-switcher dropdown"
+  [ngClass]="{ 'dropdown-button-open': isDropdownOpen }"
+>
+  <button
+    [ngClass]="{ 'dropdown-button-open': isDropdownOpen }"
+    class="dropdown-button"
+    (click)="toggleDropdown()"
+  >
+    Seleccionar idioma
+  </button>
 
-  <div class="dropdown-content" [ngClass]="{'show': isDropdownOpen}">
-    <a [ngClass]="{'btnActivo': translate.currentLang == 'es'}" (click)="switchLanguage('es')">Español</a>
-    <a [ngClass]="{'btnActivo': translate.currentLang == 'en'}" (click)="switchLanguage('en')">English</a>
+  <div class="dropdown-content" [ngClass]="{ show: isDropdownOpen }">
+    <a
+      [ngClass]="{ btnActivo: translate.currentLang == 'es' }"
+      (click)="switchLanguage('es')"
+      >Español</a
+    >
+    <a
+      [ngClass]="{ btnActivo: translate.currentLang == 'en' }"
+      (click)="switchLanguage('en')"
+      >English</a
+    >
   </div>
 </div>
 
-  <!-- <div class="language-switcher dropdown">
+<!-- <div class="language-switcher dropdown">
     <button [ngClass]="{'btnActivo': translate.currentLang == 'es'}"  class="btn btnInterUp" (click)="switchLanguage('es')">Español</button>
     <button [ngClass]="{'btnActivo': translate.currentLang == 'en'}" class="btn btnInterDown" (click)="switchLanguage('en')">English</button>
   </div> -->

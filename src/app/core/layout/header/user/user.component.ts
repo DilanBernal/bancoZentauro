@@ -1,13 +1,15 @@
 import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../../core/services/api.service';
-import { SharedService } from '../../../core/services/shared.service';
+import { ApiService } from '../../../services/api.service';
+import { SharedService } from '../../../services/shared.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
-  standalone: false
+  standalone: true,
+  imports: [CommonModule]
 })
 export class UserComponent {
 

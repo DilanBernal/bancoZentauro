@@ -13,6 +13,8 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AdminModule } from './pages/Admin/admin.module';
 import { UsuarioModule } from './pages/Usuario/usuario.module';
+import { HeaderComponent } from "./core/layout/header/header.component";
+import { FooterComponent } from "./core/layout/footer/footer.component";
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { UsuarioModule } from './pages/Usuario/usuario.module';
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    HeaderComponent,
+    FooterComponent
   ],
   providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent]
