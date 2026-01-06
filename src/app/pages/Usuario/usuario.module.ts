@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 import { ListaProductosCLComponent } from './lista-productos-cl/lista-productos-cl.component';
 import { AppRoutingModule } from '../../app-routing.module';
 import { HttpLoaderFactory } from '../../app.module';
-import { PopupModule } from '../../Content/popup/popup.module';
+import { PopupModule } from '../../core/layout/popup/popup.module';
 
 
 

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs/operators';
-import { CompleteService } from '../../../Content/popup/complete/complete.service';
-import { LoaderService } from '../../../Content/popup/loader/loader.service';
 import { ApiService } from '../../../core/services/api.service';
 import { AuthService } from '../../../core/services/auth.service';
+import { CompleteService } from '../../../core/layout/popup/complete/complete.service';
+import { LoaderService } from '../../../core/layout/popup/loader/loader.service';
 
 interface UserRegistration {
   usuarioNombre: string;

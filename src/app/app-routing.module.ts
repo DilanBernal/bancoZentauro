@@ -1,9 +1,5 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './Content/home/home.component';
-import { ProductsComponent } from './Content/products/products.component';
-import { ServicesComponent } from './Content/servicesBanco/services.component';
-import { ProductInfoComponent } from './Content/products/product-info/product-info.component';
 import { CreacionProductosComponent } from './pages/Admin/productos/creacion-productos/creacion-productos.component';
 import { ListaProductosComponent } from './pages/Admin/productos/lista-productos/lista-productos.component';
 import { ListaSolicitudComponent } from './pages/Admin/solicitudes/lista-solicitud/lista.component';
@@ -13,6 +9,10 @@ import { FormSolicitudComponent } from './pages/Usuario/form-solicitud/form-soli
 import { ListaProductosCLComponent } from './pages/Usuario/lista-productos-cl/lista-productos-cl.component';
 import { LoginComponent } from './pages/Usuario/login/login.component';
 import { SigninComponent } from './pages/Usuario/signin/signin.component';
+import { HomeComponent } from './pages/Content/home/home.component';
+import { ProductInfoComponent } from './pages/Content/products/product-info/product-info.component';
+import { ProductsComponent } from './pages/Content/products/products.component';
+import { ServicesComponent } from './pages/Content/servicesBanco/services.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

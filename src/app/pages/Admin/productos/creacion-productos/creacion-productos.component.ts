@@ -1,15 +1,14 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoaderService } from '../../../../Content/popup/loader/loader.service';
 import { ApiService } from '../../../../core/services/api.service';
 import { SharedService } from '../../../../core/services/shared.service';
+import { LoaderService } from '../../../../core/layout/popup/loader/loader.service';
 
 @Component({
   selector: 'app-creacion-productos',
   templateUrl: './creacion-productos.component.html',
-  styleUrls: ['./creacion-productos.component.css'] // Asegúrate de que el nombre sea styleUrls y no styleUrl
-  ,
+  styleUrls: ['./creacion-productos.component.css'],
   standalone: false
 })
 export class CreacionProductosComponent {

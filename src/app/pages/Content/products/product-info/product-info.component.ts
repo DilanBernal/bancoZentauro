@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ApiService } from '../../../core/services/api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { ApiService } from '../../../../core/services/api.service';
 interface enumProductTipo {
   credito: string;
   debito: string;

@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, provideHttpClient, withFetch } from '@angular/common/http';
-
-import { ContentModule } from './Content/content.module';
-import { PopupModule } from './Content/popup/popup.module';
-
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AdminModule } from './pages/Admin/admin.module';
 import { UsuarioModule } from './pages/Usuario/usuario.module';
 import { HeaderComponent } from "./core/layout/header/header.component";
 import { FooterComponent } from "./core/layout/footer/footer.component";
+import { ContentModule } from './pages/Content/content.module';
+import { PopupModule } from './core/layout/popup/popup.module';
 
 @NgModule({
   declarations: [

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from '../../core/services/api.service';
 import { Observable, catchError, forkJoin, map, of } from 'rxjs';
+import { ApiService } from '../../../core/services/api.service';
 
 interface Product {
   productoId: number,

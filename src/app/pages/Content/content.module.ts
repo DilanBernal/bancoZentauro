@@ -5,8 +5,8 @@ import { ProductsComponent } from './products/products.component';
 import { ProductInfoComponent } from './products/product-info/product-info.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
-import { HttpLoaderFactory } from '../app.module';
 import { ServicesComponent } from './servicesBanco/services.component';
+import { HttpLoaderFactory } from '../../app.module';
 
 @NgModule({
   declarations: [

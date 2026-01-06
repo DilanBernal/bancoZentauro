@@ -10,7 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpLoaderFactory } from '../../app.module';
-import { PopupModule } from '../../Content/popup/popup.module';
+import { PopupModule } from '../../core/layout/popup/popup.module';
 
 
 
