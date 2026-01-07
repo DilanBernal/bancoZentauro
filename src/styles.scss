@@ -1,0 +1,50 @@
+@use "./app/core/assets/styles/colors.scss" as *;
+// @use "@angular/material" as mat;
+@use "bootstrap/scss/bootstrap" as *;
+
+$scrollbarWidth: 15px;
+$scrollBarBorderWidth: 2px;
+
+:root {
+  --oscuro: #{$bgDark};
+  --blanco: #{$bgLight};
+  --verdeclaro: #{$greenLight};
+  --verdeoscuro: #{$greenDark};
+  --bs-body-bg: #{$bgLight};
+  --bs-body-bg-rgb: #{$bgLightRgb};
+}
+
+* {
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  //   font-weight: 400;
+  font-style: normal;
+}
+
+*::selection {
+  background-color: #{$bgDark};
+  color: #{$bgLight};
+}
+
+.espaciador {
+  height: 07vh;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-thumb {
+  border: 3.5px solid #31511e;
+  border-radius: 20px;
+  background-color: #31511e;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: #{$bgLight};
+  border-left: $scrollBarBorderWidth solid #{$greenDark};
+  border-right: $scrollBarBorderWidth solid #{$greenDark};
+}

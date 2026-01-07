@@ -25,12 +25,16 @@ export class AuthService {
     }
   }
 
-  getStoredUser(): UserRegistration | null {
+  private getStoredUser(): UserRegistration | null {
+    return AuthService.getStoredUser();
+  }
+
+  static getStoredUser(): UserRegistration | null {
     const localUser = localStorage.getItem('user');
     const sessionUser = sessionStorage.getItem('user');
 
-    return localUser ? JSON.parse(localUser) : 
-           sessionUser ? JSON.parse(sessionUser) : null;
+    return localUser ? JSON.parse(localUser) :
+      sessionUser ? JSON.parse(sessionUser) : null;
   }
 
   storeUserLocally(user: UserRegistration): void {

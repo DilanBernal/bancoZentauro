@@ -2,19 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, catchError, forkJoin, map, of } from 'rxjs';
 import { ApiService } from '../../../core/services/api.service';
-
-interface Product {
-  productoId: number,
-  productoIdImagen: number;
-  productoNombre: string;
-  productoDescripcion: string;
-  imageUrl?: string;  // Añadimos una propiedad para almacenar la URL de la imagen
-}
-
-interface ApiResponse<T> {
-  body: T[];
-  status: number;
-}
+import { ProductApiService } from '../../../core/services/product-api.service';
+import { Product } from '../../../core/models/product.model';
 
 @Component({
   selector: 'app-products',
@@ -29,7 +18,7 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    public api: ApiService
+    public api: ProductApiService
   ) { }
 
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiService } from '../../../../core/services/api.service';
+import { ProductApiService } from '../../../../core/services/product-api.service';
 interface enumProductTipo {
   credito: string;
   debito: string;
@@ -30,7 +31,7 @@ export class ProductInfoComponent {
   loading: boolean = false;
 
   constructor(
-    private api: ApiService,
+    private api: ProductApiService,
     private route: ActivatedRoute,
     private translate: TranslateService,  // Inyectamos el servicio de traducción
     private router: Router

@@ -3,20 +3,11 @@ import { forkJoin, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { ApiService } from '../../../../core/services/api.service';
+import { Product } from '../../../../core/models/product.model';
+import { ProductApiService } from '../../../../core/services/product-api.service';
+import { ImgApiService } from '../../../../core/services/img-api.service';
+import { ApiResponse } from '../../../../core/models/api-response.model';
 
-interface Product {
-  productoId: number;
-  productoIdImagen: number;
-  productoNombre: string;
-  productoDescripcion: string;
-  productoVeces: number;
-  imageUrl?: string;
-  productTipo: string;
-}
-
-interface ApiResponse {
-  body: Product[];
-}
 
 interface ImageResponse {
   img_url?: string;
@@ -33,7 +24,7 @@ export class ListaProductosComponent implements OnInit {
   loading = false;
   error: string | null = null;
 
-  constructor(private translate: TranslateService, private api: ApiService) {
+  constructor(private translate: TranslateService, private api: ProductApiService, private imgApiService: ImgApiService) {
     this.translate.setDefaultLang('es');
     this.translate.use('es');  // Cambia 'es' por 'en' si deseas usar inglés
   }
@@ -45,7 +36,7 @@ export class ListaProductosComponent implements OnInit {
     this.loading = true;
 
     this.api.getAllProducts().pipe(
-      map((response: ApiResponse) => response.body),
+      map((response: ApiResponse<Product>) => response.body),
       map((products: Product[]) => products.map(product => this.getProductWithImage(product))),
       catchError(err => {
         this.handleError(err);
@@ -66,7 +57,7 @@ export class ListaProductosComponent implements OnInit {
 
   private getProductWithImage(product: Product): Observable<Product> {
     console.log(product)
-    return this.api.getUrlImg(product.productoIdImagen).pipe(
+    return this.imgApiService.getUrlImg(product.productoIdImagen).pipe(
       map((response: ImageResponse) => ({
         ...product,
         imageUrl: response.img_url ? `http://localhost:3000/${response.img_url}` : 'assets/default-product.png'

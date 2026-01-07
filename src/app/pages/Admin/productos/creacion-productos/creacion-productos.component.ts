@@ -1,9 +1,11 @@
+import { ProductApiService } from './../../../../core/services/product-api.service';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../../../core/services/api.service';
 import { SharedService } from '../../../../core/services/shared.service';
 import { LoaderService } from '../../../../core/layout/popup/loader/loader.service';
+import { ImgApiService } from '../../../../core/services/img-api.service';
 
 @Component({
   selector: 'app-creacion-productos',
@@ -26,7 +28,8 @@ export class CreacionProductosComponent {
     private router: Router,
     public shared: SharedService,
     public loader: LoaderService,
-    public api: ApiService,
+    public api: ProductApiService,
+    public imgApiService: ImgApiService,
     private fb: FormBuilder) {
     this.fileForm = this.fb.group({
       nombre: ['', Validators.required],
@@ -101,7 +104,7 @@ export class CreacionProductosComponent {
     var nameSplit = tempNombre.split(".png", 1);
     console.log(nameSplit[0])
 
-    this.api.addImg(this.fileForm.value.imagen, this.fileForm.value.nombre).subscribe({
+    this.imgApiService.addImg(this.fileForm.value.imagen, this.fileForm.value.nombre).subscribe({
       next: (respuesta) => {
         var idImagen = respuesta.body.file.img_id
         var datosParaBDProducto = {
@@ -117,7 +120,7 @@ export class CreacionProductosComponent {
             console.log(respuesta)
           },
           error: (err) => {
-            console.log(`Error regis prod ${err}`)
+            console.log(`Error regis prod`, err)
             this.loader.cerrarLoader()
           }
         })

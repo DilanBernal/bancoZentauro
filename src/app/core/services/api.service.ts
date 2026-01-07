@@ -1,60 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, tap, throwError, map, forkJoin, firstValueFrom } from 'rxjs';
-
-interface enumProductTipo {
-  credito: string;
-  debito: string;
-  prepago: string;
-}
-
-interface User {
-  usuarioId?: number;
-  usuarioNombre: string;
-  usuarioApellido: string
-  usuarioPassword: string;
-  usuarioRol: string;
-}
-
-interface enumSolicitudEstado {
-  aceptado: string;
-  rechazado: string;
-  en_espera: string;
-}
-
-interface Product {
-  productoId: number,
-  productoIdImagen: number;
-  productoNombre: string;
-  productoDescripcion: string;
-  productTipo: enumProductTipo;
-  imageUrl?: string;
-}
-
-interface ProductSolicitud {
-  idSolicitud: number;
-  estadoSolicitud: enumSolicitudEstado;
-  producto: Product;
-  usuario: User
-}
-
-interface ApiResponse<T> {
-  body: T[];
-  status: number;
-}
+import { User } from '../models/user.model';
+import { ProductSolicitud } from '../models/product-solicitud.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  
-  public apiUrl = 'https://hjsgcvmt-8080.use2.devtunnels.ms'
-  private apiImgUrl = 'https://hjsgcvmt-3000.use2.devtunnels.ms'
+
+  // public apiUrl = 'https://hjsgcvmt-8080.use2.devtunnels.ms'
+  // private apiImgUrl = 'https://hjsgcvmt-3000.use2.devtunnels.ms'
   // private apiUrl = 'https://dq5jx513-8080.use2.devtunnels.ms'
   // private apiImgUrl = 'https://dq5jx513-3000.use2.devtunnels.ms'
 
-  // private apiUrl = 'http://localhost:8080'
-  // private apiImgUrl = 'http://localhost:3000'
+  private apiUrl = 'http://localhost:8080'
+  private apiImgUrl = 'http://localhost:3000'
   constructor(private http: HttpClient) { }
 
   /*********************************************************
@@ -110,50 +71,7 @@ export class ApiService {
   *********************************************************/
 
   //*************************Imagenes************************
-  addImg(imagen: File, nombre: string): Observable<any> {
 
-    const datos = new FormData;
-
-    datos.append('file', imagen)
-    datos.append('nombre', nombre)
-
-    return this.http.post(`${this.apiImgUrl}/file`, datos, { observe: 'response' }).pipe(
-      map((response) => {
-        console.log(map)
-        return { status: response.status, body: response.body, header: response.headers }
-      }),
-      catchError(error => {
-        switch (error.status) {
-          case 400:
-            console.log(error)
-            return of({ status: error.status });
-          case 500:
-            console.log(error)
-            console.log(error.status)
-            return of({ status: error.status, body: error.body })
-        }
-        return "throwError(error)";
-      }
-      )
-    );
-  }
-
-  getOneImg(id: number): Observable<any> {
-    return this.http.get(`${this.apiImgUrl}/uploadOne/${id}`, { observe: 'response' }).pipe(
-      map((response) => {
-        return { status: response.status, body: response.body, header: response.headers }
-      })
-    )
-  };
-
-  getUrlImg(id: number): Observable<any> {
-    return this.http.get(`${this.apiImgUrl}/uploadOne/${id}`, { observe: 'response' }).pipe(
-      map((response) => {
-        var tempResponse = response.body
-        return tempResponse
-      })
-    )
-  }
 
   //*************************Productos************************
   // registerProduct(datos: any): Observable<any> {
@@ -167,80 +85,6 @@ export class ApiService {
   //     })
   //   )
   // }
-  registerProduct(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}product/register`, data);
-  }
-  
-  getAllProducts(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/prd/products`, { observe: 'response' }).pipe(
-      tap((response) => {
-      }),
-      map((response) => {
-        return { status: response.status, body: response.body, Headers: response.headers, ImgUrl: response.body }
-      }),
-      catchError(error => {
-        return "throwError(error)";
-      })
-    )
-  }
-  // getAllProdu
-  async getAllProductsJson(): Promise<Product[]> {
-    try {
-      // Obtener todos los productos
-      const data: ApiResponse<Product> = await this.getAllProducts().toPromise();
-
-      // Procesar cada producto para obtener su URL de imagen
-      const productsWithImages = await Promise.all(
-        data.body.map(async (product) => {
-          try {
-            const response = await this.getUrlImg(product.productoIdImagen).toPromise();
-            return {
-              ...product,
-              imageUrl: response.img_url ? `${this.apiImgUrl}/${response.img_url}` : 'Error.png',
-            };
-          } catch (error) {
-            console.error(`Error obteniendo imagen para producto ${product.productoNombre}:`, error);
-            return {
-              ...product,
-              imageUrl: 'Error.png', // Valor por defecto en caso de error
-            };
-          }
-        })
-      );
-
-      console.log(productsWithImages)
-      return productsWithImages;
-
-    } catch (error) {
-      console.error('Error al cargar productos:', error);
-      throw new Error('No se pudieron cargar los productos, error con el servidor');
-    }
-  }
-  async getProductById(id: number): Promise<Product> {
-    try {
-      // Obtener el producto por su ID
-      const dataProduct: Product = await firstValueFrom(this.http.get<Product>(`${this.apiUrl}/prd/searchById/${id}`)
-      );
-
-      // Obtener la URL de la imagen asociada al producto
-      try {
-        const response = await firstValueFrom(this.getUrlImg(dataProduct.productoIdImagen));
-        dataProduct.imageUrl = response.img_url
-          ? `${this.apiImgUrl}/${response.img_url}`
-          : 'Error.png';
-      } catch (imgError) {
-        console.error(`Error obteniendo imagen para producto ${dataProduct.productoNombre}:`, imgError);
-        dataProduct.imageUrl = 'Error.png'; // Valor por defecto en caso de error
-      }
-
-      console.log(dataProduct);
-      return dataProduct;
-    } catch (error) {
-      console.error('Error al obtener el producto:', error);
-      throw new Error('No se pudo cargar el producto, error con el servidor');
-    }
-  }
-
   async registerSolicitud(datos: ProductSolicitud): Promise<any> {
     try {
       var respuesta = this.http.post(`${this.apiUrl}/slt/register`, datos, { observe: 'response' }).pipe(
@@ -254,19 +98,6 @@ export class ApiService {
       return respuesta
     } catch (error) {
       return error
-    }
-  }
-
-  async getAllSolicitudProduct(): Promise<Product[]> {
-    try {
-      var dataSolicitud = this.http.get(`${this.apiUrl}/slt/solicitudes`).subscribe((products) => {
-        console.log(dataSolicitud)
-      })
-
-      return this.getAllProductsJson();
-    } catch (error) {
-      console.log(error)
-      throw new Error('error' + error)
     }
   }
 

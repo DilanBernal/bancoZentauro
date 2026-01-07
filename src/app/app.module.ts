@@ -12,6 +12,7 @@ import { HeaderComponent } from "./core/layout/header/header.component";
 import { FooterComponent } from "./core/layout/footer/footer.component";
 import { ContentModule } from './pages/Content/content.module';
 import { PopupModule } from './core/layout/popup/popup.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { PopupModule } from './core/layout/popup/popup.module';
       }
     }),
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    NgbModule
   ],
   providers: [provideHttpClient(withFetch())],
   bootstrap: [AppComponent]
