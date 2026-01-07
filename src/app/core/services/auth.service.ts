@@ -25,7 +25,7 @@ export class AuthService {
     }
   }
 
-  private getStoredUser(): UserRegistration | null {
+  getStoredUser(): UserRegistration | null {
     return AuthService.getStoredUser();
   }
 

@@ -1,4 +1,4 @@
-package com.dilan.bancocentauroapi;
+package com.dilan;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
