@@ -7,9 +7,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EntityScan(basePackages = {"co.ue.model"})
-@EnableJpaRepositories(basePackages = {"co.ue.dao"})
-@ComponentScan(basePackages = {"co.ue.service", "co.ue.controller","co.ue.dao", "co.ue"})
+@EntityScan(basePackages = {"co.ue.infrastructure.model"})
+@EnableJpaRepositories(basePackages = {"co.ue.infrastructure.dao"})
+@ComponentScan(basePackages = {"co.ue.application.service", "co.ue.infrastructure.controller",
+  "co.ue.infrastructure.dao", "co.ue"})
 public class BancocentauroapiApplication {
 
 	public static void main(String[] args) {
