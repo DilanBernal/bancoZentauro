@@ -1,0 +1,34 @@
+name: BancoCentauroAPI
+
+services:
+#  Agregar mas adelante si se necesita envio de correos
+#  mailpit:
+#    image: axllent/mailpit:edge
+#    container_name: mailpit-docker
+#    ports:
+#      - "8025:8025"
+#      - "1025:1025"
+#    networks:
+#      - centauro-network
+  MySQLDB:
+      image: mysql:lts
+      restart: always
+      ports:
+        - "3306:3306"
+      environment:
+        MYSQL_ROOT_PASSWORD: root_secret
+        MYSQL_DATABASE: banco_centauro
+        MYSQL_USER: centauro_user
+        MYSQL_PASSWORD: centauro_secret
+      volumes:
+        - DB_DATA:/var/lib/mysql
+      networks:
+        - centauro-network
+
+
+volumes:
+  DB_DATA:
+
+networks:
+  centauro-network:
+    driver: bridge
